@@ -9,6 +9,7 @@
 
 - Interactive model, seven reproducible scenarios, evidence exports, research, costs and drawbacks: `site/`.
 - All eight dossier references plus traditional-design and climate sources: [research review](research/REVIEW.md).
+- Current sensors, control and telemetry block diagram: [IoT architecture](docs/architecture-v2.svg).
 - Electrical pin map, motor conditioning, parts and manufacturing gates: [engineering](docs/engineering.md).
 - Parametric CSG, printable STL parts and dimensioned enclosure drawing: [CAD](cad/exports/).
 - Physical experiment design and calibration: [protocol](docs/physical-protocol.md).

@@ -17,7 +17,7 @@ ControlState state;bool outOK=false,inOK=false,displayOK=false,powerOK=false,man
 volatile uint32_t tachPulses=0;uint32_t lastSample=0,seq=0;char session[32];uint64_t uptimeMs=0;uint32_t previousMillis=0;
 float rpm=0,temp=NAN,rh=NAN,ot=NAN,orr=NAN,roofTemp=NAN;bool sensorFault=true,haveRoofConversion=false;
 void IRAM_ATTR tachRise(){tachPulses++;}
-struct Button {int pin;bool last=true,stable=true;uint32_t changed=0;bool press(uint32_t now){bool v=digitalRead(pin);if(v!=last){last=v;changed=now;}if(v!=stable&&uint32_t(now-changed)>=35){stable=v;return !v;}return false;}};
+struct Button {explicit Button(int p):pin(p){} int pin;bool last=true,stable=true;uint32_t changed=0;bool press(uint32_t now){bool v=digitalRead(pin);if(v!=last){last=v;changed=now;}if(v!=stable&&uint32_t(now-changed)>=35){stable=v;return !v;}return false;}};
 Button modeButton{MODE},helpButton{HELP},ackButton{ACK};
 void finiteValue(JsonDocument &d,const char*key,float value){if(isfinite(value))d[key]=value;else d[key]=nullptr;}
 void setup(){
@@ -37,7 +37,8 @@ void loop(){
  uint32_t now=millis();uptimeMs+=uint32_t(now-previousMillis);previousMillis=now;esp_task_wdt_reset();
  if(modeButton.press(now))manual=!manual;
  bool helpPressed=helpButton.press(now),ackPressed=ackButton.press(now),oldHelp=state.help;
- state=step(state,ControlInput{helpPressed,ackPressed,manual,SAAYA_BENCH_AUTO&&!manual&&isfinite(temp)&&temp>=32,sensorFault,now,rpm});
+ ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;input.automatic=SAAYA_BENCH_AUTO&&!manual&&isfinite(temp)&&temp>=32;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
+ state=step(state,input);
  if(oldHelp!=state.help)preferences.putBool("help",state.help);
  ledcWrite(0,255-state.duty*255/100);digitalWrite(LED,state.help||state.fanFault||sensorFault);
  digitalWrite(BUZZER,state.help&&(now%1000<120));
