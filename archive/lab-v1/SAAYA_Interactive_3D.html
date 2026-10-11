@@ -1,0 +1,493 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SAAYA | 3D product placement</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5ef;color:#18353b;font:15px system-ui}header{padding:24px 30px;border-bottom:1px solid #d4dfd8}h1{margin:3px 0;font-size:29px}header p{margin:7px 0;color:#5c7373}.layout{display:grid;grid-template-columns:1fr 310px;min-height:75vh}main{min-width:0;padding:18px}canvas{width:100%;height:570px;background:#e9eee7;border-radius:18px;touch-action:none;cursor:grab}aside{padding:20px;background:#fff9}button,label{font:inherit}button{padding:9px 13px;border:1px solid #b4c9bf;background:white;color:#1c554a;border-radius:8px;cursor:pointer}button:focus-visible{outline:3px solid #cf9a42}.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 14px}#parts{max-height:445px;overflow:auto;display:grid;gap:6px}#parts button{text-align:left;font-size:12px}#parts button[aria-pressed=true]{background:#225f54;color:white}small{color:#5d7371;line-height:1.5}#detail{min-height:78px;padding:12px 0;font-size:13px}footer{padding:12px 30px;color:#617673;font-size:12px}@media(max-width:800px){.layout{grid-template-columns:1fr}canvas{height:420px}#parts{max-height:250px}header{padding:18px}}
+</style><header><small>SAAYA / VERIFY — PHASE 02</small><h1>Shade with evidence.</h1><p>Editable 3D placement concept. Drag to rotate; select a component to locate it.</p></header><div class="layout"><main><div class="toolbar"><label><input id="explode" type="checkbox" checked> Explode roof</label><label><input id="optional" type="checkbox" checked> Optional parts</label><button id="front">Front</button><button id="top">Top</button><button id="iso">Isometric</button><label>Zoom <input id="zoom" aria-label="Zoom" type="range" min="0.6" max="1.7" step="0.05" value="1"></label></div><canvas aria-label="Rotatable 3D SAAYA shelter component model"></canvas><small>Base 250 × 200 mm · supports 160 mm · clear roof gap 12 mm · enclosure 100 × 70 × 35 mm. Dimensions are miniature design values.</small></main><aside><h2>Component placement</h2><div id="detail">Select a part. Amber components represent sensors. Optional parts are planning additions.</div><div id="parts"></div></aside></div><footer>CONCEPT ONLY · Components are nominal envelopes. No hardware or thermal validation. S7 power monitor sits inside E0; external air-speed / WBGT instruments and the separate reference rig are not modelled here. Controller internals are editable in controller_box.scad.</footer><script>
+const parts=[
+  {
+    "id": "P0",
+    "label": "BASE / 250 X 200 X 5",
+    "p": [
+      0,
+      0,
+      0
+    ],
+    "s": [
+      250,
+      200,
+      5
+    ],
+    "color": "#C4D1C9",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P1",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      8,
+      8,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P2",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      232,
+      8,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P3",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      8,
+      182,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P4",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      232,
+      182,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "R1",
+    "label": "LOWER ROOF / RADIANT BARRIER",
+    "p": [
+      -10,
+      -10,
+      165
+    ],
+    "s": [
+      270,
+      220,
+      3
+    ],
+    "color": "#A7BDB5",
+    "optional": false,
+    "group": "roof"
+  },
+  {
+    "id": "R2",
+    "label": "WHITE REMOVABLE UPPER ROOF",
+    "p": [
+      -10,
+      -10,
+      180
+    ],
+    "s": [
+      270,
+      220,
+      3
+    ],
+    "color": "#E7ECE3",
+    "optional": false,
+    "group": "upper"
+  },
+  {
+    "id": "PV",
+    "label": "OPTIONAL SOLAR PANEL",
+    "p": [
+      40,
+      30,
+      185
+    ],
+    "s": [
+      130,
+      85,
+      4
+    ],
+    "color": "#48697B",
+    "optional": true,
+    "group": "upper"
+  },
+  {
+    "id": "SE",
+    "label": "BENCH / 120 X 45",
+    "p": [
+      20,
+      137,
+      43
+    ],
+    "s": [
+      120,
+      45,
+      5
+    ],
+    "color": "#AF936B",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "L27",
+    "label": "BENCH SUPPORT",
+    "p": [
+      27,
+      145,
+      5
+    ],
+    "s": [
+      8,
+      30,
+      38
+    ],
+    "color": "#8E785C",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "L124",
+    "label": "BENCH SUPPORT",
+    "p": [
+      124,
+      145,
+      5
+    ],
+    "s": [
+      8,
+      30,
+      38
+    ],
+    "color": "#8E785C",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "E0",
+    "label": "ELECTRONICS BOX / 100 X 70 X 35",
+    "p": [
+      145,
+      40,
+      5
+    ],
+    "s": [
+      100,
+      70,
+      35
+    ],
+    "color": "#395B61",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "D1",
+    "label": "OLED ON ENCLOSURE FRONT",
+    "p": [
+      154,
+      38,
+      20
+    ],
+    "s": [
+      30,
+      2,
+      15
+    ],
+    "color": "#152F38",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B1",
+    "label": "FAN MODE",
+    "p": [
+      193,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#78B69F",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B2",
+    "label": "HELP",
+    "p": [
+      209,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#CC654F",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B3",
+    "label": "ACKNOWLEDGE",
+    "p": [
+      225,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#D5B360",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "A2",
+    "label": "LED / BUZZER",
+    "p": [
+      235,
+      37,
+      33
+    ],
+    "s": [
+      5,
+      3,
+      5
+    ],
+    "color": "#E4B850",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "W1",
+    "label": "SEALED WATER VESSEL",
+    "p": [
+      20,
+      35,
+      5
+    ],
+    "s": [
+      38,
+      42,
+      53
+    ],
+    "color": "#84B7C6",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S5",
+    "label": "TANK FLOAT / DEMO INPUT",
+    "p": [
+      28,
+      45,
+      50
+    ],
+    "s": [
+      8,
+      10,
+      10
+    ],
+    "color": "#D2A45A",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S1",
+    "label": "OUTDOOR SHT31 / SHADED SHIELD",
+    "p": [
+      -22,
+      57,
+      89
+    ],
+    "s": [
+      14,
+      18,
+      16
+    ],
+    "color": "#DFBA62",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M1",
+    "label": "OUTDOOR SENSOR BRACKET",
+    "p": [
+      -15,
+      65,
+      83
+    ],
+    "s": [
+      28,
+      4,
+      4
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S2",
+    "label": "INDOOR SHT31 / SEATED ZONE",
+    "p": [
+      10,
+      115,
+      68
+    ],
+    "s": [
+      10,
+      12,
+      12
+    ],
+    "color": "#DFBA62",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M2",
+    "label": "INDOOR SENSOR MOUNT",
+    "p": [
+      12,
+      119,
+      5
+    ],
+    "s": [
+      4,
+      4,
+      63
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "A1",
+    "label": "FAN + GUARD + TACH S6",
+    "p": [
+      178,
+      164,
+      108
+    ],
+    "s": [
+      44,
+      10,
+      44
+    ],
+    "color": "#4B7278",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M3",
+    "label": "FAN SUPPORT",
+    "p": [
+      215,
+      173,
+      108
+    ],
+    "s": [
+      22,
+      5,
+      5
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S3",
+    "label": "OPTIONAL CONTACT ROOF SENSOR",
+    "p": [
+      18,
+      50,
+      168
+    ],
+    "s": [
+      10,
+      10,
+      3
+    ],
+    "color": "#DFBA62",
+    "optional": true,
+    "group": "roof"
+  },
+  {
+    "id": "S4",
+    "label": "OPTIONAL LIGHT SENSOR",
+    "p": [
+      225,
+      180,
+      184
+    ],
+    "s": [
+      12,
+      12,
+      3
+    ],
+    "color": "#DFBA62",
+    "optional": true,
+    "group": "upper"
+  },
+  {
+    "id": "PWR",
+    "label": "OPTIONAL BATTERY / CHARGER BOX",
+    "p": [
+      165,
+      122,
+      5
+    ],
+    "s": [
+      70,
+      32,
+      30
+    ],
+    "color": "#A88F67",
+    "optional": true,
+    "group": "core"
+  }
+],canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');let yaw=.65,pitch=.5,selected='',drag=false,oldX=0,oldY=0;
+const faces=[[0,3,2,1],[4,5,6,7],[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7]];
+function verts(p,s){let[x,y,z]=p,[a,b,c]=s;return[[x,y,z],[x+a,y,z],[x+a,y+b,z],[x,y+b,z],[x,y,z+c],[x+a,y,z+c],[x+a,y+b,z+c],[x,y+b,z+c]]}
+function rotate([x,y,z]){x-=120;y-=95;z-=115;let xx=Math.cos(yaw)*x-Math.sin(yaw)*y,yy=Math.sin(yaw)*x+Math.cos(yaw)*y;return[xx,Math.cos(pitch)*z+Math.sin(pitch)*yy,Math.sin(pitch)*z-Math.cos(pitch)*yy]}
+function draw(){let dpr=devicePixelRatio||1,r=canvas.getBoundingClientRect();canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.scale(dpr,dpr);let scale=Math.min(r.width/420,r.height/450)*Number(document.querySelector('#zoom').value),polys=[];ctx.clearRect(0,0,r.width,r.height);
+for(let a of parts){if(a.optional&&!document.querySelector('#optional').checked)continue;let p=[...a.p];if(document.querySelector('#explode').checked)p[2]+=a.group==='upper'?65:a.group==='roof'?25:0;let vs=verts(p,a.s).map(rotate);for(let fi=0;fi<faces.length;fi++){let v=faces[fi].map(i=>vs[i]);let cross=(v[1][0]-v[0][0])*(v[2][1]-v[0][1])-(v[1][1]-v[0][1])*(v[2][0]-v[0][0]);if(cross<=0)continue;polys.push({v,a,fi,depth:v.reduce((s,p)=>s+p[2],0)/4})}}
+function order(q){return q.a.id==="P0"?-10000:q.a.group==="roof"?10000+q.a.p[2]:q.a.group==="upper"?20000+q.a.p[2]:rotate(q.a.p.map((n,i)=>n+q.a.s[i]/2))[2]}polys.sort((a,b)=>order(a)-order(b)||a.depth-b.depth);for(let {v,a,fi} of polys){ctx.beginPath();v.forEach((p,i)=>{let x=r.width/2+p[0]*scale,y=r.height/2-p[1]*scale;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.globalAlpha=document.querySelector("#explode").checked&&["R1","R2"].includes(a.id)?.22:1;ctx.fillStyle=selected===a.id?'#e8b655':a.color;ctx.fill();ctx.fillStyle=`rgba(0,0,0,${[.18,0,.1,.22,.15,.08][fi]})`;ctx.fill();ctx.strokeStyle=selected===a.id?'#956617':'#405b5a88';ctx.lineWidth=selected===a.id?2:.6;ctx.stroke();ctx.globalAlpha=1}
+ctx.fillStyle='#496860';ctx.font='12px system-ui';ctx.fillText(document.querySelector('#explode').checked?'EXPLODED PLACEMENT VIEW':'ASSEMBLED PLACEMENT VIEW',18,26)}
+for(let a of parts){let b=document.createElement('button');b.textContent=a.id+' · '+a.label+(a.optional?' [OPTIONAL]':'');b.setAttribute('aria-pressed','false');b.onclick=()=>{selected=a.id;document.querySelectorAll('#parts button').forEach(q=>q.setAttribute('aria-pressed',String(q===b)));document.querySelector('#detail').textContent=`${a.label}. Size ${a.s.join(' × ')} mm. Position X/Y/Z: ${a.p.join(' / ')} mm. ${a.optional?'Optional planning addition.':'Core concept component.'}`;draw()};document.querySelector('#parts').append(b)}
+canvas.onpointerdown=e=>{drag=true;oldX=e.clientX;oldY=e.clientY;canvas.setPointerCapture(e.pointerId)};canvas.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-oldX)*.008;pitch=Math.max(-1.4,Math.min(1.56,pitch+(e.clientY-oldY)*.008));oldX=e.clientX;oldY=e.clientY;draw()};canvas.onpointerup=()=>drag=false;canvas.onpointercancel=()=>drag=false;
+for(let id of ['explode','optional','zoom'])document.getElementById(id).oninput=draw;
+document.querySelector('#front').onclick=()=>{yaw=0;pitch=0;draw()};document.querySelector('#top').onclick=()=>{yaw=0;pitch=1.56;draw()};document.querySelector('#iso').onclick=()=>{yaw=.65;pitch=.5;draw()};window.onresize=draw;draw();
+</script></html>

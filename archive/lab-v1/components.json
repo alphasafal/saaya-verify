@@ -1,0 +1,478 @@
+[
+  {
+    "id": "P0",
+    "label": "BASE / 250 X 200 X 5",
+    "p": [
+      0,
+      0,
+      0
+    ],
+    "s": [
+      250,
+      200,
+      5
+    ],
+    "color": "#C4D1C9",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P1",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      8,
+      8,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P2",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      232,
+      8,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P3",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      8,
+      182,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "P4",
+    "label": "160 MM SUPPORT PILLAR",
+    "p": [
+      232,
+      182,
+      5
+    ],
+    "s": [
+      10,
+      10,
+      160
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "R1",
+    "label": "LOWER ROOF / RADIANT BARRIER",
+    "p": [
+      -10,
+      -10,
+      165
+    ],
+    "s": [
+      270,
+      220,
+      3
+    ],
+    "color": "#A7BDB5",
+    "optional": false,
+    "group": "roof"
+  },
+  {
+    "id": "R2",
+    "label": "WHITE REMOVABLE UPPER ROOF",
+    "p": [
+      -10,
+      -10,
+      180
+    ],
+    "s": [
+      270,
+      220,
+      3
+    ],
+    "color": "#E7ECE3",
+    "optional": false,
+    "group": "upper"
+  },
+  {
+    "id": "PV",
+    "label": "OPTIONAL SOLAR PANEL",
+    "p": [
+      40,
+      30,
+      185
+    ],
+    "s": [
+      130,
+      85,
+      4
+    ],
+    "color": "#48697B",
+    "optional": true,
+    "group": "upper"
+  },
+  {
+    "id": "SE",
+    "label": "BENCH / 120 X 45",
+    "p": [
+      20,
+      137,
+      43
+    ],
+    "s": [
+      120,
+      45,
+      5
+    ],
+    "color": "#AF936B",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "L27",
+    "label": "BENCH SUPPORT",
+    "p": [
+      27,
+      145,
+      5
+    ],
+    "s": [
+      8,
+      30,
+      38
+    ],
+    "color": "#8E785C",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "L124",
+    "label": "BENCH SUPPORT",
+    "p": [
+      124,
+      145,
+      5
+    ],
+    "s": [
+      8,
+      30,
+      38
+    ],
+    "color": "#8E785C",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "E0",
+    "label": "ELECTRONICS BOX / 100 X 70 X 35",
+    "p": [
+      145,
+      40,
+      5
+    ],
+    "s": [
+      100,
+      70,
+      35
+    ],
+    "color": "#395B61",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "D1",
+    "label": "OLED ON ENCLOSURE FRONT",
+    "p": [
+      154,
+      38,
+      20
+    ],
+    "s": [
+      30,
+      2,
+      15
+    ],
+    "color": "#152F38",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B1",
+    "label": "FAN MODE",
+    "p": [
+      193,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#78B69F",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B2",
+    "label": "HELP",
+    "p": [
+      209,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#CC654F",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "B3",
+    "label": "ACKNOWLEDGE",
+    "p": [
+      225,
+      37,
+      23
+    ],
+    "s": [
+      9,
+      3,
+      9
+    ],
+    "color": "#D5B360",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "A2",
+    "label": "LED / BUZZER",
+    "p": [
+      235,
+      37,
+      33
+    ],
+    "s": [
+      5,
+      3,
+      5
+    ],
+    "color": "#E4B850",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "W1",
+    "label": "SEALED WATER VESSEL",
+    "p": [
+      20,
+      35,
+      5
+    ],
+    "s": [
+      38,
+      42,
+      53
+    ],
+    "color": "#84B7C6",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S5",
+    "label": "TANK FLOAT / DEMO INPUT",
+    "p": [
+      28,
+      45,
+      50
+    ],
+    "s": [
+      8,
+      10,
+      10
+    ],
+    "color": "#D2A45A",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S1",
+    "label": "OUTDOOR SHT31 / SHADED SHIELD",
+    "p": [
+      -22,
+      57,
+      89
+    ],
+    "s": [
+      14,
+      18,
+      16
+    ],
+    "color": "#DFBA62",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M1",
+    "label": "OUTDOOR SENSOR BRACKET",
+    "p": [
+      -15,
+      65,
+      83
+    ],
+    "s": [
+      28,
+      4,
+      4
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S2",
+    "label": "INDOOR SHT31 / SEATED ZONE",
+    "p": [
+      10,
+      115,
+      68
+    ],
+    "s": [
+      10,
+      12,
+      12
+    ],
+    "color": "#DFBA62",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M2",
+    "label": "INDOOR SENSOR MOUNT",
+    "p": [
+      12,
+      119,
+      5
+    ],
+    "s": [
+      4,
+      4,
+      63
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "A1",
+    "label": "FAN + GUARD + TACH S6",
+    "p": [
+      178,
+      164,
+      108
+    ],
+    "s": [
+      44,
+      10,
+      44
+    ],
+    "color": "#4B7278",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "M3",
+    "label": "FAN SUPPORT",
+    "p": [
+      215,
+      173,
+      108
+    ],
+    "s": [
+      22,
+      5,
+      5
+    ],
+    "color": "#577A76",
+    "optional": false,
+    "group": "core"
+  },
+  {
+    "id": "S3",
+    "label": "OPTIONAL CONTACT ROOF SENSOR",
+    "p": [
+      18,
+      50,
+      168
+    ],
+    "s": [
+      10,
+      10,
+      3
+    ],
+    "color": "#DFBA62",
+    "optional": true,
+    "group": "roof"
+  },
+  {
+    "id": "S4",
+    "label": "OPTIONAL LIGHT SENSOR",
+    "p": [
+      225,
+      180,
+      184
+    ],
+    "s": [
+      12,
+      12,
+      3
+    ],
+    "color": "#DFBA62",
+    "optional": true,
+    "group": "upper"
+  },
+  {
+    "id": "PWR",
+    "label": "OPTIONAL BATTERY / CHARGER BOX",
+    "p": [
+      165,
+      122,
+      5
+    ],
+    "s": [
+      70,
+      32,
+      30
+    ],
+    "color": "#A88F67",
+    "optional": true,
+    "group": "core"
+  }
+]
