@@ -55,14 +55,17 @@ def control(prev,inputs):
     return dict(help=help_latched,duty=duty,started=started,fan_fault=fault)
 
 def energy(rows):
-    rows=sorted(rows,key=lambda r:r['seq']);total=0;valid=0;span=0
-    for a,b in zip(rows,rows[1:]):
-        dt=(b['acquired_ms']-a['acquired_ms'])/1000
-        if dt<=0:continue
-        span+=dt
-        if dt>2 or a['session_id']!=b['session_id'] or a['watts'] is None or b['watts'] is None:continue
-        total+=(a['watts']+b['watts'])/2*dt/3600;valid+=dt
-    return dict(wh=total if valid else None,coverage=valid/span if span else 0,valid_seconds=valid,total_seconds=span,method='Trapezoidal integration; gaps >2 s and session boundaries excluded')
+    groups={};total=0;valid=0;span=0
+    for r in rows:groups.setdefault((r['device_id'],r['session_id']),[]).append(r)
+    for group in groups.values():
+        ordered=sorted(group,key=lambda r:r['seq'])
+        for a,b in zip(ordered,ordered[1:]):
+            dt=(b['acquired_ms']-a['acquired_ms'])/1000
+            if dt<=0:continue
+            span+=dt
+            if dt>2 or b['seq']!=a['seq']+1 or a['watts'] is None or b['watts'] is None:continue
+            total+=(a['watts']+b['watts'])/2*dt/3600;valid+=dt
+    return dict(wh=total if valid else None,coverage=valid/span if span else 0,valid_seconds=valid,total_seconds=span,method='Per-device/session trapezoidal integration; gaps >2 s excluded')
 
 def evaluate(rows,endpoint='roof_temp'):
     reasons=[];delta=None

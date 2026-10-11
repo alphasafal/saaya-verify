@@ -4,7 +4,7 @@ This file is updated with executed checks before publication. No physical fabric
 
 | Area | Status | Evidence / limit |
 |---|---|---|
-| Local telemetry API | Implemented and automated tests run | Validation, credential enforcement, duplicate handling, experiment predeclaration and reset isolation |
+| Local telemetry API | Implemented and automated tests run | 43 Python tests pass across API, evidence, analysis and CAD; includes stale backlog and burst-sampling regressions |
 | CoolProof simulation | Implemented and tested | Fixed synthetic60-sample scenarios; not a physical thermal model |
 | Physical-data evaluator | Implemented and tested with fixtures | Measured-path fixtures are synthetic; no measured trial exists |
 | Interactive site | Browser checked | Scenario controls, invalid/valid comparison, export, missing power, mobile layout and JS errors |

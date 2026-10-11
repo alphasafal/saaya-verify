@@ -50,7 +50,7 @@ for x in [8,40]:
 save('fan_guard_40mm',guard)
 spacer=sub(cyl(3.8,4),cyl(1.65,6,[0,0,-1]));save('fan_guard_spacer',spacer)
 # 48mm angle mount with same fan bolt grid on vertical face and base slots.
-bracket=union(box([48,22,3]),box([48,3,48]))
+bracket=sub(union(box([48,22,3]),box([48,3,48])),cyl(18,5,[24,-1,24],'y'))
 for x in [8,40]:
     for z in [8,40]:bracket=sub(bracket,cyl(1.65,5,[x,-1,z],'y'))
 for x in [8,40]:bracket=sub(bracket,box([3.4,10,5],[x-1.7,8,-1]))

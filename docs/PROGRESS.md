@@ -12,3 +12,7 @@ Plan: public demo and working tabletop prototype for Vellore, approved in chat 1
 Tasks: backend and tests; public app; firmware; fabrication CAD; research/cost review; integrated review; publishing.
 
 Backend: 30 tests passed after missing-module RED run; covers provenance, faults, gaps, auth, immutable experiments, reset isolation and export. One third-party AnyIO deprecation warning. FastAPI/SQLite implemented; no physical data claimed.
+
+Release review: fresh independent review identified five issues. Added failing regression tests for stale buffered telemetry, burst-biased physical averages, cross-session energy integration and obstructed fan mounting plate. All now pass. Serial input backlog is discarded before the next read; persisted per-session host clock origins also detect delayed frames after connection outages. First-contact absolute age remains unproven, so this is freshness monitoring, not reference-clock certification. Physical trials enforce at most one accepted sample per second and exclude samples outside the window. INA219 reconnection now retries library initialization before reporting power.
+
+Executed checks: 43 Python tests pass; native C++ controller tests pass; desktop/mobile browser workflow passes with 3D readiness, exploded/component controls, scenarios, export and no horizontal overflow or JavaScript errors. All 15 exported STL files reload as watertight positive-volume meshes. Physical fit remains unverified.

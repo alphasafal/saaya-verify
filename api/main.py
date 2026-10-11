@@ -20,7 +20,7 @@ def create_app(db_path=None,token=None):
     path=db_path or os.getenv('SAAYA_DB','saaya.db');token=token if token is not None else os.getenv('SAAYA_DEVICE_TOKEN')
     def db():
         conn=sqlite3.connect(path);conn.row_factory=sqlite3.Row;return conn
-    with db() as con:con.executescript('CREATE TABLE IF NOT EXISTS samples(device TEXT,session TEXT,seq INTEGER,received REAL,payload TEXT,UNIQUE(device,session,seq)); CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,name TEXT,seed INTEGER,cursor INTEGER); CREATE TABLE IF NOT EXISTS experiments(id TEXT PRIMARY KEY,run TEXT,endpoint TEXT,result TEXT);')
+    with db() as con:con.executescript('CREATE TABLE IF NOT EXISTS samples(device TEXT,session TEXT,seq INTEGER,received REAL,payload TEXT,UNIQUE(device,session,seq)); CREATE TABLE IF NOT EXISTS clocks(device TEXT,session TEXT,origin REAL,PRIMARY KEY(device,session)); CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,name TEXT,seed INTEGER,cursor INTEGER); CREATE TABLE IF NOT EXISTS experiments(id TEXT PRIMARY KEY,run TEXT,endpoint TEXT,result TEXT);')
     def fetch_run(con,rid):
         row=con.execute('SELECT * FROM runs WHERE id=?',(rid,)).fetchone()
         if not row:raise HTTPException(404,'Run not found')
@@ -31,15 +31,21 @@ def create_app(db_path=None,token=None):
     @app.post('/telemetry')
     def ingest(s:Sample,x_device_token:str|None=Header(default=None)):
         if not token or not x_device_token or not secrets.compare_digest(token,x_device_token):raise HTTPException(401,'Configured device credential required')
-        with db() as con:result=con.execute('INSERT OR IGNORE INTO samples VALUES(?,?,?,?,?)',(s.device_id,s.session_id,s.seq,time.time(),s.model_dump_json()))
+        now=time.time()
+        if s.emitted_ms<s.acquired_ms:raise HTTPException(422,'Emission precedes acquisition')
+        with db() as con:
+            result=con.execute('INSERT OR IGNORE INTO samples VALUES(?,?,?,?,?)',(s.device_id,s.session_id,s.seq,now,s.model_dump_json()))
+            if result.rowcount:
+                con.execute('INSERT INTO clocks VALUES(?,?,?) ON CONFLICT(device,session) DO UPDATE SET origin=MIN(origin,excluded.origin)',(s.device_id,s.session_id,now-s.emitted_ms/1000))
         return {'inserted':result.rowcount==1}
     @app.get('/latest')
     def latest(source:Literal['SIMULATED','MEASURED']='MEASURED'):
-        with db() as con:rows=con.execute('SELECT * FROM samples ORDER BY received DESC LIMIT 1000').fetchall()
+        with db() as con:rows=con.execute("SELECT samples.*,clocks.origin FROM samples LEFT JOIN clocks ON samples.device=clocks.device AND samples.session=clocks.session WHERE json_extract(payload,'$.source')=? ORDER BY received DESC,seq DESC LIMIT 1",(source,)).fetchall()
         for row in rows:
             s=json.loads(row['payload'])
             if s['source']==source:
                 age=max(0,time.time()-row['received'])+max(0,s['emitted_ms']-s['acquired_ms'])/1000
+                if row['origin'] is not None:age=max(age,time.time()-(row['origin']+s['acquired_ms']/1000))
                 return {'sample':s,'age_seconds':age,'stale':age>5}
         return {'sample':None,'age_seconds':None,'stale':True}
     @app.get('/history')

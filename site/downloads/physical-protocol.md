@@ -40,3 +40,7 @@ Evaporative experiments are excluded from core tests. If later added, use a sepa
 The public/local demo evaluator requires48/60 contiguous samples for its fixed1Hz replay. For real10-minute trials, use `scripts/evaluate_physical.py` with a predeclared metadata file and600 paired observations. It produces descriptive differences, coverage, exclusions and energy completeness. Missing evidence blocks interpretation. Null means unavailable, not zero. Field uncertainty and safety certification are never synthesized.
 
 Retain raw CSV/JSON, calibration metadata, configuration revision and photographs. Report deviations and failed runs, not just successful ones. Archive before/after data instead of overwriting. Release measured results only after reviewing the actual physical records.
+
+The evaluator rejects more than one valid observation in a one-second bin. Keep the declared 1 Hz cadence; do not append high-frequency bursts to a trial. Values outside the 600-second observation window are excluded. Energy is integrated separately per device/session and excludes sequence discontinuities.
+
+USB bridge freshness: the bridge discards pending serial bytes before awaiting a new frame. The API retains the earliest inferred host origin per boot session to detect transport backlog. This is not calibrated cross-instrument clock alignment; paired physical trials still require independently aligned reference timestamps. Host wall-clock changes can affect freshness estimates.

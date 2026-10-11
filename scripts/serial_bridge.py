@@ -6,6 +6,8 @@ token=os.getenv('SAAYA_DEVICE_TOKEN')
 if not token:raise SystemExit('Set SAAYA_DEVICE_TOKEN in both API and bridge environments.')
 with serial.Serial(args.port,args.baud,timeout=2) as stream,httpx.Client(timeout=5) as client:
     while True:
+        # Discard accumulated frames before waiting for the next acquisition.
+        stream.reset_input_buffer()
         line=stream.readline(8193)
         if len(line)>8192:print('Rejected oversized serial frame');continue
         try:

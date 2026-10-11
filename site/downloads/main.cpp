@@ -52,7 +52,8 @@ void loop(){
  if(haveRoofConversion){roofTemp=roof.getTempCByIndex(0);if(roofTemp==DEVICE_DISCONNECTED_C||roofTemp< -40||roofTemp>125)roofTemp=NAN;}
  haveRoofConversion=true;roof.requestTemperatures();
  bool waterAvailable=digitalRead(WATER)==LOW;
- Wire.beginTransmission(0x40);powerOK=Wire.endTransmission()==0;
+ Wire.beginTransmission(0x40);bool powerPresent=Wire.endTransmission()==0;
+ if(!powerPresent)powerOK=false;else if(!powerOK)powerOK=powerMeter.begin();
  float watts=NAN;if(powerOK){float w=powerMeter.getPower_mW()/1000.0f;if(isfinite(w)&&w>=0)watts=w;} // circuit is FAN BRANCH only
  JsonDocument d;d["schema_version"]=1;d["device_id"]="saaya-esp32";d["session_id"]=session;d["seq"]=seq++;d["source"]="MEASURED";d["config_id"]="bench-v2-fan-branch-power";d["calibration_id"]="UNVERIFIED";d["acquired_ms"]=uptimeMs;d["emitted_ms"]=uptimeMs;
  finiteValue(d,"temp",temp);finiteValue(d,"rh",rh);finiteValue(d,"outdoor_temp",ot);finiteValue(d,"outdoor_rh",orr);finiteValue(d,"roof_temp",roofTemp);finiteValue(d,"watts",watts);d["rpm"]=rpm;d["duty"]=state.duty;d["water"]=waterAvailable?"available":"low";d["help"]=state.help;d["quality"]=sensorFault?"invalid":"valid";d["fan_fault"]=state.fanFault;d["clock_aligned"]=false;d["reference_valid"]=false;d["ref_roof"]=nullptr;d["ref_air_speed"]=nullptr;d["air_speed"]=nullptr;serializeJson(d,Serial);Serial.println();

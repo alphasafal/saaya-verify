@@ -1,0 +1,11 @@
+{
+  "endpoint": "roof_temp",
+  "reference_id": "REPLACE_WITH_REFERENCE_RIG_ID",
+  "calibration_id": "UNVERIFIED",
+  "config_id": "REPLACE_WITH_ASSEMBLY_REVISION",
+  "settling_seconds": 600,
+  "declared_at": "2026-10-11T09:00:00+05:30",
+  "started_at": "2026-10-11T09:10:00+05:30",
+  "instrument_uncertainty": "UNVERIFIED",
+  "note": "Template only. Replace with real predeclared metadata and calibration evidence; never relabel synthetic records."
+}

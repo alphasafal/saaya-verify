@@ -1702,7 +1702,7 @@
         "coverage": 1.0,
         "valid_seconds": 59.0,
         "total_seconds": 59.0,
-        "method": "Trapezoidal integration; gaps >2 s and session boundaries excluded"
+        "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
       "uncertainty": "Not established: independent repeated runs required",
       "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",
@@ -1725,7 +1725,7 @@
         "coverage": 1.0,
         "valid_seconds": 59.0,
         "total_seconds": 59.0,
-        "method": "Trapezoidal integration; gaps >2 s and session boundaries excluded"
+        "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
       "uncertainty": "Not established: independent repeated runs required",
       "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",

@@ -24,7 +24,9 @@ def evaluate_physical(records,metadata):
     valid=[r for r in rows if r['quality']=='valid' and 0<=r['emitted_ms']-r['acquired_ms']<=5000 and r['clock_aligned'] and r['reference_valid'] and r[endpoint] is not None and r[ref] is not None]
     # Count unique 1-second acquisition bins; high-frequency bursts cannot masquerade as coverage.
     origin=min((r['acquired_ms'] for r in rows),default=0)
-    bins={int((r['acquired_ms']-origin)//1000) for r in valid};coverage=len(bins.intersection(range(600)))/600
+    valid=[r for r in valid if 0<=r['acquired_ms']-origin<600000]
+    bins={int((r['acquired_ms']-origin)//1000) for r in valid};coverage=len(bins)/600
+    if len(bins)!=len(valid):reasons.append('Multiple samples in a one-second bin violate declared cadence')
     if coverage<.9:reasons.append('Less than 90% paired coverage of the 600-second window')
     if endpoint=='air_speed' and any(r['fan_fault'] for r in rows):reasons.append('Fan feedback failure during air-speed intervention')
     delta=None if reasons else sum(r[endpoint]-r[ref] for r in valid)/len(valid)
