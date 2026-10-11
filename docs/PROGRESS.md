@@ -10,3 +10,5 @@ Plan: public demo and working tabletop prototype for Vellore, approved in chat 1
 - Shared interfaces: scenario engine, API and UI use one documented telemetry shape. Paired reference fields in simulated records are generated; physical records may omit them and receive invalid-comparison results.
 
 Tasks: backend and tests; public app; firmware; fabrication CAD; research/cost review; integrated review; publishing.
+
+Backend: 30 tests passed after missing-module RED run; covers provenance, faults, gaps, auth, immutable experiments, reset isolation and export. One third-party AnyIO deprecation warning. FastAPI/SQLite implemented; no physical data claimed.
