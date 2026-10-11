@@ -1,0 +1,21 @@
+{
+  "units": "mm",
+  "revision": "v2-fabrication-candidate",
+  "base": [300, 240, 4],
+  "roof": [320, 260, 3],
+  "pillar_height": 190,
+  "pillar_width": 12,
+  "roof_gap": 16,
+  "enclosure": [120, 90, 45],
+  "wall": 2.5,
+  "lid_thickness": 2.5,
+  "clearance": 0.3,
+  "fan_body": [40, 40, 12],
+  "fan_hole_spacing": 32,
+  "fan_reference": "Noctua NF-A4x10 PWM: form factor 40x40x10; extended dimensions 11mm bare, 12mm with pads",
+  "controller_envelope": [54.4, 27.9, 15],
+  "controller_note": "Espressif DevKitC V4 reference envelope; supplier generic board requires measurement. Adjustable carrier does not assume PCB mounting holes.",
+  "oled_window": [24, 14],
+  "oled_note": "Nominal aperture in removable bezel, not a confirmed supplier PCB drawing. Measure module before printing bezel.",
+  "material": "PETG for bench prints; sheltered temperature qualification required; metal/UV-rated material for future full-scale structure"
+}

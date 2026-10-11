@@ -1,0 +1,4 @@
+-r requirements.txt
+platformio==6.1.18
+trimesh==5.1.1
+manifold3d==3.5.4

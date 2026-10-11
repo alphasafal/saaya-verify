@@ -1,0 +1,167 @@
+[
+  {
+    "part": "enclosure_base",
+    "dimensions_mm": [
+      120.0,
+      90.0,
+      42.5
+    ],
+    "volume_cm3": 78.188,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "enclosure_lid",
+    "dimensions_mm": [
+      120.0,
+      90.0,
+      2.5
+    ],
+    "volume_cm3": 26.915,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "universal_board_carrier",
+    "dimensions_mm": [
+      100.0,
+      57.0,
+      2.0
+    ],
+    "volume_cm3": 11.145,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "oled_bezel_measure_module_first",
+    "dimensions_mm": [
+      44.0,
+      30.0,
+      3.0
+    ],
+    "volume_cm3": 2.888,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "fan_guard_40mm",
+    "dimensions_mm": [
+      48.0,
+      48.0,
+      3.0
+    ],
+    "volume_cm3": 5.116,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "fan_guard_spacer",
+    "dimensions_mm": [
+      7.6,
+      7.6,
+      4.0
+    ],
+    "volume_cm3": 0.147,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "fan_angle_bracket",
+    "dimensions_mm": [
+      48.0,
+      22.0,
+      48.0
+    ],
+    "volume_cm3": 9.342,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "sensor_shield_cage",
+    "dimensions_mm": [
+      30.0,
+      34.0,
+      24.0
+    ],
+    "volume_cm3": 6.73,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "base_quarter_print_4",
+    "dimensions_mm": [
+      150.0,
+      120.0,
+      4.0
+    ],
+    "volume_cm3": 71.864,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "roof_quarter_print_8",
+    "dimensions_mm": [
+      160.0,
+      130.0,
+      3.0
+    ],
+    "volume_cm3": 62.298,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "pillar_print_4",
+    "dimensions_mm": [
+      12.0,
+      12.0,
+      190.0
+    ],
+    "volume_cm3": 27.183,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "roof_spacer_print_4",
+    "dimensions_mm": [
+      10.0,
+      10.0,
+      16.0
+    ],
+    "volume_cm3": 1.117,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "join_plate_drill_to_fit",
+    "dimensions_mm": [
+      44.0,
+      24.0,
+      3.0
+    ],
+    "volume_cm3": 3.066,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "jaali_coupon_pitch_8",
+    "dimensions_mm": [
+      96.0,
+      64.0,
+      2.4
+    ],
+    "volume_cm3": 11.146,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  },
+  {
+    "part": "jaali_coupon_pitch_12",
+    "dimensions_mm": [
+      96.0,
+      64.0,
+      2.4
+    ],
+    "volume_cm3": 10.08,
+    "watertight": true,
+    "physical_fit": "UNVERIFIED"
+  }
+]

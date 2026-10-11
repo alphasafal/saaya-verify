@@ -93,7 +93,16 @@ def create_app(db_path=None,token=None):
         out=io.StringIO();writer=csv.DictWriter(out,fieldnames=list(Sample.model_fields));writer.writeheader();writer.writerows(data['samples'])
         return Response(out.getvalue(),media_type='text/csv',headers={'Content-Disposition':f'attachment; filename="saaya-{eid}.csv"'})
     @app.get('/analysis/status')
-    def analysis_status():return {'ai_enabled':False,'reason':'No external model configured. Evidence exports support read-only analysis. No autonomous control.'}
+    def analysis_status():return {'ai_enabled':bool(os.getenv('SAAYA_AI_MODEL')),'reason':'Optional local model; no autonomous control. Availability requires a running local server.'}
+    @app.post('/experiments/{eid}/explain')
+    def analyst(eid:str):
+        from .analysis import explain,AnalystUnavailable
+        record=get(eid)
+        if record.get('status')=='collecting':raise HTTPException(409,'Finish experiment before analysis')
+        source_path=Path(__file__).resolve().parents[1]/'research/evidence.json'
+        sources=json.loads(source_path.read_text()) if source_path.exists() else []
+        try:return explain({'id':record['id'],'evidence':record['evidence']},sources)
+        except AnalystUnavailable as e:raise HTTPException(503,str(e))
     site=Path(__file__).resolve().parents[1]/'site'
     if site.exists():app.mount('/',StaticFiles(directory=site,html=True),name='site')
     return app

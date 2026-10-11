@@ -1,0 +1,17 @@
+{
+  "name": "saaya-verify",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:model": "esbuild site/model-src.js --bundle --minify --outfile=site/model.bundle.js --format=esm",
+    "test:browser": "node tests/browser.cjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10",
+    "playwright": "1.56.1"
+  }
+}
