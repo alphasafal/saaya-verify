@@ -1,0 +1,32 @@
+digraph SAAYA {
+ graph [rankdir=TB,bgcolor="#fffdf5",pad="0.3",nodesep="0.35",ranksep="0.7",fontname="Arial",label="SAAYA / IMPLEMENTED TABLETOP BENCH SIGNAL FLOW\nClick a hardware block to inspect its proposed full-size CAD location",labelloc=t,fontsize=18];
+ node [shape=box,style="rounded,filled",fillcolor="#edf0e7",color="#668373",fontname="Arial",fontsize=16,margin="0.18,0.12"];
+ edge [fontname="Arial",fontsize=12,color="#285e50",arrowsize=.7];
+ air [label="Paired SHT31 air sensors\nReference 0x44 / seated 0x45",URL="../fullsize-model.html?part=seated_SHT31",target="cad-viewer"];
+ roof [label="Roof-contact DS18B20\n1-Wire / GPIO4",URL="../fullsize-model.html?part=roof_probe",target="cad-viewer"];
+ float [label="Optional water float\nGPIO35 / dry contact",URL="../fullsize-model.html?part=water_availability_switch",target="cad-viewer"];
+ buttons [label="Mode / help / acknowledge\nGPIO32 / 33 / 27",URL="../fullsize-model.html?part=assistance_button",target="cad-viewer"];
+ meter [label="INA219 · I²C 0x40\nFan-branch power only",URL="../fullsize-model.html?part=INA219",target="cad-viewer"];
+ esp [label="ESP32 · local controller\nValidate → deterministic control\nHelp latch in nonvolatile storage",fillcolor="#214d40",fontcolor=white,URL="../fullsize-model.html?part=ESP32",target="cad-viewer"];
+ driver [label="NPN open-collector PWM stage\nSignal interface · not a motor supply\nRequired; discrete parts not in CAD",fillcolor="#fff0d3"];
+ fan [label="12 V four-wire bench fan\nPWM command / tach feedback",URL="../fullsize-model.html?part=reference_fan",target="cad-viewer"];
+ oled [label="OLED · I²C 0x3C\nReadings / faults / local help",URL="../fullsize-model.html?part=OLED",target="cad-viewer"];
+ alert [label="LED GPIO26 / buzzer GPIO14\nResistor / buzzer transistor stage",URL="../fullsize-model.html?part=assistance_LED",target="cad-viewer"];
+ power [label="Separate regulated 12 V fan supply\nFuse + physical switch\nBench 250 mA fuse is NOT full-size sizing",fillcolor="#fff0d3"];
+ usb [label="Laptop USB\nESP32 power + serial logging",fillcolor="#e6edf3"];
+ {rank=same; air; roof; float; buttons; meter;}
+ {rank=same; driver; oled; alert;}
+ air -> esp [label="I²C SDA21 / SCL22"];
+ roof -> esp [label="temperature"];
+ float -> esp [label="available / low"];
+ buttons -> esp [label="local input"];
+ meter -> esp [label="I²C telemetry"];
+ esp -> driver [label="GPIO25 / 25 kHz"];
+ driver -> fan [label="PWM input"];
+ fan -> esp [label="tach → GPIO34",color="#37689b",constraint=false];
+ esp -> oled [label="I²C"];
+ esp -> alert [label="local outputs"];
+ power -> meter [label="12 V branch",color="#b17621",penwidth=2];
+ meter -> fan [label="VIN+ → VIN− → fan",color="#b17621",penwidth=2];
+ usb -> esp [label="USB power",color="#b17621",penwidth=2];
+}

@@ -8,7 +8,7 @@ The original 250 × 200 mm concept remains in `archive/lab-v1`. V2 expands the b
 
 ## Selected electrical architecture
 
-Use a classic ESP32-WROOM development board compatible with PlatformIO `esp32dev`, not ESP32-S2/S3/C3. Mechanical reference: Espressif DevKitC V4, nominal54.4×27.9mm. The supplier BOM's generic board is not guaranteed identical; measure it before printing. Mount with an insulated adjustable carrier, never assume undocumented PCB mounting holes.
+Use a classic ESP32-WROOM development board compatible with PlatformIO `esp32dev`, not ESP32-S2/S3/C3. Mechanical reference: Espressif DevKitC V4, nominal48.26×27.94mm PCB outline. The supplier BOM's generic board is not guaranteed identical; measure it before printing. Mount with an insulated adjustable carrier, never assume undocumented PCB mounting holes.
 
 For first bench operation, power the ESP32 via USB from the recording laptop. Power only the fan branch from a commercially enclosed regulated12V adapter. Connect signal grounds together. Do not feed a development board's5V pin while USB is connected. A protected5V conversion option is reserved for later standalone use and is not necessary for this USB bench circuit.
 

@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "scope": "Full-size CAD placement rationale; pin assignments describe implemented tabletop bench firmware, not an approved full-size harness.",
+  "parts": {
+    "BP01_base_plate": {
+      "title": "Base plate",
+      "role": "Transfers post reactions into an engineered foundation.",
+      "placement": "At each post foot to spread connection forces and provide an anchor pattern.",
+      "limitation": "Anchor design, edge distances, grout, soil and uplift capacity are not approved.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "P01_front_post": {
+      "title": "Front structural post",
+      "role": "Supports the roof and connects it to the foundation.",
+      "placement": "At the front corners to keep the central entrance open.",
+      "limitation": "Wind, lateral stability, welds and corrosion protection require structural design.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "P02_rear_post": {
+      "title": "Rear structural post",
+      "role": "Supports the higher edge of the roof.",
+      "placement": "120 mm taller than the front posts to establish the proposed roof slope.",
+      "limitation": "Member sizing and the complete load path are unverified.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "B01_crossbeam": {
+      "title": "Roof crossbeam",
+      "role": "Spans between posts and supports roof purlins.",
+      "placement": "Above the occupied zone to keep the floor clear.",
+      "limitation": "The simple beam screening is not a code-compliant structural calculation.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "R01_roof_purlin": {
+      "title": "Sloping roof purlin",
+      "role": "Carries roof panels to the crossbeams.",
+      "placement": "Follows the roof slope and divides the panel span.",
+      "limitation": "Rear seating relief and local strength need an engineer\u2019s approval.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "CP01_roof_connection": {
+      "title": "Roof connection plate",
+      "role": "Provides a proposed bolted interface between roof members.",
+      "placement": "At purlin/crossbeam interfaces where loads change direction.",
+      "limitation": "Bolts, bearing, welds, prying and uplift must be designed.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "SP01_roof_spacer": {
+      "title": "Roof air-gap spacer",
+      "role": "Separates the two roof skins.",
+      "placement": "Between roof layers so a ventilated gap can remain open.",
+      "limitation": "An air gap alone does not prove cooling; test temperatures and wind-driven rain.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "CP02_spacer_cap": {
+      "title": "Spacer cap plate",
+      "role": "Provides a fastening surface above each spacer.",
+      "placement": "At the upper roof fixing axes to distribute local loads.",
+      "limitation": "Fixing seals, panel bearing and uplift resistance are unresolved.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "RF01_lower_skin": {
+      "title": "Lower shade roof",
+      "role": "Shades the occupied zone beneath the upper skin.",
+      "placement": "Below the upper roof to separate the occupant from the sun-facing surface.",
+      "limitation": "Panel joints, sag, condensate and fixing details need fabrication review.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "RF02_upper_skin": {
+      "title": "Reflective upper roof",
+      "role": "Intercepts sunlight and provides the outer weather surface.",
+      "placement": "Above the ventilated gap; overhangs reduce direct sun exposure.",
+      "limitation": "Reflectance, coating life, roof runoff and actual thermal performance need testing.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "G01_knee_gusset": {
+      "title": "Corner knee gusset",
+      "role": "Stiffens a proposed beam/post junction.",
+      "placement": "At front corners to resist local joint rotation.",
+      "limitation": "Two gussets do not establish whole-frame lateral stability.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "ST01_bench_leg": {
+      "title": "Bench leg",
+      "role": "Carries the bench frame to the supporting surface.",
+      "placement": "Under the seat perimeter to keep the seating surface supported.",
+      "limitation": "Proof load, tipping, foot attachment and corrosion tests are outstanding.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "ST02_bench_rail": {
+      "title": "Longitudinal bench rail",
+      "role": "Connects bench legs and supports transverse rails.",
+      "placement": "Runs along the seat length as part of its load path.",
+      "limitation": "Connection design and occupied load capacity remain unverified.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "ST04_bench_crossrail": {
+      "title": "Transverse seat support",
+      "role": "Supports all six seat slats across their width.",
+      "placement": "Three rails cross beneath the slats so no slat relies only on its ends.",
+      "limitation": "Fasteners, timber movement and bench load tests are required.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "ST03_seat_slat": {
+      "title": "Replaceable seat slat",
+      "role": "Provides a repairable seating surface.",
+      "placement": "At a proposed 450 mm seat height with gaps between slats.",
+      "limitation": "Comfort, splinters, edge radii, accessibility and timber durability need user/physical checks.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "JA01_louvre": {
+      "title": "Shade louvre",
+      "role": "Reduces oblique sunlight while leaving openings for air.",
+      "placement": "Along the rear screen; an opening is retained around the fan.",
+      "limitation": "Orientation and spacing trade shade for airflow resistance; measure both.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "JA02_screen_rail": {
+      "title": "Screen support rail",
+      "role": "Supports replaceable louvres.",
+      "placement": "Across the rear screen to allow individual slat replacement.",
+      "limitation": "Attachment strength, wind loading and tool access are not verified.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E01_dry_enclosure": {
+      "title": "Dry electronics enclosure",
+      "role": "Houses the controller and low-voltage electronics.",
+      "placement": "On the right rear side, away from the separate water vessel and floor splash.",
+      "limitation": "This is an enclosure candidate, not an IP-rated product. Seal, antenna, heat and service access checks remain.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E02_service_lid": {
+      "title": "Removable service lid",
+      "role": "Allows access for wiring, inspection and replacement.",
+      "placement": "Above the electronics carrier; the teaching cutaway hides it to reveal internals.",
+      "limitation": "The removable lid does not yet include a validated gasket, latch or hinge design.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E03_component_carrier": {
+      "title": "Insulated electronics carrier",
+      "role": "Organizes replaceable electronic modules inside the enclosure.",
+      "placement": "Raised from the enclosure floor to support insulated mounting and wiring clearance.",
+      "limitation": "Metal carrier requires insulating standoffs; exact mounting holes and clearances need purchased parts.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "F01_fan_cartridge": {
+      "title": "Removable fan mount",
+      "role": "Holds the fan and enables replacement.",
+      "placement": "Behind the seating area, aimed toward the occupied zone.",
+      "limitation": "Useful seated airflow must be measured; direction, guard losses, noise and vibration need testing.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "F02_fan_guard": {
+      "title": "Fan guard",
+      "role": "Reduces access to the blade area.",
+      "placement": "One guard on each side of the fan.",
+      "limitation": "These shapes are not certified finger guards; opening size, strength and blade clearance need checks.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "F03_reference_fan": {
+      "title": "Fan + tachometer",
+      "role": "Moves air; tach feedback reports rotation.",
+      "placement": "At the rear above seat level to direct airflow toward occupants.",
+      "limitation": "Full-size NF-A20 is only a dimensional reference: IP50, and 0% PWM is not an off command. Select an outdoor-rated actuator and hardware isolation.",
+      "connection": "Bench reference: separate 12 V fan supply; GPIO25 \u2192 NPN open-collector PWM stage; tach \u2192 GPIO34 with external 10 k\u03a9 pull-up to 3.3 V. Full-size wiring/rating must be redesigned.",
+      "validation": "Compare tach pulses with an independent tachometer, then map actual seated air speed using an external anemometer. Test stop/isolation separately."
+    },
+    "S01_sensor_shield": {
+      "title": "Temperature/humidity shield",
+      "role": "Reduces direct radiative exposure around an air sensor.",
+      "placement": "Surrounds each SHT31, separate from heat-producing controller electronics.",
+      "limitation": "Current shield is a simplified hollow envelope. Ventilation, radiation bias and rain resistance are unverified.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E04_ESP32_reference": {
+      "title": "ESP32 controller",
+      "role": "Reads sensors, validates readings, runs local controls and emits telemetry.",
+      "placement": "Inside the dry enclosure, on an insulated removable carrier close to local controls.",
+      "limitation": "Metal enclosure can attenuate Wi-Fi; current firmware uses USB serial, not Wi-Fi. Board outline is a reference, not a checked supplier fit.",
+      "connection": "Bench: USB power + serial at 115200 baud; GPIO21/22 I\u00b2C; GPIO25 PWM; GPIO34 tach; GPIO35 float; GPIO32/33/27 buttons; GPIO26 LED; GPIO14 buzzer; GPIO4 roof probe.",
+      "validation": "Bench-test disconnected sensors, manual control, reboot recovery and watchdog behavior. Confirm firmware pin map and purchased board dimensions."
+    },
+    "E05_monitor_reference": {
+      "title": "INA219 power monitor",
+      "role": "Measures voltage/current-derived power in the fan branch.",
+      "placement": "Inside the dry enclosure near the fan supply wiring.",
+      "limitation": "This excludes controller and display consumption. Verify the selected shunt and branch rating; do not claim total-system energy.",
+      "connection": "I\u00b2C 0x40 on GPIO21 SDA / GPIO22 SCL, 3.3 V logic. Fan supply positive \u2192 fuse \u2192 switch \u2192 VIN+ \u2192 VIN\u2212 \u2192 fan. Common signal ground.",
+      "validation": "Compare with a calibrated external meter at several fan duties; document that only the fan branch is measured."
+    },
+    "E06_display_reference": {
+      "title": "OLED local display",
+      "role": "Shows readings, fan state and assistance/fault messages.",
+      "placement": "On the enclosure front so status can be read without opening it or using internet.",
+      "limitation": "Sunlight readability, sealing and seated reach/visibility are not validated.",
+      "connection": "I\u00b2C 0x3C on GPIO21/22; use verified 3.3 V-compatible logic/pull-ups.",
+      "validation": "Confirm every displayed status against firmware and test sunlight readability, fault text and seated viewing angle."
+    },
+    "S02_roof_probe": {
+      "title": "DS18B20 roof probe",
+      "role": "Measures a roof surface temperature when thermally coupled.",
+      "placement": "Near the centre of the lower roof, away from an edge-biased sample.",
+      "limitation": "The present vertical probe envelope ends near, but not bonded to, the lower skin. A contact shoe/adhesive, strain relief and calibration are still required.",
+      "connection": "Powered 3-wire 1-Wire sensor: GPIO4 data with 4.7 k\u03a9 pull-up to 3.3 V, plus 3.3 V and GND.",
+      "validation": "Bond the probe using a defined contact method, compare with a calibrated surface reference and report contact/radiation uncertainty."
+    },
+    "W01_optional_water_vessel": {
+      "title": "Optional experiment vessel",
+      "role": "Holds separate non-potable experimental water.",
+      "placement": "On the opposite side from the dry electronics.",
+      "limitation": "No pump, misting or evaporative control is implemented. Hygiene, drainage and water benefit are open experiments.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "HW01_M10_bolt_reference": {
+      "title": "M10 fastener reference",
+      "role": "Shows a proposed mechanical fastening axis.",
+      "placement": "At the connection holes to communicate assembly intent.",
+      "limitation": "Unthreaded envelope only: nut, washer, grade, grip length and torque selection remain open.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "HW02_M16_anchor_reference": {
+      "title": "Foundation anchor reference",
+      "role": "Shows the proposed anchor position below a base plate.",
+      "placement": "At each base-plate hole to communicate the foundation interface.",
+      "limitation": "Not a foundation design: embedment, concrete, soil, edge distance and uplift are unspecified.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "C01_cable_trunk": {
+      "title": "Protected cable route",
+      "role": "Organizes and shields low-voltage wiring.",
+      "placement": "Along the rear right structure to keep cables away from the walking area.",
+      "limitation": "Only a route envelope is modeled. Harnesses, glands, drip loops, bend radii and segregation need detailing.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT01_rear_service_rail": {
+      "title": "Rear service rail",
+      "role": "Provides a support line for the fan assembly.",
+      "placement": "Across the rear frame behind the occupied space.",
+      "limitation": "Connection and vibration strength need inspection and test.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT02_fan_support_arm": {
+      "title": "Fan support arm",
+      "role": "Connects the fan mount to the rear support.",
+      "placement": "A pair of arms helps support the cartridge independently of the shade louvres.",
+      "limitation": "Check stiffness, screw access and fatigue from fan vibration.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT03_enclosure_backrail": {
+      "title": "Enclosure back rail",
+      "role": "Supports the dry enclosure independently of its circuit board.",
+      "placement": "Behind the enclosure, outside the service volume.",
+      "limitation": "Attachment details and weather protection require supplier review.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT04_enclosure_return": {
+      "title": "Enclosure support return",
+      "role": "Completes the proposed enclosure support path.",
+      "placement": "Between frame and enclosure rail.",
+      "limitation": "Weld/bolt details, local loading and service clearance need approval.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT05_seated_sensor_stem": {
+      "title": "Seated sensor support",
+      "role": "Holds the sensor around the proposed breathing-zone height.",
+      "placement": "Rises from the bench area to place the shield about 1.1 m above the base.",
+      "limitation": "One point does not represent all occupants; map airflow and radiation at multiple positions.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT06_reference_sensor_stem": {
+      "title": "Reference sensor support",
+      "role": "Positions the comparison sensor separately from the bench sensor.",
+      "placement": "On an independent support near the shelter edge.",
+      "limitation": "Current position can still lie under the roof overhang. It is not automatically a valid unshaded control.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "MT07_sensor_foot": {
+      "title": "Reference sensor foot",
+      "role": "Supports the comparison-sensor mast.",
+      "placement": "At ground level beneath the independent sensor mast.",
+      "limitation": "Anti-tip stability, trip hazards and anchoring need site review.",
+      "connection": "Mechanical interface; no electrical signal.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E07_button_reference": {
+      "title": "Local push button",
+      "role": "Provides a physical local control input.",
+      "placement": "On the front face for access without opening the enclosure.",
+      "limitation": "Button size, labels, ingress protection and reach need a human-factors check.",
+      "connection": "Active-low switch to GND with internal pull-up; the selected instance determines the GPIO and action.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "E08_LED_reference": {
+      "title": "Status / assistance LED",
+      "role": "Shows a latched assistance request or selected fault states.",
+      "placement": "On the front panel next to the controls.",
+      "limitation": "A single indicator cannot identify every condition; read the OLED. Brightness and visibility need testing.",
+      "connection": "GPIO26 \u2192 330 \u03a9 resistor \u2192 LED \u2192 GND; assistance, fan fault or sensor fault lights the indicator.",
+      "validation": "Trigger help, sensor fault and fan feedback fault separately; confirm LED visibility without confusing the conditions."
+    },
+    "E09_buzzer_reference": {
+      "title": "Assistance buzzer",
+      "role": "Sounds a periodic local alert while assistance is latched.",
+      "placement": "Inside the enclosure near the user controls.",
+      "limitation": "Enclosure attenuation and sound level are untested. It does not contact emergency services.",
+      "connection": "GPIO14 \u2192 NPN driver stage, not motor/buzzer power directly from GPIO. Flyback protection if the selected buzzer is inductive.",
+      "validation": "Press help, verify periodic sound, reboot persistence and acknowledgement; measure audibility without assuming emergency coverage."
+    },
+    "S03_SHT31_reference": {
+      "title": "SHT31 air sensor",
+      "role": "Measures local dry-bulb air temperature and relative humidity.",
+      "placement": "Inside a dedicated shield, away from the controller heat source.",
+      "limitation": "Neither T/RH alone nor this geometry establishes thermal safety; calibrate and assess radiation/airflow bias.",
+      "connection": "Bench I\u00b2C GPIO21/22: comparison sensor 0x44, seated sensor 0x45 (ADR high); 3.3 V logic. Full-size cable lengths require a qualified interface.",
+      "validation": "Inspect the first article and verify the relevant interface before release."
+    },
+    "W02_float_reference": {
+      "title": "Water availability switch",
+      "role": "Reports a dry-contact available/low state.",
+      "placement": "Inside the optional water vessel, separate from dry electronics.",
+      "limitation": "Nominal envelope only. Verify switch level, orientation, material compatibility and broken-wire behavior.",
+      "connection": "GPIO35 with external 10 k\u03a9 pull-up to 3.3 V; closed contact to GND = available, open/broken wire = low/check.",
+      "validation": "Test wet/dry states, a disconnected wire and the chosen switching height before adding water near electronics."
+    }
+  },
+  "instances": {
+    "outdoor_SHT31": {
+      "title": "Reference SHT31 \u00b7 I\u00b2C 0x44",
+      "placement": "At the separate reference mast near the left edge, physically separated from the occupied sensor. This is a proposed comparison position, not a validated ambient reference.",
+      "validation": "Move/position a paired control outside shelter influence, match shields/heights, swap positions across repeated runs and record calibration."
+    },
+    "seated_SHT31": {
+      "title": "Seated SHT31 \u00b7 I\u00b2C 0x45",
+      "placement": "Inside the bench-zone shield around 1.13 m above the base. Separated from ESP32 heat; not placed inside the electronics box.",
+      "validation": "Calibrate against the reference, inspect shield bias and sample multiple occupied-zone positions without using a person as a test load."
+    },
+    "mode_button": {
+      "title": "Mode button \u00b7 GPIO32",
+      "role": "Toggles the bench between off and manual 70% fan duty.",
+      "connection": "GPIO32, active-low to GND with internal pull-up; debounced in firmware.",
+      "validation": "Verify toggle, restart behavior and fan feedback. Full-size fan requires a true hardware off path."
+    },
+    "assistance_button": {
+      "title": "Assistance button \u00b7 GPIO33",
+      "role": "Latches a local help request; the request is restored after a reboot.",
+      "connection": "GPIO33, active-low to GND; NVS stores the latch. LED, buzzer and OLED provide local indication.",
+      "validation": "Press, reboot and confirm the request persists. It is not an automatic emergency call."
+    },
+    "acknowledge_button": {
+      "title": "Acknowledge button \u00b7 GPIO27",
+      "role": "Deliberately clears the local assistance latch.",
+      "connection": "GPIO27, active-low to GND. A simultaneous help press takes priority.",
+      "validation": "Confirm only deliberate acknowledgement clears the request."
+    },
+    "reference_sensor": {
+      "title": "Reference sensor shield",
+      "placement": "On the independent left mast around 1.1 m height; the SHT31 board is inside.",
+      "limitation": "Current near-edge position may remain under the overhang. Shield geometry is provisional and does not establish an unbiased reference."
+    },
+    "seated_sensor": {
+      "title": "Seated-zone sensor shield",
+      "placement": "On the bench stem around 1.1 m height, separate from controller heat.",
+      "limitation": "Radiation shielding, air exchange, rain exclusion and fan-jet bias need physical validation."
+    }
+  }
+}

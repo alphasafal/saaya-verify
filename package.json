@@ -7,7 +7,8 @@
     "build:model": "esbuild site/model-src.js --bundle --minify --outfile=site/model.bundle.js --format=esm",
     "test:browser": "node tests/browser.cjs",
     "build:fullsize": "esbuild site/fullsize-src.js --bundle --minify --outfile=site/fullsize.bundle.js --format=esm",
-    "test:fullsize": "node tests/fullsize-browser.cjs"
+    "test:fullsize": "node tests/fullsize-browser.cjs",
+    "test:teaching": "node tests/teaching-browser.cjs"
   },
   "dependencies": {
     "three": "0.180.0"

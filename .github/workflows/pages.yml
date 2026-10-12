@@ -42,6 +42,7 @@ jobs:
           for attempt in $(seq 1 30); do curl -sf http://127.0.0.1:8765/health && break; sleep 1; done
           npm run test:browser
           npm run test:fullsize
+          npm run test:teaching
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

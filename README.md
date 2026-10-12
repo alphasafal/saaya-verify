@@ -10,6 +10,8 @@
 
 **Status:** software demonstrator and engineering package. No physical build, calibrated measurements, manufacturing release or safety certification is claimed. See [verification](docs/verification.md).
 
+**Teacher presentation:** https://saaya-verify.vercel.app/explain.html — interactive IoT diagram, labelled CAD, placement rationales, bench pin map and current engineering gaps.
+
 ## Explore
 
 [Two-minute presentation and workshop handoff](docs/demo-guide.md).
