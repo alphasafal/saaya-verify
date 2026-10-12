@@ -1,0 +1,50 @@
+{
+  "status": "SCREENING ONLY / NOT CODE CHECKED",
+  "model": "Two simply supported 2.4 m RHS 80x60x3 crossbeams, each carrying half of uniform roof uplift; elastic small-deflection beam equations",
+  "assumptions": {
+    "air_density_kg_m3": 1.225,
+    "steel_E_Pa": 200000000000.0,
+    "roof_projected_area_m2": 6.72,
+    "section_I_m4": 7.364920000000006e-07
+  },
+  "cases": [
+    {
+      "assumed_speed_m_s": 30,
+      "dynamic_pressure_Pa": 551.25,
+      "assumed_net_coefficient": 1.5,
+      "gross_roof_uplift_N": 5557,
+      "crossbeam_stress_MPa": 45.3,
+      "crossbeam_deflection_mm": 3.4,
+      "screening_span_240_limit_mm": 10,
+      "screening_deflection_exceeded": false
+    },
+    {
+      "assumed_speed_m_s": 40,
+      "dynamic_pressure_Pa": 980.0000000000001,
+      "assumed_net_coefficient": 1.5,
+      "gross_roof_uplift_N": 9878,
+      "crossbeam_stress_MPa": 80.5,
+      "crossbeam_deflection_mm": 6.0,
+      "screening_span_240_limit_mm": 10,
+      "screening_deflection_exceeded": false
+    },
+    {
+      "assumed_speed_m_s": 50,
+      "dynamic_pressure_Pa": 1531.25,
+      "assumed_net_coefficient": 1.5,
+      "gross_roof_uplift_N": 15435,
+      "crossbeam_stress_MPa": 125.7,
+      "crossbeam_deflection_mm": 9.4,
+      "screening_span_240_limit_mm": 10,
+      "screening_deflection_exceeded": false
+    }
+  ],
+  "excluded": [
+    "Site basic wind speed, terrain/topography/risk factors and load combinations",
+    "Local roof edge suction, cladding spans, roof connections and purlin stability",
+    "Lateral loading, torsion, frame joint stiffness, fatigue, corrosion and seismic effects",
+    "Anchor tension/shear interaction, embedment, concrete breakout, soil bearing and overturning",
+    "Occupant impact and bench strength/creep"
+  ],
+  "decision": "No construction release. Qualified local structural engineer must determine governing loads, connections and foundations. A low screening stress is not approval."
+}

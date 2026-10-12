@@ -15,6 +15,15 @@ for(const [i,[x,y]] of [[4,4],[284,4],[4,224],[284,224]].entries())await add('pi
 for(const [i,[x,y]] of [[-10,-10],[150,-10],[-10,120],[150,120]].entries()){await add('roof_quarter_print_8',`Lower roof ${i+1}`,[x,y,194],'#aabaaa','lower');await add('roof_quarter_print_8',`White upper roof ${i+1}`,[x,y,213],'#efeee0','upper');}
 await add('enclosure_base','Dry enclosure / actual hollow mesh',[166,34,4],'#527d70');await add('enclosure_lid','Removable enclosure lid',[166,34,46.5],'#86a08a','lid');await add('universal_board_carrier','Insulated board carrier',[176,54,10],'#beab77');
 envelope('ESP32 reference envelope / fit pending',[54.4,27.9,12],[186,68,14],'#315e4c');envelope('Driver / terminals nominal',[25,25,12],[253,70,14],'#9f7851');envelope('OLED module / fit pending',[28,6,18],[180,29,18],'#203d37');
+// Electronic shapes are nominal placement envelopes, not supplier-certified fabrication geometry.
+envelope('INA219 fan-branch power sensor / nominal',[25,17,8],[180,100,14],'#316d70');
+for(const [name,x] of [['Mode button',230],['Help button',248],['Acknowledge button',266]])envelope(name+' / nominal',[6,8,6],[x-3,29,25],name==='Help button'?'#b76e4c':'#d5c5a2');
+envelope('Assistance LED / nominal',[3,4,3],[276.5,31,36.5],'#da9d48');
+envelope('Buzzer / nominal',[12,12,10],[261,102,14],'#4a5249');
+envelope('S1 outdoor SHT31 / nominal',[18,18,3],[-21,81,106],'#4e8c77');
+envelope('S2 seated SHT31 / nominal',[18,18,3],[26,135,86],'#4e8c77');
+const probe=envelope('DS18B20 roof probe / nominal',[6,25,6],[140,150,188],'#958f7e');probe.userData.group='lower';
+envelope('Water availability switch / nominal',[8,20,12],[41,62,35],'#ddd9b9');
 envelope('Bench seat',[130,45,5],[24,172,48],'#b59a6a');for(const x of [30,139])envelope('Bench support '+x,[8,30,44],[x,180,4],'#9d865e');
 envelope('Separate water vessel',[38,42,55],[26,50,4],'#87b6b2');await add('sensor_shield_cage','S1 outdoor sensor shield',[-27,74,100],'#efe4bc');await add('sensor_shield_cage','S2 seated-zone sensor shield',[20,128,80],'#e0cd90');
 await add('fan_angle_bracket','Fan mount',[194,193,118],'#6f8b7b');envelope('40 mm PWM fan / 12 mm pad allowance',[40,12,40],[198,196,122],'#ab9072');await add('fan_guard_40mm','Fan front guard',[194,185,166],'#6c8379','core',[Math.PI/2,0,0]);

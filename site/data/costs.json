@@ -16,7 +16,7 @@
       "unit_price": 1532.82,
       "status": "Supplier listing; SOLD OUT",
       "url": "https://www.thingbits.in/products/adafruit-sht31-d-sensirion-temp-humidity-sensor-breakout",
-      "notes": "Includes GST.12.7×18×2.6mm manufacturer dimension; use0x44 and0x45. Generic SHT31 breakout is a possible substitution only after dimension/address/accuracy checks."
+      "notes": "Includes GST.12.7\u00d718\u00d72.6mm manufacturer dimension; use0x44 and0x45. Generic SHT31 breakout is a possible substitution only after dimension/address/accuracy checks."
     },
     {
       "item": "Noctua NF-A4x10 PWM12V reference fan",
@@ -24,7 +24,7 @@
       "unit_price": 3130,
       "status": "Imported supplier listing; Vellore delivery unverified",
       "url": "https://crowcrowcrow.com/p/noctua-nf-a4x10-pwm-high-performance-quiet-fan-40mm/qpp8048",
-      "notes": "All-inclusive web listing.40×40×10mm,32mm square mounting centres; allow12mm with pads. No manufacturer endorsement of retailer inferred. Cheaper substitute must retain documented tachometer and4-wire PWM."
+      "notes": "All-inclusive web listing.40\u00d740\u00d710mm,32mm square mounting centres; allow12mm with pads. No manufacturer endorsement of retailer inferred. Cheaper substitute must retain documented tachometer and4-wire PWM."
     },
     {
       "item": "7Semi INA219 power monitor breakout",
@@ -32,7 +32,7 @@
       "unit_price": 229,
       "status": "Supplier category listing; stock/GST details to confirm",
       "url": "https://robu.in/product-category/current-and-voltage-sensor/",
-      "notes": "0–26V listing; verify shunt/rating and compare meter against reference at low current."
+      "notes": "0\u201326V listing; verify shunt/rating and compare meter against reference at low current."
     },
     {
       "item": "7Semi DS18B20 probe1m,2-inch",
@@ -85,16 +85,91 @@
   ],
   "full_size": [
     {
+      "item": "Structural steel stock",
+      "estimate_low": 12855,
+      "estimate_high": 22496,
+      "notes": "160.7 kg idealized structural steel \u00d7 assumed INR80\u2013140/kg; not a supplier quote"
+    },
+    {
+      "item": "Roof materials, forming and sealed drainage",
+      "estimate_low": 9000,
+      "estimate_high": 16000,
+      "notes": "6.72 m\u00b2 per skin; profile, seams, fasteners and gutter remain supplier design"
+    },
+    {
+      "item": "Frame cutting, drilling, welding and jigs",
+      "estimate_low": 15000,
+      "estimate_high": 25000,
+      "notes": "One-off first-article allowance; no local quote"
+    },
+    {
+      "item": "Corrosion protection and finishing",
+      "estimate_low": 5000,
+      "estimate_high": 9000,
+      "notes": "Surface preparation and coating allowance; specification not approved"
+    },
+    {
+      "item": "Bench and removable screens",
+      "estimate_low": 8000,
+      "estimate_high": 14000,
+      "notes": "Materials, finish and assembly allowance"
+    },
+    {
+      "item": "Outdoor electronics, fan and protected low-voltage power",
+      "estimate_low": 6000,
+      "estimate_high": 12000,
+      "notes": "Qualified outdoor substitutions and installation unresolved"
+    },
+    {
+      "item": "Foundations, anchors and site preparation",
+      "estimate_low": 10000,
+      "estimate_high": 20000,
+      "notes": "Provisional sum only; soil and anchor design can change this substantially"
+    },
+    {
+      "item": "Transport, erection and installation",
+      "estimate_low": 8000,
+      "estimate_high": 15000,
+      "notes": "Access/lifting/distance not surveyed"
+    },
+    {
+      "item": "Engineering review and first-article inspection",
+      "estimate_low": 8000,
+      "estimate_high": 15000,
+      "notes": "Planning allowance, not a service offer"
+    },
+    {
+      "item": "Contingency / tax reconciliation allowance",
+      "estimate_low": 12279,
+      "estimate_high": 22275,
+      "notes": "15% planning buffer; final quote must state applicable taxes separately"
+    }
+  ],
+  "ac": {
+    "model": "Blue Star IA318TXU1.5-ton3-star inverter split AC,2026 label",
+    "price": 36990,
+    "url": "https://consumer.bluestarindia.com/products/inverter-ac-t-series-1-5-ton-3-star-2026-bee-label-copy",
+    "status": "Official web equipment price; NOT a Vellore installed quotation",
+    "installation_notes": "Standard installation inclusions/cost,brackets,extra copper,drain,electrical work,taxes,delivery and postcode availability require a written dated Vellore quote. Installed benchmark remains unknown."
+  },
+  "exclusions": "No procurement. Prices are observations or explicitly labeled allowances,not quotations. No physical performance or below-installed-AC-cost claim.",
+  "annual_maintenance": {
+    "estimate_low": 1500,
+    "estimate_high": 3500,
+    "notes": "Planning allowance for cleaning,inspection and replaceable consumables; excludes electricity,water and major storm repairs."
+  },
+  "superseded_concept_full_size_2026_10_11": [
+    {
       "item": "Frame and corrosion protection",
       "estimate_low": 6500,
       "estimate_high": 10000,
-      "notes": "Concept allowance for roughly2×2m footprint; structure unengineered."
+      "notes": "Concept allowance for roughly2\u00d72m footprint; structure unengineered."
     },
     {
       "item": "Two-layer roof,spacers,drainage",
       "estimate_low": 4000,
       "estimate_high": 6500,
-      "notes": "About5m² per layer; supplier quantities/loads to verify."
+      "notes": "About5m\u00b2 per layer; supplier quantities/loads to verify."
     },
     {
       "item": "Bench,shade screens and safe floor",
@@ -133,17 +208,6 @@
       "notes": "Not a turnkey offer; reconcile GST when obtaining quotes."
     }
   ],
-  "ac": {
-    "model": "Blue Star IA318TXU1.5-ton3-star inverter split AC,2026 label",
-    "price": 36990,
-    "url": "https://consumer.bluestarindia.com/products/inverter-ac-t-series-1-5-ton-3-star-2026-bee-label-copy",
-    "status": "Official web equipment price; NOT a Vellore installed quotation",
-    "installation_notes": "Standard installation inclusions/cost,brackets,extra copper,drain,electrical work,taxes,delivery and postcode availability require a written dated Vellore quote. Installed benchmark remains unknown."
-  },
-  "exclusions": "No procurement. Prices are observations or explicitly labeled allowances,not quotations. No physical performance or below-installed-AC-cost claim.",
-  "annual_maintenance": {
-    "estimate_low": 1500,
-    "estimate_high": 3500,
-    "notes": "Planning allowance for cleaning,inspection and replaceable consumables; excludes electricity,water and major storm repairs."
-  }
+  "full_size_basis": "FS-01 first-article planning allowances, NOT supplier quotations",
+  "full_size_revision_date": "2026-10-12"
 }

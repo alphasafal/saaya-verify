@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-12",
+  "currency": "INR",
+  "basis": "FS-01 first-article planning allowances, NOT supplier quotations",
+  "structural_steel_mass_kg": 160.68,
+  "items": [
+    {
+      "item": "Structural steel stock",
+      "estimate_low": 12855,
+      "estimate_high": 22496,
+      "notes": "160.7 kg idealized structural steel \u00d7 assumed INR80\u2013140/kg; not a supplier quote"
+    },
+    {
+      "item": "Roof materials, forming and sealed drainage",
+      "estimate_low": 9000,
+      "estimate_high": 16000,
+      "notes": "6.72 m\u00b2 per skin; profile, seams, fasteners and gutter remain supplier design"
+    },
+    {
+      "item": "Frame cutting, drilling, welding and jigs",
+      "estimate_low": 15000,
+      "estimate_high": 25000,
+      "notes": "One-off first-article allowance; no local quote"
+    },
+    {
+      "item": "Corrosion protection and finishing",
+      "estimate_low": 5000,
+      "estimate_high": 9000,
+      "notes": "Surface preparation and coating allowance; specification not approved"
+    },
+    {
+      "item": "Bench and removable screens",
+      "estimate_low": 8000,
+      "estimate_high": 14000,
+      "notes": "Materials, finish and assembly allowance"
+    },
+    {
+      "item": "Outdoor electronics, fan and protected low-voltage power",
+      "estimate_low": 6000,
+      "estimate_high": 12000,
+      "notes": "Qualified outdoor substitutions and installation unresolved"
+    },
+    {
+      "item": "Foundations, anchors and site preparation",
+      "estimate_low": 10000,
+      "estimate_high": 20000,
+      "notes": "Provisional sum only; soil and anchor design can change this substantially"
+    },
+    {
+      "item": "Transport, erection and installation",
+      "estimate_low": 8000,
+      "estimate_high": 15000,
+      "notes": "Access/lifting/distance not surveyed"
+    },
+    {
+      "item": "Engineering review and first-article inspection",
+      "estimate_low": 8000,
+      "estimate_high": 15000,
+      "notes": "Planning allowance, not a service offer"
+    },
+    {
+      "item": "Contingency / tax reconciliation allowance",
+      "estimate_low": 12279,
+      "estimate_high": 22275,
+      "notes": "15% planning buffer; final quote must state applicable taxes separately"
+    }
+  ],
+  "total_low": 94134,
+  "total_high": 170771,
+  "cost_target": "NOT DEMONSTRATED: substantially above prior equipment-only AC reference; installed AC benchmark remains missing",
+  "exclusions": "No procurement or quoted installation; actual site changes, approvals and abnormal ground conditions can exceed these allowances"
+}

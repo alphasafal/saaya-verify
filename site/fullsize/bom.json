@@ -1,0 +1,618 @@
+[
+  {
+    "part": "BP01_base_plate",
+    "quantity": 4,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Laser cut + drill",
+    "envelope_mm": [
+      200.0,
+      200.0,
+      10.022
+    ],
+    "unit_mass_kg": 3.06,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Four anchor holes; foundation and anchor design HOLD"
+  },
+  {
+    "part": "P01_front_post",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 60x60x3; weld base",
+    "envelope_mm": [
+      60.0,
+      60.0,
+      2300.0
+    ],
+    "unit_mass_kg": 12.35,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Bottom at z10; cap/vent/drain detail by galvanizer"
+  },
+  {
+    "part": "P02_rear_post",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 60x60x3; weld base",
+    "envelope_mm": [
+      60.0,
+      60.0,
+      2420.0
+    ],
+    "unit_mass_kg": 12.994,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "B01_crossbeam",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 80x60x3",
+    "envelope_mm": [
+      2580.0,
+      60.0,
+      80.014
+    ],
+    "unit_mass_kg": 16.23,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Connection plate/weld schedule requires structural review"
+  },
+  {
+    "part": "R01_roof_purlin",
+    "quantity": 3,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "RHS 60x40x3; vertical end cuts",
+    "envelope_mm": [
+      40.0,
+      2000.0,
+      180.0
+    ],
+    "unit_mass_kg": 8.831,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Slope 3.434 degrees; span 2000; rear bottom seating relief up to 3 mm over 50 mm requires structural review"
+  },
+  {
+    "part": "CP01_roof_connection",
+    "quantity": 6,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Laser cut + drill",
+    "envelope_mm": [
+      120.0,
+      100.0,
+      6.014
+    ],
+    "unit_mass_kg": 0.547,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "M10 proposed; hole pattern matched to bolt envelopes"
+  },
+  {
+    "part": "SP01_roof_spacer",
+    "quantity": 9,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 30x30x2",
+    "envelope_mm": [
+      30.0,
+      30.0,
+      117.8
+    ],
+    "unit_mass_kg": 0.134,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Ventilation gap; bolted cap plates not load approved"
+  },
+  {
+    "part": "CP02_spacer_cap",
+    "quantity": 9,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Laser cut + drill",
+    "envelope_mm": [
+      80.0,
+      80.0,
+      7.8
+    ],
+    "unit_mass_kg": 0.147,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "M6 proposed, isolate dissimilar metals"
+  },
+  {
+    "part": "RF01_lower_skin",
+    "quantity": 1,
+    "material": "Aluminium sheet candidate",
+    "process": "Cut/drill; split into transportable panels at fabrication",
+    "envelope_mm": [
+      2800.0,
+      2400.0,
+      145.0
+    ],
+    "unit_mass_kg": 18.143,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "One solid envelope; seam/hem tooling detail HOLD"
+  },
+  {
+    "part": "RF02_upper_skin",
+    "quantity": 1,
+    "material": "Coated steel sheet candidate",
+    "process": "Cut/drill/form; reflective finish",
+    "envelope_mm": [
+      2800.0,
+      2400.0,
+      144.8
+    ],
+    "unit_mass_kg": 42.2,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Flat envelope; formed profile, laps, rain seal and uplift fixing HOLD"
+  },
+  {
+    "part": "G01_knee_gusset",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Laser cut 6 mm; weld to frame",
+    "envelope_mm": [
+      450.0,
+      6.075,
+      450.0
+    ],
+    "unit_mass_kg": 4.636,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Weld access and buckling check HOLD"
+  },
+  {
+    "part": "ST01_bench_leg",
+    "quantity": 4,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 40x40x2",
+    "envelope_mm": [
+      40.0,
+      40.0,
+      345.0
+    ],
+    "unit_mass_kg": 0.823,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "ST02_bench_rail",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 40x40x2",
+    "envelope_mm": [
+      1400.0,
+      40.0,
+      40.0
+    ],
+    "unit_mass_kg": 3.341,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "ST04_bench_crossrail",
+    "quantity": 3,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 40x40x2",
+    "envelope_mm": [
+      450.0,
+      40.0,
+      40.0
+    ],
+    "unit_mass_kg": 1.074,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Transverse support beneath every slat; connection strength review required"
+  },
+  {
+    "part": "ST03_seat_slat",
+    "quantity": 6,
+    "material": "Durable timber / recycled plastic candidate",
+    "process": "Cut, radius edges, predrill",
+    "envelope_mm": [
+      1400.0,
+      70.0,
+      25.0
+    ],
+    "unit_mass_kg": 1.593,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Material/creep/fire specification and surface temperature test HOLD"
+  },
+  {
+    "part": "JA01_louvre",
+    "quantity": 14,
+    "material": "Timber candidate",
+    "process": "Cut and finish",
+    "envelope_mm": [
+      20.0,
+      40.0,
+      1070.0
+    ],
+    "unit_mass_kg": 0.556,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Interchangeable spacing; check wind load and splinters"
+  },
+  {
+    "part": "JA02_screen_rail",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 30x30x2",
+    "envelope_mm": [
+      1400.0,
+      30.0,
+      30.0
+    ],
+    "unit_mass_kg": 2.462,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "E01_dry_enclosure",
+    "quantity": 1,
+    "material": "Aluminium candidate",
+    "process": "Fold/weld or purchased enclosure adapted",
+    "envelope_mm": [
+      300.0,
+      120.004,
+      240.012
+    ],
+    "unit_mass_kg": 1.865,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Envelope only for enclosure process; seals, hinges, wall mounts and IP test HOLD"
+  },
+  {
+    "part": "E02_service_lid",
+    "quantity": 1,
+    "material": "Aluminium candidate",
+    "process": "Cut/drill",
+    "envelope_mm": [
+      300.0,
+      120.0,
+      3.006
+    ],
+    "unit_mass_kg": 0.291,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Gasket and threaded supports require supplier selection"
+  },
+  {
+    "part": "E03_component_carrier",
+    "quantity": 1,
+    "material": "Aluminium candidate",
+    "process": "Cut/drill",
+    "envelope_mm": [
+      260.0,
+      80.0,
+      3.006
+    ],
+    "unit_mass_kg": 0.168,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Insulated standoffs; board mounting holes transferred after component approval"
+  },
+  {
+    "part": "F01_fan_cartridge",
+    "quantity": 1,
+    "material": "Aluminium candidate",
+    "process": "Cut + drill",
+    "envelope_mm": [
+      240.0,
+      4.236,
+      240.0
+    ],
+    "unit_mass_kg": 0.315,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "154 mm fan bolt grid; confirm actual fan drawing/revision"
+  },
+  {
+    "part": "F02_fan_guard",
+    "quantity": 2,
+    "material": "Aluminium candidate",
+    "process": "Laser cut; deburr",
+    "envelope_mm": [
+      240.0,
+      3.007,
+      240.0
+    ],
+    "unit_mass_kg": 0.331,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "4 mm slots; finger/probe clearance, rigidity and airflow tests required"
+  },
+  {
+    "part": "F03_reference_fan",
+    "quantity": 1,
+    "material": "Purchased Noctua NF-A20 PWM reference",
+    "process": "Purchase",
+    "envelope_mm": [
+      200.0,
+      30.224,
+      200.0
+    ],
+    "unit_mass_kg": 0.218,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Not weather qualified; use an outdoor-rated substitute before release"
+  },
+  {
+    "part": "S01_sensor_shield",
+    "quantity": 2,
+    "material": "UV-resistant polymer candidate",
+    "process": "Print fit prototype; source qualified shield",
+    "envelope_mm": [
+      50.0,
+      50.0,
+      70.0
+    ],
+    "unit_mass_kg": 0.052,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Illustrative shield enclosure; ventilation/radiation performance unverified"
+  },
+  {
+    "part": "E04_ESP32_reference",
+    "quantity": 1,
+    "material": "Purchased electronics",
+    "process": "Purchase",
+    "envelope_mm": [
+      48.26,
+      27.94,
+      14.0
+    ],
+    "unit_mass_kg": 0.017,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Espressif DevKitC V4 PCB outline; connector/component heights require measurement"
+  },
+  {
+    "part": "E05_monitor_reference",
+    "quantity": 1,
+    "material": "Purchased electronics",
+    "process": "Purchase",
+    "envelope_mm": [
+      25.0,
+      20.0,
+      12.0
+    ],
+    "unit_mass_kg": 0.005,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "INA219 nominal; exact supplier board HOLD"
+  },
+  {
+    "part": "E06_display_reference",
+    "quantity": 1,
+    "material": "Purchased electronics",
+    "process": "Purchase",
+    "envelope_mm": [
+      36.0,
+      6.0,
+      24.0
+    ],
+    "unit_mass_kg": 0.005,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "OLED nominal; final module/drawing HOLD"
+  },
+  {
+    "part": "S02_roof_probe",
+    "quantity": 1,
+    "material": "Stainless probe reference",
+    "process": "Purchase",
+    "envelope_mm": [
+      6.004,
+      6.006,
+      50.007
+    ],
+    "unit_mass_kg": 0.011,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Probe dimensional allowance, supplier confirmation required"
+  },
+  {
+    "part": "W01_optional_water_vessel",
+    "quantity": 1,
+    "material": "Polymer vessel candidate",
+    "process": "Purchase",
+    "envelope_mm": [
+      180.0,
+      180.0,
+      230.0
+    ],
+    "unit_mass_kg": 0.728,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Empty removable experiment vessel; no potable-water or cooling claim"
+  },
+  {
+    "part": "HW01_M10_bolt_reference",
+    "quantity": 24,
+    "material": "Steel hardware",
+    "process": "Purchase",
+    "envelope_mm": [
+      16.01,
+      16.015,
+      106.016
+    ],
+    "unit_mass_kg": 0.071,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Unthreaded solid envelope; grade/length/washer/torque approval HOLD"
+  },
+  {
+    "part": "HW02_M16_anchor_reference",
+    "quantity": 16,
+    "material": "Anchor hardware",
+    "process": "Purchase",
+    "envelope_mm": [
+      26.016,
+      26.024,
+      210.026
+    ],
+    "unit_mass_kg": 0.357,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Geometry ONLY; embedment and capacity not designed"
+  },
+  {
+    "part": "C01_cable_trunk",
+    "quantity": 1,
+    "material": "UV-resistant conduit candidate",
+    "process": "Cut and mechanically fasten",
+    "envelope_mm": [
+      25.0,
+      18.0,
+      1700.0
+    ],
+    "unit_mass_kg": 0.233,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "No mains wiring in model; secure clamps and drip loops required"
+  },
+  {
+    "part": "MT01_rear_service_rail",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 20x20x2",
+    "envelope_mm": [
+      2340.0,
+      20.0,
+      20.0
+    ],
+    "unit_mass_kg": 2.645,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Rear support rail; weld/attachment verification required"
+  },
+  {
+    "part": "MT02_fan_support_arm",
+    "quantity": 2,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 20x20x2",
+    "envelope_mm": [
+      90.0,
+      20.0,
+      20.0
+    ],
+    "unit_mass_kg": 0.102,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Rotate along Y; weld to rail"
+  },
+  {
+    "part": "MT03_enclosure_backrail",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 20x20x2",
+    "envelope_mm": [
+      400.0,
+      20.0,
+      20.0
+    ],
+    "unit_mass_kg": 0.452,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Bracket attachment and back-wall sealing HOLD"
+  },
+  {
+    "part": "MT04_enclosure_return",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw RHS 20x20x2",
+    "envelope_mm": [
+      110.0,
+      20.0,
+      20.0
+    ],
+    "unit_mass_kg": 0.124,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "MT05_seated_sensor_stem",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 20x20x2",
+    "envelope_mm": [
+      20.0,
+      20.0,
+      650.0
+    ],
+    "unit_mass_kg": 0.735,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Bench mount fastener detail HOLD"
+  },
+  {
+    "part": "MT06_reference_sensor_stem",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Saw SHS 20x20x2",
+    "envelope_mm": [
+      20.0,
+      20.0,
+      1096.0
+    ],
+    "unit_mass_kg": 1.239,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Independent reference support; anti-tip/anchor verification HOLD"
+  },
+  {
+    "part": "MT07_sensor_foot",
+    "quantity": 1,
+    "material": "S235/S275 equivalent candidate; obtain mill certificate",
+    "process": "Laser cut/drill",
+    "envelope_mm": [
+      80.0,
+      80.0,
+      4.008
+    ],
+    "unit_mass_kg": 0.197,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": ""
+  },
+  {
+    "part": "E07_button_reference",
+    "quantity": 3,
+    "material": "Purchased switch",
+    "process": "Purchase",
+    "envelope_mm": [
+      6.006,
+      10.007,
+      6.004
+    ],
+    "unit_mass_kg": 0.0,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Envelope only; choose exact panel switch"
+  },
+  {
+    "part": "E08_LED_reference",
+    "quantity": 1,
+    "material": "Purchased indicator",
+    "process": "Purchase",
+    "envelope_mm": [
+      3.003,
+      5.004,
+      3.002
+    ],
+    "unit_mass_kg": 0.0,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Envelope only"
+  },
+  {
+    "part": "E09_buzzer_reference",
+    "quantity": 1,
+    "material": "Purchased buzzer",
+    "process": "Purchase",
+    "envelope_mm": [
+      12.0,
+      12.0,
+      8.0
+    ],
+    "unit_mass_kg": 0.001,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Envelope only; audible level unverified"
+  },
+  {
+    "part": "S03_SHT31_reference",
+    "quantity": 2,
+    "material": "Purchased sensor",
+    "process": "Purchase",
+    "envelope_mm": [
+      12.7,
+      18.0,
+      2.6
+    ],
+    "unit_mass_kg": 0.001,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Adafruit 2857 current outline reference; confirm purchased revision"
+  },
+  {
+    "part": "W02_float_reference",
+    "quantity": 1,
+    "material": "Purchased level switch",
+    "process": "Purchase",
+    "envelope_mm": [
+      8.0,
+      20.0,
+      12.0
+    ],
+    "unit_mass_kg": 0.002,
+    "mass_basis": "Idealized solid volume \u00d7 assumed density; purchased electronics masses are placeholders",
+    "note": "Nominal envelope; material compatibility and wiring unverified"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "status": "NO SOLID INTERSECTIONS >1 mm3",
+  "checked_instances": 143,
+  "invalid_reimported_parts": [],
+  "intersection_threshold_mm3": 1,
+  "intersections": [],
+  "limitations": "Includes deliberate unthreaded fastener/connection envelopes. Does not check hidden missing supports, tool access, tolerances, loads or assembly sequence. No automatic manufacturing approval."
+}

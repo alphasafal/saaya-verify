@@ -1,0 +1,5 @@
+# Preserve CAD exporter formatting; it is not hand-authored source.
+*.step -whitespace
+*.dxf -whitespace
+*.csv whitespace=cr-at-eol
+*.bundle.js -whitespace

@@ -1,0 +1,1723 @@
+{
+  "revision": "FS01-A",
+  "status": "DESIGN REVIEW / NOT FOR CONSTRUCTION",
+  "units": "mm",
+  "instances": [
+    {
+      "part": "BP01_base_plate",
+      "name": "base_0",
+      "position": [
+        -100,
+        -100,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "P01_front_post",
+      "name": "post_0",
+      "position": [
+        -30,
+        -30,
+        10
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_0_0",
+      "position": [
+        -70,
+        -70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_0_1",
+      "position": [
+        -70,
+        70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_0_2",
+      "position": [
+        70,
+        -70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_0_3",
+      "position": [
+        70,
+        70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "BP01_base_plate",
+      "name": "base_1",
+      "position": [
+        2300,
+        -100,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "P01_front_post",
+      "name": "post_1",
+      "position": [
+        2370,
+        -30,
+        10
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_1_0",
+      "position": [
+        2330,
+        -70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_1_1",
+      "position": [
+        2330,
+        70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_1_2",
+      "position": [
+        2470,
+        -70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_1_3",
+      "position": [
+        2470,
+        70,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "BP01_base_plate",
+      "name": "base_2",
+      "position": [
+        -100,
+        1900,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "P02_rear_post",
+      "name": "post_2",
+      "position": [
+        -30,
+        1970,
+        10
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_2_0",
+      "position": [
+        -70,
+        1930,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_2_1",
+      "position": [
+        -70,
+        2070,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_2_2",
+      "position": [
+        70,
+        1930,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_2_3",
+      "position": [
+        70,
+        2070,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "BP01_base_plate",
+      "name": "base_3",
+      "position": [
+        2300,
+        1900,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "P02_rear_post",
+      "name": "post_3",
+      "position": [
+        2370,
+        1970,
+        10
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_3_0",
+      "position": [
+        2330,
+        1930,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_3_1",
+      "position": [
+        2330,
+        2070,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_3_2",
+      "position": [
+        2470,
+        1930,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "HW02_M16_anchor_reference",
+      "name": "anchor_3_3",
+      "position": [
+        2470,
+        2070,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "foundation",
+      "color": "#aaa999"
+    },
+    {
+      "part": "B01_crossbeam",
+      "name": "crossbeam_0",
+      "position": [
+        -90,
+        -30,
+        2310.0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "B01_crossbeam",
+      "name": "crossbeam_1",
+      "position": [
+        -90,
+        1970,
+        2430.0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "R01_roof_purlin",
+      "name": "purlin_0",
+      "position": [
+        -20,
+        0,
+        2396
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_0_0",
+      "position": [
+        -60,
+        -50,
+        2390.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_0_0",
+      "position": [
+        -35,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_0_1",
+      "position": [
+        -35,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_0_2",
+      "position": [
+        35,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_0_3",
+      "position": [
+        35,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_0_1",
+      "position": [
+        -60,
+        1950,
+        2510.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_1_0",
+      "position": [
+        -35,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_1_1",
+      "position": [
+        -35,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_1_2",
+      "position": [
+        35,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_0_1_3",
+      "position": [
+        35,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "R01_roof_purlin",
+      "name": "purlin_1",
+      "position": [
+        1180,
+        0,
+        2396
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_1_0",
+      "position": [
+        1140,
+        -50,
+        2390.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_0_0",
+      "position": [
+        1165,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_0_1",
+      "position": [
+        1165,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_0_2",
+      "position": [
+        1235,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_0_3",
+      "position": [
+        1235,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_1_1",
+      "position": [
+        1140,
+        1950,
+        2510.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_1_0",
+      "position": [
+        1165,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_1_1",
+      "position": [
+        1165,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_1_2",
+      "position": [
+        1235,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_1_1_3",
+      "position": [
+        1235,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "R01_roof_purlin",
+      "name": "purlin_2",
+      "position": [
+        2380,
+        0,
+        2396
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_2_0",
+      "position": [
+        2340,
+        -50,
+        2390.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_0_0",
+      "position": [
+        2365,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_0_1",
+      "position": [
+        2365,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_0_2",
+      "position": [
+        2435,
+        -15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_0_3",
+      "position": [
+        2435,
+        15,
+        2296.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "CP01_roof_connection",
+      "name": "connection_2_1",
+      "position": [
+        2340,
+        1950,
+        2510.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_1_0",
+      "position": [
+        2365,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_1_1",
+      "position": [
+        2365,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_1_2",
+      "position": [
+        2435,
+        1985,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "HW01_M10_bolt_reference",
+      "name": "roof_bolt_2_1_3",
+      "position": [
+        2435,
+        2015,
+        2416.0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "RF01_lower_skin",
+      "name": "lower_roof",
+      "position": [
+        -200,
+        -200,
+        2444
+      ],
+      "rotation_x": 0,
+      "group": "roof",
+      "color": "#e6e8d9"
+    },
+    {
+      "part": "RF02_upper_skin",
+      "name": "upper_roof",
+      "position": [
+        -200,
+        -200,
+        2564
+      ],
+      "rotation_x": 0,
+      "group": "roof",
+      "color": "#e6e8d9"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_0_0",
+      "position": [
+        -15,
+        -15,
+        2456.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_0_0",
+      "position": [
+        -40,
+        -40,
+        2570.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_0_1",
+      "position": [
+        -15,
+        985,
+        2516.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_0_1",
+      "position": [
+        -40,
+        960,
+        2630.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_0_2",
+      "position": [
+        -15,
+        1985,
+        2576.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_0_2",
+      "position": [
+        -40,
+        1960,
+        2690.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_1_0",
+      "position": [
+        1185,
+        -15,
+        2456.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_1_0",
+      "position": [
+        1160,
+        -40,
+        2570.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_1_1",
+      "position": [
+        1185,
+        985,
+        2516.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_1_1",
+      "position": [
+        1160,
+        960,
+        2630.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_1_2",
+      "position": [
+        1185,
+        1985,
+        2576.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_1_2",
+      "position": [
+        1160,
+        1960,
+        2690.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_2_0",
+      "position": [
+        2385,
+        -15,
+        2456.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_2_0",
+      "position": [
+        2360,
+        -40,
+        2570.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_2_1",
+      "position": [
+        2385,
+        985,
+        2516.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_2_1",
+      "position": [
+        2360,
+        960,
+        2630.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "SP01_roof_spacer",
+      "name": "roof_spacer_2_2",
+      "position": [
+        2385,
+        1985,
+        2576.1
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "CP02_spacer_cap",
+      "name": "roof_cap_2_2",
+      "position": [
+        2360,
+        1960,
+        2690.6
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "G01_knee_gusset",
+      "name": "front_knee_0",
+      "position": [
+        30,
+        0,
+        1860
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "G01_knee_gusset",
+      "name": "front_knee_1",
+      "position": [
+        2370,
+        0,
+        1860
+      ],
+      "rotation_z": 180,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST01_bench_leg",
+      "name": "bench_leg_0",
+      "position": [
+        230,
+        1520,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST01_bench_leg",
+      "name": "bench_leg_1",
+      "position": [
+        1530,
+        1520,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST01_bench_leg",
+      "name": "bench_leg_2",
+      "position": [
+        230,
+        1840,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST01_bench_leg",
+      "name": "bench_leg_3",
+      "position": [
+        1530,
+        1840,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST02_bench_rail",
+      "name": "bench_rail_0",
+      "position": [
+        200,
+        1520,
+        345
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST02_bench_rail",
+      "name": "bench_rail_1",
+      "position": [
+        200,
+        1840,
+        345
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST04_bench_crossrail",
+      "name": "bench_crossrail_0",
+      "position": [
+        270,
+        1500,
+        385
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST04_bench_crossrail",
+      "name": "bench_crossrail_1",
+      "position": [
+        920,
+        1500,
+        385
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST04_bench_crossrail",
+      "name": "bench_crossrail_2",
+      "position": [
+        1570,
+        1500,
+        385
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_0",
+      "position": [
+        200,
+        1500,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_1",
+      "position": [
+        200,
+        1576,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_2",
+      "position": [
+        200,
+        1652,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_3",
+      "position": [
+        200,
+        1728,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_4",
+      "position": [
+        200,
+        1804,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "ST03_seat_slat",
+      "name": "seat_slat_5",
+      "position": [
+        200,
+        1880,
+        425
+      ],
+      "rotation_z": 0,
+      "group": "seat",
+      "color": "#ac805a"
+    },
+    {
+      "part": "JA02_screen_rail",
+      "name": "screen_rail_0",
+      "position": [
+        200,
+        1940,
+        900
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA02_screen_rail",
+      "name": "screen_rail_1",
+      "position": [
+        200,
+        1940,
+        2000
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_0",
+      "position": [
+        220,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_1",
+      "position": [
+        296,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_2",
+      "position": [
+        372,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_3",
+      "position": [
+        448,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_4",
+      "position": [
+        524,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_5",
+      "position": [
+        600,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_6",
+      "position": [
+        676,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_7",
+      "position": [
+        752,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_12",
+      "position": [
+        1132,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_13",
+      "position": [
+        1208,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_14",
+      "position": [
+        1284,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_15",
+      "position": [
+        1360,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_16",
+      "position": [
+        1436,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "JA01_louvre",
+      "name": "louvre_17",
+      "position": [
+        1512,
+        1900,
+        930
+      ],
+      "rotation_z": 0,
+      "group": "shade",
+      "color": "#bba478"
+    },
+    {
+      "part": "E01_dry_enclosure",
+      "name": "dry_enclosure",
+      "position": [
+        1970,
+        1740,
+        950
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E02_service_lid",
+      "name": "service_lid",
+      "position": [
+        1970,
+        1740,
+        1190
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E03_component_carrier",
+      "name": "component_carrier",
+      "position": [
+        1990,
+        1760,
+        970
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E04_ESP32_reference",
+      "name": "ESP32",
+      "position": [
+        2010,
+        1770,
+        985
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E05_monitor_reference",
+      "name": "INA219",
+      "position": [
+        2100,
+        1770,
+        985
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E06_display_reference",
+      "name": "OLED",
+      "position": [
+        1996,
+        1735,
+        1020
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "F01_fan_cartridge",
+      "name": "fan_mount",
+      "position": [
+        850,
+        1880,
+        1400
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "F03_reference_fan",
+      "name": "reference_fan",
+      "position": [
+        870,
+        1884,
+        1420
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "F02_fan_guard",
+      "name": "front_fan_guard",
+      "position": [
+        850,
+        1865,
+        1400
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "F02_fan_guard",
+      "name": "rear_fan_guard",
+      "position": [
+        850,
+        1920,
+        1400
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "S01_sensor_shield",
+      "name": "reference_sensor",
+      "position": [
+        -140,
+        200,
+        1100
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "S01_sensor_shield",
+      "name": "seated_sensor",
+      "position": [
+        1450,
+        1750,
+        1100
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "S02_roof_probe",
+      "name": "roof_probe",
+      "position": [
+        1300,
+        1000,
+        2464
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "W01_optional_water_vessel",
+      "name": "optional_water",
+      "position": [
+        0,
+        1640,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "wet",
+      "color": "#78aeb0"
+    },
+    {
+      "part": "C01_cable_trunk",
+      "name": "cable_route",
+      "position": [
+        2432,
+        1980,
+        650
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "MT01_rear_service_rail",
+      "name": "rear_service_rail",
+      "position": [
+        30,
+        1970,
+        1380
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT02_fan_support_arm",
+      "name": "fan_support_arm_0",
+      "position": [
+        870,
+        1880,
+        1380
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT02_fan_support_arm",
+      "name": "fan_support_arm_1",
+      "position": [
+        1090,
+        1880,
+        1380
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT03_enclosure_backrail",
+      "name": "enclosure_backrail",
+      "position": [
+        1970,
+        1860,
+        950
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT04_enclosure_return",
+      "name": "enclosure_return",
+      "position": [
+        2370,
+        1880,
+        950
+      ],
+      "rotation_z": 90,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT05_seated_sensor_stem",
+      "name": "seated_sensor_stem",
+      "position": [
+        1465,
+        1765,
+        450
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT06_reference_sensor_stem",
+      "name": "reference_sensor_stem",
+      "position": [
+        -125,
+        215,
+        4
+      ],
+      "rotation_z": 0,
+      "group": "frame",
+      "color": "#486d60"
+    },
+    {
+      "part": "MT07_sensor_foot",
+      "name": "reference_sensor_foot",
+      "position": [
+        -155,
+        185,
+        0
+      ],
+      "rotation_z": 0,
+      "group": "hardware",
+      "color": "#8b9291"
+    },
+    {
+      "part": "E07_button_reference",
+      "name": "mode_button",
+      "position": [
+        2180,
+        1735,
+        1010
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E07_button_reference",
+      "name": "assistance_button",
+      "position": [
+        2215,
+        1735,
+        1010
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E07_button_reference",
+      "name": "acknowledge_button",
+      "position": [
+        2250,
+        1735,
+        1010
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E08_LED_reference",
+      "name": "assistance_LED",
+      "position": [
+        2250,
+        1738,
+        1045
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "E09_buzzer_reference",
+      "name": "assistance_buzzer",
+      "position": [
+        2200,
+        1770,
+        985
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "S03_SHT31_reference",
+      "name": "outdoor_SHT31",
+      "position": [
+        -122,
+        217,
+        1130
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "S03_SHT31_reference",
+      "name": "seated_SHT31",
+      "position": [
+        1468,
+        1767,
+        1130
+      ],
+      "rotation_z": 0,
+      "group": "electronics",
+      "color": "#38656b"
+    },
+    {
+      "part": "W02_float_reference",
+      "name": "water_availability_switch",
+      "position": [
+        30,
+        1680,
+        40
+      ],
+      "rotation_z": 0,
+      "group": "wet",
+      "color": "#78aeb0"
+    }
+  ]
+}
