@@ -34,6 +34,7 @@ jobs:
       - run: npm ci
       - run: npm run build:model
       - run: npm run build:fullsize
+      - run: npm run build:pavilion
       - run: python scripts/build_site.py
       - run: npx playwright install --with-deps chromium
       - name: Browser workflow checks
@@ -44,6 +45,7 @@ jobs:
           npm run test:fullsize
           npm run test:teaching
           npm run test:cooling
+          npm run test:pavilion
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -74,6 +76,7 @@ jobs:
           python-version: '3.11'
       - run: python -m pip install -r cad/fullsize/requirements.txt
       - run: python cad/fullsize/build.py
+      - run: python cad/pavilion/build.py
       - run: python cad/fullsize/validate.py
       - run: python cad/fullsize/drawings.py
       - run: python cad/fullsize/feasibility.py
@@ -85,6 +88,8 @@ jobs:
           name: validated-fullsize-cad
           path: |
             cad/fullsize/exports/
+            cad/pavilion/exports/
+            site/pavilion/
             research/costs.json
   deploy:
     needs: [build, firmware, cad-review]

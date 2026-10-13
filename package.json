@@ -9,7 +9,9 @@
     "build:fullsize": "esbuild site/fullsize-src.js --bundle --minify --outfile=site/fullsize.bundle.js --format=esm",
     "test:fullsize": "node tests/fullsize-browser.cjs",
     "test:teaching": "node tests/teaching-browser.cjs",
-    "test:cooling": "node --test tests/cooling.test.mjs && node tests/cooling-browser.cjs"
+    "test:cooling": "node --test tests/cooling.test.mjs && node tests/cooling-browser.cjs",
+    "build:pavilion": "esbuild site/pavilion-src.js --bundle --minify --outfile=site/pavilion.bundle.js --format=esm",
+    "test:pavilion": "node tests/pavilion-browser.cjs"
   },
   "dependencies": {
     "three": "0.180.0"
