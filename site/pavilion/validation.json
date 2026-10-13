@@ -1,0 +1,13 @@
+{
+  "part_count": 31,
+  "all_generated_shapes_valid": true,
+  "step_bytes": 4463474,
+  "not_tested": [
+    "assembly interference",
+    "strength",
+    "human reach",
+    "airflow",
+    "thermal performance",
+    "electrical protection"
+  ]
+}

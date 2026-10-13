@@ -1,0 +1,515 @@
+{
+  "revision": "FS-02 CONCEPT",
+  "units": "mm",
+  "status": "NOT FOR FABRICATION / NO COOLING PERFORMANCE CLAIM",
+  "footprint_mm": [
+    6000,
+    5400
+  ],
+  "roof_mm": [
+    7200,
+    6600
+  ],
+  "cot_count": 5,
+  "fan_count": 5,
+  "central_clear_strip_mm": 1300,
+  "front_entry_clear_mm": 1600,
+  "parts": [
+    {
+      "id": "footprint",
+      "group": "site",
+      "color": "#c5b79c",
+      "title": "6.0 \u00d7 5.4 m rest footprint",
+      "why": "Five cots arranged around a 1.3 m transverse circulation strip and 1.6 m front entry. Existing shaded premises should be considered before building this structure.",
+      "limit": "Ground bearing, drainage, accessible approach and foundations are unengineered. No accessibility compliance claim.",
+      "bounds": [
+        -1e-07,
+        -1e-07,
+        -60.0000001,
+        6000.0000001,
+        5400.0000001,
+        1e-07
+      ]
+    },
+    {
+      "id": "frame",
+      "group": "structure",
+      "color": "#49786d",
+      "title": "Perimeter frame / span proposal",
+      "why": "An open pavilion keeps cross-ventilation paths and access visible. Perimeter posts keep the central front access route open.",
+      "limit": "Member dimensions only establish conceptual geometry; loading, bracing, joints, anchors and roof uplift require structural engineering.",
+      "bounds": [
+        -1e-07,
+        -1e-07,
+        -1e-07,
+        6000.0000001,
+        5400.0000001,
+        2960.0000001
+      ]
+    },
+    {
+      "id": "lower_roof",
+      "group": "roof",
+      "color": "#d5ddc1",
+      "title": "Shaded lower roof / insulation allowance",
+      "why": "A separate lower surface shields occupants from direct sun; 260 mm clear roof cavity is reserved between skins. Insulation selection is open.",
+      "limit": "No measured underside or radiant-temperature reduction. Condensation, fire, dust and service access need detailing.",
+      "bounds": [
+        -600.0000001,
+        -600.0000001,
+        2999.9999999,
+        6600.0000001,
+        6000.0000001,
+        3060.0000001
+      ]
+    },
+    {
+      "id": "reflective_roof",
+      "group": "roof",
+      "color": "#efe6cf",
+      "title": "Reflective overhanging upper roof",
+      "why": "Deep chajja/verandah-like shade is adapted as a 600 mm overhang. A reflective exterior reduces solar absorption; performance depends on material, soiling and sun angle.",
+      "limit": "Flat concept envelope only: slope, drainage, fastening and reflectance specifications are not detailed.",
+      "bounds": [
+        -600.0000001,
+        -600.0000001,
+        3319.9999999,
+        6600.0000001,
+        6000.0000001,
+        3340.0000001
+      ]
+    },
+    {
+      "id": "ridge_cap",
+      "group": "roof",
+      "color": "#a8875c",
+      "title": "Raised shaded ridge / exhaust proposal",
+      "why": "A raised cap over the central roof slot provides a high-level path for warm air. It borrows the principle of high openings, not a promise of windcatcher performance.",
+      "limit": "Rain baffles, insect mesh, reverse flow and wind-pressure analysis remain open. This cannot generate ventilation without a driving pressure difference.",
+      "bounds": [
+        2399.9999999,
+        -300.0000001,
+        3659.9999999,
+        3600.0000001,
+        5700.0000001,
+        3700.0000001
+      ]
+    },
+    {
+      "id": "west_screen",
+      "group": "screen",
+      "color": "#b88757",
+      "title": "West removable jaali screen",
+      "why": "Shades low-angle sun while retaining gaps for ventilation; modules can be removed or adjusted for actual sun and wind exposure.",
+      "limit": "Nominal slat geometry is not a validated porosity or pressure-loss design. More screening may reduce useful airflow.",
+      "bounds": [
+        -1.0000022737367544e-07,
+        99.99999989999978,
+        849.9999998999998,
+        60.00000010000023,
+        5185.0000001,
+        2450.0000001000003
+      ]
+    },
+    {
+      "id": "east_screen",
+      "group": "screen",
+      "color": "#b88757",
+      "title": "East removable jaali screen",
+      "why": "Shades low-angle sun while retaining gaps for ventilation; modules can be removed or adjusted for actual sun and wind exposure.",
+      "limit": "Nominal slat geometry is not a validated porosity or pressure-loss design. More screening may reduce useful airflow.",
+      "bounds": [
+        5939.9999999,
+        99.99999989999978,
+        849.9999998999998,
+        6000.0000001,
+        5185.0000001,
+        2450.0000001000003
+      ]
+    },
+    {
+      "id": "rear_screen",
+      "group": "screen",
+      "color": "#b88757",
+      "title": "Rear permeable screen",
+      "why": "Reduces direct exposure at cot head ends while keeping an open pavilion. Orientation must follow the surveyed site.",
+      "limit": "Sun paths and prevailing winds for the actual plot have not been surveyed.",
+      "bounds": [
+        99.99999989999978,
+        5339.9999999,
+        849.9999998999998,
+        5785.0000001,
+        5400.0000001,
+        2450.0000001000003
+      ]
+    },
+    {
+      "id": "cot_1",
+      "group": "cot",
+      "color": "#458f89",
+      "title": "Reclining cot 1 / rest position",
+      "why": "750 \u00d7 1900 mm nominal cot, 450 mm deck height, illustrative 20\u00b0 backrest. Replaceable breathable surface rather than thick heat-retaining upholstery; worker chooses a comfortable posture.",
+      "limit": "Not a medical bed or a treatment posture. Capacity, stability, cleanability, transfers and backrest lock require supplier selection and testing. Do not leave an ill worker to sleep unattended.",
+      "bounds": [
+        399.9999998999995,
+        199.99999989999978,
+        -1e-07,
+        1150.0000001000005,
+        2060.8002036108405,
+        705.2023349891919
+      ]
+    },
+    {
+      "id": "fan_1",
+      "group": "fan",
+      "color": "#d59b34",
+      "title": "Individual fan 1 / adjustable concept",
+      "why": "One nominal 400 mm fan per cot targets an occupied resting zone. Local manual speed/off control avoids forcing everyone to accept the same airflow.",
+      "limit": "Illustrative fan, guard and stand; no supplier, fan curve, motor voltage, power or outdoor rating selected. A larger diameter or five fans does not establish adequate cooling.",
+      "bounds": [
+        544.9999998999995,
+        1741.4549780998666,
+        -1e-07,
+        1005.0000001000005,
+        2058.545021900133,
+        1557.0462044678777
+      ]
+    },
+    {
+      "id": "air_sensor_1",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "Air temperature / RH sensor 1",
+      "why": "Placed beside the cot at torso/head-zone height, away from controller heat. Per-zone readings reveal uneven conditions.",
+      "limit": "Radiation shield and location bias need validation. This measures air, not body temperature or BP. Distributed wiring/interface is a new design, not existing bench I\u00b2C over long cables.",
+      "bounds": [
+        1219.9999999,
+        1699.9999999,
+        949.9999999,
+        1275.0000001,
+        1755.0000001,
+        1034.0000001
+      ]
+    },
+    {
+      "id": "control_1",
+      "group": "control",
+      "color": "#cf5f48",
+      "title": "Local fan / assistance control 1",
+      "why": "Reachable local speed/off and assistance button; autonomous local controls should remain usable without cloud connectivity.",
+      "limit": "Reach and posture need user trials. The five-zone controller and wiring are proposed; current firmware supports the earlier bench only.",
+      "bounds": [
+        1159.9999999,
+        1449.9999999,
+        599.9999999,
+        1230.0000001,
+        1530.0000001,
+        630.0000001
+      ]
+    },
+    {
+      "id": "cot_2",
+      "group": "cot",
+      "color": "#458f89",
+      "title": "Reclining cot 2 / rest position",
+      "why": "750 \u00d7 1900 mm nominal cot, 450 mm deck height, illustrative 20\u00b0 backrest. Replaceable breathable surface rather than thick heat-retaining upholstery; worker chooses a comfortable posture.",
+      "limit": "Not a medical bed or a treatment posture. Capacity, stability, cleanability, transfers and backrest lock require supplier selection and testing. Do not leave an ill worker to sleep unattended.",
+      "bounds": [
+        4399.999999899999,
+        199.99999989999978,
+        -1e-07,
+        5150.000000100001,
+        2060.8002036108405,
+        705.2023349891919
+      ]
+    },
+    {
+      "id": "fan_2",
+      "group": "fan",
+      "color": "#d59b34",
+      "title": "Individual fan 2 / adjustable concept",
+      "why": "One nominal 400 mm fan per cot targets an occupied resting zone. Local manual speed/off control avoids forcing everyone to accept the same airflow.",
+      "limit": "Illustrative fan, guard and stand; no supplier, fan curve, motor voltage, power or outdoor rating selected. A larger diameter or five fans does not establish adequate cooling.",
+      "bounds": [
+        4544.999999899999,
+        1741.4549780998661,
+        -1e-07,
+        5005.000000100001,
+        2058.545021900134,
+        1557.0462044678782
+      ]
+    },
+    {
+      "id": "air_sensor_2",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "Air temperature / RH sensor 2",
+      "why": "Placed beside the cot at torso/head-zone height, away from controller heat. Per-zone readings reveal uneven conditions.",
+      "limit": "Radiation shield and location bias need validation. This measures air, not body temperature or BP. Distributed wiring/interface is a new design, not existing bench I\u00b2C over long cables.",
+      "bounds": [
+        5219.9999999,
+        1699.9999999,
+        949.9999999,
+        5275.0000001,
+        1755.0000001,
+        1034.0000001
+      ]
+    },
+    {
+      "id": "control_2",
+      "group": "control",
+      "color": "#cf5f48",
+      "title": "Local fan / assistance control 2",
+      "why": "Reachable local speed/off and assistance button; autonomous local controls should remain usable without cloud connectivity.",
+      "limit": "Reach and posture need user trials. The five-zone controller and wiring are proposed; current firmware supports the earlier bench only.",
+      "bounds": [
+        5159.9999999,
+        1449.9999999,
+        599.9999999,
+        5230.0000001,
+        1530.0000001,
+        630.0000001
+      ]
+    },
+    {
+      "id": "cot_3",
+      "group": "cot",
+      "color": "#458f89",
+      "title": "Reclining cot 3 / rest position",
+      "why": "750 \u00d7 1900 mm nominal cot, 450 mm deck height, illustrative 20\u00b0 backrest. Replaceable breathable surface rather than thick heat-retaining upholstery; worker chooses a comfortable posture.",
+      "limit": "Not a medical bed or a treatment posture. Capacity, stability, cleanability, transfers and backrest lock require supplier selection and testing. Do not leave an ill worker to sleep unattended.",
+      "bounds": [
+        399.99999989999907,
+        3399.9999999,
+        -1e-07,
+        1150.000000100001,
+        5260.800203610841,
+        705.2023349891923
+      ]
+    },
+    {
+      "id": "fan_3",
+      "group": "fan",
+      "color": "#d59b34",
+      "title": "Individual fan 3 / adjustable concept",
+      "why": "One nominal 400 mm fan per cot targets an occupied resting zone. Local manual speed/off control avoids forcing everyone to accept the same airflow.",
+      "limit": "Illustrative fan, guard and stand; no supplier, fan curve, motor voltage, power or outdoor rating selected. A larger diameter or five fans does not establish adequate cooling.",
+      "bounds": [
+        544.999999899999,
+        4941.454978099867,
+        -1e-07,
+        1005.000000100001,
+        5258.545021900133,
+        1557.0462044678782
+      ]
+    },
+    {
+      "id": "air_sensor_3",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "Air temperature / RH sensor 3",
+      "why": "Placed beside the cot at torso/head-zone height, away from controller heat. Per-zone readings reveal uneven conditions.",
+      "limit": "Radiation shield and location bias need validation. This measures air, not body temperature or BP. Distributed wiring/interface is a new design, not existing bench I\u00b2C over long cables.",
+      "bounds": [
+        1219.9999999,
+        4899.9999999,
+        949.9999999,
+        1275.0000001,
+        4955.0000001,
+        1034.0000001
+      ]
+    },
+    {
+      "id": "control_3",
+      "group": "control",
+      "color": "#cf5f48",
+      "title": "Local fan / assistance control 3",
+      "why": "Reachable local speed/off and assistance button; autonomous local controls should remain usable without cloud connectivity.",
+      "limit": "Reach and posture need user trials. The five-zone controller and wiring are proposed; current firmware supports the earlier bench only.",
+      "bounds": [
+        1159.9999999,
+        4649.9999999,
+        599.9999999,
+        1230.0000001,
+        4730.0000001,
+        630.0000001
+      ]
+    },
+    {
+      "id": "cot_4",
+      "group": "cot",
+      "color": "#458f89",
+      "title": "Reclining cot 4 / rest position",
+      "why": "750 \u00d7 1900 mm nominal cot, 450 mm deck height, illustrative 20\u00b0 backrest. Replaceable breathable surface rather than thick heat-retaining upholstery; worker chooses a comfortable posture.",
+      "limit": "Not a medical bed or a treatment posture. Capacity, stability, cleanability, transfers and backrest lock require supplier selection and testing. Do not leave an ill worker to sleep unattended.",
+      "bounds": [
+        2399.9999998999992,
+        3399.9999999,
+        -1e-07,
+        3150.0000001000008,
+        5260.800203610841,
+        705.2023349891923
+      ]
+    },
+    {
+      "id": "fan_4",
+      "group": "fan",
+      "color": "#d59b34",
+      "title": "Individual fan 4 / adjustable concept",
+      "why": "One nominal 400 mm fan per cot targets an occupied resting zone. Local manual speed/off control avoids forcing everyone to accept the same airflow.",
+      "limit": "Illustrative fan, guard and stand; no supplier, fan curve, motor voltage, power or outdoor rating selected. A larger diameter or five fans does not establish adequate cooling.",
+      "bounds": [
+        2544.999999899999,
+        4941.454978099867,
+        -1e-07,
+        3005.000000100001,
+        5258.545021900133,
+        1557.0462044678782
+      ]
+    },
+    {
+      "id": "air_sensor_4",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "Air temperature / RH sensor 4",
+      "why": "Placed beside the cot at torso/head-zone height, away from controller heat. Per-zone readings reveal uneven conditions.",
+      "limit": "Radiation shield and location bias need validation. This measures air, not body temperature or BP. Distributed wiring/interface is a new design, not existing bench I\u00b2C over long cables.",
+      "bounds": [
+        3219.9999999,
+        4899.9999999,
+        949.9999999,
+        3275.0000001,
+        4955.0000001,
+        1034.0000001
+      ]
+    },
+    {
+      "id": "control_4",
+      "group": "control",
+      "color": "#cf5f48",
+      "title": "Local fan / assistance control 4",
+      "why": "Reachable local speed/off and assistance button; autonomous local controls should remain usable without cloud connectivity.",
+      "limit": "Reach and posture need user trials. The five-zone controller and wiring are proposed; current firmware supports the earlier bench only.",
+      "bounds": [
+        3159.9999999,
+        4649.9999999,
+        599.9999999,
+        3230.0000001,
+        4730.0000001,
+        630.0000001
+      ]
+    },
+    {
+      "id": "cot_5",
+      "group": "cot",
+      "color": "#458f89",
+      "title": "Reclining cot 5 / rest position",
+      "why": "750 \u00d7 1900 mm nominal cot, 450 mm deck height, illustrative 20\u00b0 backrest. Replaceable breathable surface rather than thick heat-retaining upholstery; worker chooses a comfortable posture.",
+      "limit": "Not a medical bed or a treatment posture. Capacity, stability, cleanability, transfers and backrest lock require supplier selection and testing. Do not leave an ill worker to sleep unattended.",
+      "bounds": [
+        4399.999999899999,
+        3399.9999999,
+        -1e-07,
+        5150.000000100001,
+        5260.800203610841,
+        705.2023349891923
+      ]
+    },
+    {
+      "id": "fan_5",
+      "group": "fan",
+      "color": "#d59b34",
+      "title": "Individual fan 5 / adjustable concept",
+      "why": "One nominal 400 mm fan per cot targets an occupied resting zone. Local manual speed/off control avoids forcing everyone to accept the same airflow.",
+      "limit": "Illustrative fan, guard and stand; no supplier, fan curve, motor voltage, power or outdoor rating selected. A larger diameter or five fans does not establish adequate cooling.",
+      "bounds": [
+        4544.999999899998,
+        4941.454978099866,
+        -1e-07,
+        5005.000000100002,
+        5258.545021900134,
+        1557.0462044678784
+      ]
+    },
+    {
+      "id": "air_sensor_5",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "Air temperature / RH sensor 5",
+      "why": "Placed beside the cot at torso/head-zone height, away from controller heat. Per-zone readings reveal uneven conditions.",
+      "limit": "Radiation shield and location bias need validation. This measures air, not body temperature or BP. Distributed wiring/interface is a new design, not existing bench I\u00b2C over long cables.",
+      "bounds": [
+        5219.9999999,
+        4899.9999999,
+        949.9999999,
+        5275.0000001,
+        4955.0000001,
+        1034.0000001
+      ]
+    },
+    {
+      "id": "control_5",
+      "group": "control",
+      "color": "#cf5f48",
+      "title": "Local fan / assistance control 5",
+      "why": "Reachable local speed/off and assistance button; autonomous local controls should remain usable without cloud connectivity.",
+      "limit": "Reach and posture need user trials. The five-zone controller and wiring are proposed; current firmware supports the earlier bench only.",
+      "bounds": [
+        5159.9999999,
+        4649.9999999,
+        599.9999999,
+        5230.0000001,
+        4730.0000001,
+        630.0000001
+      ]
+    },
+    {
+      "id": "service_cabinet",
+      "group": "control",
+      "color": "#38656b",
+      "title": "Dry service cabinet / five-zone proposal",
+      "why": "Central protected distribution, controller and display; separate per-fan branch protection and feedback are required.",
+      "limit": "Not a wiring design. Electrical ratings, protection, earthing, enclosure IP, isolation and qualified installation are open.",
+      "bounds": [
+        3299.9999999,
+        4999.9999999,
+        -1e-07,
+        3800.0000001,
+        5250.0000001,
+        800.0000001
+      ]
+    },
+    {
+      "id": "reference_station",
+      "group": "sensor",
+      "color": "#1faabb",
+      "title": "External reference air station",
+      "why": "An independent shaded, ventilated reference outside the pavilion enables paired environmental comparison.",
+      "limit": "Final radiation shielding and matching exposure require a test protocol; not an unshielded sun-heated sensor.",
+      "bounds": [
+        -900.0000001,
+        2499.9999999,
+        1099.9999999,
+        -799.9999999,
+        2600.0000001,
+        1250.0000001
+      ]
+    },
+    {
+      "id": "wbgt_station",
+      "group": "validation",
+      "color": "#535068",
+      "title": "External calibrated WBGT / validation reservation",
+      "why": "Reserve space for a calibrated occupational heat instrument and separate air-speed mapping. Environmental evaluation also needs workload, clothing and acclimatization context.",
+      "limit": "Illustrative instrument location only. A black sphere alone is not a complete WBGT instrument; no physiological verdict is produced.",
+      "bounds": [
+        5624.816613668013,
+        4824.746694109371,
+        -0.014917045373721228,
+        5775.276617240568,
+        4975.253305890629,
+        1050.2766172405686
+      ]
+    }
+  ]
+}
