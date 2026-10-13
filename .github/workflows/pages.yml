@@ -43,6 +43,7 @@ jobs:
           npm run test:browser
           npm run test:fullsize
           npm run test:teaching
+          npm run test:cooling
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

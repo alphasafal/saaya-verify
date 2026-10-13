@@ -12,6 +12,8 @@
 
 **Teacher presentation:** https://saaya-verify.vercel.app/explain.html — interactive IoT diagram, labelled CAD, placement rationales, bench pin map and current engineering gaps.
 
+**Operational CAD:** open [the worker / fan / sensor view](https://saaya-verify.vercel.app/fullsize-model.html) and change synthetic parameters. [Layer scope and control rules](docs/operational-cad.md).
+
 ## Explore
 
 [Two-minute presentation and workshop handoff](docs/demo-guide.md).

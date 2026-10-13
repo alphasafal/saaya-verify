@@ -38,7 +38,7 @@
       "title": "Sloping roof purlin",
       "role": "Carries roof panels to the crossbeams.",
       "placement": "Follows the roof slope and divides the panel span.",
-      "limitation": "Rear seating relief and local strength need an engineer\u2019s approval.",
+      "limitation": "Rear seating relief and local strength need an engineer’s approval.",
       "connection": "Mechanical interface; no electrical signal.",
       "validation": "Inspect the first article and verify the relevant interface before release."
     },
@@ -181,9 +181,9 @@
     "F03_reference_fan": {
       "title": "Fan + tachometer",
       "role": "Moves air; tach feedback reports rotation.",
-      "placement": "At the rear above seat level to direct airflow toward occupants.",
+      "placement": "Rear opening; current horizontal axis is Z=1520 mm. It sits above the illustrative seated worker. An aiming mount or revised location is required for evaluation; the existing CAD does not establish useful airflow at the torso.",
       "limitation": "Full-size NF-A20 is only a dimensional reference: IP50, and 0% PWM is not an off command. Select an outdoor-rated actuator and hardware isolation.",
-      "connection": "Bench reference: separate 12 V fan supply; GPIO25 \u2192 NPN open-collector PWM stage; tach \u2192 GPIO34 with external 10 k\u03a9 pull-up to 3.3 V. Full-size wiring/rating must be redesigned.",
+      "connection": "Bench reference: separate 12 V fan supply; GPIO25 → NPN open-collector PWM stage; tach → GPIO34 with external 10 kΩ pull-up to 3.3 V. Full-size wiring/rating must be redesigned.",
       "validation": "Compare tach pulses with an independent tachometer, then map actual seated air speed using an external anemometer. Test stop/isolation separately."
     },
     "S01_sensor_shield": {
@@ -199,7 +199,7 @@
       "role": "Reads sensors, validates readings, runs local controls and emits telemetry.",
       "placement": "Inside the dry enclosure, on an insulated removable carrier close to local controls.",
       "limitation": "Metal enclosure can attenuate Wi-Fi; current firmware uses USB serial, not Wi-Fi. Board outline is a reference, not a checked supplier fit.",
-      "connection": "Bench: USB power + serial at 115200 baud; GPIO21/22 I\u00b2C; GPIO25 PWM; GPIO34 tach; GPIO35 float; GPIO32/33/27 buttons; GPIO26 LED; GPIO14 buzzer; GPIO4 roof probe.",
+      "connection": "Bench: USB power + serial at 115200 baud; GPIO21/22 I²C; GPIO25 PWM; GPIO34 tach; GPIO35 float; GPIO32/33/27 buttons; GPIO26 LED; GPIO14 buzzer; GPIO4 roof probe.",
       "validation": "Bench-test disconnected sensors, manual control, reboot recovery and watchdog behavior. Confirm firmware pin map and purchased board dimensions."
     },
     "E05_monitor_reference": {
@@ -207,7 +207,7 @@
       "role": "Measures voltage/current-derived power in the fan branch.",
       "placement": "Inside the dry enclosure near the fan supply wiring.",
       "limitation": "This excludes controller and display consumption. Verify the selected shunt and branch rating; do not claim total-system energy.",
-      "connection": "I\u00b2C 0x40 on GPIO21 SDA / GPIO22 SCL, 3.3 V logic. Fan supply positive \u2192 fuse \u2192 switch \u2192 VIN+ \u2192 VIN\u2212 \u2192 fan. Common signal ground.",
+      "connection": "I²C 0x40 on GPIO21 SDA / GPIO22 SCL, 3.3 V logic. Fan supply positive → fuse → switch → VIN+ → VIN− → fan. Common signal ground.",
       "validation": "Compare with a calibrated external meter at several fan duties; document that only the fan branch is measured."
     },
     "E06_display_reference": {
@@ -215,7 +215,7 @@
       "role": "Shows readings, fan state and assistance/fault messages.",
       "placement": "On the enclosure front so status can be read without opening it or using internet.",
       "limitation": "Sunlight readability, sealing and seated reach/visibility are not validated.",
-      "connection": "I\u00b2C 0x3C on GPIO21/22; use verified 3.3 V-compatible logic/pull-ups.",
+      "connection": "I²C 0x3C on GPIO21/22; use verified 3.3 V-compatible logic/pull-ups.",
       "validation": "Confirm every displayed status against firmware and test sunlight readability, fault text and seated viewing angle."
     },
     "S02_roof_probe": {
@@ -223,7 +223,7 @@
       "role": "Measures a roof surface temperature when thermally coupled.",
       "placement": "Near the centre of the lower roof, away from an edge-biased sample.",
       "limitation": "The present vertical probe envelope ends near, but not bonded to, the lower skin. A contact shoe/adhesive, strain relief and calibration are still required.",
-      "connection": "Powered 3-wire 1-Wire sensor: GPIO4 data with 4.7 k\u03a9 pull-up to 3.3 V, plus 3.3 V and GND.",
+      "connection": "Powered 3-wire 1-Wire sensor: GPIO4 data with 4.7 kΩ pull-up to 3.3 V, plus 3.3 V and GND.",
       "validation": "Bond the probe using a defined contact method, compare with a calibrated surface reference and report contact/radiation uncertainty."
     },
     "W01_optional_water_vessel": {
@@ -327,7 +327,7 @@
       "role": "Shows a latched assistance request or selected fault states.",
       "placement": "On the front panel next to the controls.",
       "limitation": "A single indicator cannot identify every condition; read the OLED. Brightness and visibility need testing.",
-      "connection": "GPIO26 \u2192 330 \u03a9 resistor \u2192 LED \u2192 GND; assistance, fan fault or sensor fault lights the indicator.",
+      "connection": "GPIO26 → 330 Ω resistor → LED → GND; assistance, fan fault or sensor fault lights the indicator.",
       "validation": "Trigger help, sensor fault and fan feedback fault separately; confirm LED visibility without confusing the conditions."
     },
     "E09_buzzer_reference": {
@@ -335,7 +335,7 @@
       "role": "Sounds a periodic local alert while assistance is latched.",
       "placement": "Inside the enclosure near the user controls.",
       "limitation": "Enclosure attenuation and sound level are untested. It does not contact emergency services.",
-      "connection": "GPIO14 \u2192 NPN driver stage, not motor/buzzer power directly from GPIO. Flyback protection if the selected buzzer is inductive.",
+      "connection": "GPIO14 → NPN driver stage, not motor/buzzer power directly from GPIO. Flyback protection if the selected buzzer is inductive.",
       "validation": "Press help, verify periodic sound, reboot persistence and acknowledgement; measure audibility without assuming emergency coverage."
     },
     "S03_SHT31_reference": {
@@ -343,7 +343,7 @@
       "role": "Measures local dry-bulb air temperature and relative humidity.",
       "placement": "Inside a dedicated shield, away from the controller heat source.",
       "limitation": "Neither T/RH alone nor this geometry establishes thermal safety; calibrate and assess radiation/airflow bias.",
-      "connection": "Bench I\u00b2C GPIO21/22: comparison sensor 0x44, seated sensor 0x45 (ADR high); 3.3 V logic. Full-size cable lengths require a qualified interface.",
+      "connection": "Bench I²C GPIO21/22: comparison sensor 0x44, seated sensor 0x45 (ADR high); 3.3 V logic. Full-size cable lengths require a qualified interface.",
       "validation": "Inspect the first article and verify the relevant interface before release."
     },
     "W02_float_reference": {
@@ -351,35 +351,35 @@
       "role": "Reports a dry-contact available/low state.",
       "placement": "Inside the optional water vessel, separate from dry electronics.",
       "limitation": "Nominal envelope only. Verify switch level, orientation, material compatibility and broken-wire behavior.",
-      "connection": "GPIO35 with external 10 k\u03a9 pull-up to 3.3 V; closed contact to GND = available, open/broken wire = low/check.",
+      "connection": "GPIO35 with external 10 kΩ pull-up to 3.3 V; closed contact to GND = available, open/broken wire = low/check.",
       "validation": "Test wet/dry states, a disconnected wire and the chosen switching height before adding water near electronics."
     }
   },
   "instances": {
     "outdoor_SHT31": {
-      "title": "Reference SHT31 \u00b7 I\u00b2C 0x44",
+      "title": "Reference SHT31 · I²C 0x44",
       "placement": "At the separate reference mast near the left edge, physically separated from the occupied sensor. This is a proposed comparison position, not a validated ambient reference.",
       "validation": "Move/position a paired control outside shelter influence, match shields/heights, swap positions across repeated runs and record calibration."
     },
     "seated_SHT31": {
-      "title": "Seated SHT31 \u00b7 I\u00b2C 0x45",
+      "title": "Seated SHT31 · I²C 0x45",
       "placement": "Inside the bench-zone shield around 1.13 m above the base. Separated from ESP32 heat; not placed inside the electronics box.",
       "validation": "Calibrate against the reference, inspect shield bias and sample multiple occupied-zone positions without using a person as a test load."
     },
     "mode_button": {
-      "title": "Mode button \u00b7 GPIO32",
+      "title": "Mode button · GPIO32",
       "role": "Toggles the bench between off and manual 70% fan duty.",
       "connection": "GPIO32, active-low to GND with internal pull-up; debounced in firmware.",
       "validation": "Verify toggle, restart behavior and fan feedback. Full-size fan requires a true hardware off path."
     },
     "assistance_button": {
-      "title": "Assistance button \u00b7 GPIO33",
+      "title": "Assistance button · GPIO33",
       "role": "Latches a local help request; the request is restored after a reboot.",
       "connection": "GPIO33, active-low to GND; NVS stores the latch. LED, buzzer and OLED provide local indication.",
       "validation": "Press, reboot and confirm the request persists. It is not an automatic emergency call."
     },
     "acknowledge_button": {
-      "title": "Acknowledge button \u00b7 GPIO27",
+      "title": "Acknowledge button · GPIO27",
       "role": "Deliberately clears the local assistance latch.",
       "connection": "GPIO27, active-low to GND. A simultaneous help press takes priority.",
       "validation": "Confirm only deliberate acknowledgement clears the request."
