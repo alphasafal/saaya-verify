@@ -8,7 +8,7 @@ def box(x,y,z):return cq.Workplane('XY').box(x,y,z,centered=False).val()
 def cyl(r,h,pos=(0,0,0),axis=(0,0,1)):return cq.Solid.makeCylinder(r,h,cq.Vector(*pos),cq.Vector(*axis))
 def add(id,s,group,color,title,why,limit):
  assert s.isValid() and s.Volume()>0,id
- A.add(s,name=id,color=cq.Color(color));cq.exporters.export(s,str(O/(id+'.stl')),tolerance=1,angularTolerance=.2)
+ A.add(s,name=id,color=cq.Color(*[int(color[i:i+2],16)/255 for i in (1,3,5)]));cq.exporters.export(s,str(O/(id+'.stl')),tolerance=1,angularTolerance=.2)
  b=s.BoundingBox();rows.append(dict(id=id,group=group,color=color,title=title,why=why,limit=limit,bounds=[b.xmin,b.ymin,b.zmin,b.xmax,b.ymax,b.zmax]))
 def compound(shapes):return cq.Compound.makeCompound(shapes)
 # A slab is a site-space reservation, not a foundation design.
