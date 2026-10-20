@@ -20,8 +20,8 @@ await Promise.all(data.parts.map(async p => {
   m.add(e); m.userData = p; scene.add(m); meshes[p.name] = m;
 }));
 const views = {
-  assembly: {pos: [-330, -440, 270], target: [60, 35, 55], hide: []},
-  internals: {pos: [-120, -330, 260], target: [75, 50, 50], hide: ['enclosure_lid', 'oled_glass', 'help_button', 'mode_button', 'status_led', 'buzzer', 'oled_module', 'radiation_shield', 'sht31_in_shield', 'fan_120', 'fan_guard']},
+  assembly: {pos: [-430, -560, 330], target: [40, 35, 50], hide: []},
+  internals: {pos: [-110, -320, 250], target: [88, 45, 50], hide: ['enclosure_lid', 'oled_glass', 'help_button', 'mode_button', 'status_led', 'buzzer', 'oled_module', 'radiation_shield', 'sht31_in_shield', 'fan_120', 'fan_guard']},
   front: {pos: [75, -430, 50], target: [75, 0, 50], hide: ['radiation_shield', 'sht31_in_shield', 'fan_120', 'fan_guard']},
   bottom: {pos: [75, 35, -430], target: [75, 35, 0], hide: ['radiation_shield', 'sht31_in_shield', 'fan_120', 'fan_guard'], up: [0, -1, 0]},
 };

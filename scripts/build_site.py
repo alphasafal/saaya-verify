@@ -16,7 +16,7 @@ for name in ['evidence.json','costs.json']:
     if (ROOT/'research'/name).exists():shutil.copyfile(ROOT/'research'/name,site/'data'/name)
 for name in ['SAAYA_Phase_2_Design_Pack.pdf','sheet-1.png']:
     shutil.copyfile(ROOT/'archive/lab-v1'/name,site/'downloads'/name)
-for name in ['README.md','docs/engineering.md','docs/architecture-v2.svg','docs/physical-protocol.md','docs/verification.md','docs/DEFENSE.md','research/REVIEW.md','firmware/src/main.cpp']:
+for name in ['README.md','docs/engineering.md','docs/architecture-v2.svg','docs/physical-protocol.md','docs/verification.md','docs/DEFENSE.md','docs/node/SAAYA_Node_IoT_Design.pdf','research/REVIEW.md','firmware/src/main.cpp']:
     if (ROOT/name).exists():shutil.copyfile(ROOT/name,site/'downloads'/Path(name).name)
 if (ROOT/'cad/exports').exists():
     for p in (ROOT/'cad/exports').iterdir():

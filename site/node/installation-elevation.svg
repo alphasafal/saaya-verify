@@ -1,7 +1,7 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='1700' height='900' viewBox='0 0 1700 900' font-family='Helvetica,Arial,sans-serif'><title>SAAYA Node installation elevation</title><rect width='1700' height='900' fill='#ffffff'/><defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>
+<svg xmlns='http://www.w3.org/2000/svg' width='1460' height='880' viewBox='0 0 1460 880' font-family='Helvetica,Arial,sans-serif'><title>SAAYA Node installation elevation</title><rect width='1460' height='880' fill='#ffffff'/><defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>
 <text x='40' y='46' font-size='24' text-anchor='start' font-weight='bold' fill='#1f2a26'>Installation - retrofit to an existing rest shade (side elevation, mm)</text>
 <text x='40' y='72' font-size='13' text-anchor='start' font-weight='normal' fill='#5d6b64'>Works on any shade with a post or wall: worksite rest shed, bus-stop shelter, FS-01 frame. Scale 1:25.</text>
-<line x1='40' y1='800' x2='1660' y2='800' stroke='#6b5b3e' stroke-width='3'/>
+<line x1='40' y1='800' x2='1440' y2='800' stroke='#6b5b3e' stroke-width='3'/>
 <text x='50' y='822' font-size='12' text-anchor='start' font-weight='normal' fill='#6b5b3e'>ground (shaded ground cover preferred - see model)</text>
 <rect x='230.0' y='228.57142857142856' width='16.285714285714285' height='571.4285714285714' rx='1' fill='#8a949b' stroke='#1f2a26' stroke-width='1.2'/>
 <rect x='158.57142857142856' y='214.28571428571433' width='809.5238095238095' height='14.285714285714285' rx='2' fill='#c9cfc5' stroke='#1f2a26' stroke-width='1.2'/>

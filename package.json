@@ -13,7 +13,8 @@
     "build:pavilion": "esbuild site/pavilion-src.js --bundle --minify --outfile=site/pavilion.bundle.js --format=esm",
     "test:pavilion": "node tests/pavilion-browser.cjs",
     "test:defense": "node tests/defense-browser.cjs",
-    "build:node": "esbuild site/node-src.js --bundle --minify --outfile=site/node.bundle.js --format=esm"
+    "build:node": "esbuild site/node-src.js --bundle --minify --outfile=site/node.bundle.js --format=esm",
+    "test:node": "node tests/node-browser.cjs"
   },
   "dependencies": {
     "three": "0.180.0"
