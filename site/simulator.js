@@ -104,7 +104,7 @@ function drawBoard() {
   // ---------------- right cards
   const ol = card(870, 110, 300, 160, 'SSD1306 OLED 128×64', 'I²C 0x3C'); V.oledCard = ol;
   el('rect', { x: 920, y: 146, width: 213, height: 112, rx: 6, fill: '#0b0f12' }, ol.g);
-  V.oled = el('image', { x: 924, y: 150, width: 205, height: 102, preserveAspectRatio: 'none', style: 'image-rendering:pixelated' }, ol.g);
+  V.oled = el('image', { x: 924, y: 150, width: 205, height: 102, preserveAspectRatio: 'none' }, ol.g);
 
   const se = card(870, 285, 300, 80, 'SHT30 · seat air (1.1 m)', '0x44 · ADDR → GND · in radiation shield'); V.seatCard = se; V.seatVal = txt(882, 357, '', 'val', se.g);
   const re = card(870, 380, 300, 80, 'SHT30 · outside reference', '0x45 · ADDR → 3V3 · 10 m Cat5e, ≥ 2 m out'); V.refCard = re; V.refVal = txt(882, 452, '', 'val', re.g);
@@ -292,15 +292,13 @@ function narrateSample(fw, advice) {
 }
 
 /* ------------------------------------------------------------------ OLED */
-const oc = document.createElement('canvas'); oc.width = 128; oc.height = 64; const ox = oc.getContext('2d');
+const OS = 4;   // render the 128x64 panel at 4x so glyphs stay legible on a projector
+const oc = document.createElement('canvas'); oc.width = 128 * OS; oc.height = 64 * OS; const ox = oc.getContext('2d');
 function drawOled(lines) {
-  ox.fillStyle = '#000'; ox.fillRect(0, 0, 128, 64);
-  ox.fillStyle = '#fff'; ox.font = '8px "DejaVu Sans Mono", Menlo, Consolas, monospace'; ox.textBaseline = 'alphabetic';
-  let cx = 0, cy = 0;   // Adafruit GFX cursor, setTextWrap(true): println() of each line
-  lines.forEach((s) => { for (const ch of s) { if (cx + 6 > 128) { cx = 0; cy += 8; } if (cy < 64) ox.fillText(ch, cx, cy + 7); cx += 6; } cx = 0; cy += 8; });
-  const img = ox.getImageData(0, 0, 128, 64), px = img.data;
-  for (let i = 0; i < px.length; i += 4) { const on = px[i] > 110; px[i] = on ? 214 : 4; px[i + 1] = on ? 236 : 6; px[i + 2] = on ? 255 : 10; px[i + 3] = 255; }
-  ox.putImageData(img, 0, 0);
+  ox.fillStyle = '#05080b'; ox.fillRect(0, 0, oc.width, oc.height);
+  ox.fillStyle = '#d6ecff'; ox.font = `bold ${7.4 * OS}px "DejaVu Sans Mono", Menlo, Consolas, monospace`; ox.textBaseline = 'alphabetic';
+  let cx = 0, cy = 0;   // Adafruit GFX cursor in panel pixels, setTextWrap(true): 6x8 cells, println() per line
+  lines.forEach((s) => { for (const ch of s) { if (cx + 6 > 128) { cx = 0; cy += 8; } if (cy < 64) ox.fillText(ch, cx * OS, (cy + 7) * OS); cx += 6; } cx = 0; cy += 8; });
   V.oled.setAttribute('href', oc.toDataURL());
 }
 

@@ -272,7 +272,7 @@ def build(chapter, section, sub, para, figure, rotated_figure, table, ref, R, g,
         ('32 °C to 37 °C, automatic mode', 'Fan at 50 percent; normal display'),
         ('37 °C to 39 °C', 'Fan allowed; display warns that benefit is limited for older or medicated people'),
         ('39 °C or above', 'Automatic fan stops and restarts below 38.5 °C; display reads “HOT: FAN MAY ADD HEAT”; manual still allowed'),
-        ('MODE pressed', 'Switches between manual 70 percent and off'),
+        ('MODE pressed', 'Switches between manual 70 percent and automatic (field build) or off (bench build)'),
         ('HELP pressed', 'Request latched; LED, buzzer and display; kept in flash through a reset'),
         ('ACK pressed by staff', 'Clears the request; HELP wins if both are pressed together'),
         ('Fan commanded, tachometer below 100 rpm after 3 s', 'Fan feedback fault shown; any cooling claim for the period is withdrawn'),
@@ -282,7 +282,24 @@ def build(chapter, section, sub, para, figure, rotated_figure, table, ref, R, g,
     b.append(section('Verification carried out'))
     b.append(para(
         'The firmware, including the optional Wi-Fi version, is compiled automatically on GitHub Actions for the esp32dev board. The control logic passes native C++ tests covering the help latch, manual override, fault detection, start-up grace, timer roll-over, hysteresis and the fan-benefit limit, and the same rules are tested in the Python data service and in the web demonstration. The data service has 89 automated tests. The shelter model passes the clash check over all 143 instances, the enclosure model over all 23 solids, and the public website is tested in a browser at desktop and phone widths.',
-        f'A circuit for the online Wokwi ESP32 simulator has been prepared with the same pin assignment {ref(R["wokwi"])}. Wokwi does not provide models of the SHT3x, the INA219 or a PWM fan, so the simulation is mainly useful for the help latch and the fault messages; it has been set up but not yet run.'))
+        'The firmware is built in four versions on every change: the default bench build (manual fan only), the field build with the automatic fan band, the Wi-Fi build and a build for the newer Arduino-ESP32 core 3. All four compile without errors.'))
+    b.append(section('Hardware simulation'))
+    b.append(para(
+        'Because the node has not yet been assembled, the complete circuit was simulated in two ways so that its behaviour can be demonstrated and checked before any soldering.',
+        'The first is an interactive simulator on the project website (Fig. 9.1). It draws every part of the node wired to the same ESP32 pins as the interfacing diagram: both SHT30 sensors, the DS18B20 roof probe, the INA219, the OLED, the 4-wire fan with its 2N3904 driver, the three buttons, the LED, the buzzer, the float switch and the 12 V to 5 V supply. The fan, help and fault decisions are not re-written for the website: the firmware’s own control header is compiled to WebAssembly and called directly, and an automated test confirms that it gives exactly the same answers as the normally compiled C++ on 5,000 random cases. The loop around it follows the firmware line by line, including the 35 ms button debounce, one-second sampling, the 2-pulses-per-revolution tachometer calculation, the inverted PWM through the transistor and the help latch kept in flash. The sensors return values set with sliders, and the fan follows a simple speed and current model; the page states clearly which parts are modelled.',
+        f'The second is a complete project for the Wokwi ESP32 emulator {ref(R["wokwi"])}, which runs the actual firmware on an emulated ESP32. Wokwi has no models of the SHT30, the INA219 or a 4-wire fan, so two custom chips were written in C: an SHT30 that answers the real command set with the datasheet CRC, and a fan branch that inverts the PWM like the 2N3904, produces two tachometer pulses per revolution and exposes the INA219 registers. Both chips were compiled with Wokwi’s compiler settings and tested against the same I²C transactions that the Adafruit libraries perform.'))
+    b.append(figure('simulator-board.png', 'Hardware simulator on the project website: field build, seat air 34.2 °C, fan running at 50 percent with tachometer feedback and the INA219 reading 1.45 W', '100%'))
+    b.append(table('Behaviour checked automatically in the hardware simulator', ['Test', 'Expected and observed result'], [(e(a), e(bb)) for a, bb in [
+        ('Seat air 33 °C, field build', 'Automatic fan at 50 percent; tachometer above 1,000 rpm; INA219 0.5 to 4.5 W; record marked valid'),
+        ('Seat air 40 °C', 'Automatic fan stops; OLED “HOT: FAN MAY ADD HEAT”; fan_advice = avoid'),
+        ('MODE at 40 °C', 'Manual fan at 70 percent: never blocked'),
+        ('Seat air 38.6 °C, then 38.2 °C', 'No restart above 38.5 °C; restarts below it'),
+        ('Fan rotor blocked; tachometer wire cut', 'FAN FEEDBACK FAULT after 3 s and LED on; clears when pulses return'),
+        ('HELP, then power cut, then ACK', 'Latched before the cut, restored from flash after reboot, cleared only by ACK'),
+        ('Seat sensor unplugged', 'SENSOR FAULT; temperature sent as null; automatic fan inhibited; recovers on reconnection'),
+        ('INA219 unplugged; float dropped', 'Power sent as null; OLED “WATER LOW / CHECK”'),
+        ('Default (bench) build at 34 °C', 'No automatic fan, as intended for bench use')]], ['34%', '66%'], 'small'))
+    b.append(para('All nine checks pass at desktop and phone screen widths and run on every change to the project. The simulation also exposed three faults in the earlier firmware, which were corrected: the two SHT30 addresses were the reverse of the design, the automatic fan band was switched off in the only build, and the first OLED line was one character too long for the 128-pixel display.'))
     b.append(section('Cost summary'))
     b.append(para(
         f'The electronics cost about ₹{g["total"]:,}, of which ₹{g["listed"]:,} comes from prices listed on Indian supplier websites and the rest is estimated (Appendix A). The first shelter is estimated at ₹{full_lo:,} to ₹{full_hi:,}, including steel, roof, fabrication, finishing, bench and screen, electronics allowance, foundations, transport, engineering review and a 15 percent contingency (Appendix B). This is a planning estimate, not a quotation. Repeated production, bolted standard sections and sites with an existing slab would bring the figure down, and the retrofit option costs only the electronics.'))

@@ -45,9 +45,10 @@ slides = [
     ('16', 'Deployment', '0:30', 'Front away from afternoon sun, box 1.4 m, seat 1.1 m, reference ≥ 2 m outside, mains or 20 W solar.'),
     ('17', 'Cost', '0:40', f'Node ₹{g["total"]:,}; shelter ₹94k–₹1.71 lakh estimate; 3.2 W vs ≈ 1,500 W AC; how cost drops.'),
     ('18', 'Evidence rules', '0:50', 'Declare, pair, repeat 3 days, claim only if the 95 % interval clears the margin.'),
-    ('19', 'Live demo', '5:00', 'Switch to the website (script in section 3).'),
-    ('20', 'Honest status', '0:40', 'Done and tested / not yet proven / next steps. End calmly.'),
-    ('21', 'Thank you', '—', 'Leave it up during questions.'),
+    ('19', 'Hardware simulation', '0:40', 'Whole node simulated; rules are the firmware’s own code compiled to WebAssembly (identical on 5,000 cases); 9 behaviours tested; Wokwi runs the real firmware; found 3 bugs before soldering.'),
+    ('20', 'Live demo', '5:00', 'Switch to the website (script in section 3).'),
+    ('21', 'Honest status', '0:40', 'Done and tested / not yet proven / next steps. End calmly.'),
+    ('22', 'Thank you', '—', 'Leave it up during questions.'),
 ]
 
 demo = [
@@ -74,7 +75,7 @@ numbers = [
     ('Power', f'≈ {g["w_typ"]:.1f} W typical, {g["w_pk"]:.1f} W peak, ≈ {g["wh_day"]:.0f} Wh/day; 12 V 2 A adapter, 1 A fuse'),
     ('Enclosure', '175 × 100 × 60 IP65 ABS (ProtechT WPE16), 5 × PG7 glands down, M12 vent'),
     ('Cost', f'Electronics ₹{g["total"]:,} (₹{g["listed"]:,} listed); shelter ₹{FL:,}–₹{FH:,} estimate'),
-    ('Tests', '89 Python tests, C++ controller tests, CI compile, 143-instance and 23-solid clash checks'),
+    ('Tests', '89 Python tests, C++ controller tests, 4 firmware builds in CI, 9 simulator behaviour tests, WebAssembly = native C++ on 5,000 cases, 143-instance and 23-solid clash checks'),
 ]
 
 shelter_why = [
@@ -140,6 +141,10 @@ questions = [
     ('What is the role of AI in this project?', 'None in control. There is an optional local explainer for finished data records that cannot change data or control anything.'),
     ('Why Vellore?', 'Hot pre-monsoon (May mean max ≈ 39 °C) and humid monsoon: a demanding test for both fan rules and weatherproofing, and it is where VIT is.'),
     ('Can it scale to a big site?', 'Yes, by placing one shelter per 4–6 resting workers near the work fronts, each with its node; data can go to one supervisor laptop over Wi-Fi.'),
+    ('Is the simulator real or just an animation?', 'The decisions are real: the firmware’s own control header is compiled to WebAssembly and called directly, and a test shows identical results to the normal C++ build on 5,000 random cases. The loop around it copies main.cpp: debounce, 1 s sampling, tach maths, inverted PWM, flash latch. What is modelled is the sensor readings (sliders) and the fan’s speed and current, and the page says so.'),
+    ('Why not just simulate everything in Wokwi?', 'I did build a Wokwi project that runs the real firmware binary. But Wokwi has no SHT30, INA219 or 4-wire fan, so I had to write those as custom chips in C, and it needs an account. The website simulator works anywhere without login, which is safer for a live demo.'),
+    ('How did you test your custom Wokwi chips?', 'I compiled them with Wokwi’s exact compiler flags and ran them in a small stand-in for the Wokwi host, sending the same I²C bytes the Adafruit libraries send: SHT30 reset, status and measurement with CRC checks, and INA219 calibration and power reads; and driving the fan with the firmware’s 25 kHz PWM to check rpm, tach pulses and stall detection.'),
+    ('Did the simulation find anything?', 'Yes, three real bugs: the seat and reference SHT30 addresses were swapped in the code compared with the design, the only firmware build had automatic mode switched off, and the first OLED line was 22 characters on a 21-character display. All fixed and re-tested.'),
     ('What would you do with more time?', 'Structural approval, build one shelter and two nodes, co-locate sensors, 3-day paired tests, compare single vs double roof, add GSM/LoRa for help alerts, design a PCB.'),
 ]
 
