@@ -38,6 +38,10 @@ jobs:
       - run: npm run build:node
       - run: python scripts/build_site.py
       - run: npx playwright install --with-deps chromium
+      - name: WebAssembly toolchain for the hardware simulator checks (wasm32-wasi)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq wasi-libc libclang-rt-18-dev-wasm32 lld || echo "wasm32-wasi toolchain unavailable; chip test will skip"
+      - name: Wokwi project is generated from the current firmware
+        run: python scripts/build_wokwi_full.py && git diff --exit-code -- firmware/wokwi-full/sketch.ino firmware/wokwi-full/controller.h firmware/wokwi-full/diagram.json firmware/wokwi-full/libraries.txt
       - name: Browser workflow checks
         run: |
           python -m uvicorn api.main:app --host 127.0.0.1 --port 8765 > /tmp/saaya-api.log 2>&1 &
@@ -49,6 +53,7 @@ jobs:
           npm run test:pavilion
           npm run test:defense
           npm run test:node
+          npm run test:sim
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

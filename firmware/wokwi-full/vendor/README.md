@@ -1,0 +1,1 @@
+wokwi-api.h is the Wokwi Custom Chips API header from https://github.com/wokwi/inverter-chip (MIT License, (c) 2022 Uri Shaked). Used only to compile and test the chips locally; wokwi.com supplies its own copy.

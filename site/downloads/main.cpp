@@ -30,6 +30,17 @@ void uplinkTask(void*){
 }
 #endif
 // 4-wire 12 V PWM fan. GPIO drives NPN open-collector stage, never motor power.
+// LEDC and task-watchdog APIs changed in Arduino-ESP32 core 3 (used by Wokwi's online compiler);
+// PlatformIO's espressif32@6.10.0 is core 2. Both are supported.
+#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+#define SAAYA_PWM_SETUP(pin) ledcAttach((pin),25000,8)
+#define SAAYA_PWM_WRITE(pin,v) ledcWrite((pin),(v))
+#define SAAYA_WDT_INIT() do{esp_task_wdt_config_t c={};c.timeout_ms=5000;c.idle_core_mask=0;c.trigger_panic=true;esp_task_wdt_reconfigure(&c);}while(0)
+#else
+#define SAAYA_PWM_SETUP(pin) do{ledcSetup(0,25000,8);ledcAttachPin((pin),0);}while(0)
+#define SAAYA_PWM_WRITE(pin,v) ledcWrite(0,(v))
+#define SAAYA_WDT_INIT() esp_task_wdt_init(5,true)
+#endif
 constexpr int PWM=25,TACH=34,WATER=35,MODE=32,HELP=33,ACK=27,LED=26,BUZZER=14,ROOF=4;
 Adafruit_SHT31 outside,inside;Adafruit_SSD1306 display(128,64,&Wire,-1);Adafruit_INA219 powerMeter;
 OneWire oneWire(ROOF);DallasTemperature roof(&oneWire);Preferences preferences;
@@ -42,16 +53,16 @@ Button modeButton{MODE},helpButton{HELP},ackButton{ACK};
 void finiteValue(JsonDocument &d,const char*key,float value){if(isfinite(value))d[key]=value;else d[key]=nullptr;}
 void setup(){
  Serial.begin(115200);Wire.begin(21,22);Wire.setClock(50000);Wire.setTimeOut(50); // 50 kHz: margin for the metres-long reference-sensor cable
- pinMode(PWM,OUTPUT);digitalWrite(PWM,HIGH);ledcSetup(0,25000,8);ledcAttachPin(PWM,0);ledcWrite(0,255);
+ pinMode(PWM,OUTPUT);digitalWrite(PWM,HIGH);SAAYA_PWM_SETUP(PWM);SAAYA_PWM_WRITE(PWM,255);
  for(int pin:{MODE,HELP,ACK})pinMode(pin,INPUT_PULLUP);
  pinMode(TACH,INPUT);pinMode(WATER,INPUT); // EXTERNAL 10k pull-ups to 3.3 V required on input-only pins.
  pinMode(LED,OUTPUT);pinMode(BUZZER,OUTPUT);attachInterrupt(digitalPinToInterrupt(TACH),tachRise,RISING);
- outOK=outside.begin(0x44);inOK=inside.begin(0x45);powerOK=powerMeter.begin();
+ inOK=inside.begin(0x44);outOK=outside.begin(0x45);powerOK=powerMeter.begin();
  displayOK=display.begin(SSD1306_SWITCHCAPVCC,0x3C);if(displayOK){display.clearDisplay();display.display();}
  roof.begin();roof.setWaitForConversion(false);roof.requestTemperatures();
  preferences.begin("saaya",false);state.help=preferences.getBool("help",false);
  snprintf(session,sizeof(session),"boot-%08lx-%08lx",(unsigned long)esp_random(),(unsigned long)esp_random());
- esp_task_wdt_init(5,true);esp_task_wdt_add(NULL);
+ SAAYA_WDT_INIT();esp_task_wdt_add(NULL);
 #if SAAYA_WIFI
  uplinkQueue=xQueueCreate(1,sizeof(UplinkFrame));xTaskCreatePinnedToCore(uplinkTask,"uplink",8192,nullptr,1,nullptr,0);
 #endif
@@ -63,12 +74,12 @@ void loop(){
  ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;autoOn=SAAYA_BENCH_AUTO&&!manual&&!sensorFault&&autoRequest(autoOn,temp);input.automatic=autoOn;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
  state=step(state,input);
  if(oldHelp!=state.help)preferences.putBool("help",state.help);
- ledcWrite(0,255-state.duty*255/100);digitalWrite(LED,state.help||state.fanFault||sensorFault);
+ SAAYA_PWM_WRITE(PWM,255-state.duty*255/100);digitalWrite(LED,state.help||state.fanFault||sensorFault);
  digitalWrite(BUZZER,state.help&&(now%1000<120));
  if(uint32_t(now-lastSample)<1000)return;
  uint32_t elapsed=now-lastSample;lastSample=now;noInterrupts();uint32_t pulses=tachPulses;tachPulses=0;interrupts();rpm=pulses*30000.0f/elapsed; // 2 pulses/revolution; verify chosen fan.
  // Retry failed I2C discovery to recover after reconnection.
- if(!outOK)outOK=outside.begin(0x44);if(!inOK)inOK=inside.begin(0x45);
+ if(!inOK)inOK=inside.begin(0x44);if(!outOK)outOK=outside.begin(0x45); // seat 0x44 (ADDR low), reference 0x45 (ADDR high)
  ot=outOK?outside.readTemperature():NAN;orr=outOK?outside.readHumidity():NAN;
  temp=inOK?inside.readTemperature():NAN;rh=inOK?inside.readHumidity():NAN;
  if(!isfinite(ot)||!isfinite(orr))outOK=false;if(!isfinite(temp)||!isfinite(rh))inOK=false;
@@ -85,5 +96,5 @@ void loop(){
  {UplinkFrame f;if(measureJson(d)<sizeof(f.json)){serializeJson(d,f.json,sizeof(f.json));xQueueOverwrite(uplinkQueue,&f);}} // latest frame only; never blocks
 #endif
 
- if(displayOK){display.clearDisplay();display.setTextSize(1);display.setTextColor(SSD1306_WHITE);display.setCursor(0,0);display.println("SAAYA BENCH / MEASURED");display.printf("T: %.1f RH: %.0f\n",temp,rh);display.printf("Fan %d%% %.0f RPM\n",state.duty,rpm);display.println(waterAvailable?"Water available":"WATER LOW / CHECK");FanAdvice advice=fanAdvice(sensorFault?NAN:temp);display.println(state.help?"HELP REQUEST LATCHED":sensorFault?"SENSOR FAULT":state.fanFault?"FAN FEEDBACK FAULT":advice==FAN_AVOID?"HOT: FAN MAY ADD HEAT":advice==FAN_CAUTION?"FAN: LIMITED BENEFIT":"Not a safety rating");display.display();}
+ if(displayOK){display.clearDisplay();display.setTextSize(1);display.setTextColor(SSD1306_WHITE);display.setCursor(0,0);display.println("SAAYA NODE / MEASURED"); // 21 chars = one 128 px linedisplay.printf("T: %.1f RH: %.0f\n",temp,rh);display.printf("Fan %d%% %.0f RPM\n",state.duty,rpm);display.println(waterAvailable?"Water available":"WATER LOW / CHECK");FanAdvice advice=fanAdvice(sensorFault?NAN:temp);display.println(state.help?"HELP REQUEST LATCHED":sensorFault?"SENSOR FAULT":state.fanFault?"FAN FEEDBACK FAULT":advice==FAN_AVOID?"HOT: FAN MAY ADD HEAT":advice==FAN_CAUTION?"FAN: LIMITED BENEFIT":"Not a safety rating");display.display();}
 }

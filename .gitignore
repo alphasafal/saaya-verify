@@ -13,3 +13,4 @@ node_modules/
 .vercel/
 docs/report/*.html
 docs/report/*-raw.pdf
+firmware/wokwi-full/dist/

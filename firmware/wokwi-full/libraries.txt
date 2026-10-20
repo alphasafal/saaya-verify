@@ -1,0 +1,9 @@
+# Wokwi Library List (same versions as firmware/platformio.ini)
+Adafruit SHT31 Library@2.2.2
+Adafruit SSD1306@2.5.13
+Adafruit GFX Library
+Adafruit BusIO
+Adafruit INA219@1.2.3
+DallasTemperature@3.11.0
+OneWire@2.3.8
+ArduinoJson@7.3.0
