@@ -13,7 +13,7 @@
 constexpr int PWM=25,TACH=34,WATER=35,MODE=32,HELP=33,ACK=27,LED=26,BUZZER=14,ROOF=4;
 Adafruit_SHT31 outside,inside;Adafruit_SSD1306 display(128,64,&Wire,-1);Adafruit_INA219 powerMeter;
 OneWire oneWire(ROOF);DallasTemperature roof(&oneWire);Preferences preferences;
-ControlState state;bool outOK=false,inOK=false,displayOK=false,powerOK=false,manual=false;
+ControlState state;bool autoOn=false;bool outOK=false,inOK=false,displayOK=false,powerOK=false,manual=false;
 volatile uint32_t tachPulses=0;uint32_t lastSample=0,seq=0;char session[32];uint64_t uptimeMs=0;uint32_t previousMillis=0;
 float rpm=0,temp=NAN,rh=NAN,ot=NAN,orr=NAN,roofTemp=NAN;bool sensorFault=true,haveRoofConversion=false;
 void IRAM_ATTR tachRise(){tachPulses++;}
@@ -37,7 +37,7 @@ void loop(){
  uint32_t now=millis();uptimeMs+=uint32_t(now-previousMillis);previousMillis=now;esp_task_wdt_reset();
  if(modeButton.press(now))manual=!manual;
  bool helpPressed=helpButton.press(now),ackPressed=ackButton.press(now),oldHelp=state.help;
- ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;input.automatic=SAAYA_BENCH_AUTO&&!manual&&isfinite(temp)&&temp>=32;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
+ ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;autoOn=SAAYA_BENCH_AUTO&&!manual&&!sensorFault&&autoRequest(autoOn,temp);input.automatic=autoOn;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
  state=step(state,input);
  if(oldHelp!=state.help)preferences.putBool("help",state.help);
  ledcWrite(0,255-state.duty*255/100);digitalWrite(LED,state.help||state.fanFault||sensorFault);

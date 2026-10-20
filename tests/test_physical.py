@@ -1,3 +1,4 @@
+import math
 import pytest
 from api.physical import evaluate_physical
 from api.core import scenario
@@ -12,7 +13,9 @@ def trial():
 def test_physical_protocol_accepts_complete_fixture():
     rows,meta=trial();result=evaluate_physical(rows,meta)
     assert result['status']=='OBSERVED' and result['coverage']==1
-    assert result['delta']==pytest.approx(-6)
+    # seed-1 synthetic 'day' offset is part of the fixture; compute rather than hard-code
+    assert result['delta']==pytest.approx(-6+.8*math.sin(2.3))
+    assert result['outcome']=='DIFFERENCE_IN_DECLARED_DIRECTION' and result['paired_statistics']['n']==600
 
 def test_physical_rejects_unverified_calibration():
     rows,meta=trial();rows[0]['calibration_id']='UNVERIFIED'

@@ -1,6 +1,6 @@
 """Offline measured-pair evaluation. Operator metadata is recorded, not independently certified."""
 from datetime import datetime
-from .core import Sample,energy
+from .core import Sample,energy,declaration_for,classify,paired_statistics
 
 def evaluate_physical(records,metadata):
     rows=[Sample(**r).model_dump() for r in records];reasons=[]
@@ -29,5 +29,8 @@ def evaluate_physical(records,metadata):
     if len(bins)!=len(valid):reasons.append('Multiple samples in a one-second bin violate declared cadence')
     if coverage<.9:reasons.append('Less than 90% paired coverage of the 600-second window')
     if endpoint=='air_speed' and any(r['fan_fault'] for r in rows):reasons.append('Fan feedback failure during air-speed intervention')
-    delta=None if reasons else sum(r[endpoint]-r[ref] for r in valid)/len(valid)
-    return {'status':'INVALID' if reasons else 'OBSERVED','endpoint':endpoint,'unit':'°C' if endpoint=='roof_temp' else 'm/s','delta':delta,'coverage':coverage,'excluded_samples':len(rows)-len(valid),'reasons':reasons,'energy':energy(rows),'metadata':metadata,'source':'MEASURED','uncertainty':'Independent-run uncertainty not established; instrument uncertainty is operator-supplied','limitation':'Metadata and calibration declarations are not independently certified. No human safety conclusion.'}
+    try:declaration=declaration_for(endpoint,metadata.get('margin'))
+    except ValueError:declaration=declaration_for(endpoint);reasons.append('Invalid declared margin')
+    diffs=[r[endpoint]-r[ref] for r in sorted(valid,key=lambda r:r['seq'])]
+    delta=None if reasons else sum(diffs)/len(diffs)
+    return {'status':'INVALID' if reasons else 'OBSERVED','outcome':'INVALID' if reasons else classify(delta,declaration),'declaration':declaration,'paired_statistics':None if reasons else paired_statistics(diffs),'session_ids':sorted({r['session_id'] for r in rows}),'sources':['MEASURED'],'endpoint':endpoint,'unit':'°C' if endpoint=='roof_temp' else 'm/s','delta':delta,'coverage':coverage,'excluded_samples':len(rows)-len(valid),'reasons':reasons,'energy':energy(rows),'metadata':metadata,'source':'MEASURED','uncertainty':'Independent-run uncertainty not established; instrument uncertainty is operator-supplied','limitation':'Metadata and calibration declarations are not independently certified. No human safety conclusion.'}

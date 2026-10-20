@@ -9,6 +9,8 @@ test('optional bench auto threshold and invalid-sensor inhibition',()=>{
  assert.equal(evaluateCooling({...base,mode:'auto',temp:31.9}).duty,0);
  assert.equal(evaluateCooling({...base,mode:'auto',temp:32}).duty,50);
  assert.equal(evaluateCooling({...base,mode:'auto',sensorFault:true}).duty,0);
+ assert.equal(evaluateCooling({...base,mode:'auto',temp:31.5,autoWasOn:true}).duty,50);
+ assert.equal(evaluateCooling({...base,mode:'auto',temp:30.9,autoWasOn:true}).duty,0);
 });
 test('humidity and roof observations do not invent firmware actuators',()=>{
  const x=evaluateCooling({...base,rh:90,roof:70,water:false});assert.equal(x.duty,70);assert.equal(x.evaporation,'limited');assert.equal(x.waterActuator,false);

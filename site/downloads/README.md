@@ -10,6 +10,12 @@
 
 **Status:** software demonstrator and engineering package. No physical build, calibrated measurements, manufacturing release or safety certification is claimed. See [verification](docs/verification.md).
 
+**Teacher presentation:** https://saaya-verify.vercel.app/explain.html — interactive IoT diagram, labelled CAD, placement rationales, bench pin map and current engineering gaps.
+
+**Operational CAD:** open [the worker / fan / sensor view](https://saaya-verify.vercel.app/fullsize-model.html) and change synthetic parameters. [Layer scope and control rules](docs/operational-cad.md).
+
+**New FS-02:** [five-person rest pavilion](https://saaya-verify.vercel.app/rest-pavilion.html), a separate concept with five reclining cots and independently directed fan locations. [Design and physiology boundaries](docs/FS02-design-review.md).
+
 ## Explore
 
 [Two-minute presentation and workshop handoff](docs/demo-guide.md).
