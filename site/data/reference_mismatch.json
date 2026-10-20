@@ -1752,7 +1752,7 @@
         "beneficial_direction": "lower",
         "margin": 1.0,
         "unit": "\u00b0C",
-        "margin_basis": "Two \u00b10.5 \u00b0C probes combine to \u22480.7 \u00b0C; 1.0 \u00b0C chosen before data collection",
+        "margin_basis": "Set above possible disagreement of two \u00b10.5 \u00b0C probes before offset correction; chosen before data collection",
         "endpoint": "roof_temp"
       },
       "endpoint": "roof_temp",
@@ -1765,6 +1765,7 @@
       "session_ids": [
         "sim-reference_mismatch-1"
       ],
+      "day": null,
       "reasons": [
         "Unaligned or mismatched reference conditions"
       ],
@@ -1776,8 +1777,8 @@
         "total_seconds": 59.0,
         "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
-      "uncertainty": "Not established: independent repeated runs required",
-      "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",
+      "uncertainty": "Not established: independent repeated runs on separate days required",
+      "interpretation": "Single-run descriptive paired difference; not a safety or human-recovery assessment",
       "method": "Mean intervention minus simultaneous reference; synthetic coefficients are illustrative"
     },
     "air_speed": {
@@ -1800,6 +1801,7 @@
       "session_ids": [
         "sim-reference_mismatch-1"
       ],
+      "day": null,
       "reasons": [
         "Unaligned or mismatched reference conditions"
       ],
@@ -1811,8 +1813,8 @@
         "total_seconds": 59.0,
         "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
-      "uncertainty": "Not established: independent repeated runs required",
-      "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",
+      "uncertainty": "Not established: independent repeated runs on separate days required",
+      "interpretation": "Single-run descriptive paired difference; not a safety or human-recovery assessment",
       "method": "Mean intervention minus simultaneous reference; synthetic coefficients are illustrative"
     }
   }

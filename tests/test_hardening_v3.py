@@ -67,13 +67,15 @@ def test_device_endpoint_accepts_measured_only(client):
 # predeclared beneficial direction; the evaluator only ever said OBSERVED or INVALID.
 def test_outcome_uses_predeclared_direction_and_margin():
     rows = scenario('normal', 1)
-    assert evaluate(rows, 'roof_temp')['outcome'] == 'DIFFERENCE_IN_DECLARED_DIRECTION'
-    assert evaluate(rows, 'roof_temp', declaration_for('roof_temp', margin=50))['outcome'] == 'NO_CLEAR_DIFFERENCE'
+    assert evaluate(rows, 'roof_temp')['outcome'] == 'POINT_ESTIMATE_IN_DECLARED_DIRECTION'
+    assert evaluate(rows, 'roof_temp', declaration_for('roof_temp', margin=50))['outcome'] == 'POINT_ESTIMATE_WITHIN_MARGIN'
     # Swap intervention and reference: the same data now shows harm, and says so.
     flipped = [dict(r, roof_temp=r['ref_roof'], ref_roof=r['roof_temp']) for r in rows]
-    assert evaluate(flipped, 'roof_temp')['outcome'] == 'DIFFERENCE_AGAINST_DECLARED_DIRECTION'
+    assert evaluate(flipped, 'roof_temp')['outcome'] == 'POINT_ESTIMATE_AGAINST_DECLARED_DIRECTION'
     assert evaluate(scenario('fan_failure', 1), 'air_speed')['outcome'] == 'INVALID'
-    assert classify(0.0, declaration_for('air_speed')) == 'NO_CLEAR_DIFFERENCE'
+    assert classify(0.0, declaration_for('air_speed')) == 'POINT_ESTIMATE_WITHIN_MARGIN'
+    # A single run is never labelled a 'difference'; that word is reserved for replicated results.
+    assert 'DIFFERENCE' not in evaluate(rows, 'roof_temp')['outcome'].replace('POINT_ESTIMATE', '')
 
 
 def test_bad_margin_rejected():
@@ -84,8 +86,24 @@ def test_bad_margin_rejected():
 
 def test_within_run_autocorrelation_reported():
     s = paired_statistics([math.sin(i * .37) for i in range(60)])
-    assert s['lag1_autocorrelation'] > 0.5 and s['n_effective'] < s['n'] / 3
+    assert s['lag1_autocorrelation'] > 0.5 and 1 <= s['n_effective'] < s['n'] / 3
     assert paired_statistics([1.0])['sd'] is None
+    # Constant series: autocorrelation is undefined, not an artefact of rounding noise.
+    c = paired_statistics([-6.0 + 1e-15 * (i % 2) for i in range(60)])
+    assert c['lag1_autocorrelation'] is None and c['n_effective'] is None
+    # Anti-correlated noise cannot inflate n_eff beyond n.
+    assert paired_statistics([(-1) ** i for i in range(60)])['n_effective'] <= 60
+
+
+# Flaw: three sessions on one afternoon could pass as "independent runs on different days".
+def test_aggregate_requires_distinct_days():
+    d = declaration_for('roof_temp')
+    base = {'endpoint': 'roof_temp', 'sources': ['MEASURED'], 'declaration': d, 'status': 'OBSERVED'}
+    same = [dict(base, delta=-3 + i * .1, session_ids=[str(i)], day='2026-05-15') for i in range(4)]
+    r = aggregate(same)
+    assert r['outcome'] == 'UNCERTAINTY_NOT_ESTABLISHED' and 'distinct days' in r['reason']
+    undated = [dict(base, delta=-3.0, session_ids=[str(i)]) for i in range(3)]
+    assert aggregate(undated)['outcome'] == 'UNCERTAINTY_NOT_ESTABLISHED'
 
 
 # Flaw: "uncertainty not established" was permanent; there was no method to establish it.
@@ -113,9 +131,9 @@ def test_invalid_runs_are_counted_not_dropped(client):
 def test_equivalence_and_inconclusive_logic():
     d = declaration_for('roof_temp', margin=1.0)
     base = {'endpoint': 'roof_temp', 'sources': ['SIMULATED'], 'declaration': d, 'status': 'OBSERVED'}
-    tight = [dict(base, delta=x, session_ids=[str(i)]) for i, x in enumerate([0.1, -0.1, 0.05, -0.05])]
+    tight = [dict(base, delta=x, session_ids=[str(i)], day=f'd{i}') for i, x in enumerate([0.1, -0.1, 0.05, -0.05])]
     assert aggregate(tight)['outcome'] == 'EQUIVALENT_WITHIN_MARGIN'
-    noisy = [dict(base, delta=x, session_ids=[str(i)]) for i, x in enumerate([-3, 2, -1.5])]
+    noisy = [dict(base, delta=x, session_ids=[str(i)], day=f'd{i}') for i, x in enumerate([-3, 2, -1.5])]
     assert aggregate(noisy)['outcome'] == 'INCONCLUSIVE'
 
 
@@ -157,6 +175,7 @@ def test_physical_cli_single_and_aggregate(tmp_path):
         rows, meta = trial()
         for r in rows:
             r['session_id'] = f'day{day}'
+        meta['declared_at'] = f'2026-05-1{day}T09:00:00+05:30'; meta['started_at'] = f'2026-05-1{day}T09:10:00+05:30'
         (tmp_path / f's{day}.json').write_text(json.dumps(rows)); (tmp_path / f'm{day}.json').write_text(json.dumps(meta))
         out = tmp_path / f'r{day}.json'
         subprocess.run([sys.executable, 'scripts/evaluate_physical.py', str(tmp_path / f's{day}.json'), str(tmp_path / f'm{day}.json'), '--output', str(out)], check=True)

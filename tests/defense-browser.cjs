@@ -10,7 +10,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const asse
   assert.match(await p.locator('#cost-fullsize').textContent(),/₹/);
   assert.match(await p.locator('#aggregate-outcome').textContent(),/simulated runs/);
   assert((await p.locator('#mrt-chart svg rect').count())>=7);
-  assert((await p.locator('#adr details').count())>=10);
+  assert((await p.locator('#adr details').count())>=10);assert.equal(await p.locator('#band-table tbody tr').count(),2);
   assert((await p.locator('#qa details').count())>=8);
   assert(!(await p.content()).includes('RESEARCH-FILL'),'no unfilled sections');
   await p.locator('#adr summary').first().click();assert(await p.locator('#adr details').first().evaluate(d=>d.open));

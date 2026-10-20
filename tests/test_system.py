@@ -50,7 +50,7 @@ def test_reboot_does_not_bridge_energy():
 def test_positive_result_is_not_safety():
     r=evaluate(scenario('normal',1),'roof_temp')
     assert r['status']=='OBSERVED' and r['delta']<0
-    assert r['uncertainty']=='Not established: independent repeated runs required'
+    assert r['uncertainty'].startswith('Not established: independent repeated runs')
 
 def test_control_help_and_override():
     state=control({}, {'help':True,'fault':True,'manual':True,'now_ms':0})

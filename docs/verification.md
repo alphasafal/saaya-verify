@@ -36,7 +36,7 @@ Firmware verification evidence: https://github.com/alphasafal/saaya-verify/actio
 |---|---|---|
 | API hardening | Tests run | Connection leak fixed (0 ResourceWarnings, was 27 in test_system), WAL, bounds, MEASURED-only ingestion, schema migration |
 | Evidence outcomes and aggregation | Tests run | Predeclared direction/margin, three outcomes, autocorrelation, cross-run t-interval; synthetic runs demonstrate method only |
-| Radiant screening model | Tests run (11) | Energy closure < 1e-3 W/m², solid-angle identities, physical orderings. NOT validated against measurement |
+| Radiant screening model | Tests run (17) | Energy closure < 1e-3 W/m², solid-angle and view-factor identities, solar position, physical orderings, declared prediction bands; adversarially reviewed (8 errors fixed). NOT validated against measurement |
 | Fan-benefit screen and hysteresis | Native C++, Python and JS tests run | Literature-based air-temperature screen; humidity limits not yet included; not a clinical rule |
 | ESP32 compile of v0.3 | Pending GitHub Actions | Local PlatformIO registry blocked in the review sandbox |
 | Design-defense page | Browser test run | Desktop and 390 px width, no JS errors |

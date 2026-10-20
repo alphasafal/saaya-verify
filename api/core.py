@@ -89,10 +89,12 @@ def energy(rows):
     return dict(wh=total if valid else None,coverage=valid/span if span else 0,valid_seconds=valid,total_seconds=span,method='Per-device/session trapezoidal integration; gaps >2 s excluded')
 
 # Predeclared, endpoint-specific decision rules. The margin is the smallest difference we
-# are willing to call real given instrument limits: two +/-0.5 C probes (SHT31/DS18B20)
-# combine to ~0.7 C, so 1.0 C; hot-wire anemometers are typically ~+/-(0.05 m/s + 5 %).
+# agree in advance to treat as meaningful. It is set above what the instruments could
+# produce on their own: two probes each rated +/-0.5 C could disagree by up to ~1 C before
+# the co-location swap removes their fixed offset, so 1.0 C; low-speed anemometers are
+# typically ~+/-(0.05 m/s + 5 %), so 0.2 m/s.
 DECLARATIONS={
-    'roof_temp':{'beneficial_direction':'lower','margin':1.0,'unit':'°C','margin_basis':'Two ±0.5 °C probes combine to ≈0.7 °C; 1.0 °C chosen before data collection'},
+    'roof_temp':{'beneficial_direction':'lower','margin':1.0,'unit':'°C','margin_basis':'Set above possible disagreement of two ±0.5 °C probes before offset correction; chosen before data collection'},
     'air_speed':{'beneficial_direction':'higher','margin':0.2,'unit':'m/s','margin_basis':'Typical low-speed anemometer accuracy ≈±(0.05 m/s + 5 %); 0.2 m/s chosen before data collection'},
 }
 
@@ -105,25 +107,27 @@ def declaration_for(endpoint,margin=None):
     return d
 
 def classify(delta,declaration):
-    """Signed effect versus predeclared direction and margin."""
+    """ONE run's point estimate versus the predeclared direction and margin. A single run is
+    never called a 'difference': that label is reserved for aggregate() over independent days."""
     sign=-1 if declaration['beneficial_direction']=='lower' else 1
-    if delta*sign>=declaration['margin']:return 'DIFFERENCE_IN_DECLARED_DIRECTION'
-    if delta*sign<=-declaration['margin']:return 'DIFFERENCE_AGAINST_DECLARED_DIRECTION'
-    return 'NO_CLEAR_DIFFERENCE'
+    if delta*sign>=declaration['margin']:return 'POINT_ESTIMATE_IN_DECLARED_DIRECTION'
+    if delta*sign<=-declaration['margin']:return 'POINT_ESTIMATE_AGAINST_DECLARED_DIRECTION'
+    return 'POINT_ESTIMATE_WITHIN_MARGIN'
 
 def paired_statistics(diffs):
     """Descriptive statistics of within-run paired differences. Consecutive 1 s samples are
-    autocorrelated, so the effective sample size n_eff=n(1-r1)/(1+r1) is reported to show why a
-    within-run confidence interval would be false precision."""
+    autocorrelated, so the effective sample size n_eff=n(1-r1)/(1+r1), clamped to [1, n], is
+    reported to show why a within-run confidence interval would be false precision."""
     n=len(diffs)
     if n<2:return {'n':n,'mean':diffs[0] if diffs else None,'sd':None,'lag1_autocorrelation':None,'n_effective':None}
-    m=sum(diffs)/n;var=sum((x-m)**2 for x in diffs)/(n-1);sd=math.sqrt(var)
-    den=sum((x-m)**2 for x in diffs)
-    r1=(sum((a-m)*(b-m) for a,b in zip(diffs,diffs[1:]))/den) if den>0 else 0.0
-    r1=max(min(r1,.999),-.999)
-    return {'n':n,'mean':m,'sd':sd,'min':min(diffs),'max':max(diffs),'lag1_autocorrelation':r1,'n_effective':n*(1-r1)/(1+r1)}
+    m=sum(diffs)/n;den=sum((x-m)**2 for x in diffs);sd=math.sqrt(den/(n-1))
+    out={'n':n,'mean':m,'sd':sd,'min':min(diffs),'max':max(diffs)}
+    if sd<=1e-9*max(1.0,abs(m)):  # constant series: autocorrelation is undefined, not 0.98 from rounding noise
+        out.update(lag1_autocorrelation=None,n_effective=None);return out
+    r1=sum((a-m)*(b-m) for a,b in zip(diffs,diffs[1:]))/den
+    out.update(lag1_autocorrelation=r1,n_effective=min(n,max(1.0,n*(1-r1)/(1+r1))));return out
 
-def evaluate(rows,endpoint='roof_temp',declaration=None):
+def evaluate(rows,endpoint='roof_temp',declaration=None,day=None):
     reasons=[];delta=None
     if endpoint not in ('roof_temp','air_speed'):raise ValueError('Unknown endpoint')
     if len(rows)<48:reasons.append('Insufficient coverage: at least 48 of 60 samples required')
@@ -144,7 +148,7 @@ def evaluate(rows,endpoint='roof_temp',declaration=None):
     if not reasons:
         diffs=[r[endpoint]-r[ref] for r in ordered];delta=sum(diffs)/len(diffs);stats=paired_statistics(diffs)
     outcome='INVALID' if reasons else classify(delta,declaration)
-    return dict(status='INVALID' if reasons else 'OBSERVED',outcome=outcome,declaration=declaration,endpoint=endpoint,unit='°C' if endpoint=='roof_temp' else 'm/s',delta=delta,paired_statistics=stats,sources=sources,session_ids=sorted(set(r['session_id'] for r in rows)),reasons=reasons,sample_count=len(rows),energy=energy(rows),uncertainty='Not established: independent repeated runs required',interpretation='Descriptive paired difference only; not a safety or human-recovery assessment',method='Mean intervention minus simultaneous reference; synthetic coefficients are illustrative')
+    return dict(status='INVALID' if reasons else 'OBSERVED',outcome=outcome,declaration=declaration,endpoint=endpoint,unit='°C' if endpoint=='roof_temp' else 'm/s',delta=delta,paired_statistics=stats,sources=sources,session_ids=sorted(set(r['session_id'] for r in rows)),day=day,reasons=reasons,sample_count=len(rows),energy=energy(rows),uncertainty='Not established: independent repeated runs on separate days required',interpretation='Single-run descriptive paired difference; not a safety or human-recovery assessment',method='Mean intervention minus simultaneous reference; synthetic coefficients are illustrative')
 
 # Two-sided 95 % Student-t critical values, df 1..30 (standard table).
 _T95=[12.706,4.303,3.182,2.776,2.571,2.447,2.365,2.306,2.262,2.228,2.201,2.179,2.160,2.145,2.131,2.120,2.110,2.101,2.093,2.086,2.080,2.074,2.069,2.064,2.060,2.056,2.052,2.048,2.045,2.042]
@@ -153,8 +157,10 @@ def t95(df):return _T95[df-1] if df<=30 else 1.96+2.4/df
 
 def aggregate(results,min_runs=3):
     """Combine independent runs (one run = one unit of replication). Uses run means only, never
-    pooled samples. Decision is equivalence-style against the predeclared margin:
-    the whole 95 % CI must clear the margin before a direction is claimed."""
+    pooled samples. Runs must come from at least `min_runs` distinct days, because runs on the same
+    afternoon share weather and are not independent. Decision is equivalence-style against the
+    predeclared margin using a two-sided 95 % CI (stricter than the 90 % CI of a standard TOST):
+    a direction is claimed only if the whole interval clears the margin."""
     if not results:raise ValueError('No runs supplied')
     endpoints={r['endpoint'] for r in results};sources={tuple(r['sources']) for r in results}
     decls={(r['declaration']['beneficial_direction'],r['declaration']['margin']) for r in results}
@@ -165,10 +171,15 @@ def aggregate(results,min_runs=3):
     if len(sessions)!=len(set(sessions)):raise ValueError('The same acquisition session appears twice; runs are not independent')
     valid=[r for r in results if r['status']=='OBSERVED'];invalid=len(results)-len(valid)
     decl=dict(results[0]['declaration']);deltas=[r['delta'] for r in valid];n=len(deltas)
-    out={'endpoint':results[0]['endpoint'],'source':results[0]['sources'][0] if results[0]['sources'] else None,'declaration':decl,'runs_supplied':len(results),'runs_valid':n,'runs_invalid':invalid,'run_deltas':deltas,'method':'Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin'}
-    if invalid:out['note']='Invalid runs are reported, not silently dropped; they count against coverage of the study'
-    if n<min_runs:
-        out.update(mean=sum(deltas)/n if n else None,sd=None,ci95=None,outcome='UNCERTAINTY_NOT_ESTABLISHED',reason=f'At least {min_runs} valid independent runs required; have {n}');return out
+    days=sorted({r.get('day') for r in valid if r.get('day')})
+    out={'endpoint':results[0]['endpoint'],'source':results[0]['sources'][0] if results[0]['sources'] else None,'declaration':decl,'runs_supplied':len(results),'runs_valid':n,'runs_invalid':invalid,'valid_fraction':n/len(results),'distinct_days':len(days),'run_deltas':deltas,'method':'Mean of independent run-level paired differences (≥3 distinct days); Student-t two-sided 95 % CI; equivalence-style decision against predeclared margin'}
+    if invalid:out['note']='Invalid runs are reported in runs_invalid and valid_fraction, not silently dropped'
+    reason=None
+    if n<min_runs:reason=f'At least {min_runs} valid independent runs required; have {n}'
+    elif any(not r.get('day') for r in valid):reason='Every run must record the day it was collected'
+    elif len(days)<min_runs:reason=f'Runs must span at least {min_runs} distinct days; have {len(days)}'
+    if reason:
+        out.update(mean=sum(deltas)/n if n else None,sd=None,ci95=None,outcome='UNCERTAINTY_NOT_ESTABLISHED',reason=reason);return out
     m=sum(deltas)/n;sd=math.sqrt(sum((x-m)**2 for x in deltas)/(n-1));half=t95(n-1)*sd/math.sqrt(n);lo,hi=m-half,m+half
     sign=-1 if decl['beneficial_direction']=='lower' else 1;mar=decl['margin']
     blo,bhi=sorted((lo*sign,hi*sign))

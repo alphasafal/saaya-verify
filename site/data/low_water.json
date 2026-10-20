@@ -1747,12 +1747,12 @@
   "evidence": {
     "roof_temp": {
       "status": "OBSERVED",
-      "outcome": "DIFFERENCE_IN_DECLARED_DIRECTION",
+      "outcome": "POINT_ESTIMATE_IN_DECLARED_DIRECTION",
       "declaration": {
         "beneficial_direction": "lower",
         "margin": 1.0,
         "unit": "\u00b0C",
-        "margin_basis": "Two \u00b10.5 \u00b0C probes combine to \u22480.7 \u00b0C; 1.0 \u00b0C chosen before data collection",
+        "margin_basis": "Set above possible disagreement of two \u00b10.5 \u00b0C probes before offset correction; chosen before data collection",
         "endpoint": "roof_temp"
       },
       "endpoint": "roof_temp",
@@ -1764,8 +1764,8 @@
         "sd": 8.956737291214457e-16,
         "min": -5.403435830258623,
         "max": -5.403435830258623,
-        "lag1_autocorrelation": 0.9833333333333333,
-        "n_effective": 0.5042016806722704
+        "lag1_autocorrelation": null,
+        "n_effective": null
       },
       "sources": [
         "SIMULATED"
@@ -1773,6 +1773,7 @@
       "session_ids": [
         "sim-low_water-1"
       ],
+      "day": null,
       "reasons": [],
       "sample_count": 60,
       "energy": {
@@ -1782,13 +1783,13 @@
         "total_seconds": 59.0,
         "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
-      "uncertainty": "Not established: independent repeated runs required",
-      "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",
+      "uncertainty": "Not established: independent repeated runs on separate days required",
+      "interpretation": "Single-run descriptive paired difference; not a safety or human-recovery assessment",
       "method": "Mean intervention minus simultaneous reference; synthetic coefficients are illustrative"
     },
     "air_speed": {
       "status": "OBSERVED",
-      "outcome": "DIFFERENCE_IN_DECLARED_DIRECTION",
+      "outcome": "POINT_ESTIMATE_IN_DECLARED_DIRECTION",
       "declaration": {
         "beneficial_direction": "higher",
         "margin": 0.2,
@@ -1814,6 +1815,7 @@
       "session_ids": [
         "sim-low_water-1"
       ],
+      "day": null,
       "reasons": [],
       "sample_count": 60,
       "energy": {
@@ -1823,8 +1825,8 @@
         "total_seconds": 59.0,
         "method": "Per-device/session trapezoidal integration; gaps >2 s excluded"
       },
-      "uncertainty": "Not established: independent repeated runs required",
-      "interpretation": "Descriptive paired difference only; not a safety or human-recovery assessment",
+      "uncertainty": "Not established: independent repeated runs on separate days required",
+      "interpretation": "Single-run descriptive paired difference; not a safety or human-recovery assessment",
       "method": "Mean intervention minus simultaneous reference; synthetic coefficients are illustrative"
     }
   }

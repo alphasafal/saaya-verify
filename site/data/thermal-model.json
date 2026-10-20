@@ -5,11 +5,14 @@
   "rh": 45.0,
   "ghi": 900.0,
   "diffuse_fraction": 0.2,
-  "sun_elevation_deg": 78.0,
+  "latitude_deg": 12.92,
+  "day_of_year": 135,
   "wind": 1.0,
   "ground_albedo": 0.2,
   "sunlit_ground_rise": 15.0,
-  "shaded_ground_rise": 2.0
+  "shaded_ground_rise": 2.0,
+  "sun_elevation_deg": 84.13609609318559,
+  "sun_is_north": true
  },
  "person": {
   "px": 1.2,
@@ -24,9 +27,14 @@
    "design": "Open sun (no shelter)",
    "underside_c": null,
    "upper_c": null,
-   "tmrt_c": 73.87809069253876,
-   "operative_c": 52.3512362770155,
-   "globe_150mm_c": 58.28563091670662,
+   "tmrt_c": 73.64379067091141,
+   "tmrt_by_seat_c": {
+    "rear seat": 73.64379067091141,
+    "mirrored seat": 73.64379067091141
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 52.25751626836457,
+   "globe_150mm_c": 64.70291826118319,
    "sun_on_head": true,
    "view_fractions": {
     "roof": 0.0,
@@ -38,274 +46,353 @@
   },
   {
    "design": "Weathered GI / cement sheet (typical existing shed)",
-   "underside_c": 58.82309082848951,
-   "upper_c": 58.82309082848951,
-   "tmrt_c": 55.377575662894856,
-   "operative_c": 44.95103026515794,
-   "globe_150mm_c": 47.24939804186715,
+   "underside_c": 66.99239400634542,
+   "upper_c": 66.99239400634542,
+   "tmrt_c": 57.7891291940137,
+   "tmrt_by_seat_c": {
+    "rear seat": 57.7891291940137,
+    "mirrored seat": 56.89520039126779
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 45.91565167760548,
+   "globe_150mm_c": 51.16942614181801,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 1.1550139618066169e-06
+   "energy_residual_w_m2": 5.343565305793163e-07
   },
   {
    "design": "Single bare galvanised sheet",
-   "underside_c": 65.38883541198447,
-   "upper_c": 65.38883541198447,
-   "tmrt_c": 53.9271076699161,
-   "operative_c": 44.37084306796644,
-   "globe_150mm_c": 46.43568984476701,
+   "underside_c": 79.54733579372987,
+   "upper_c": 79.54733579372987,
+   "tmrt_c": 56.65155355244434,
+   "tmrt_by_seat_c": {
+    "rear seat": 56.65155355244434,
+    "mirrored seat": 55.74829160488457
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 45.46062142097774,
+   "globe_150mm_c": 50.52884896347177,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 2.1995305843347523e-07
+   "energy_residual_w_m2": 1.0255853055696207e-07
   },
   {
    "design": "Single sheet, white both faces",
-   "underside_c": 44.34795761434361,
-   "upper_c": 44.34795761434361,
-   "tmrt_c": 53.51968490305893,
-   "operative_c": 44.20787396122357,
-   "globe_150mm_c": 46.20848780494936,
+   "underside_c": 48.94368394231424,
+   "upper_c": 48.94368394231424,
+   "tmrt_c": 55.380111584727956,
+   "tmrt_by_seat_c": {
+    "rear seat": 55.380111584727956,
+    "mirrored seat": 54.4662631505181
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 44.952044633891184,
+   "globe_150mm_c": 49.81833688445374,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 6.19185282602075e-07
+   "energy_residual_w_m2": 3.879361214487176e-07
   },
   {
    "design": "Single sheet, white top / bare underside",
-   "underside_c": 45.13676974410191,
-   "upper_c": 45.13676974410191,
-   "tmrt_c": 53.17373069135863,
-   "operative_c": 44.06949227654346,
-   "globe_150mm_c": 46.01603306610991,
+   "underside_c": 48.757973918225616,
+   "upper_c": 48.757973918225616,
+   "tmrt_c": 55.43725738901276,
+   "tmrt_by_seat_c": {
+    "rear seat": 55.43725738901276,
+    "mirrored seat": 54.52388832676354
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 44.9749029556051,
+   "globe_150mm_c": 49.85014788637886,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 9.959962472549932e-07
+   "energy_residual_w_m2": 6.324147348024667e-07
   },
   {
    "design": "SAAYA double roof (white top, ventilated gap, bare low-e lining)",
-   "underside_c": 38.642537989187986,
-   "upper_c": 45.47084324946627,
-   "tmrt_c": 52.95970266357483,
-   "operative_c": 43.983881065429934,
-   "globe_150mm_c": 45.89718468892988,
+   "underside_c": 40.97453452600166,
+   "upper_c": 48.56509860558435,
+   "tmrt_c": 55.178754939994064,
+   "tmrt_by_seat_c": {
+    "rear seat": 55.178754939994064,
+    "mirrored seat": 54.26321472302908
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 44.87150197599763,
+   "globe_150mm_c": 49.70634185821302,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 4.951117773543956e-07
+   "energy_residual_w_m2": 1.2982712860321044e-07
   },
   {
    "design": "Double roof, sealed (unventilated) gap",
-   "underside_c": 40.40326781524345,
-   "upper_c": 47.885303599294275,
-   "tmrt_c": 53.016467853758115,
-   "operative_c": 44.006587141503246,
-   "globe_150mm_c": 45.92868995265292,
+   "underside_c": 44.287572633009404,
+   "upper_c": 50.92730568209663,
+   "tmrt_c": 55.28654425730099,
+   "tmrt_by_seat_c": {
+    "rear seat": 55.28654425730099,
+    "mirrored seat": 54.37191019879964
+   },
+   "reported_seat": "rear seat",
+   "operative_c_indicative": 44.914617702920395,
+   "globe_150mm_c": 49.76627662657097,
    "sun_on_head": false,
    "view_fractions": {
     "roof": 0.14634562446883548,
     "sky": 0.3536543755311645,
-    "shaded_ground": 0.19375100829620234,
-    "sunlit_ground": 0.30624899170379766
+    "shaded_ground": 0.14723379854072585,
+    "sunlit_ground": 0.3527662014592741
    },
-   "energy_residual_w_m2": 3.5332152492628666e-07
+   "energy_residual_w_m2": 1.9046376564801903e-07
   }
  ],
+ "headline": {
+  "shade_alone_k": 15.854661476897718,
+  "roof_treatment_k": 2.610374254019632,
+  "total_k": 18.46503573091735,
+  "underside_cooler_k": 26.01785948034376,
+  "roof_view_fraction": 0.14634562446883548
+ },
  "overhang": [
   {
    "extra_overhang_m": 0.0,
    "roof_area_m2": 6.7200000000000015,
-   "tmrt_c": 52.95970266357483,
+   "tmrt_c": 55.178754939994064,
    "roof_view_fraction": 0.14634562446883548
   },
   {
    "extra_overhang_m": 0.3,
    "roof_area_m2": 10.2,
-   "tmrt_c": 51.558606418996646,
+   "tmrt_c": 53.73698505456508,
    "roof_view_fraction": 0.1896666003774955
   },
   {
    "extra_overhang_m": 0.6,
    "roof_area_m2": 14.400000000000002,
-   "tmrt_c": 50.400386367566625,
+   "tmrt_c": 52.4229231206935,
    "roof_view_fraction": 0.2267325907598915
   },
   {
    "extra_overhang_m": 0.9,
    "roof_area_m2": 19.32,
-   "tmrt_c": 49.45048995736431,
+   "tmrt_c": 51.28731841752517,
    "roof_view_fraction": 0.25752012805776964
   },
   {
    "extra_overhang_m": 1.2,
    "roof_area_m2": 24.96,
-   "tmrt_c": 48.668522095391154,
+   "tmrt_c": 50.324246819186556,
    "roof_view_fraction": 0.28290566276860213
   }
  ],
  "sensitivity": [
   {
-   "parameter": "wind",
+   "parameter": "wind (m/s)",
    "value": 0.3,
-   "tmrt_existing_shed_c": 55.78190711685642,
-   "tmrt_saaya_c": 52.96545731187831,
-   "benefit_k": 2.816449804978106
+   "tmrt_existing_shed_c": 58.35803892847753,
+   "tmrt_saaya_c": 55.20418501453821,
+   "benefit_k": 3.153853913939315
   },
   {
-   "parameter": "wind",
+   "parameter": "wind (m/s)",
    "value": 1.0,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95970266357483,
-   "benefit_k": 2.417872999320025
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
   },
   {
-   "parameter": "wind",
+   "parameter": "wind (m/s)",
    "value": 3.0,
-   "tmrt_existing_shed_c": 54.64453774499384,
-   "tmrt_saaya_c": 52.95120123864808,
-   "benefit_k": 1.6933365063457586
+   "tmrt_existing_shed_c": 56.74222356362526,
+   "tmrt_saaya_c": 55.142223724865744,
+   "benefit_k": 1.5999998387595156
   },
   {
-   "parameter": "irradiance",
+   "parameter": "irradiance (W/m\u00b2)",
    "value": 600.0,
-   "tmrt_existing_shed_c": 50.573786767043146,
-   "tmrt_saaya_c": 49.03774595301405,
-   "benefit_k": 1.5360408140290929
+   "tmrt_existing_shed_c": 52.58051475731531,
+   "tmrt_saaya_c": 51.12141999596281,
+   "benefit_k": 1.4590947613525032
   },
   {
-   "parameter": "irradiance",
+   "parameter": "irradiance (W/m\u00b2)",
    "value": 900.0,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95970266357483,
-   "benefit_k": 2.417872999320025
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
   },
   {
-   "parameter": "irradiance",
+   "parameter": "irradiance (W/m\u00b2)",
    "value": 1050.0,
-   "tmrt_existing_shed_c": 57.71446776067643,
-   "tmrt_saaya_c": 54.86880825336618,
-   "benefit_k": 2.845659507310245
+   "tmrt_existing_shed_c": 60.31718795532538,
+   "tmrt_saaya_c": 57.15239306697396,
+   "benefit_k": 3.164794888351423
   },
   {
-   "parameter": "air temperature",
+   "parameter": "air temperature (\u00b0C)",
    "value": 32.0,
-   "tmrt_existing_shed_c": 49.31430823322074,
-   "tmrt_saaya_c": 46.880809132561126,
-   "benefit_k": 2.433499100659617
+   "tmrt_existing_shed_c": 51.78304019293472,
+   "tmrt_saaya_c": 49.129990182632525,
+   "benefit_k": 2.653050010302195
   },
   {
-   "parameter": "air temperature",
+   "parameter": "air temperature (\u00b0C)",
    "value": 38.0,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95970266357483,
-   "benefit_k": 2.417872999320025
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
   },
   {
-   "parameter": "air temperature",
+   "parameter": "air temperature (\u00b0C)",
    "value": 42.0,
-   "tmrt_existing_shed_c": 59.47920894414693,
-   "tmrt_saaya_c": 57.06790758273792,
-   "benefit_k": 2.4113013614090164
+   "tmrt_existing_shed_c": 61.8548324604501,
+   "tmrt_saaya_c": 59.267312947192806,
+   "benefit_k": 2.5875195132572912
   },
   {
-   "parameter": "sunlit ground rise",
+   "parameter": "sunlit ground rise (K)",
    "value": 8.0,
-   "tmrt_existing_shed_c": 53.32749683782316,
-   "tmrt_saaya_c": 50.86309045833411,
-   "benefit_k": 2.4644063794890485
+   "tmrt_existing_shed_c": 55.20984816503636,
+   "tmrt_saaya_c": 52.23381551310962,
+   "benefit_k": 2.9760326519267437
   },
   {
-   "parameter": "sunlit ground rise",
+   "parameter": "sunlit ground rise (K)",
    "value": 15.0,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95970266357483,
-   "benefit_k": 2.417872999320025
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
   },
   {
-   "parameter": "sunlit ground rise",
+   "parameter": "sunlit ground rise (K)",
    "value": 25.0,
-   "tmrt_existing_shed_c": 58.47074591969135,
-   "tmrt_saaya_c": 56.12086748989151,
-   "benefit_k": 2.349878429799844
+   "tmrt_existing_shed_c": 61.66013579921889,
+   "tmrt_saaya_c": 59.57797274130138,
+   "benefit_k": 2.082163057917512
+  },
+  {
+   "parameter": "day of year",
+   "value": 74,
+   "tmrt_existing_shed_c": 56.59622648812183,
+   "tmrt_saaya_c": 53.97162837140132,
+   "benefit_k": 2.624598116720506
+  },
+  {
+   "parameter": "day of year",
+   "value": 135,
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
+  },
+  {
+   "parameter": "day of year",
+   "value": 288,
+   "tmrt_existing_shed_c": 56.670733697372555,
+   "tmrt_saaya_c": 54.06584342223209,
+   "benefit_k": 2.6048902751404626
+  },
+  {
+   "parameter": "lining emissivity (weathering)",
+   "value": 0.25,
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
+  },
+  {
+   "parameter": "lining emissivity (weathering)",
+   "value": 0.4,
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.05427573726064,
+   "benefit_k": 2.734853456753058
+  },
+  {
+   "parameter": "lining emissivity (weathering)",
+   "value": 0.6,
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 54.91988675003756,
+   "benefit_k": 2.869242443976134
   },
   {
    "parameter": "gap ventilation fraction",
    "value": 0.0,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 53.016467853758115,
-   "benefit_k": 2.3611078091367403
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.28654425730099,
+   "benefit_k": 2.502584936712708
   },
   {
    "parameter": "gap ventilation fraction",
    "value": 0.1,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.961160526904166,
-   "benefit_k": 2.4164151359906896
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.185718142335645,
+   "benefit_k": 2.6034110516780515
   },
   {
    "parameter": "gap ventilation fraction",
    "value": 0.3,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95970266357483,
-   "benefit_k": 2.417872999320025
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.178754939994064,
+   "benefit_k": 2.610374254019632
   },
   {
    "parameter": "gap ventilation fraction",
    "value": 0.6,
-   "tmrt_existing_shed_c": 55.377575662894856,
-   "tmrt_saaya_c": 52.95779701145426,
-   "benefit_k": 2.419778651440595
+   "tmrt_existing_shed_c": 57.7891291940137,
+   "tmrt_saaya_c": 55.169823167920356,
+   "benefit_k": 2.6193060260933407
   }
  ],
  "second_skin": [
   {
    "top_coat": "clean white top",
    "solar_absorptance": 0.25,
-   "single_underside_c": 45.13676974410191,
-   "double_underside_c": 38.642537989187986,
-   "single_tmrt_c": 53.17373069135863,
-   "double_tmrt_c": 52.95970266357483,
-   "tmrt_saved_by_second_skin_k": 0.21402802778379737
+   "single_underside_c": 48.757973918225616,
+   "double_underside_c": 40.97453452600166,
+   "single_tmrt_c": 55.43725738901276,
+   "double_tmrt_c": 55.178754939994064,
+   "tmrt_saved_by_second_skin_k": 0.25850244901869246
   },
   {
    "top_coat": "soiled top coat",
    "solar_absorptance": 0.45,
-   "single_underside_c": 52.11587740527466,
-   "double_underside_c": 39.11332848435268,
-   "single_tmrt_c": 53.41829822542877,
-   "double_tmrt_c": 52.97478979967741,
-   "tmrt_saved_by_second_skin_k": 0.44350842575136085
+   "single_underside_c": 58.13850619317964,
+   "double_underside_c": 42.04502798104659,
+   "single_tmrt_c": 55.773814656963225,
+   "double_tmrt_c": 55.21322432882761,
+   "tmrt_saved_by_second_skin_k": 0.5605903281356177
   },
   {
    "top_coat": "badly soiled / chalked",
    "solar_absorptance": 0.6,
-   "single_underside_c": 57.250744672026485,
-   "double_underside_c": 39.480498427990824,
-   "single_tmrt_c": 53.60820216534404,
-   "double_tmrt_c": 52.98660226938574,
-   "tmrt_saved_by_second_skin_k": 0.6215998959582976
+   "single_underside_c": 64.92940377397463,
+   "double_underside_c": 42.88037688424811,
+   "single_tmrt_c": 56.03526702103733,
+   "double_tmrt_c": 55.24035961910516,
+   "tmrt_saved_by_second_skin_k": 0.7949074019321642
   }
  ],
  "ground": [
@@ -313,30 +400,54 @@
    "surround": "bare dark soil / asphalt",
    "sunlit_ground_rise_k": 22.0,
    "albedo": 0.1,
-   "tmrt_c": 52.32386611727668
+   "tmrt_c": 55.185487682311305
   },
   {
    "surround": "typical dry ground",
    "sunlit_ground_rise_k": 15.0,
    "albedo": 0.2,
-   "tmrt_c": 52.95970266357483
+   "tmrt_c": 55.178754939994064
   },
   {
    "surround": "light paving",
    "sunlit_ground_rise_k": 12.0,
    "albedo": 0.4,
-   "tmrt_c": 57.64823615602046
+   "tmrt_c": 59.988124928554726
   },
   {
    "surround": "irrigated grass / ground cover",
    "sunlit_ground_rise_k": 4.0,
    "albedo": 0.22,
-   "tmrt_c": 50.2935950977062
+   "tmrt_c": 51.24486814404224
+  }
+ ],
+ "prediction_bands": [
+  {
+   "target": "SAAYA double roof",
+   "underside_c": [
+    39.639023690950125,
+    44.52257465058938
+   ],
+   "globe_150mm_c": [
+    46.3399997073962,
+    54.553218036609564
+   ]
+  },
+  {
+   "target": "Weathered shed sheet",
+   "underside_c": [
+    59.3345457916148,
+    73.82256291760132
+   ],
+   "globe_150mm_c": [
+    47.51264438051976,
+    56.32341811575952
+   ]
   }
  ],
  "falsification": [
-  "Roof underside (DS18B20 taped to lower skin, shaded from sun): predicted values in designs[].underside_c.",
-  "Black globe 150 mm at seated head height: predicted designs[].globe_150mm_c at the stated air speed.",
-  "Reject the model if paired measurements across >=3 independent clear days differ by more than the declared margin."
+  "Roof underside: DS18B20 bonded to the lining, shielded from sun; compare with prediction_bands[].underside_c.",
+  "150 mm black globe at seated head height with air speed logged; compare with prediction_bands[].globe_150mm_c.",
+  "Log irradiance, wind and ground temperature at the same time. Reject the model if the measurement falls outside the band on 2 or more of 3 clear days."
  ]
 }

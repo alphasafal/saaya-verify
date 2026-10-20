@@ -22,26 +22,35 @@ Interactive version with live charts: [`site/defense.html`](../site/defense.html
 
 Power sources: Blue Star 5-star 1395 W, Voltas 3-star 1615 W (aggregator spec pages); Atomberg Efficio 35 W; Usha 55 W, Crompton Torpedo 125 W (retail specs); Noctua NF-A4x10 PWM 0.32 W typ / 0.48 W max. An open shelter is not equivalent to AC.
 
-## 3. Radiant screening model (`api/thermal.py`, 11 tests)
+## 3. Radiant screening model (`api/thermal.py`, 17 test cases)
 
-Steady-state thin-skin roof balance (Swinbank clear sky, McAdams h = 5.7 + 3.8v, grey-body gap exchange, sealed-gap natural convection) and sphere mean radiant temperature at a seated head from exact rectangle solid angles; ISO 7730 operative weighting; ISO 7726 globe inversion. Conditions: 38 °C air, 900 W/m², sun 78°, wind 1 m/s, sunlit ground +15 K, FS-01 roof 2.8 × 2.4 m at 2.37 m, head 1.1 m.
+Steady-state thin-skin roof balance with a convection-only wind coefficient h = 2.8 + 3.0v (Watmuff 1977; radiation explicit), Swinbank clear sky (optimistic), ventilated-gap air at ambient (optimistic) or sealed-gap natural convection, roof underside viewing shaded and sunlit ground by view factor, and sphere mean radiant temperature at a seated head from exact rectangle solid angles. Person α 0.7 / ε 0.97 (VDI 3787 convention); black globe α = ε = 0.95 with the ASHRAE/ISO 7726 forced-convection relation (biased below ≈1 m/s, [Teitelbaum et al. 2022](https://link.springer.com/10.1038/s41598-022-10172-5)). Noon sun from latitude and date: on 15 May at Vellore it is 84° high and **north** of the zenith. Conditions: 38 °C air, 900 W/m², wind 1 m/s, sunlit ground +15 K, FS-01 roof 2.8 × 2.4 m at 2.37 m, head 1.1 m. Each design is reported at its less favourable seat (the rear bench).
 
-| Option | Roof underside | Seated MRT | 150 mm globe (pred.) |
+| Option | Roof underside | Seated MRT | 150 mm black globe (pred.) |
 |---|---|---|---|
-| Open sun (no shelter) | — | 73.9 °C | 58.3 °C |
-| Weathered GI / cement sheet (typical existing shed) | 58.8 °C | 55.4 °C | 47.2 °C |
-| Single bare galvanised sheet | 65.4 °C | 53.9 °C | 46.4 °C |
-| Single sheet, white both faces | 44.3 °C | 53.5 °C | 46.2 °C |
-| Single sheet, white top / bare underside | 45.1 °C | 53.2 °C | 46.0 °C |
-| SAAYA double roof (white top, ventilated gap, bare low-e lining) | 38.6 °C | 53.0 °C | 45.9 °C |
-| Double roof, sealed gap | 40.4 °C | 53.0 °C | 45.9 °C |
+| Open sun (no shelter) | — | 73.6 °C | 64.7 °C |
+| Weathered GI / cement sheet (typical existing shed) | 67.0 °C | 57.8 °C | 51.2 °C |
+| Single bare galvanised sheet | 79.5 °C | 56.7 °C | 50.5 °C |
+| Single sheet, white both faces | 48.9 °C | 55.4 °C | 49.8 °C |
+| Single sheet, white top / bare underside | 48.8 °C | 55.4 °C | 49.9 °C |
+| SAAYA double roof (white top, ventilated gap, bare low-e lining) | 41.0 °C | 55.2 °C | 49.7 °C |
+| Double roof, sealed (unventilated) gap | 44.3 °C | 55.3 °C | 49.8 °C |
 
 Findings that changed the design:
 
-1. Shade itself removes ≈21 K of radiant load; roof treatment adds ≈2.4 K versus a weathered shed; the roof fills only ≈15 % of the seated view.
-2. The second skin cuts underside temperature 6–18 K (more as the top coat soils) but seated MRT by only 0.2–0.6 K → **second skin becomes an optional, removable experiment**.
-3. +0.3 m overhang each side: −1.4 K for +52 % roof area. Planted/shaded ground: −2.7 K at no structural cost. Light paving *raises* MRT (reflected sun).
-4. Falsification: roof-underside DS18B20 and a 150 mm globe at seat height across ≥3 clear days; reject the model if outside the declared margin. Note the globe relation has known error below ≈1 m/s air speed ([Teitelbaum et al. 2022](https://link.springer.com/10.1038/s41598-022-10172-5)); record air speed alongside.
+1. Shade alone (open sun → typical shed) removes ≈15.9 K of seated MRT; SAAYA's roof removes a further ≈2.6 K (total 18.5 K). The roof fills only ≈15 % of the seated view.
+2. The second skin cuts lining temperature ≈8–22 K (more as the top coat soils) but seated MRT by only 0.3–0.8 K → **second skin becomes an optional, removable experiment**.
+3. Lining finish barely matters once the lining is cool; counting reflected hot ground, a painted lining is marginally better than bare low-e metal → **paint the lining** (also better against corrosion).
+4. +0.3 m overhang each side: −1.4 K for +52 % roof area. Irrigated ground cover: ≈−4 K at no structural cost. Light paving: ≈+5 K (reflected sun).
+
+Declared prediction bands (2⁵ corner cases of irradiance 800–1000 W/m², wind 0.5–2 m/s, diffuse fraction 0.15–0.3, sunlit ground +10–20 K, lining ε 0.25–0.5):
+
+| Target | Roof underside | Black globe |
+|---|---|---|
+| SAAYA double roof | 39.6–44.5 °C | 46.3–54.6 °C |
+| Weathered shed sheet | 59.3–73.8 °C | 47.5–56.3 °C |
+
+The underside bands do not overlap, so a roof-lining probe discriminates the designs; the globe bands overlap, so the globe tests the model's absolute level. Reject the model if measurements under logged conditions fall outside the band on 2 or more of 3 clear days.
 
 Field context: tree shade lowered afternoon MRT by up to 33.4 °C in Tempe, Arizona while air temperature varied ≤4.4 °C across sites ([Middel & Krayenhoff 2019](https://par.nsf.gov/servlets/purl/10099415)) — shade acts on radiation, not air temperature. Indian cool-roof pilots report 1–5 °C indoor reductions ([MHT Ahmedabad](https://www.mahilahousingtrust.org/wp-content/uploads/2022/09/MHT_Combating-Climate-Change‑induced-Heatstress-2.pdf), [NRDC](https://www.nrdc.org/experts/anjali-jaiswal/cool-roofs-community-led-initiatives-four-indian-cities)).
 
@@ -55,8 +64,8 @@ Implementation (identical in `controller.h`, `api/core.py`, `site/cooling-logic.
 
 | Topic | Chosen | Rejected | Why |
 |---|---|---|---|
-| Strategy | Passive shade + low-e roof, small fan add-on | AC, evaporative, misting, bare fan | No enclosure; humidity; water/hygiene; model shows shade dominates |
-| Roof | White top, ventilated gap, bare low-e lining; 2nd skin removable | Single painted sheet, sandwich panel, green roof, slab | Underside temp × emissivity is what the seated person feels |
+| Strategy | Passive shade + cool roof, small fan add-on | AC, evaporative, misting, bare fan | No enclosure; humidity; water/hygiene; model shows shade dominates |
+| Roof | White top, ventilated gap, cool painted lining; 2nd skin removable | Single painted sheet, sandwich panel, green roof, slab | A cool lining is what the seated person feels; finish barely matters once cool |
 | Controller | ESP32-WROOM, local control | Uno, Raspberry Pi, PLC | Watchdog, LEDC PWM, NVS latch, instant boot, ₹425–499; network loss never stops control |
 | Air sensors | 2 × SHT31 (0x44/0x45) | DHT22, BME280, thermistors | Digital, ±0.2 °C typ., identical pair swappable for bias |
 | Feedback | Tach interrupt; DS18B20 roof probe | Open loop, current only, IR | Proves the fan turns; IR fails on low-e surfaces |
@@ -70,12 +79,12 @@ Implementation (identical in `controller.h`, `api/core.py`, `site/cooling-logic.
 
 ## 6. Evidence engine
 
-Predeclared endpoint, beneficial direction and margin (1.0 °C roof; 0.2 m/s air speed) locked at declaration; simultaneous paired reference; explicit invalidation reasons; outcomes `DIFFERENCE_IN_DECLARED_DIRECTION` / `DIFFERENCE_AGAINST_DECLARED_DIRECTION` / `NO_CLEAR_DIFFERENCE` / `INVALID`; lag-1 autocorrelation and effective n reported per run; cross-run Student-t 95 % CI over ≥3 independent runs with an equivalence-style decision (`POST /evidence/aggregate`, `scripts/evaluate_physical.py --aggregate`). Invalid runs are counted, not dropped.
+Predeclared endpoint, beneficial direction and margin (1.0 °C roof — set above the possible disagreement of two ±0.5 °C probes before offset correction; 0.2 m/s air speed) locked at declaration; simultaneous paired reference; explicit invalidation reasons. A single run reports only a point estimate (`POINT_ESTIMATE_IN_DECLARED_DIRECTION` / `…_AGAINST_…` / `…_WITHIN_MARGIN`) or `INVALID`, with lag-1 autocorrelation and effective n. Claims (`DIFFERENCE_IN_DECLARED_DIRECTION`, `DIFFERENCE_AGAINST_DECLARED_DIRECTION`, `EQUIVALENT_WITHIN_MARGIN`, `INCONCLUSIVE`) come only from `aggregate()`: ≥3 valid runs on ≥3 distinct days, two-sided 95 % Student-t CI of run means (stricter than TOST's 90 %), equivalence-style decision (`POST /evidence/aggregate`, `scripts/evaluate_physical.py --aggregate`). Invalid runs are reported (`runs_invalid`, `valid_fraction`), not dropped.
 
 ## 7. Cost
 
 - Bench today: ₹10,408.64 (mixed quotes/allowances). Budget profile in `research/costs.json`: ≈₹4,661 by replacing two Adafruit SHT31 carriers (₹3,066) with GY-SHT30 modules (₹179 each, Probots) and the Noctua (₹3,130) with a generic 4-wire PWM+tach fan (≈₹300 allowance; Waveshare US$2.69, no verified Indian listing), DS18B20 at ₹49. Not cut: tach feedback, the paired sensor, calibration.
-- Full-size FS-01 first article: ₹94,134–1,70,771 unquoted allowance (the earlier ₹30,500–52,500 is superseded). AC equipment reference ₹36,990 (not installed). Levers: optional second skin (≈half of the ₹9,000–16,000 roof-materials line), ground treatment before more overhang, retrofit existing shade first (avoids the largest lines: steel and foundations), bolted repeated sections.
+- Full-size FS-01 first article: ₹94,134–1,70,771 unquoted allowance (the earlier ₹30,500–52,500 is superseded). AC equipment reference ₹36,990 (not installed). Levers: optional second skin (≈half of the ₹9,000–16,000 roof-materials line; 0.3–0.8 K at the seat), painted lining, ground treatment before more overhang, retrofit existing shade first (avoids the largest lines: steel and foundations), bolted repeated sections.
 - Running: AC ≈11–13 kWh per 8 h shift; 35 W BLDC fan ≈0.3 kWh; bench fan a few Wh. Maintenance allowance ₹1,500–3,500/yr.
 
 ## 8. Flaws found and fixed in the v0.3 review
@@ -89,6 +98,7 @@ Predeclared endpoint, beneficial direction and margin (1.0 °C roof; 0.2 m/s air
 7. Auto fan ran in conditions where fans may add heat → fan-benefit screen.
 8. Contradictory full-size cost figures → corrected.
 9. Design priorities asserted rather than derived → screening model and reprioritisation.
+10. Adversarial review of the first model version found eight errors, all fixed with tests: globe predicted with a person's absorptance (2.5–6.6 K low); lining assumed to see only shaded ground (flattered low-e lining); McAdams combined coefficient double-counted radiation; May sun placed south of zenith; headline double-counted shade and roof; no falsification tolerance; single runs labelled "difference"; same-afternoon runs could count as independent days.
 
 Each has a regression test (`tests/test_hardening_v3.py`, `tests/test_thermal.py`, `tests/controller_test.cpp`, `tests/cooling.test.mjs`, `tests/defense-browser.cjs`).
 
