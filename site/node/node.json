@@ -1,0 +1,498 @@
+{
+ "revision": "NODE-v1",
+ "units": "mm",
+ "status": "FIT/PLACEMENT MODEL - NOT A MANUFACTURING RELEASE",
+ "parameters": {
+  "enclosure": {
+   "W": 150,
+   "H": 100,
+   "D": 70,
+   "wall": 3.0,
+   "lid_depth": 18,
+   "note": "Purchased IP65 ABS junction box, 150 x 100 x 70 class; lid is the front panel"
+  },
+  "oled_window": {
+   "x": 15,
+   "z": 62,
+   "w": 25,
+   "h": 14,
+   "note": "Visible area of 0.96 in SSD1306 (21.7 x 10.9 active)"
+  },
+  "help_button": {
+   "x": 112,
+   "z": 62,
+   "dia": 16,
+   "note": "16 mm IP67 momentary, red cap: HELP (latching request)"
+  },
+  "status_led": {
+   "x": 112,
+   "z": 86,
+   "dia": 8,
+   "note": "5 mm red LED in 8 mm panel bezel: help / fan fault / sensor fault"
+  },
+  "mode_button": {
+   "x": 112,
+   "z": 28,
+   "dia": 12,
+   "note": "12 mm IP67 momentary: fan off / manual"
+  },
+  "ack_button": {
+   "y": 35,
+   "z": 50,
+   "dia": 12,
+   "note": "Right side wall: staff acknowledge, deliberately not on the front"
+  },
+  "buzzer_grille": {
+   "x": 27.5,
+   "z": 32,
+   "holes": 5,
+   "dia": 2.0,
+   "pitch": 5
+  },
+  "glands_bottom": {
+   "y": 44,
+   "xs": [
+    20,
+    45,
+    70,
+    95,
+    120
+   ],
+   "dia": 12.5,
+   "labels": [
+    "12 V IN",
+    "FAN",
+    "SEAT T/RH",
+    "REF T/RH",
+    "ROOF + FLOAT"
+   ],
+   "note": "PG7 glands, cable 3-6.5 mm; drip loops below the box"
+  },
+  "vent_side": {
+   "y": 44,
+   "z": 18,
+   "dia": 12.5,
+   "note": "M12 breathable membrane vent, left wall low, against condensation"
+  },
+  "bracket": {
+   "W": 190,
+   "H": 110,
+   "t": 3,
+   "wall_holes": [
+    [
+     -85,
+     -45
+    ],
+    [
+     85,
+     -45
+    ],
+    [
+     -85,
+     45
+    ],
+    [
+     85,
+     45
+    ]
+   ],
+   "wall_hole_dia": 6.5,
+   "clamp_slots": {
+    "w": 8,
+    "h": 32,
+    "xs": [
+     -35,
+     35
+    ],
+    "zs": [
+     -28,
+     28
+    ]
+   },
+   "note": "3 mm aluminium back plate: 4 x M6 wall/anchor holes or 2 stainless hose clamps around a post (up to 90 mm)"
+  },
+  "internal_plate": {
+   "w": 136,
+   "h": 86,
+   "t": 1.5
+  },
+  "main_board": {
+   "x": 6,
+   "z": 8,
+   "w": 90,
+   "h": 70,
+   "standoff": 8,
+   "note": "90 x 70 perfboard: ESP32 socket, two 2N3904 stages, pull-ups, terminal blocks"
+  },
+  "esp32": {
+   "x": 20,
+   "z": 40,
+   "w": 54.4,
+   "h": 27.9,
+   "t": 13,
+   "note": "ESP32-DevKitC footprint 54.4 x 27.9"
+  },
+  "ina219": {
+   "x": 104,
+   "z": 54,
+   "w": 25.5,
+   "h": 22.3,
+   "t": 4
+  },
+  "buck": {
+   "x": 104,
+   "z": 28,
+   "w": 22,
+   "h": 17,
+   "t": 5,
+   "note": "MP1584EN 12 V -> 5 V"
+  },
+  "fuse": {
+   "x": 104,
+   "z": 10,
+   "w": 30,
+   "h": 10,
+   "t": 10,
+   "note": "5x20 fuse holder, 1 A slow-blow on 12 V input"
+  },
+  "shield": {
+   "plate_dia": 110,
+   "plates": 5,
+   "pitch": 14,
+   "t": 2,
+   "inner_hole": 50,
+   "rod_r": 45,
+   "note": "Multi-plate radiation shield (white PP/ABS plates on 3 x M5 rods); sensor at centre, open sides"
+  },
+  "fan": {
+   "size": 120,
+   "depth": 25,
+   "hole_pitch": 105,
+   "note": "120 mm 12 V 4-wire PWM fan with tach, steel guard both sides"
+  }
+ },
+ "parts": [
+  {
+   "name": "enclosure_body",
+   "group": "enclosure",
+   "color": "#d9dcd6",
+   "note": "Purchased IP65 ABS junction box, 150 x 100 x 70 class; lid is the front panel",
+   "bounds_mm": [
+    -0.03,
+    18.0,
+    -0.03,
+    150.03,
+    70.0,
+    100.0
+   ]
+  },
+  {
+   "name": "enclosure_lid",
+   "group": "enclosure",
+   "color": "#eef0ea",
+   "note": "Front panel: OLED window, HELP and MODE buttons, status LED, buzzer grille",
+   "bounds_mm": [
+    -0.0,
+    -0.04,
+    -0.0,
+    150.0,
+    18.0,
+    100.0
+   ]
+  },
+  {
+   "name": "status_led",
+   "group": "hmi",
+   "color": "#e04a3a",
+   "note": "5 mm red LED in 8 mm panel bezel: help / fan fault / sensor fault",
+   "bounds_mm": [
+    107.78,
+    -4.01,
+    81.78,
+    116.22,
+    2.01,
+    90.22
+   ]
+  },
+  {
+   "name": "oled_glass",
+   "group": "hmi",
+   "color": "#1e2a35",
+   "note": "Polycarbonate window over OLED",
+   "bounds_mm": [
+    15.5,
+    1.0,
+    62.5,
+    39.5,
+    2.0,
+    75.5
+   ]
+  },
+  {
+   "name": "help_button",
+   "group": "hmi",
+   "color": "#c8372d",
+   "note": "16 mm IP67 momentary, red cap: HELP (latching request)",
+   "bounds_mm": [
+    101.45,
+    -5.04,
+    51.45,
+    122.55,
+    1.04,
+    72.55
+   ]
+  },
+  {
+   "name": "mode_button",
+   "group": "hmi",
+   "color": "#2f6f8f",
+   "note": "12 mm IP67 momentary: fan off / manual",
+   "bounds_mm": [
+    103.96,
+    -4.03,
+    19.96,
+    120.04,
+    1.03,
+    36.04
+   ]
+  },
+  {
+   "name": "ack_button",
+   "group": "hmi",
+   "color": "#2b2b2b",
+   "note": "Right side wall: staff acknowledge, deliberately not on the front",
+   "bounds_mm": [
+    146.97,
+    26.96,
+    41.96,
+    152.04,
+    43.04,
+    58.04
+   ]
+  },
+  {
+   "name": "glands_and_vent",
+   "group": "enclosure",
+   "color": "#3a3a3a",
+   "note": "PG7 glands, cable 3-6.5 mm; drip loops below the box",
+   "bounds_mm": [
+    -6.04,
+    34.45,
+    -16.03,
+    129.55,
+    53.55,
+    26.04
+   ]
+  },
+  {
+   "name": "mounting_plate",
+   "group": "internals",
+   "color": "#b6bcc2",
+   "note": "Galvanised/Al mounting plate",
+   "bounds_mm": [
+    7.0,
+    65.5,
+    7.0,
+    143.0,
+    67.0,
+    93.0
+   ]
+  },
+  {
+   "name": "main_board",
+   "group": "internals",
+   "color": "#3f7d4e",
+   "note": "90 x 70 perfboard: ESP32 socket, two 2N3904 stages, pull-ups, terminal blocks",
+   "bounds_mm": [
+    6.0,
+    55.9,
+    8.0,
+    96.0,
+    57.5,
+    78.0
+   ]
+  },
+  {
+   "name": "esp32_devkitc",
+   "group": "internals",
+   "color": "#26303a",
+   "note": "ESP32-DevKitC footprint 54.4 x 27.9",
+   "bounds_mm": [
+    20.0,
+    42.9,
+    40.0,
+    74.4,
+    55.9,
+    67.9
+   ]
+  },
+  {
+   "name": "esp32_shield_can",
+   "group": "internals",
+   "color": "#a9adb1",
+   "note": "WROOM module can; antenna end clear of metal",
+   "bounds_mm": [
+    50.0,
+    39.7,
+    41.2,
+    68.0,
+    42.9,
+    66.7
+   ]
+  },
+  {
+   "name": "ina219",
+   "group": "internals",
+   "color": "#6b4fa0",
+   "note": "",
+   "bounds_mm": [
+    104.0,
+    55.5,
+    54.0,
+    129.5,
+    59.5,
+    76.3
+   ]
+  },
+  {
+   "name": "buck",
+   "group": "internals",
+   "color": "#2d5fa3",
+   "note": "MP1584EN 12 V -> 5 V",
+   "bounds_mm": [
+    104.0,
+    54.5,
+    28.0,
+    126.0,
+    59.5,
+    45.0
+   ]
+  },
+  {
+   "name": "fuse",
+   "group": "internals",
+   "color": "#b07a2a",
+   "note": "5x20 fuse holder, 1 A slow-blow on 12 V input",
+   "bounds_mm": [
+    104.0,
+    49.5,
+    10.0,
+    134.0,
+    59.5,
+    20.0
+   ]
+  },
+  {
+   "name": "oled_module",
+   "group": "hmi",
+   "color": "#1b4f72",
+   "note": "SSD1306 0.96 in I2C module behind window",
+   "bounds_mm": [
+    13.8,
+    4.0,
+    54.0,
+    41.1,
+    8.0,
+    81.8
+   ]
+  },
+  {
+   "name": "buzzer",
+   "group": "hmi",
+   "color": "#222222",
+   "note": "12 mm active buzzer behind grille",
+   "bounds_mm": [
+    21.47,
+    3.97,
+    25.97,
+    33.53,
+    13.53,
+    38.03
+   ]
+  },
+  {
+   "name": "terminal_blocks",
+   "group": "internals",
+   "color": "#1f6fb2",
+   "note": "5.08 mm pluggable terminals for field wiring",
+   "bounds_mm": [
+    16.0,
+    46.9,
+    10.0,
+    86.0,
+    55.9,
+    20.0
+   ]
+  },
+  {
+   "name": "back_bracket",
+   "group": "mounting",
+   "color": "#8f9aa3",
+   "note": "3 mm aluminium back plate: 4 x M6 wall/anchor holes or 2 stainless hose clamps around a post (up to 90 mm)",
+   "bounds_mm": [
+    -20.0,
+    69.98,
+    -5.0,
+    170.0,
+    73.02,
+    105.0
+   ]
+  },
+  {
+   "name": "radiation_shield",
+   "group": "sensor",
+   "color": "#f4f4ef",
+   "note": "Multi-plate radiation shield (white PP/ABS plates on 3 x M5 rods); sensor at centre, open sides",
+   "bounds_mm": [
+    -195.26,
+    -20.26,
+    -0.26,
+    -84.74,
+    90.26,
+    58.26
+   ]
+  },
+  {
+   "name": "sht31_in_shield",
+   "group": "sensor",
+   "color": "#2a7a5a",
+   "note": "SHT31 module at plate-stack centre",
+   "bounds_mm": [
+    -146.35,
+    33.7,
+    18.0,
+    -133.65,
+    36.3,
+    36.0
+   ]
+  },
+  {
+   "name": "fan_120",
+   "group": "actuator",
+   "color": "#3b4048",
+   "note": "120 mm 12 V 4-wire PWM fan with tach, steel guard both sides",
+   "bounds_mm": [
+    210.0,
+    9.72,
+    -0.0,
+    330.0,
+    35.28,
+    120.0
+   ]
+  },
+  {
+   "name": "fan_guard",
+   "group": "actuator",
+   "color": "#9aa0a6",
+   "note": "Wire guard, both faces",
+   "bounds_mm": [
+    216.54,
+    6.54,
+    6.54,
+    323.46,
+    9.46,
+    113.46
+   ]
+  }
+ ]
+}

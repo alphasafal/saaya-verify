@@ -35,6 +35,7 @@ jobs:
       - run: npm run build:model
       - run: npm run build:fullsize
       - run: npm run build:pavilion
+      - run: npm run build:node
       - run: python scripts/build_site.py
       - run: npx playwright install --with-deps chromium
       - name: Browser workflow checks

@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAAYA Node · 3D model</title><link rel="stylesheet" href="style.css">
+<style>
+.node-wrap{max-width:1120px;margin:0 auto;padding:24px 5vw 60px}
+#node-canvas{width:100%;height:min(70vh,640px);border:1px solid var(--line);border-radius:8px;background:#eef1e8}
+#node-canvas canvas{width:100%;height:100%;display:block}
+.views{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.views button[aria-pressed=true]{background:var(--green);color:#fff}
+#node-info{min-height:3em;color:var(--muted)}
+body.shot header,body.shot .node-text,body.shot .views,body.shot #node-info{display:none}
+body.shot .node-wrap{padding:0;max-width:none}body.shot #node-canvas{height:100vh;border:0;border-radius:0}
+</style></head>
+<body><header class="top"><a class="brand" href="index.html"><span class="mark">स</span><span>SAAYA<span class="verify">VERIFY</span></span></a><nav aria-label="Main"><a href="designs.html">All designs</a><a href="defense.html">Design defense</a><a href="downloads/SAAYA_Node_IoT_Design.pdf">IoT design PDF</a></nav><a class="repo" href="https://github.com/alphasafal/saaya-verify">GitHub</a></header>
+<main class="node-wrap">
+<div class="node-text"><h2>SAAYA Node v1</h2><p>The retrofit IoT controller: an IP65 box with the ESP32, power monitor and display, a radiation-shielded air sensor and a 120 mm PWM fan. It mounts on the post or wall of an existing rest shade. Click any part for its size and role.</p></div>
+<div class="views"><button data-view="assembly">Assembly</button><button data-view="internals">Lid off</button><button data-view="front">Front panel</button><button data-view="bottom">Cable entries</button><a class="button" href="node/SAAYA_NODE_v1.step" download>Download STEP</a></div>
+<div id="node-canvas"></div><p id="node-info" role="status">Click a part.</p>
+</main>
+<script>if(new URLSearchParams(location.search).has('shot'))document.body.classList.add('shot')</script>
+<script type="module" src="node.bundle.js"></script></body></html>
