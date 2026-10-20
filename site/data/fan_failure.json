@@ -28,6 +28,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -56,6 +57,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -84,6 +86,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -112,6 +115,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -140,6 +144,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -168,6 +173,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -196,6 +202,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -224,6 +231,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -252,6 +260,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -280,6 +289,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -308,6 +318,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -336,6 +347,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -364,6 +376,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -392,6 +405,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -420,6 +434,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -448,6 +463,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -476,6 +492,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -504,6 +521,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -532,6 +550,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -560,6 +579,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": false,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -588,6 +608,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -616,6 +637,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -644,6 +666,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -672,6 +695,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -700,6 +724,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -728,6 +753,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -756,6 +782,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -784,6 +811,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -812,6 +840,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -840,6 +869,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -868,6 +898,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -896,6 +927,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -924,6 +956,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -952,6 +985,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -980,6 +1014,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1008,6 +1043,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1036,6 +1072,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1064,6 +1101,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1092,6 +1130,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1120,6 +1159,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1148,6 +1188,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1176,6 +1217,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1204,6 +1246,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1232,6 +1275,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1260,6 +1304,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1288,6 +1333,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1316,6 +1362,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1344,6 +1391,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1372,6 +1420,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1400,6 +1449,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1428,6 +1478,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1456,6 +1507,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1484,6 +1536,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1512,6 +1565,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1540,6 +1594,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1568,6 +1623,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1596,6 +1652,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1624,6 +1681,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1652,6 +1710,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     },
@@ -1680,6 +1739,7 @@
       "help": false,
       "quality": "valid",
       "fan_fault": true,
+      "fan_advice": null,
       "clock_aligned": true,
       "reference_valid": true
     }

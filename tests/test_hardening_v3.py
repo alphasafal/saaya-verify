@@ -5,7 +5,7 @@ import sqlite3
 import warnings
 import pytest
 from fastapi.testclient import TestClient
-from api.core import Sample, scenario, evaluate, aggregate, declaration_for, classify, paired_statistics, auto_request
+from api.core import Sample, scenario, evaluate, aggregate, declaration_for, classify, paired_statistics, auto_request, fan_advice, control
 from api.main import create_app
 
 
@@ -165,3 +165,12 @@ def test_physical_cli_single_and_aggregate(tmp_path):
     subprocess.run([sys.executable, 'scripts/evaluate_physical.py', '--aggregate', *outs, '--output', str(study)], check=True)
     res = json.loads(study.read_text())
     assert res['source'] == 'MEASURED' and res['runs_valid'] == 3 and res['ci95'] is not None
+
+
+# Flaw: automatic mode would run a fan at any temperature above 32 C, including where the
+# literature says a fan adds heat (>=39-40 C). Manual must stay available to the worker.
+def test_fan_benefit_screen():
+    assert [fan_advice(t) for t in (36.9, 37.0, 38.9, 39.0, None, float('nan'))] == ['ok', 'caution', 'caution', 'avoid', 'unknown', 'unknown']
+    assert auto_request(True, 38.9) and not auto_request(True, 39.0)
+    assert not auto_request(False, 38.7) and auto_request(False, 38.4)
+    assert control({}, {'manual': True, 'now_ms': 0})['duty'] == 70

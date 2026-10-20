@@ -13,7 +13,7 @@
 constexpr int PWM=25,TACH=34,WATER=35,MODE=32,HELP=33,ACK=27,LED=26,BUZZER=14,ROOF=4;
 Adafruit_SHT31 outside,inside;Adafruit_SSD1306 display(128,64,&Wire,-1);Adafruit_INA219 powerMeter;
 OneWire oneWire(ROOF);DallasTemperature roof(&oneWire);Preferences preferences;
-ControlState state;bool outOK=false,inOK=false,displayOK=false,powerOK=false,manual=false;
+ControlState state;bool autoOn=false;bool outOK=false,inOK=false,displayOK=false,powerOK=false,manual=false;
 volatile uint32_t tachPulses=0;uint32_t lastSample=0,seq=0;char session[32];uint64_t uptimeMs=0;uint32_t previousMillis=0;
 float rpm=0,temp=NAN,rh=NAN,ot=NAN,orr=NAN,roofTemp=NAN;bool sensorFault=true,haveRoofConversion=false;
 void IRAM_ATTR tachRise(){tachPulses++;}
@@ -37,7 +37,7 @@ void loop(){
  uint32_t now=millis();uptimeMs+=uint32_t(now-previousMillis);previousMillis=now;esp_task_wdt_reset();
  if(modeButton.press(now))manual=!manual;
  bool helpPressed=helpButton.press(now),ackPressed=ackButton.press(now),oldHelp=state.help;
- ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;input.automatic=SAAYA_BENCH_AUTO&&!manual&&isfinite(temp)&&temp>=32;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
+ ControlInput input;input.help=helpPressed;input.ack=ackPressed;input.manual=manual;autoOn=SAAYA_BENCH_AUTO&&!manual&&!sensorFault&&autoRequest(autoOn,temp);input.automatic=autoOn;input.sensorFault=sensorFault;input.now=now;input.rpm=rpm;
  state=step(state,input);
  if(oldHelp!=state.help)preferences.putBool("help",state.help);
  ledcWrite(0,255-state.duty*255/100);digitalWrite(LED,state.help||state.fanFault||sensorFault);
@@ -57,6 +57,6 @@ void loop(){
  if(!powerPresent)powerOK=false;else if(!powerOK)powerOK=powerMeter.begin();
  float watts=NAN;if(powerOK){float w=powerMeter.getPower_mW()/1000.0f;if(isfinite(w)&&w>=0)watts=w;} // circuit is FAN BRANCH only
  JsonDocument d;d["schema_version"]=1;d["device_id"]="saaya-esp32";d["session_id"]=session;d["seq"]=seq++;d["source"]="MEASURED";d["config_id"]="bench-v2-fan-branch-power";d["calibration_id"]="UNVERIFIED";d["acquired_ms"]=uptimeMs;d["emitted_ms"]=uptimeMs;
- finiteValue(d,"temp",temp);finiteValue(d,"rh",rh);finiteValue(d,"outdoor_temp",ot);finiteValue(d,"outdoor_rh",orr);finiteValue(d,"roof_temp",roofTemp);finiteValue(d,"watts",watts);d["rpm"]=rpm;d["duty"]=state.duty;d["water"]=waterAvailable?"available":"low";d["help"]=state.help;d["quality"]=sensorFault?"invalid":"valid";d["fan_fault"]=state.fanFault;d["clock_aligned"]=false;d["reference_valid"]=false;d["ref_roof"]=nullptr;d["ref_air_speed"]=nullptr;d["air_speed"]=nullptr;serializeJson(d,Serial);Serial.println();
- if(displayOK){display.clearDisplay();display.setTextSize(1);display.setTextColor(SSD1306_WHITE);display.setCursor(0,0);display.println("SAAYA BENCH / MEASURED");display.printf("T: %.1f RH: %.0f\n",temp,rh);display.printf("Fan %d%% %.0f RPM\n",state.duty,rpm);display.println(waterAvailable?"Water available":"WATER LOW / CHECK");display.println(state.help?"HELP REQUEST LATCHED":sensorFault?"SENSOR FAULT":state.fanFault?"FAN FEEDBACK FAULT":"Not a safety rating");display.display();}
+ finiteValue(d,"temp",temp);finiteValue(d,"rh",rh);finiteValue(d,"outdoor_temp",ot);finiteValue(d,"outdoor_rh",orr);finiteValue(d,"roof_temp",roofTemp);finiteValue(d,"watts",watts);d["rpm"]=rpm;d["duty"]=state.duty;d["water"]=waterAvailable?"available":"low";d["help"]=state.help;d["quality"]=sensorFault?"invalid":"valid";d["fan_fault"]=state.fanFault;{FanAdvice a=fanAdvice(sensorFault?NAN:temp);d["fan_advice"]=a==FAN_OK?"ok":a==FAN_CAUTION?"caution":a==FAN_AVOID?"avoid":"unknown";}d["clock_aligned"]=false;d["reference_valid"]=false;d["ref_roof"]=nullptr;d["ref_air_speed"]=nullptr;d["air_speed"]=nullptr;serializeJson(d,Serial);Serial.println();
+ if(displayOK){display.clearDisplay();display.setTextSize(1);display.setTextColor(SSD1306_WHITE);display.setCursor(0,0);display.println("SAAYA BENCH / MEASURED");display.printf("T: %.1f RH: %.0f\n",temp,rh);display.printf("Fan %d%% %.0f RPM\n",state.duty,rpm);display.println(waterAvailable?"Water available":"WATER LOW / CHECK");FanAdvice advice=fanAdvice(sensorFault?NAN:temp);display.println(state.help?"HELP REQUEST LATCHED":sensorFault?"SENSOR FAULT":state.fanFault?"FAN FEEDBACK FAULT":advice==FAN_AVOID?"HOT: FAN MAY ADD HEAT":advice==FAN_CAUTION?"FAN: LIMITED BENEFIT":"Not a safety rating");display.display();}
 }

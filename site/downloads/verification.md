@@ -29,3 +29,14 @@ CAD limitation: mesh validity does not prove printability at arbitrary settings 
 The approximately 250 kg modeled mass uses idealized material densities and simplified purchased parts. The updated INR94,000–171,000 first-article budget is an unquoted allowance and does not demonstrate the below-installed-AC goal. Structural design, foundations, roof forming/joints, outdoor components and full-size commissioning remain release holds.
 
 Firmware verification evidence: https://github.com/alphasafal/saaya-verify/actions/runs/38157427602 . Local Python 3.13.5; hosted Python 3.11; full-size CAD uses CadQuery 2.6.1 on Python 3.11.
+
+## v0.3 review — 20 October 2026
+
+| Area | Status | Evidence / limit |
+|---|---|---|
+| API hardening | Tests run | Connection leak fixed (0 ResourceWarnings, was 27 in test_system), WAL, bounds, MEASURED-only ingestion, schema migration |
+| Evidence outcomes and aggregation | Tests run | Predeclared direction/margin, three outcomes, autocorrelation, cross-run t-interval; synthetic runs demonstrate method only |
+| Radiant screening model | Tests run (11) | Energy closure < 1e-3 W/m², solid-angle identities, physical orderings. NOT validated against measurement |
+| Fan-benefit screen and hysteresis | Native C++, Python and JS tests run | Literature-based air-temperature screen; humidity limits not yet included; not a clinical rule |
+| ESP32 compile of v0.3 | Pending GitHub Actions | Local PlatformIO registry blocked in the review sandbox |
+| Design-defense page | Browser test run | Desktop and 390 px width, no JS errors |

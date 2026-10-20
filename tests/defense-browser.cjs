@@ -2,13 +2,13 @@ const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');const asse
 (async()=>{const b=await chromium.launch({headless:true,channel:process.env.CHROME_CHANNEL||undefined});try{
  const base=(process.env.TEST_URL||'http://127.0.0.1:8765/').replace(/\/?$/,'/');
  for(const width of [1366,390]){
-  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!m.text().startsWith('Failed to load resource'))errors.push(m.text())});p.on('requestfailed',r=>{if(new URL(r.url()).origin===new URL(base).origin)errors.push('failed '+r.url())});
   await p.goto(base+'defense.html');
   await p.locator('#design-table table tbody tr').first().waitFor();
   assert.equal(await p.locator('#design-table tbody tr').count(),7,'every roof option rendered');
   assert.match(await p.locator('#k-shade').textContent(),/^\d+\.\d K$/);
   assert.match(await p.locator('#cost-fullsize').textContent(),/₹/);
-  assert.match(await p.locator('#aggregate-outcome').textContent(),/SIMULATED/);
+  assert.match(await p.locator('#aggregate-outcome').textContent(),/simulated runs/);
   assert((await p.locator('#mrt-chart svg rect').count())>=7);
   assert((await p.locator('#adr details').count())>=10);
   assert((await p.locator('#qa details').count())>=8);
