@@ -15,30 +15,30 @@ O.mkdir(exist_ok=True)
 
 # ---------------- parameters (single source for CAD, drawings and the PDF) ----------------
 P = {
-    'enclosure': {'W': 150, 'H': 100, 'D': 70, 'wall': 3.0, 'lid_depth': 18,
-                  'note': 'Purchased IP65 ABS junction box, 150 x 100 x 70 class; lid is the front panel'},
+    'enclosure': {'W': 175, 'H': 100, 'D': 60, 'wall': 3.0, 'lid_depth': 15,
+                  'note': 'Purchased IP65 ABS box ProtechT WPE16 175 x 100 x 60 (Probots, INR 949); lid is the front panel'},
     'oled_window': {'x': 15, 'z': 62, 'w': 25, 'h': 14, 'note': 'Visible area of 0.96 in SSD1306 (21.7 x 10.9 active)'},
-    'help_button': {'x': 112, 'z': 62, 'dia': 16, 'note': '16 mm IP67 momentary, red cap: HELP (latching request)'},
-    'status_led': {'x': 112, 'z': 86, 'dia': 8, 'note': '5 mm red LED in 8 mm panel bezel: help / fan fault / sensor fault'},
-    'mode_button': {'x': 112, 'z': 28, 'dia': 12, 'note': '12 mm IP67 momentary: fan off / manual'},
-    'ack_button': {'y': 35, 'z': 50, 'dia': 12, 'note': 'Right side wall: staff acknowledge, deliberately not on the front'},
+    'help_button': {'x': 140, 'z': 62, 'dia': 12, 'note': '12 mm IP65 metal momentary (ProMax), red: HELP (latching request)'},
+    'status_led': {'x': 140, 'z': 86, 'dia': 8, 'note': '5 mm red LED in 8 mm panel bezel: help / fan fault / sensor fault'},
+    'mode_button': {'x': 140, 'z': 30, 'dia': 12, 'note': '12 mm IP65 metal momentary: fan off / manual'},
+    'ack_button': {'y': 38, 'z': 50, 'dia': 12, 'note': 'Right side wall: staff acknowledge, deliberately not on the front'},
     'buzzer_grille': {'x': 27.5, 'z': 32, 'holes': 5, 'dia': 2.0, 'pitch': 5},
-    'glands_bottom': {'y': 44, 'xs': [20, 45, 70, 95, 120], 'dia': 12.5,
+    'glands_bottom': {'y': 38, 'xs': [25, 55, 85, 115, 145], 'dia': 12.5,
                       'labels': ['12 V IN', 'FAN', 'SEAT T/RH', 'REF T/RH', 'ROOF + FLOAT'],
                       'note': 'PG7 glands, cable 3-6.5 mm; drip loops below the box'},
-    'vent_side': {'y': 44, 'z': 18, 'dia': 12.5, 'note': 'M12 breathable membrane vent, left wall low, against condensation'},
-    'bracket': {'W': 190, 'H': 110, 't': 3, 'wall_holes': [(-85, -45), (85, -45), (-85, 45), (85, 45)], 'wall_hole_dia': 6.5,
+    'vent_side': {'y': 38, 'z': 18, 'dia': 12.5, 'note': 'M12 breathable membrane vent, left wall low, against condensation'},
+    'bracket': {'W': 215, 'H': 110, 't': 3, 'wall_holes': [(-97, -45), (97, -45), (-97, 45), (97, 45)], 'wall_hole_dia': 6.5,
                 'clamp_slots': {'w': 8, 'h': 32, 'xs': [-35, 35], 'zs': [-28, 28]},
                 'note': '3 mm aluminium back plate: 4 x M6 wall/anchor holes or 2 stainless hose clamps around a post (up to 90 mm)'},
-    'internal_plate': {'w': 136, 'h': 86, 't': 1.5},
-    'main_board': {'x': 6, 'z': 8, 'w': 90, 'h': 70, 'standoff': 8, 'note': '90 x 70 perfboard: ESP32 socket, two 2N3904 stages, pull-ups, terminal blocks'},
-    'esp32': {'x': 20, 'z': 40, 'w': 54.4, 'h': 27.9, 't': 13, 'note': 'ESP32-DevKitC footprint 54.4 x 27.9'},
-    'ina219': {'x': 104, 'z': 54, 'w': 25.5, 'h': 22.3, 't': 4},
-    'buck': {'x': 104, 'z': 28, 'w': 22, 'h': 17, 't': 5, 'note': 'MP1584EN 12 V -> 5 V'},
-    'fuse': {'x': 104, 'z': 10, 'w': 30, 'h': 10, 't': 10, 'note': '5x20 fuse holder, 1 A slow-blow on 12 V input'},
+    'internal_plate': {'w': 160, 'h': 86, 't': 1.5},
+    'main_board': {'x': 10, 'z': 8, 'w': 90, 'h': 70, 'standoff': 8, 'note': '90 x 70 perfboard: ESP32 socket, two 2N3904 stages, pull-ups, terminal blocks'},
+    'esp32': {'x': 24, 'z': 40, 'w': 54.4, 'h': 27.9, 't': 13, 'note': 'ESP32-DevKitC footprint 54.4 x 27.9'},
+    'ina219': {'x': 118, 'z': 54, 'w': 25.5, 'h': 22.3, 't': 4},
+    'buck': {'x': 118, 'z': 28, 'w': 22, 'h': 17, 't': 5, 'note': 'MP1584EN 12 V -> 5 V'},
+    'fuse': {'x': 118, 'z': 10, 'w': 30, 'h': 10, 't': 10, 'note': '5x20 fuse holder, 1 A slow-blow on 12 V input'},
     'shield': {'plate_dia': 110, 'plates': 5, 'pitch': 14, 't': 2, 'inner_hole': 50, 'rod_r': 45,
                'note': 'Multi-plate radiation shield (white PP/ABS plates on 3 x M5 rods); sensor at centre, open sides'},
-    'fan': {'size': 120, 'depth': 25, 'hole_pitch': 105, 'note': '120 mm 12 V 4-wire PWM fan with tach, steel guard both sides'},
+    'fan': {'size': 120, 'depth': 25, 'hole_pitch': 105, 'note': 'Arctic P12 Pro 120 mm 12 V 4-wire PWM fan with tach (0 rpm below 5 % PWM), wire guards'},
 }
 E = P['enclosure']
 W, H, D, t = E['W'], E['H'], E['D'], E['wall']
@@ -120,7 +120,7 @@ for key, col in (('ina219', '#6b4fa0'), ('buck', '#2d5fa3'), ('fuse', '#b07a2a')
     add(key, box(c['w'], c['t'], c['h'], (c['x'], py - 6 - c['t'], c['z'])), col, 'internals', c.get('note', ''))
 add('oled_module', box(27.3, 4, 27.8, (o['x'] - 1.2, t + 1, o['z'] - 8)), '#1b4f72', 'hmi', 'SSD1306 0.96 in I2C module behind window')
 add('buzzer', cyl(6, 9.5, (bz['x'], t + 1, bz['z']), (0, 1, 0)), '#222222', 'hmi', '12 mm active buzzer behind grille')
-add('terminal_blocks', box(70, 9, 10, (16, by - 9, 10)), '#1f6fb2', 'internals', '5.08 mm pluggable terminals for field wiring')
+add('terminal_blocks', box(70, 9, 10, (20, by - 9, 10)), '#1f6fb2', 'internals', '5.08 mm pluggable terminals for field wiring')
 
 # ---------------- back bracket ----------------
 bk = P['bracket']

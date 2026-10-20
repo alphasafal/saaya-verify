@@ -1,0 +1,6 @@
+# Wokwi simulation of the bench firmware (VS Code "Wokwi Simulator" extension or wokwi-cli).
+# Build first:  pio run -e esp32dev   then start the simulator from this folder.
+[wokwi]
+version = 1
+firmware = '.pio/build/esp32dev/firmware.bin'
+elf = '.pio/build/esp32dev/firmware.elf'

@@ -108,7 +108,7 @@ for i, p in enumerate(right):
 GNDL = L['GND']
 
 # ---------- left side: fan + PWM stage ----------
-fan = module(s, 60, 120, 190, '120 mm 12 V PWM fan', '4-wire, tach 2 pulses/rev', ['1 GND', '2 +12 V', '3 TACH', '4 PWM'], 'right', 26, '#eef1f6')
+fan = module(s, 60, 120, 190, 'Arctic P12 Pro 120 mm', '12 V 4-wire PWM, tach 2 p/rev', ['1 GND', '2 +12 V', '3 TACH', '4 PWM'], 'right', 26, '#eef1f6')
 # Q1 2N3904 stage between fan PWM and IO25
 qx, qy = 430, 230
 s.add(f"<circle cx='{qx}' cy='{qy}' r='18' fill='#fff' stroke='{C['ink']}' stroke-width='1.4'/>")
@@ -136,7 +136,7 @@ s.wire([(300, fl['A'][1]), (300, fl['A'][1] + 24)], C['ink'], 1.4)
 s.text(318, fl['A'][1] + 70, 'external pull-up (no internal on IO34-39)', 10, color=C['muted'])
 
 # ---------- buttons ----------
-bt = module(s, 60, 640, 190, 'Panel buttons', 'IP67 momentary, to GND', ['MODE', 'HELP', 'ACK'], 'right', 30, '#f6f1ea')
+bt = module(s, 60, 640, 190, 'Panel buttons', '12 mm IP65 momentary, to GND', ['MODE', 'HELP', 'ACK'], 'right', 30, '#f6f1ea')
 for name, pin, lab in (('MODE', 'IO32', 'IO32 mode (internal pull-up)'), ('HELP', 'IO33', 'IO33 help latch → flash'), ('ACK', 'IO27', 'IO27 staff acknowledge')):
     x0 = {'MODE': 600, 'HELP': 640, 'ACK': 670}[name]
     s.wire([bt[name], (x0, bt[name][1]), (x0, L[pin][1]), L[pin]], C['sig'], label=lab, lpos=(420, bt[name][1] - 7))
@@ -146,7 +146,7 @@ ld = module(s, 60, 820, 190, 'Status LED', '5 mm red, panel bezel', ['Anode', 'C
 s.resistor(420, ld['Anode'][1], '330 Ω')
 s.wire([ld['Anode'], (404, ld['Anode'][1])], C['sig'])
 s.wire([(436, ld['Anode'][1]), (620, ld['Anode'][1]), (620, L['IO26'][1]), L['IO26']], C['sig'], label='IO26 (~8 mA)', lpos=(530, ld['Anode'][1] - 8))
-bz = module(s, 60, 960, 190, 'Active buzzer 5 V', '12 mm, ~30 mA', ['+ (5 V)', '−'], 'right', 26, '#f6ecec')
+bz = module(s, 60, 960, 190, 'Active buzzer SFM-27', '3-24 V, <12 mA, >95 dB', ['+ (12 V)', '−'], 'right', 26, '#f6ecec')
 q2x, q2y = 430, bz['−'][1] + 40
 s.add(f"<circle cx='{q2x}' cy='{q2y}' r='18' fill='#fff' stroke='{C['ink']}' stroke-width='1.4'/>")
 s.text(q2x, q2y + 4, 'Q2', 11, 'middle', 'bold')
@@ -156,7 +156,7 @@ s.resistor(560, q2y, '4.7 kΩ')
 s.wire([(q2x + 18, q2y), (544, q2y)], C['sig'])
 s.wire([(576, q2y), (650, q2y), (650, L['IO14'][1]), L['IO14']], C['sig'], label='IO14 buzzer', lpos=(680, q2y - 22))
 s.wire([(q2x, q2y + 18), (q2x, q2y + 40)], C['gnd'], 1.6, label='GND', lpos=(q2x + 22, q2y + 44))
-s.wire([bz['+ (5 V)'], (300, bz['+ (5 V)'][1]), (300, 1180)], C['5v'], 2, label='5 V', lpos=(320, 1120))
+s.wire([bz['+ (12 V)'], (310, bz['+ (12 V)'][1]), (310, 1196), (775, 1196), (775, 1142)], C['12v'], 2, label='12 V (after fuse)', lpos=(370, 1110))
 
 # ---------- right side: I2C bus ----------
 BX = 1250
@@ -166,8 +166,8 @@ s.wire([Rr['IO22'], (scl_x, Rr['IO22'][1]), (scl_x, 1060)], C['scl'], 3, label='
 s.text(1250, 152, 'I²C bus 0 @ 50 kHz · one 4.7 kΩ pull-up pair to 3V3', 12, 'start', 'bold', C['sda'])
 s.text(1250, 168, '(breakout boards add their own pull-ups in parallel: keep total ≥ 2 kΩ)', 10, color=C['muted'])
 devs = [
-    ('SHT31 - seat air', 'addr 0x44 (ADDR→GND) · in radiation shield', 180),
-    ('SHT31 - reference air', 'addr 0x45 (ADDR→3V3) · ≤5 m STP cable', 360),
+    ('SHT30 - seat air', 'addr 0x44 (ADDR→GND) · in radiation shield', 180),
+    ('SHT30 - reference air', 'addr 0x45 (ADDR→3V3) · ≤5 m STP cable', 360),
     ('SSD1306 0.96" OLED', 'addr 0x3C · 128×64', 540),
     ('INA219 power monitor', 'addr 0x40 (A0,A1→GND) · 0.1 Ω shunt', 720),
 ]
@@ -210,7 +210,6 @@ s.wire([(1100, py0 + 22), (1130, py0 + 22)], C['12v'], 3)
 s.wire([(1075, py0), (1075, py0 - 20), (1660, py0 - 20), (1660, 780), (BX + 300 + 7, 780)], C['12v'], 3, label='12 V → INA219 VIN+ → fan', lpos=(1500, py0 - 38))
 s.wire([fan['2 +12 V'], (290, fan['2 +12 V'][1]), (290, 96), (1700, 96), (1700, 800), (BX + 300 + 7, 800)], C['12v'], 3, label='fan +12 V ← INA219 VIN−', lpos=(1000, 90))
 s.wire([(1280, py0 + 22), (1320, py0 + 22), (1320, py0 - 60), (EX - 60, py0 - 60), (EX - 60, L['5V'][1]), L['5V']], C['5v'], 3, label='5 V → DevKitC 5V pin (not with USB connected)', lpos=(1040, py0 - 66))
-s.wire([(1320, py0 + 22), (1320, 1190), (300, 1190), (300, 1180)], C['5v'], 2)
 s.wire([GNDL, (EX - 80, GNDL[1]), (EX - 80, 1210), (1205, 1210), (1205, py0 + 44)], C['gnd'], 3, label='common GND star', lpos=(980, 1226))
 s.wire([fan['1 GND'], (270, fan['1 GND'][1]), (270, 1210), (EX - 80, 1210)], C['gnd'], 2)
 
@@ -227,7 +226,7 @@ s.save('interfacing-diagram.svg', 'SAAYA Node interfacing diagram')
 E = P['enclosure']; W, H, D = E['W'], E['H'], E['D']
 d = Svg(1700, 1180)
 d.text(40, 46, 'SAAYA Node v1 - enclosure drilling and mounting drawing', 24, weight='bold')
-d.text(40, 72, 'All dimensions in mm. Datum: front-left-bottom corner. Purchased IP65 ABS box 150 × 100 × 70; machine holes to this plan. Scale 3:1 on paper.', 13, color=C['muted'])
+d.text(40, 72, f'All dimensions in mm. Datum: front-left-bottom corner. Purchased IP65 ABS box {W} × {H} × {D} (ProtechT WPE16); machine holes to this plan.', 13, color=C['muted'])
 SC = 3.0
 
 
@@ -249,7 +248,7 @@ d.rect(fx, fy - H * SC, W * SC, H * SC, '#f4f5f1', C['ink'], 8, 1.8)
 o = P['oled_window']
 d.rect(fx + o['x'] * SC, fy - (o['z'] + o['h']) * SC, o['w'] * SC, o['h'] * SC, '#1e2a35', C['ink'], 2, 1.2)
 d.text(fx + (o['x'] + o['w'] / 2) * SC, fy - (o['z'] + o['h']) * SC - 8, f"OLED window {o['w']}×{o['h']}", 11, 'middle')
-for key, col, lab in (('help_button', '#c8372d', 'HELP Ø16'), ('mode_button', '#2f6f8f', 'MODE Ø12'), ('status_led', '#e04a3a', 'LED Ø8')):
+for key, col, lab in (('help_button', '#c8372d', 'HELP Ø12'), ('mode_button', '#2f6f8f', 'MODE Ø12'), ('status_led', '#e04a3a', 'LED Ø8')):
     b = P[key]
     d.add(f"<circle cx='{fx + b['x'] * SC}' cy='{fy - b['z'] * SC}' r='{b['dia'] / 2 * SC}' fill='{col}' stroke='{C['ink']}'/>")
     d.text(fx + b['x'] * SC - b['dia'] / 2 * SC - 8, fy - b['z'] * SC + 4, lab, 11, 'end')
@@ -278,7 +277,7 @@ for x, lab in zip(g['xs'], g['labels']):
     d.add(f"<text x='{bx + x * SC}' y='{by + D * SC + 18}' font-size='10.5' text-anchor='end' fill='{C['ink']}' transform='rotate(-35 {bx + x * SC} {by + D * SC + 18})'>{e(lab)}</text>")
 dim_v(d, bx - 30, by + g['y'] * SC, by, f"{g['y']}")
 dim_v(d, bx - 60, by + D * SC, by, f'{D}')
-d.text(bx, by + D * SC + 92, f"5 × PG7 Ø{g['dia']} at x = {', '.join(map(str, g['xs']))} on y = {g['y']} (centre of the body). Gland nut ≈19 across corners: 25 pitch leaves 6 clear.", 12)
+d.text(bx, by + D * SC + 92, f"5 × PG7 Ø{g['dia']} at x = {', '.join(map(str, g['xs']))} on y = {g['y']} (centre of the body). PG7 nut ≈19 across corners: 30 mm pitch leaves 11 mm for a spanner.", 12)
 d.text(bx, by + D * SC + 110, f"M12 breathable vent Ø{v['dia']} on the LEFT wall at y = {v['y']}, z = {v['z']}.", 12)
 
 # RIGHT SIDE VIEW
@@ -308,28 +307,28 @@ for dx in cs['xs']:
 d.add(f"<rect x='{cxk - W / 2 * KS}' y='{czk - H / 2 * KS}' width='{W * KS}' height='{H * KS}' fill='none' stroke='{C['muted']}' stroke-dasharray='5 4'/>")
 dim_h(d, kx, kx + bk['W'] * KS, ky + bk['H'] * KS + 28, f"{bk['W']}", up=False)
 dim_v(d, kx - 22, ky + bk['H'] * KS, ky, f"{bk['H']}")
-dim_h(d, cxk - 85 * KS, cxk + 85 * KS, ky + bk['H'] * KS + 58, '170 (wall holes Ø6.5)', up=False)
-d.text(kx, ky + bk['H'] * KS + 100, '4 × Ø6.5 for M6 anchors, 170 × 90 centres', 12)
+dim_h(d, cxk - 97 * KS, cxk + 97 * KS, ky + bk['H'] * KS + 58, '194 (wall holes Ø6.5)', up=False)
+d.text(kx, ky + bk['H'] * KS + 100, '4 × Ø6.5 for M6 anchors, 194 × 90 centres', 12)
 d.text(kx, ky + bk['H'] * KS + 118, '4 × 8 × 16 slots for two stainless hose clamps (post Ø 40–90)', 12)
-d.text(kx, ky + bk['H'] * KS + 136, 'dashed: box outline 150 × 100', 12, color=C['muted'])
+d.text(kx, ky + bk['H'] * KS + 136, f'dashed: box outline {W} × {H}', 12, color=C['muted'])
 
 # INTERNAL LAYOUT (looking at back plate from the front)
 ix, iy = 1090, 940; IS = 2.6
-d.text(ix, iy - H * IS - 18, 'INTERNAL LAYOUT (on 136 × 86 back plate)', 15, weight='bold')
+d.text(ix, iy - H * IS - 18, f"INTERNAL LAYOUT (on {P['internal_plate']['w']} × {P['internal_plate']['h']} back plate)", 15, weight='bold')
 d.rect(ix, iy - H * IS, W * IS, H * IS, '#fafbf8', C['ink'], 6, 1.2)
 for key, col in (('main_board', '#3f7d4e'), ('esp32', '#26303a'), ('ina219', '#6b4fa0'), ('buck', '#2d5fa3'), ('fuse', '#b07a2a')):
     c = P[key]
     d.rect(ix + c['x'] * IS, iy - (c['z'] + c['h']) * IS, c['w'] * IS, c['h'] * IS, col, C['ink'], 2, 1)
     lab = {'main_board': '', 'esp32': 'ESP32-DevKitC', 'ina219': 'INA219', 'buck': 'MP1584', 'fuse': 'FUSE'}[key]
     d.text(ix + (c['x'] + c['w'] / 2) * IS, iy - (c['z'] + c['h'] / 2) * IS + 4, lab, 11, 'middle', 'bold', '#ffffff')
-d.rect(ix + 16 * IS, iy - 20 * IS, 70 * IS, 10 * IS, '#1f6fb2', C['ink'], 2, 1)
-d.text(ix + 51 * IS, iy - 13 * IS, 'field terminals', 10.5, 'middle', color='#fff')
-d.text(ix + 51 * IS, iy - 80.5 * IS, 'perfboard 90 × 70: Q1, Q2, resistors, pull-ups', 10.5, 'middle', color=C['ink'])
+d.rect(ix + 20 * IS, iy - 20 * IS, 70 * IS, 10 * IS, '#1f6fb2', C['ink'], 2, 1)
+d.text(ix + 55 * IS, iy - 13 * IS, 'field terminals', 10.5, 'middle', color='#fff')
+d.text(ix + 55 * IS, iy - 80.5 * IS, 'perfboard 90 × 70: Q1, Q2, resistors, pull-ups', 10.5, 'middle', color=C['ink'])
 d.text(ix, iy + 22, 'Antenna end of the WROOM can stays ≥15 mm from metal; cables enter from below only.', 11, color=C['muted'])
 d.save('enclosure-drawing.svg', 'SAAYA Node enclosure drawing')
 
 # ============================ 3. Installation elevation ============================
-z = Svg(1700, 900)
+z = Svg(1460, 880)
 z.add("<defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>")
 z.text(40, 46, 'Installation - retrofit to an existing rest shade (side elevation, mm)', 24, weight='bold')
 z.text(40, 72, 'Works on any shade with a post or wall: worksite rest shed, bus-stop shelter, FS-01 frame. Scale 1:25.', 13, color=C['muted'])
@@ -337,7 +336,7 @@ S25 = 1 / 4.2
 gx, gy = 230, 800
 X = lambda mm: gx + mm * S25
 Y = lambda mm: gy - mm * S25
-z.add(f"<line x1='40' y1='{gy}' x2='1660' y2='{gy}' stroke='#6b5b3e' stroke-width='3'/>")
+z.add(f"<line x1='40' y1='{gy}' x2='1440' y2='{gy}' stroke='#6b5b3e' stroke-width='3'/>")
 z.text(50, gy + 22, 'ground (shaded ground cover preferred - see model)', 12, color='#6b5b3e')
 # existing shade: post at x=0, roof at 2400
 z.rect(X(0), Y(2400), 60 * S25 + 2, 2400 * S25, '#8a949b', C['ink'], 1, 1.2)

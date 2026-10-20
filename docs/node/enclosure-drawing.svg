@@ -1,106 +1,106 @@
 <svg xmlns='http://www.w3.org/2000/svg' width='1700' height='1180' viewBox='0 0 1700 1180' font-family='Helvetica,Arial,sans-serif'><title>SAAYA Node enclosure drawing</title><rect width='1700' height='1180' fill='#ffffff'/><text x='40' y='46' font-size='24' text-anchor='start' font-weight='bold' fill='#1f2a26'>SAAYA Node v1 - enclosure drilling and mounting drawing</text>
-<text x='40' y='72' font-size='13' text-anchor='start' font-weight='normal' fill='#5d6b64'>All dimensions in mm. Datum: front-left-bottom corner. Purchased IP65 ABS box 150 × 100 × 70; machine holes to this plan. Scale 3:1 on paper.</text>
+<text x='40' y='72' font-size='13' text-anchor='start' font-weight='normal' fill='#5d6b64'>All dimensions in mm. Datum: front-left-bottom corner. Purchased IP65 ABS box 175 × 100 × 60 (ProtechT WPE16); machine holes to this plan.</text>
 <defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>
 <text x='110' y='130.0' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>FRONT VIEW (lid)</text>
-<rect x='110' y='170.0' width='450.0' height='300.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
+<rect x='110' y='170.0' width='525.0' height='300.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
 <rect x='155.0' y='242.0' width='75.0' height='42.0' rx='2' fill='#1e2a35' stroke='#1f2a26' stroke-width='1.2'/>
 <text x='192.5' y='234.0' font-size='11' text-anchor='middle' font-weight='normal' fill='#1f2a26'>OLED window 25×14</text>
-<circle cx='446.0' cy='284.0' r='24.0' fill='#c8372d' stroke='#1f2a26'/>
-<text x='414.0' y='288.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>HELP Ø16</text>
-<circle cx='446.0' cy='386.0' r='18.0' fill='#2f6f8f' stroke='#1f2a26'/>
-<text x='420.0' y='390.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>MODE Ø12</text>
-<circle cx='446.0' cy='212.0' r='12.0' fill='#e04a3a' stroke='#1f2a26'/>
-<text x='426.0' y='216.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>LED Ø8</text>
+<circle cx='530.0' cy='284.0' r='18.0' fill='#c8372d' stroke='#1f2a26'/>
+<text x='504.0' y='288.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>HELP Ø12</text>
+<circle cx='530.0' cy='380.0' r='18.0' fill='#2f6f8f' stroke='#1f2a26'/>
+<text x='504.0' y='384.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>MODE Ø12</text>
+<circle cx='530.0' cy='212.0' r='12.0' fill='#e04a3a' stroke='#1f2a26'/>
+<text x='510.0' y='216.0' font-size='11' text-anchor='end' font-weight='normal' fill='#1f2a26'>LED Ø8</text>
 <circle cx='162.5' cy='374.0' r='3.0' fill='#333'/>
 <circle cx='177.5' cy='374.0' r='3.0' fill='#333'/>
 <circle cx='192.5' cy='374.0' r='3.0' fill='#333'/>
 <circle cx='207.5' cy='374.0' r='3.0' fill='#333'/>
 <circle cx='222.5' cy='374.0' r='3.0' fill='#333'/>
 <text x='192.5' y='398.0' font-size='11' text-anchor='middle' font-weight='normal' fill='#1f2a26'>5 × Ø2 buzzer, pitch 5</text>
-<line x1='110' y1='510' x2='560.0' y2='510' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='335.0' y='525' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>150</text>
+<line x1='110' y1='510' x2='635.0' y2='510' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='372.5' y='525' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>175</text>
 <line x1='80' y1='470' x2='80' y2='170.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
 <text x='72' y='320.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 72 320.0)'>100</text>
-<line x1='110' y1='540' x2='446.0' y2='540' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='278.0' y='555' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>112 (button/LED axis)</text>
-<line x1='590.0' y1='470' x2='590.0' y2='284.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='582.0' y='377.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 582.0 377.0)'>62</text>
-<line x1='620.0' y1='470' x2='620.0' y2='386.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='612.0' y='428.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 612.0 428.0)'>28</text>
-<line x1='650.0' y1='470' x2='650.0' y2='212.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='642.0' y='341.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 642.0 341.0)'>86</text>
+<line x1='110' y1='540' x2='530.0' y2='540' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='320.0' y='555' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>140 (button/LED axis)</text>
+<line x1='665.0' y1='470' x2='665.0' y2='284.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='657.0' y='377.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 657.0 377.0)'>62</text>
+<line x1='695.0' y1='470' x2='695.0' y2='380.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='687.0' y='425.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 687.0 425.0)'>30</text>
+<line x1='725.0' y1='470' x2='725.0' y2='212.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='717.0' y='341.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 717.0 341.0)'>86</text>
 <line x1='155.0' y1='304.0' x2='230.0' y2='304.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
 <text x='192.5' y='319.0' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>x 15–40, z 62–76</text>
 <text x='110' y='622' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>BOTTOM VIEW (cable entries face the ground)</text>
-<rect x='110' y='640' width='450.0' height='210.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
-<line x1='110' y1='694.0' x2='560.0' y2='694.0' stroke='#9aa59f' stroke-dasharray='6 4'/>
-<text x='568.0' y='698.0' font-size='11' text-anchor='start' font-weight='normal' fill='#1f2a26'>lid joint 18</text>
-<circle cx='170.0' cy='772.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
-<text x='170.0' y='776.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>20</text>
-<text x='170.0' y='868.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 170.0 868.0)'>12 V IN</text>
-<circle cx='245.0' cy='772.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
-<text x='245.0' y='776.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>45</text>
-<text x='245.0' y='868.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 245.0 868.0)'>FAN</text>
-<circle cx='320.0' cy='772.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
-<text x='320.0' y='776.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>70</text>
-<text x='320.0' y='868.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 320.0 868.0)'>SEAT T/RH</text>
-<circle cx='395.0' cy='772.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
-<text x='395.0' y='776.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>95</text>
-<text x='395.0' y='868.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 395.0 868.0)'>REF T/RH</text>
-<circle cx='470.0' cy='772.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
-<text x='470.0' y='776.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>120</text>
-<text x='470.0' y='868.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 470.0 868.0)'>ROOF + FLOAT</text>
-<line x1='80' y1='772.0' x2='80' y2='640' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='72' y='706.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 72 706.0)'>44</text>
-<line x1='50' y1='850.0' x2='50' y2='640' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='42' y='745.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 42 745.0)'>70</text>
-<text x='110' y='942.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>5 × PG7 Ø12.5 at x = 20, 45, 70, 95, 120 on y = 44 (centre of the body). Gland nut ≈19 across corners: 25 pitch leaves 6 clear.</text>
-<text x='110' y='960.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>M12 breathable vent Ø12.5 on the LEFT wall at y = 44, z = 18.</text>
+<rect x='110' y='640' width='525.0' height='180.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
+<line x1='110' y1='685.0' x2='635.0' y2='685.0' stroke='#9aa59f' stroke-dasharray='6 4'/>
+<text x='643.0' y='689.0' font-size='11' text-anchor='start' font-weight='normal' fill='#1f2a26'>lid joint 15</text>
+<circle cx='185.0' cy='754.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='185.0' y='758.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>25</text>
+<text x='185.0' y='838.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 185.0 838.0)'>12 V IN</text>
+<circle cx='275.0' cy='754.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='275.0' y='758.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>55</text>
+<text x='275.0' y='838.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 275.0 838.0)'>FAN</text>
+<circle cx='365.0' cy='754.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='365.0' y='758.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>85</text>
+<text x='365.0' y='838.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 365.0 838.0)'>SEAT T/RH</text>
+<circle cx='455.0' cy='754.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='455.0' y='758.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>115</text>
+<text x='455.0' y='838.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 455.0 838.0)'>REF T/RH</text>
+<circle cx='545.0' cy='754.0' r='18.75' fill='#fff' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='545.0' y='758.0' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>145</text>
+<text x='545.0' y='838.0' font-size='10.5' text-anchor='end' fill='#1f2a26' transform='rotate(-35 545.0 838.0)'>ROOF + FLOAT</text>
+<line x1='80' y1='754.0' x2='80' y2='640' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='72' y='697.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 72 697.0)'>38</text>
+<line x1='50' y1='820.0' x2='50' y2='640' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='42' y='730.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 42 730.0)'>60</text>
+<text x='110' y='912.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>5 × PG7 Ø12.5 at x = 25, 55, 85, 115, 145 on y = 38 (centre of the body). PG7 nut ≈19 across corners: 30 mm pitch leaves 11 mm for a spanner.</text>
+<text x='110' y='930.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>M12 breathable vent Ø12.5 on the LEFT wall at y = 38, z = 18.</text>
 <text x='760' y='130.0' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>RIGHT SIDE VIEW (staff ACK button)</text>
-<rect x='760' y='170.0' width='210.0' height='300.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
-<line x1='814.0' y1='170.0' x2='814.0' y2='470' stroke='#9aa59f' stroke-dasharray='6 4'/>
-<circle cx='865.0' cy='320.0' r='18.0' fill='#2b2b2b'/>
-<text x='865.0' y='294.0' font-size='11' text-anchor='middle' font-weight='normal' fill='#1f2a26'>ACK Ø12</text>
-<line x1='760' y1='510' x2='865.0' y2='510' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='812.5' y='525' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>35</text>
-<line x1='760' y1='540' x2='970.0' y2='540' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='865.0' y='555' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>70</text>
-<line x1='1000.0' y1='470' x2='1000.0' y2='320.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='992.0' y='395.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 992.0 395.0)'>50</text>
+<rect x='760' y='170.0' width='180.0' height='300.0' rx='8' fill='#f4f5f1' stroke='#1f2a26' stroke-width='1.8'/>
+<line x1='805.0' y1='170.0' x2='805.0' y2='470' stroke='#9aa59f' stroke-dasharray='6 4'/>
+<circle cx='874.0' cy='320.0' r='18.0' fill='#2b2b2b'/>
+<text x='874.0' y='294.0' font-size='11' text-anchor='middle' font-weight='normal' fill='#1f2a26'>ACK Ø12</text>
+<line x1='760' y1='510' x2='874.0' y2='510' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='817.0' y='525' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>38</text>
+<line x1='760' y1='540' x2='940.0' y2='540' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='850.0' y='555' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>60</text>
+<line x1='970.0' y1='470' x2='970.0' y2='320.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='962.0' y='395.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 962.0 395.0)'>50</text>
 <text x='760' y='580' font-size='11' text-anchor='start' font-weight='normal' fill='#5d6b64'>Front (lid) on the left. Bracket 3 mm behind the back face.</text>
 <text x='1090' y='126' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>BACK BRACKET (3 mm aluminium)</text>
-<rect x='1090' y='140' width='418.00000000000006' height='242.00000000000003' rx='4' fill='#e6eaee' stroke='#1f2a26' stroke-width='1.6'/>
-<circle cx='1112.0' cy='360.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
-<circle cx='1486.0' cy='360.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
-<circle cx='1112.0' cy='162.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
-<circle cx='1486.0' cy='162.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
-<rect x='1213.2' y='305.0' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
-<rect x='1213.2' y='181.8' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
-<rect x='1367.2' y='305.0' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
-<rect x='1367.2' y='181.8' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
-<rect x='1134.0' y='151.0' width='330.0' height='220.00000000000003' fill='none' stroke='#5d6b64' stroke-dasharray='5 4'/>
-<line x1='1090' y1='410.0' x2='1508.0' y2='410.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='1299.0' y='425.0' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>190</text>
+<rect x='1090' y='140' width='473.00000000000006' height='242.00000000000003' rx='4' fill='#e6eaee' stroke='#1f2a26' stroke-width='1.6'/>
+<circle cx='1113.1' cy='360.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
+<circle cx='1539.9' cy='360.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
+<circle cx='1113.1' cy='162.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
+<circle cx='1539.9' cy='162.0' r='7.15' fill='#fff' stroke='#1f2a26'/>
+<rect x='1240.7' y='305.0' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
+<rect x='1240.7' y='181.8' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
+<rect x='1394.7' y='305.0' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
+<rect x='1394.7' y='181.8' width='17.6' height='35.2' rx='3' fill='#fff' stroke='#1f2a26' stroke-width='1'/>
+<rect x='1134.0' y='151.0' width='385.00000000000006' height='220.00000000000003' fill='none' stroke='#5d6b64' stroke-dasharray='5 4'/>
+<line x1='1090' y1='410.0' x2='1563.0' y2='410.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='1326.5' y='425.0' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>215</text>
 <line x1='1068' y1='382.0' x2='1068' y2='140' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
 <text x='1060' y='261.0' font-size='12' text-anchor='middle' fill='#1f2a26' transform='rotate(-90 1060 261.0)'>110</text>
-<line x1='1112.0' y1='440.0' x2='1486.0' y2='440.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
-<text x='1299.0' y='455.0' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>170 (wall holes Ø6.5)</text>
-<text x='1090' y='482.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>4 × Ø6.5 for M6 anchors, 170 × 90 centres</text>
+<line x1='1113.1' y1='440.0' x2='1539.9' y2='440.0' stroke='#1f2a26' stroke-width='1' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='1326.5' y='455.0' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>194 (wall holes Ø6.5)</text>
+<text x='1090' y='482.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>4 × Ø6.5 for M6 anchors, 194 × 90 centres</text>
 <text x='1090' y='500.0' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>4 × 8 × 16 slots for two stainless hose clamps (post Ø 40–90)</text>
-<text x='1090' y='518.0' font-size='12' text-anchor='start' font-weight='normal' fill='#5d6b64'>dashed: box outline 150 × 100</text>
-<text x='1090' y='662.0' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>INTERNAL LAYOUT (on 136 × 86 back plate)</text>
-<rect x='1090' y='680.0' width='390.0' height='260.0' rx='6' fill='#fafbf8' stroke='#1f2a26' stroke-width='1.2'/>
-<rect x='1105.6' y='737.2' width='234.0' height='182.0' rx='2' fill='#3f7d4e' stroke='#1f2a26' stroke-width='1'/>
-<text x='1222.6' y='832.2' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'></text>
-<rect x='1142.0' y='763.46' width='141.44' height='72.53999999999999' rx='2' fill='#26303a' stroke='#1f2a26' stroke-width='1'/>
-<text x='1212.72' y='803.73' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>ESP32-DevKitC</text>
-<rect x='1360.4' y='741.62' width='66.3' height='57.980000000000004' rx='2' fill='#6b4fa0' stroke='#1f2a26' stroke-width='1'/>
-<text x='1393.55' y='774.61' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>INA219</text>
-<rect x='1360.4' y='823.0' width='57.2' height='44.2' rx='2' fill='#2d5fa3' stroke='#1f2a26' stroke-width='1'/>
-<text x='1389.0' y='849.1' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>MP1584</text>
-<rect x='1360.4' y='888.0' width='78.0' height='26.0' rx='2' fill='#b07a2a' stroke='#1f2a26' stroke-width='1'/>
-<text x='1399.4' y='905.0' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>FUSE</text>
-<rect x='1131.6' y='888.0' width='182.0' height='26.0' rx='2' fill='#1f6fb2' stroke='#1f2a26' stroke-width='1'/>
-<text x='1222.6' y='906.2' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#fff'>field terminals</text>
-<text x='1222.6' y='730.7' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>perfboard 90 × 70: Q1, Q2, resistors, pull-ups</text>
+<text x='1090' y='518.0' font-size='12' text-anchor='start' font-weight='normal' fill='#5d6b64'>dashed: box outline 175 × 100</text>
+<text x='1090' y='662.0' font-size='15' text-anchor='start' font-weight='bold' fill='#1f2a26'>INTERNAL LAYOUT (on 160 × 86 back plate)</text>
+<rect x='1090' y='680.0' width='455.0' height='260.0' rx='6' fill='#fafbf8' stroke='#1f2a26' stroke-width='1.2'/>
+<rect x='1116.0' y='737.2' width='234.0' height='182.0' rx='2' fill='#3f7d4e' stroke='#1f2a26' stroke-width='1'/>
+<text x='1233.0' y='832.2' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'></text>
+<rect x='1152.4' y='763.46' width='141.44' height='72.53999999999999' rx='2' fill='#26303a' stroke='#1f2a26' stroke-width='1'/>
+<text x='1223.12' y='803.73' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>ESP32-DevKitC</text>
+<rect x='1396.8' y='741.62' width='66.3' height='57.980000000000004' rx='2' fill='#6b4fa0' stroke='#1f2a26' stroke-width='1'/>
+<text x='1429.95' y='774.61' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>INA219</text>
+<rect x='1396.8' y='823.0' width='57.2' height='44.2' rx='2' fill='#2d5fa3' stroke='#1f2a26' stroke-width='1'/>
+<text x='1425.4' y='849.1' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>MP1584</text>
+<rect x='1396.8' y='888.0' width='78.0' height='26.0' rx='2' fill='#b07a2a' stroke='#1f2a26' stroke-width='1'/>
+<text x='1435.8' y='905.0' font-size='11' text-anchor='middle' font-weight='bold' fill='#ffffff'>FUSE</text>
+<rect x='1142.0' y='888.0' width='182.0' height='26.0' rx='2' fill='#1f6fb2' stroke='#1f2a26' stroke-width='1'/>
+<text x='1233.0' y='906.2' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#fff'>field terminals</text>
+<text x='1233.0' y='730.7' font-size='10.5' text-anchor='middle' font-weight='normal' fill='#1f2a26'>perfboard 90 × 70: Q1, Q2, resistors, pull-ups</text>
 <text x='1090' y='962' font-size='11' text-anchor='start' font-weight='normal' fill='#5d6b64'>Antenna end of the WROOM can stays ≥15 mm from metal; cables enter from below only.</text></svg>
