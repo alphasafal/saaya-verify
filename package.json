@@ -12,7 +12,8 @@
     "test:cooling": "node --test tests/cooling.test.mjs && node tests/cooling-browser.cjs",
     "build:pavilion": "esbuild site/pavilion-src.js --bundle --minify --outfile=site/pavilion.bundle.js --format=esm",
     "test:pavilion": "node tests/pavilion-browser.cjs",
-    "test:defense": "node tests/defense-browser.cjs"
+    "test:defense": "node tests/defense-browser.cjs",
+    "build:node": "esbuild site/node-src.js --bundle --minify --outfile=site/node.bundle.js --format=esm"
   },
   "dependencies": {
     "three": "0.180.0"

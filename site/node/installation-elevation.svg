@@ -1,0 +1,35 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1700' height='900' viewBox='0 0 1700 900' font-family='Helvetica,Arial,sans-serif'><title>SAAYA Node installation elevation</title><rect width='1700' height='900' fill='#ffffff'/><defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>
+<text x='40' y='46' font-size='24' text-anchor='start' font-weight='bold' fill='#1f2a26'>Installation - retrofit to an existing rest shade (side elevation, mm)</text>
+<text x='40' y='72' font-size='13' text-anchor='start' font-weight='normal' fill='#5d6b64'>Works on any shade with a post or wall: worksite rest shed, bus-stop shelter, FS-01 frame. Scale 1:25.</text>
+<line x1='40' y1='800' x2='1660' y2='800' stroke='#6b5b3e' stroke-width='3'/>
+<text x='50' y='822' font-size='12' text-anchor='start' font-weight='normal' fill='#6b5b3e'>ground (shaded ground cover preferred - see model)</text>
+<rect x='230.0' y='228.57142857142856' width='16.285714285714285' height='571.4285714285714' rx='1' fill='#8a949b' stroke='#1f2a26' stroke-width='1.2'/>
+<rect x='158.57142857142856' y='214.28571428571433' width='809.5238095238095' height='14.285714285714285' rx='2' fill='#c9cfc5' stroke='#1f2a26' stroke-width='1.2'/>
+<text x='563.3333333333333' y='204.28571428571433' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>existing roof (paint underside / add lining)</text>
+<rect x='872.8571428571428' y='228.57142857142856' width='16.285714285714285' height='571.4285714285714' rx='1' fill='#8a949b' stroke='#1f2a26' stroke-width='1.2'/>
+<rect x='491.90476190476187' y='692.8571428571429' width='333.3333333333333' height='9.523809523809524' rx='2' fill='#ac805a' stroke='#1f2a26' stroke-width='1'/>
+<circle cx='587.1428571428571' cy='526.1904761904761' r='26.19047619047619' fill='none' stroke='#5d6b64' stroke-width='1.6'/>
+<path d='M587.1428571428571,552.3809523809524 L587.1428571428571,666.6666666666667 L658.5714285714286,676.1904761904761' fill='none' stroke='#5d6b64' stroke-width='2'/>
+<text x='587.1428571428571' y='490.4761904761905' font-size='11' text-anchor='middle' font-weight='normal' fill='#5d6b64'>seated worker</text>
+<rect x='244.28571428571428' y='454.76190476190476' width='18.666666666666664' height='23.809523809523807' rx='2' fill='#eef0ea' stroke='#1f2a26' stroke-width='1.4'/>
+<text x='265.7142857142857' y='442.8571428571429' font-size='12' text-anchor='start' font-weight='bold' fill='#1f2a26'>SAAYA Node box</text>
+<line x1='210.0' y1='466.6666666666667' x2='210.0' y2='800' stroke='#1f2a26' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='204.0' y='633.3333333333334' font-size='12' text-anchor='end' font-weight='normal' fill='#1f2a26'>1400 (box centre)</text>
+<rect x='420.4761904761905' y='347.61904761904765' width='8.952380952380953' height='28.57142857142857' rx='1' fill='#3b4048' stroke='#1f2a26' stroke-width='1'/>
+<path d='M427.6190476190476,361.9047619047619 L575.2380952380952,514.2857142857142' stroke='#5aa0d6' stroke-width='2' stroke-dasharray='8 6' marker-end='url(#ar)'/>
+<text x='430.0' y='333.33333333333337' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>120 mm PWM fan, aimed at seat (~1 m, 30–45° down)</text>
+<rect x='694.2857142857142' y='526.1904761904761' width='26.19047619047619' height='16.666666666666664' rx='2' fill='#f4f4ef' stroke='#1f2a26' stroke-width='1.2'/>
+<text x='708.5714285714286' y='519.047619047619' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>SHT31 seat (in shield)</text>
+<line x1='732.3809523809523' y1='538.0952380952381' x2='732.3809523809523' y2='800' stroke='#1f2a26' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='727.6190476190476' y='657.1428571428571' font-size='12' text-anchor='end' font-weight='normal' fill='#1f2a26'>1100 = seated head height</text>
+<circle cx='551.4285714285713' cy='234.57142857142856' r='6' fill='#6b4fa0'/>
+<text x='556.1904761904761' y='254.76190476190482' font-size='12' text-anchor='start' font-weight='normal' fill='#1f2a26'>DS18B20 bonded to roof underside, centre</text>
+<rect x='1372.857142857143' y='526.1904761904761' width='26.19047619047619' height='16.666666666666664' rx='2' fill='#f4f4ef' stroke='#1f2a26' stroke-width='1.2'/>
+<line x1='1385.952380952381' y1='542.8571428571429' x2='1385.952380952381' y2='800' stroke='#8a949b' stroke-width='3'/>
+<text x='1385.952380952381' y='507.14285714285717' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>SHT31 reference (in shield)</text>
+<line x1='887.1428571428571' y1='728.5714285714286' x2='1385.952380952381' y2='728.5714285714286' stroke='#1f2a26' marker-start='url(#ar)' marker-end='url(#ar)'/>
+<text x='1134.7619047619046' y='720.5714285714286' font-size='12' text-anchor='middle' font-weight='normal' fill='#1f2a26'>≥ 2000 from the shade edge, same 1100 height, ≤ 5 m cable</text>
+<rect x='301.42857142857144' y='692.8571428571429' width='59.52380952380952' height='107.14285714285714' rx='3' fill='#78aeb0' stroke='#1f2a26' stroke-width='1'/>
+<text x='331.1904761904762' y='685.7142857142858' font-size='11' text-anchor='middle' font-weight='normal' fill='#1f2a26'>water can + float</text>
+<path d='M252.61904761904762,466.6666666666667 L252.61904761904762,230.95238095238096 L706.1904761904761,230.95238095238096 L706.1904761904761,526.1904761904761' fill='none' stroke='#2e8b3d' stroke-width='1.6' stroke-dasharray='4 4'/>
+<text x='265.7142857142857' y='288.09523809523813' font-size='11' text-anchor='start' font-weight='normal' fill='#2e8b3d'>cables in UV conduit along post and roof; drip loop below box</text></svg>

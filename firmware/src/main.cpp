@@ -9,6 +9,26 @@
 #include <Preferences.h>
 #include <esp_task_wdt.h>
 #include "controller.h"
+#ifndef SAAYA_WIFI
+#define SAAYA_WIFI 0
+#endif
+#if SAAYA_WIFI
+// Optional LAN uplink (off by default). Runs in its own task on core 0 so that Wi-Fi or HTTP
+// stalls can never delay buttons, the help latch or fan control on core 1.
+#include <WiFi.h>
+#include <HTTPClient.h>
+struct UplinkFrame {char json[768];};
+static QueueHandle_t uplinkQueue=nullptr;
+void uplinkTask(void*){
+ UplinkFrame f;
+ for(;;){
+  if(xQueueReceive(uplinkQueue,&f,portMAX_DELAY)!=pdTRUE)continue;
+  if(WiFi.status()!=WL_CONNECTED){WiFi.begin(SAAYA_WIFI_SSID,SAAYA_WIFI_PASS);for(int i=0;i<20&&WiFi.status()!=WL_CONNECTED;i++)vTaskDelay(pdMS_TO_TICKS(250));if(WiFi.status()!=WL_CONNECTED)continue;}
+  HTTPClient http;http.setTimeout(1500);
+  if(http.begin(SAAYA_API_URL)){http.addHeader("Content-Type","application/json");http.addHeader("X-Device-Token",SAAYA_DEVICE_TOKEN);http.POST((uint8_t*)f.json,strlen(f.json));http.end();}
+ }
+}
+#endif
 // 4-wire 12 V PWM fan. GPIO drives NPN open-collector stage, never motor power.
 constexpr int PWM=25,TACH=34,WATER=35,MODE=32,HELP=33,ACK=27,LED=26,BUZZER=14,ROOF=4;
 Adafruit_SHT31 outside,inside;Adafruit_SSD1306 display(128,64,&Wire,-1);Adafruit_INA219 powerMeter;
@@ -21,7 +41,7 @@ struct Button {explicit Button(int p):pin(p){} int pin;bool last=true,stable=tru
 Button modeButton{MODE},helpButton{HELP},ackButton{ACK};
 void finiteValue(JsonDocument &d,const char*key,float value){if(isfinite(value))d[key]=value;else d[key]=nullptr;}
 void setup(){
- Serial.begin(115200);Wire.begin(21,22);Wire.setTimeOut(50);
+ Serial.begin(115200);Wire.begin(21,22);Wire.setClock(50000);Wire.setTimeOut(50); // 50 kHz: margin for the metres-long reference-sensor cable
  pinMode(PWM,OUTPUT);digitalWrite(PWM,HIGH);ledcSetup(0,25000,8);ledcAttachPin(PWM,0);ledcWrite(0,255);
  for(int pin:{MODE,HELP,ACK})pinMode(pin,INPUT_PULLUP);
  pinMode(TACH,INPUT);pinMode(WATER,INPUT); // EXTERNAL 10k pull-ups to 3.3 V required on input-only pins.
@@ -32,6 +52,9 @@ void setup(){
  preferences.begin("saaya",false);state.help=preferences.getBool("help",false);
  snprintf(session,sizeof(session),"boot-%08lx-%08lx",(unsigned long)esp_random(),(unsigned long)esp_random());
  esp_task_wdt_init(5,true);esp_task_wdt_add(NULL);
+#if SAAYA_WIFI
+ uplinkQueue=xQueueCreate(1,sizeof(UplinkFrame));xTaskCreatePinnedToCore(uplinkTask,"uplink",8192,nullptr,1,nullptr,0);
+#endif
 }
 void loop(){
  uint32_t now=millis();uptimeMs+=uint32_t(now-previousMillis);previousMillis=now;esp_task_wdt_reset();
@@ -58,5 +81,9 @@ void loop(){
  float watts=NAN;if(powerOK){float w=powerMeter.getPower_mW()/1000.0f;if(isfinite(w)&&w>=0)watts=w;} // circuit is FAN BRANCH only
  JsonDocument d;d["schema_version"]=1;d["device_id"]="saaya-esp32";d["session_id"]=session;d["seq"]=seq++;d["source"]="MEASURED";d["config_id"]="bench-v2-fan-branch-power";d["calibration_id"]="UNVERIFIED";d["acquired_ms"]=uptimeMs;d["emitted_ms"]=uptimeMs;
  finiteValue(d,"temp",temp);finiteValue(d,"rh",rh);finiteValue(d,"outdoor_temp",ot);finiteValue(d,"outdoor_rh",orr);finiteValue(d,"roof_temp",roofTemp);finiteValue(d,"watts",watts);d["rpm"]=rpm;d["duty"]=state.duty;d["water"]=waterAvailable?"available":"low";d["help"]=state.help;d["quality"]=sensorFault?"invalid":"valid";d["fan_fault"]=state.fanFault;{FanAdvice a=fanAdvice(sensorFault?NAN:temp);d["fan_advice"]=a==FAN_OK?"ok":a==FAN_CAUTION?"caution":a==FAN_AVOID?"avoid":"unknown";}d["clock_aligned"]=false;d["reference_valid"]=false;d["ref_roof"]=nullptr;d["ref_air_speed"]=nullptr;d["air_speed"]=nullptr;serializeJson(d,Serial);Serial.println();
+#if SAAYA_WIFI
+ {UplinkFrame f;if(measureJson(d)<sizeof(f.json)){serializeJson(d,f.json,sizeof(f.json));xQueueOverwrite(uplinkQueue,&f);}} // latest frame only; never blocks
+#endif
+
  if(displayOK){display.clearDisplay();display.setTextSize(1);display.setTextColor(SSD1306_WHITE);display.setCursor(0,0);display.println("SAAYA BENCH / MEASURED");display.printf("T: %.1f RH: %.0f\n",temp,rh);display.printf("Fan %d%% %.0f RPM\n",state.duty,rpm);display.println(waterAvailable?"Water available":"WATER LOW / CHECK");FanAdvice advice=fanAdvice(sensorFault?NAN:temp);display.println(state.help?"HELP REQUEST LATCHED":sensorFault?"SENSOR FAULT":state.fanFault?"FAN FEEDBACK FAULT":advice==FAN_AVOID?"HOT: FAN MAY ADD HEAT":advice==FAN_CAUTION?"FAN: LIMITED BENEFIT":"Not a safety rating");display.display();}
 }
