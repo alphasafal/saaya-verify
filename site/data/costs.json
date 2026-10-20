@@ -1,213 +1,260 @@
 {
-  "currency": "INR",
-  "checked_on": "2026-10-11",
-  "tabletop": [
-    {
-      "item": "ESP32 38-pin NodeMCU candidate",
-      "quantity": 1,
-      "unit_price": 425,
-      "status": "Supplier listing; stock shown; mechanical fit not confirmed",
-      "url": "https://robocraze.com/products/esp32-development-board",
-      "notes": "Price includes GST. Generic38-pin board is not a verified Espressif DevKitC V4; measure received board before fabricating its tray."
-    },
-    {
-      "item": "Adafruit SHT31-D breakout2857",
-      "quantity": 2,
-      "unit_price": 1532.82,
-      "status": "Supplier listing; SOLD OUT",
-      "url": "https://www.thingbits.in/products/adafruit-sht31-d-sensirion-temp-humidity-sensor-breakout",
-      "notes": "Includes GST.12.7\u00d718\u00d72.6mm manufacturer dimension; use0x44 and0x45. Generic SHT31 breakout is a possible substitution only after dimension/address/accuracy checks."
-    },
-    {
-      "item": "Noctua NF-A4x10 PWM12V reference fan",
-      "quantity": 1,
-      "unit_price": 3130,
-      "status": "Imported supplier listing; Vellore delivery unverified",
-      "url": "https://crowcrowcrow.com/p/noctua-nf-a4x10-pwm-high-performance-quiet-fan-40mm/qpp8048",
-      "notes": "All-inclusive web listing.40\u00d740\u00d710mm,32mm square mounting centres; allow12mm with pads. No manufacturer endorsement of retailer inferred. Cheaper substitute must retain documented tachometer and4-wire PWM."
-    },
-    {
-      "item": "7Semi INA219 power monitor breakout",
-      "quantity": 1,
-      "unit_price": 229,
-      "status": "Supplier category listing; stock/GST details to confirm",
-      "url": "https://robu.in/product-category/current-and-voltage-sensor/",
-      "notes": "0\u201326V listing; verify shunt/rating and compare meter against reference at low current."
-    },
-    {
-      "item": "7Semi DS18B20 probe1m,2-inch",
-      "quantity": 1,
-      "unit_price": 259,
-      "status": "Supplier category listing; stock/GST details to confirm",
-      "url": "https://robu.in/product-category/temperature-sensor-modules/",
-      "notes": "Roof contact measurement; thermally couple probe, shield it from direct solar contamination; not a radiant-temperature sensor."
-    },
-    {
-      "item": "SSD1306 OLED I2C0.96inch",
-      "quantity": 1,
-      "unit_price": 250,
-      "status": "Planning allowance; price not verified",
-      "url": "https://robu.in/product/4pin-oled-display-module-blue-color/",
-      "notes": "Supplier product found but extract lacks reliable price/dimensions. Measure chosen PCB and display window before making lid; do not use SPI-only substitute."
-    },
-    {
-      "item": "Float switch and water vessel",
-      "quantity": 1,
-      "unit_price": 250,
-      "status": "Planning allowance; supplier quote pending",
-      "url": null,
-      "notes": "Separate water vessel; no potable certification claimed for electronic float."
-    },
-    {
-      "item": "Driver,transistors,fuse,buck,12V adapter",
-      "quantity": 1,
-      "unit_price": 850,
-      "status": "Planning allowance; exact supplier quote pending",
-      "url": null,
-      "notes": "Includes open-collector PWM/tach conditioning; protected supply. No battery or PV included."
-    },
-    {
-      "item": "Buttons,buzzer,LED,cables,connectors",
-      "quantity": 1,
-      "unit_price": 450,
-      "status": "Planning allowance; supplier quote pending",
-      "url": null,
-      "notes": "Local physical controls and assistance latch; common3.3V signal domain."
-    },
-    {
-      "item": "Printed housing,frame,roof,fasteners",
-      "quantity": 1,
-      "unit_price": 1500,
-      "status": "Planning allowance; workshop quote pending",
-      "url": null,
-      "notes": "No calibrated anemometer/WBGT,shipping,tools or labour included."
-    }
-  ],
-  "full_size": [
-    {
-      "item": "Structural steel stock",
-      "estimate_low": 12855,
-      "estimate_high": 22496,
-      "notes": "160.7 kg idealized structural steel \u00d7 assumed INR80\u2013140/kg; not a supplier quote"
-    },
-    {
-      "item": "Roof materials, forming and sealed drainage",
-      "estimate_low": 9000,
-      "estimate_high": 16000,
-      "notes": "6.72 m\u00b2 per skin; profile, seams, fasteners and gutter remain supplier design"
-    },
-    {
-      "item": "Frame cutting, drilling, welding and jigs",
-      "estimate_low": 15000,
-      "estimate_high": 25000,
-      "notes": "One-off first-article allowance; no local quote"
-    },
-    {
-      "item": "Corrosion protection and finishing",
-      "estimate_low": 5000,
-      "estimate_high": 9000,
-      "notes": "Surface preparation and coating allowance; specification not approved"
-    },
-    {
-      "item": "Bench and removable screens",
-      "estimate_low": 8000,
-      "estimate_high": 14000,
-      "notes": "Materials, finish and assembly allowance"
-    },
-    {
-      "item": "Outdoor electronics, fan and protected low-voltage power",
-      "estimate_low": 6000,
-      "estimate_high": 12000,
-      "notes": "Qualified outdoor substitutions and installation unresolved"
-    },
-    {
-      "item": "Foundations, anchors and site preparation",
-      "estimate_low": 10000,
-      "estimate_high": 20000,
-      "notes": "Provisional sum only; soil and anchor design can change this substantially"
-    },
-    {
-      "item": "Transport, erection and installation",
-      "estimate_low": 8000,
-      "estimate_high": 15000,
-      "notes": "Access/lifting/distance not surveyed"
-    },
-    {
-      "item": "Engineering review and first-article inspection",
-      "estimate_low": 8000,
-      "estimate_high": 15000,
-      "notes": "Planning allowance, not a service offer"
-    },
-    {
-      "item": "Contingency / tax reconciliation allowance",
-      "estimate_low": 12279,
-      "estimate_high": 22275,
-      "notes": "15% planning buffer; final quote must state applicable taxes separately"
-    }
-  ],
-  "ac": {
-    "model": "Blue Star IA318TXU1.5-ton3-star inverter split AC,2026 label",
-    "price": 36990,
-    "url": "https://consumer.bluestarindia.com/products/inverter-ac-t-series-1-5-ton-3-star-2026-bee-label-copy",
-    "status": "Official web equipment price; NOT a Vellore installed quotation",
-    "installation_notes": "Standard installation inclusions/cost,brackets,extra copper,drain,electrical work,taxes,delivery and postcode availability require a written dated Vellore quote. Installed benchmark remains unknown."
+ "currency": "INR",
+ "checked_on": "2026-10-11",
+ "tabletop": [
+  {
+   "item": "ESP32 38-pin NodeMCU candidate",
+   "quantity": 1,
+   "unit_price": 425,
+   "status": "Supplier listing; stock shown; mechanical fit not confirmed",
+   "url": "https://robocraze.com/products/esp32-development-board",
+   "notes": "Price includes GST. Generic38-pin board is not a verified Espressif DevKitC V4; measure received board before fabricating its tray."
   },
-  "exclusions": "No procurement. Prices are observations or explicitly labeled allowances,not quotations. No physical performance or below-installed-AC-cost claim.",
-  "annual_maintenance": {
-    "estimate_low": 1500,
-    "estimate_high": 3500,
-    "notes": "Planning allowance for cleaning,inspection and replaceable consumables; excludes electricity,water and major storm repairs."
+  {
+   "item": "Adafruit SHT31-D breakout2857",
+   "quantity": 2,
+   "unit_price": 1532.82,
+   "status": "Supplier listing; SOLD OUT",
+   "url": "https://www.thingbits.in/products/adafruit-sht31-d-sensirion-temp-humidity-sensor-breakout",
+   "notes": "Includes GST.12.7×18×2.6mm manufacturer dimension; use0x44 and0x45. Generic SHT31 breakout is a possible substitution only after dimension/address/accuracy checks."
   },
-  "superseded_concept_full_size_2026_10_11": [
-    {
-      "item": "Frame and corrosion protection",
-      "estimate_low": 6500,
-      "estimate_high": 10000,
-      "notes": "Concept allowance for roughly2\u00d72m footprint; structure unengineered."
-    },
-    {
-      "item": "Two-layer roof,spacers,drainage",
-      "estimate_low": 4000,
-      "estimate_high": 6500,
-      "notes": "About5m\u00b2 per layer; supplier quantities/loads to verify."
-    },
-    {
-      "item": "Bench,shade screens and safe floor",
-      "estimate_low": 2500,
-      "estimate_high": 4500,
-      "notes": "Removable repairable parts."
-    },
-    {
-      "item": "Human-scale fan,controller,sensors,enclosure",
-      "estimate_low": 4500,
-      "estimate_high": 7500,
-      "notes": "Tabletop40mm fan cannot serve people."
-    },
-    {
-      "item": "Protected power,electrical installation",
-      "estimate_low": 1500,
-      "estimate_high": 3000,
-      "notes": "Mains-derived low voltage; PV and battery excluded."
-    },
-    {
-      "item": "Anchors,foundation,site preparation",
-      "estimate_low": 3000,
-      "estimate_high": 6000,
-      "notes": "Site/wind/soil design pending."
-    },
-    {
-      "item": "Fabrication and installation labour",
-      "estimate_low": 4000,
-      "estimate_high": 7000,
-      "notes": "Local written quote pending."
-    },
-    {
-      "item": "Transport,taxes and contingency allowance",
-      "estimate_low": 4500,
-      "estimate_high": 8000,
-      "notes": "Not a turnkey offer; reconcile GST when obtaining quotes."
-    }
-  ],
-  "full_size_basis": "FS-01 first-article planning allowances, NOT supplier quotations",
-  "full_size_revision_date": "2026-10-12"
+  {
+   "item": "Noctua NF-A4x10 PWM12V reference fan",
+   "quantity": 1,
+   "unit_price": 3130,
+   "status": "Imported supplier listing; Vellore delivery unverified",
+   "url": "https://crowcrowcrow.com/p/noctua-nf-a4x10-pwm-high-performance-quiet-fan-40mm/qpp8048",
+   "notes": "All-inclusive web listing.40×40×10mm,32mm square mounting centres; allow12mm with pads. No manufacturer endorsement of retailer inferred. Cheaper substitute must retain documented tachometer and4-wire PWM."
+  },
+  {
+   "item": "7Semi INA219 power monitor breakout",
+   "quantity": 1,
+   "unit_price": 229,
+   "status": "Supplier category listing; stock/GST details to confirm",
+   "url": "https://robu.in/product-category/current-and-voltage-sensor/",
+   "notes": "0–26V listing; verify shunt/rating and compare meter against reference at low current."
+  },
+  {
+   "item": "7Semi DS18B20 probe1m,2-inch",
+   "quantity": 1,
+   "unit_price": 259,
+   "status": "Supplier category listing; stock/GST details to confirm",
+   "url": "https://robu.in/product-category/temperature-sensor-modules/",
+   "notes": "Roof contact measurement; thermally couple probe, shield it from direct solar contamination; not a radiant-temperature sensor."
+  },
+  {
+   "item": "SSD1306 OLED I2C0.96inch",
+   "quantity": 1,
+   "unit_price": 250,
+   "status": "Planning allowance; price not verified",
+   "url": "https://robu.in/product/4pin-oled-display-module-blue-color/",
+   "notes": "Supplier product found but extract lacks reliable price/dimensions. Measure chosen PCB and display window before making lid; do not use SPI-only substitute."
+  },
+  {
+   "item": "Float switch and water vessel",
+   "quantity": 1,
+   "unit_price": 250,
+   "status": "Planning allowance; supplier quote pending",
+   "url": null,
+   "notes": "Separate water vessel; no potable certification claimed for electronic float."
+  },
+  {
+   "item": "Driver,transistors,fuse,buck,12V adapter",
+   "quantity": 1,
+   "unit_price": 850,
+   "status": "Planning allowance; exact supplier quote pending",
+   "url": null,
+   "notes": "Includes open-collector PWM/tach conditioning; protected supply. No battery or PV included."
+  },
+  {
+   "item": "Buttons,buzzer,LED,cables,connectors",
+   "quantity": 1,
+   "unit_price": 450,
+   "status": "Planning allowance; supplier quote pending",
+   "url": null,
+   "notes": "Local physical controls and assistance latch; common3.3V signal domain."
+  },
+  {
+   "item": "Printed housing,frame,roof,fasteners",
+   "quantity": 1,
+   "unit_price": 1500,
+   "status": "Planning allowance; workshop quote pending",
+   "url": null,
+   "notes": "No calibrated anemometer/WBGT,shipping,tools or labour included."
+  }
+ ],
+ "full_size": [
+  {
+   "item": "Structural steel stock",
+   "estimate_low": 12855,
+   "estimate_high": 22496,
+   "notes": "160.7 kg idealized structural steel × assumed INR80–140/kg; not a supplier quote"
+  },
+  {
+   "item": "Roof materials, forming and sealed drainage",
+   "estimate_low": 9000,
+   "estimate_high": 16000,
+   "notes": "6.72 m² per skin; profile, seams, fasteners and gutter remain supplier design"
+  },
+  {
+   "item": "Frame cutting, drilling, welding and jigs",
+   "estimate_low": 15000,
+   "estimate_high": 25000,
+   "notes": "One-off first-article allowance; no local quote"
+  },
+  {
+   "item": "Corrosion protection and finishing",
+   "estimate_low": 5000,
+   "estimate_high": 9000,
+   "notes": "Surface preparation and coating allowance; specification not approved"
+  },
+  {
+   "item": "Bench and removable screens",
+   "estimate_low": 8000,
+   "estimate_high": 14000,
+   "notes": "Materials, finish and assembly allowance"
+  },
+  {
+   "item": "Outdoor electronics, fan and protected low-voltage power",
+   "estimate_low": 6000,
+   "estimate_high": 12000,
+   "notes": "Qualified outdoor substitutions and installation unresolved"
+  },
+  {
+   "item": "Foundations, anchors and site preparation",
+   "estimate_low": 10000,
+   "estimate_high": 20000,
+   "notes": "Provisional sum only; soil and anchor design can change this substantially"
+  },
+  {
+   "item": "Transport, erection and installation",
+   "estimate_low": 8000,
+   "estimate_high": 15000,
+   "notes": "Access/lifting/distance not surveyed"
+  },
+  {
+   "item": "Engineering review and first-article inspection",
+   "estimate_low": 8000,
+   "estimate_high": 15000,
+   "notes": "Planning allowance, not a service offer"
+  },
+  {
+   "item": "Contingency / tax reconciliation allowance",
+   "estimate_low": 12279,
+   "estimate_high": 22275,
+   "notes": "15% planning buffer; final quote must state applicable taxes separately"
+  }
+ ],
+ "ac": {
+  "model": "Blue Star IA318TXU1.5-ton3-star inverter split AC,2026 label",
+  "price": 36990,
+  "url": "https://consumer.bluestarindia.com/products/inverter-ac-t-series-1-5-ton-3-star-2026-bee-label-copy",
+  "status": "Official web equipment price; NOT a Vellore installed quotation",
+  "installation_notes": "Standard installation inclusions/cost,brackets,extra copper,drain,electrical work,taxes,delivery and postcode availability require a written dated Vellore quote. Installed benchmark remains unknown."
+ },
+ "exclusions": "No procurement. Prices are observations or explicitly labeled allowances,not quotations. No physical performance or below-installed-AC-cost claim.",
+ "annual_maintenance": {
+  "estimate_low": 1500,
+  "estimate_high": 3500,
+  "notes": "Planning allowance for cleaning,inspection and replaceable consumables; excludes electricity,water and major storm repairs."
+ },
+ "superseded_concept_full_size_2026_10_11": [
+  {
+   "item": "Frame and corrosion protection",
+   "estimate_low": 6500,
+   "estimate_high": 10000,
+   "notes": "Concept allowance for roughly2×2m footprint; structure unengineered."
+  },
+  {
+   "item": "Two-layer roof,spacers,drainage",
+   "estimate_low": 4000,
+   "estimate_high": 6500,
+   "notes": "About5m² per layer; supplier quantities/loads to verify."
+  },
+  {
+   "item": "Bench,shade screens and safe floor",
+   "estimate_low": 2500,
+   "estimate_high": 4500,
+   "notes": "Removable repairable parts."
+  },
+  {
+   "item": "Human-scale fan,controller,sensors,enclosure",
+   "estimate_low": 4500,
+   "estimate_high": 7500,
+   "notes": "Tabletop40mm fan cannot serve people."
+  },
+  {
+   "item": "Protected power,electrical installation",
+   "estimate_low": 1500,
+   "estimate_high": 3000,
+   "notes": "Mains-derived low voltage; PV and battery excluded."
+  },
+  {
+   "item": "Anchors,foundation,site preparation",
+   "estimate_low": 3000,
+   "estimate_high": 6000,
+   "notes": "Site/wind/soil design pending."
+  },
+  {
+   "item": "Fabrication and installation labour",
+   "estimate_low": 4000,
+   "estimate_high": 7000,
+   "notes": "Local written quote pending."
+  },
+  {
+   "item": "Transport,taxes and contingency allowance",
+   "estimate_low": 4500,
+   "estimate_high": 8000,
+   "notes": "Not a turnkey offer; reconcile GST when obtaining quotes."
+  }
+ ],
+ "full_size_basis": "FS-01 first-article planning allowances, NOT supplier quotations",
+ "full_size_revision_date": "2026-10-12",
+ "budget_profile": {
+  "status": "Cost-optimised bench candidate, 2026-10-20 web observations plus allowances. Not purchased. Every substitution requires the same co-location calibration, address/fit checks and tach verification before use.",
+  "items": [
+   {
+    "item": "ESP32 38-pin dev board (keep current candidate)",
+    "quantity": 1,
+    "unit_price": 425,
+    "url": "https://robocraze.com/products/esp32-development-board",
+    "notes": "Probots listing ₹499 also observed"
+   },
+   {
+    "item": "GY-SHT30-D I2C temperature/RH module (replaces Adafruit SHT31)",
+    "quantity": 2,
+    "unit_price": 179,
+    "url": "https://probots.co.in/gy-sht30-d-digital-temperature-humidity-sensor-module-i2c.html",
+    "notes": "Lower-grade sensor than SHT31 (Sensirion datasheet: SHT30 ±0.3 °C typ vs SHT31 ±0.2 °C); still inside the 1.0 °C declared margin after co-location; confirm ADDR pin for 0x44/0x45"
+   },
+   {
+    "item": "40 mm 12 V 4-wire PWM fan with tachometer (replaces Noctua)",
+    "quantity": 1,
+    "unit_price": 300,
+    "url": "https://www.waveshare.com/product/fan-4010-pwm-12v.htm",
+    "notes": "ALLOWANCE: 4-wire PWM+tach part found only outside India (Waveshare, US$2.69 + shipping). Cheap Indian 4010 listings are 2-wire with no tach and are NOT acceptable: tach feedback is the core of the evidence chain"
+   },
+   {
+    "item": "INA219 module",
+    "quantity": 1,
+    "unit_price": 229,
+    "url": "https://robu.in/product-category/current-and-voltage-sensor/",
+    "notes": "Probots listing ₹289 also observed"
+   },
+   {
+    "item": "DS18B20 waterproof probe 1 m",
+    "quantity": 1,
+    "unit_price": 49,
+    "url": "https://probots.co.in/ds18b20-waterproof-temperature-sensor-for-arduino-raspberry.html",
+    "notes": "Verify genuine Maxim part behaviour against a reference thermometer"
+   },
+   {
+    "item": "SSD1306 OLED, float, driver/fuse/adapter, buttons/LED/buzzer, printed parts",
+    "quantity": 1,
+    "unit_price": 3300,
+    "url": null,
+    "notes": "Unchanged allowances from the tabletop list (250+250+850+450+1500)"
+   }
+  ]
+ }
 }

@@ -10,6 +10,8 @@
 
 **Status:** software demonstrator and engineering package. No physical build, calibrated measurements, manufacturing release or safety certification is claimed. See [verification](docs/verification.md).
 
+**Design defense (start here for review panels):** https://saaya-verify.vercel.app/defense.html — every architecture decision with rejected alternatives, a tested radiant-heat screening model, fan-safety boundaries, cost levers, flaws fixed in the v0.3 review and anticipated panel questions. Source: [docs/DEFENSE.md](docs/DEFENSE.md).
+
 **Teacher presentation:** https://saaya-verify.vercel.app/explain.html — interactive IoT diagram, labelled CAD, placement rationales, bench pin map and current engineering gaps.
 
 **Operational CAD:** open [the worker / fan / sensor view](https://saaya-verify.vercel.app/fullsize-model.html) and change synthetic parameters. [Layer scope and control rules](docs/operational-cad.md).

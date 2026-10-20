@@ -30,6 +30,7 @@ class Sample(BaseModel):
     help:bool=False
     quality:Literal['valid','invalid','stale','unavailable']='valid'
     fan_fault:bool=False
+    fan_advice:Literal['ok','caution','avoid','unknown']|None=None
     clock_aligned:bool=False
     reference_valid:bool=False
 
@@ -52,11 +53,20 @@ def scenario(name,seed=1):
     return result
 
 AUTO_ON_C=32.0;AUTO_OFF_C=31.0  # bench demonstration band, not an occupational threshold
+# Fan-benefit screen, mirrors firmware/include/controller.h. Sources: Morris et al. 2021 Lancet
+# Planetary Health (ceilings 39/38/37 C by age/medication), WHO fact sheet (fans heat the body >40 C),
+# Gagnon et al. 2016 JAMA (no benefit for older adults at 42 C). A screen, not a clinical rule.
+FAN_CAUTION_C=37.0;FAN_AVOID_C=39.0;FAN_RESUME_C=38.5
+
+def fan_advice(air_c):
+    if air_c is None or not math.isfinite(air_c):return 'unknown'
+    return 'avoid' if air_c>=FAN_AVOID_C else ('caution' if air_c>=FAN_CAUTION_C else 'ok')
 
 def auto_request(prev_on,temp):
-    """Hysteresis: start at >=32 C, keep running until <31 C. Prevents relay-like chatter."""
+    """Hysteresis: start at >=32 C, keep running until <31 C. Automatic mode also stops at >=39 C,
+    where a fan may add heat, and restarts only below 38.5 C. Manual mode is never blocked."""
     if temp is None or not math.isfinite(temp):return False
-    return temp>=AUTO_OFF_C if prev_on else temp>=AUTO_ON_C
+    return (AUTO_OFF_C<=temp<FAN_AVOID_C) if prev_on else (AUTO_ON_C<=temp<FAN_RESUME_C)
 
 def control(prev,inputs):
     now=inputs.get('now_ms',0);help_latched=bool((prev.get('help',False) and not inputs.get('ack',False)) or inputs.get('help',False))

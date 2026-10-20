@@ -58,3 +58,4 @@
  .adr .body dl{grid-column:1}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.defense th{text-transform:none;letter-spacing:0}

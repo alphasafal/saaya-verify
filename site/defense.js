@@ -109,7 +109,8 @@ async function evidence() {
   s.append(svg('text', { x: x(r.mean), y: 150, 'text-anchor': 'middle', class: 'bar-value' }, `mean ${r.mean.toFixed(2)} °C, 95 % CI ${r.ci95[0].toFixed(2)} to ${r.ci95[1].toFixed(2)}`));
   for (let g = Math.ceil(lo); g <= hi; g++) s.append(svg('text', { x: x(g), y: h - 2, 'text-anchor': 'middle', class: 'tick' }, `${g}`));
   $('#aggregate-chart').replaceChildren(s);
-  $('#aggregate-outcome').textContent = `${r.outcome.replaceAll('_', ' ').toLowerCase()} — ${a.source} runs (${r.runs_valid} seeds). ${r.warning}.`;
+  const o = r.outcome.replaceAll('_', ' ').toLowerCase();
+  $('#aggregate-outcome').textContent = `Outcome: ${o}. ${r.runs_valid} ${a.source.toLowerCase()} runs (seeds ${a.seeds.join(', ')}). ${r.warning}.`;
 }
 
 async function cost() {

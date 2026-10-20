@@ -39,7 +39,7 @@ Source: https://www.noctua.at/en/products/nf-a4x10-pwm/specifications
 
 ### Control and acquisition
 
-Firmware defaults to off/manual only (`SAAYA_BENCH_AUTO=0`). Enabling the compile-time bench-auto option adds a32°C demonstration trigger, not an occupational threshold; only use on an unoccupied bench. Automatic mode is disabled by invalid indoor/outdoor readings. Manual operation remains available independently. Help stays latched; neither a network fault nor water state clears it. A five-second watchdog restarts a stalled task; the help latch is restored from NVS.
+Firmware defaults to off/manual only (`SAAYA_BENCH_AUTO=0`). Enabling the compile-time bench-auto option adds a demonstration band (on at ≥32 °C, held until <31 °C to prevent chatter), not an occupational threshold; only use on an unoccupied bench. Automatic mode is disabled by invalid indoor/outdoor readings. Manual operation remains available independently. Help stays latched; neither a network fault nor water state clears it. A five-second watchdog restarts a stalled task; the help latch is restored from NVS.
 
 Sensors sample approximately once per second. Two fan tach pulses per revolution are assumed for the reference fan; verify with manufacturer information and a tachometer before relying on RPM. A three-second startup grace precedes feedback faults. The roof probe uses nonblocking conversions. Missing endpoints remain null. Readings are uncalibrated until the physical calibration protocol is performed.
 
