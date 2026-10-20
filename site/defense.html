@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SAAYA VERIFY design defense: every architecture decision, the alternatives rejected, the physics behind the shelter, cost levers and how it differs from conventional cooling.">
+<title>SAAYA · Design defense</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="defense.css"></head>
+<body><header class="top"><a class="brand" href="index.html"><span class="mark">स</span><span>SAAYA<span class="verify">VERIFY</span></span></a><nav aria-label="Main"><a href="designs.html">All designs</a><a href="index.html#lab">Evidence lab</a><a href="explain.html">IoT architecture</a></nav><a class="repo" href="https://github.com/alphasafal/saaya-verify">GitHub</a></header>
+<main class="defense">
+<p class="kicker">Design defense for review panels</p>
+<h1>Why it is built this way.</h1>
+<p class="standfirst">Every decision in SAAYA, the alternatives we rejected, what our own physics model says about them, what it costs, and how we would find out we are wrong.</p>
+<p class="honesty"><strong>Status.</strong> This is a software, firmware and CAD package with a transparent screening model. Nothing here has been built or measured yet. Every number below is either a cited source, a costed allowance, or a model prediction written so that a measurement can refute it.</p>
+<nav class="toc" aria-label="On this page"><a href="#problem">The problem</a><a href="#different">Versus normal cooling</a><a href="#physics">What the physics says</a><a href="#fans">When a fan helps</a><a href="#decisions">Architecture decisions</a><a href="#evidence">The evidence engine</a><a href="#cost">Cost and how to cut it</a><a href="#fixed">Flaws fixed in this review</a><a href="#questions">Panel questions</a><a href="#limits">Limits</a></nav>
+
+<section id="problem"><p class="kicker">The problem</p><h2>Rest in the heat, with nowhere to go indoors.</h2>
+<div class="prose" id="problem-body"><!-- RESEARCH-FILL:problem --></div></section>
+
+<section id="different"><p class="kicker">Versus normal cooling</p><h2>Not a cooler. A shade with a conscience.</h2>
+<div class="prose"><p>A normal cooling product is judged by how cold it gets a closed room. An outdoor rest spot has no walls to hold cold air, so that yardstick does not apply. SAAYA attacks the larger part of outdoor heat load — radiation from the sun, sky, roof and hot ground — and uses a small fan only where it helps. Its genuinely new part is not the shelter; it is a control and evidence layer that knows when a fan is not spinning, when a sensor is lying, and when a comparison is not valid.</p></div>
+<div class="wide"><table id="compare-table"><!-- RESEARCH-FILL:compare --></table></div>
+<p class="caption" id="compare-caption"></p></section>
+
+<section id="physics"><p class="kicker">What the physics says</p><h2>Shade does the heavy lifting.</h2>
+<div class="prose"><p>We wrote a small steady-state model (<code>api/thermal.py</code>, 11 unit tests) instead of quoting a temperature drop. It balances sun, sky, wind and grey-body radiation on each roof skin, then computes the mean radiant temperature (MRT) at a seated worker's head from the exact solid angle of the roof, sky and ground. MRT is what the body feels from surrounding surfaces; it is the quantity a shelter actually changes.</p>
+<p id="model-conditions" class="caption">Loading model…</p></div>
+<div class="finding" aria-label="Headline model results">
+<div><b id="k-shade">—</b><span>Lower MRT from being in the shade at all, versus open sun</span></div>
+<div><b id="k-roof">—</b><span>Further MRT reduction from SAAYA's roof versus a typical weathered GI/cement shed</span></div>
+<div><b id="k-underside">—</b><span>Cooler roof underside than that shed — the easiest thing to measure</span></div>
+<div><b id="k-view">—</b><span>Share of the seated worker's view taken up by the roof</span></div>
+</div>
+<div class="chart" id="mrt-chart"></div>
+<p class="caption" id="view-note"></p>
+<div class="prose"><h3>What this changed in the design</h3>
+<p>The roof is only a small part of what a seated person sees; sky and sunlit ground fill most of the rest. So once the sun is blocked, roof finish moves the seated radiant load by a couple of degrees, while overhang depth and what the ground around the shelter is made of move it by several. That reordered our priorities: <strong>deep overhang and ground treatment first, a low-emissivity roof underside second, and the second roof skin as an optional, removable experiment</strong> rather than a core cost.</p></div>
+<div class="wide" id="design-table"></div>
+<h3>Is the second roof skin worth its cost?</h3>
+<p class="prose">The upper skin keeps the underside near air temperature even as the white top coat soils, but the seated radiant benefit is a fraction of a degree in this geometry. It earns its place where people sit close to the roof, under a larger roof, or touch it — not on a 2.4 m bench shelter.</p>
+<div class="wide" id="skin-table"></div>
+<h3>Deep verandah, in numbers</h3>
+<div class="wide" id="overhang-table"></div>
+<h3>The ground around the shelter</h3>
+<p class="prose">Light paving lowers ground temperature but reflects sunlight back up at the person, so it can raise MRT. Shaded or planted ground lowers both. This is a known urban-climate result and it is why the site plan, not just the roof, is part of the design.</p>
+<div class="wide" id="ground-table"></div>
+<h3>How sensitive are these conclusions?</h3>
+<div class="wide" id="sensitivity-table"></div>
+<h3>How the model can be proven wrong</h3>
+<ul id="falsify" class="prose"></ul>
+<p class="caption">Model assumptions: thin metal skins, steady state, Swinbank clear sky, McAdams wind convection h = 5.7 + 3.8v, isotropic diffuse sky, ISO 7726 sphere and globe relations, ISO 7730 operative temperature. Coefficients are textbook-level and exposed as parameters. A 150 mm globe thermometer and a roof-underside probe are enough to test it.</p></section>
+
+<section id="fans"><p class="kicker">When a fan helps</p><h2>A fan can make things worse.</h2>
+<div class="prose" id="fans-body"><!-- RESEARCH-FILL:fans --></div></section>
+
+<section id="decisions"><p class="kicker">Architecture decisions</p><h2>What we chose, and what we did not.</h2>
+<p class="prose">Each decision lists the alternatives considered, why they lost, and the evidence that would make us change our mind. Open any row.</p>
+<div class="adr" id="adr"><details><summary><span class="topic">Cooling strategy</span><span class="choice">Passive first: deep shade and a reflective, low-emissivity roof; a small fan only as an add-on</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Room AC; desert (evaporative) cooler; misting fan; a plain pedestal fan with no shade</dd><dt>Why this won</dt><dd>Outdoors there is no enclosure to hold conditioned air, so AC power is mostly wasted and needs mains and refrigerant service. Evaporative and misting systems add humidity, need water and cleaning, and lose effect in Vellore&#x27;s humid monsoon months. Our model shows blocking the sun removes about 20 K of radiant load before any machine runs.</dd><dt>What would change our mind</dt><dd>If paired measurements show the fan in comparable shade gives the same globe temperature and air speed at the seat, the shelter structure is not justified and a shade retrofit wins.</dd></dl></div></details>
+<details><summary><span class="topic">Roof</span><span class="choice">White reflective top, ventilated gap, bare low-emissivity lining underneath; second skin removable</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Single painted sheet; insulated sandwich panel; green roof; concrete slab</dd><dt>Why this won</dt><dd>The underside temperature and emissivity are what a seated person feels. A bare galvanised/aluminium lining radiates little even when warm. Sandwich panels cost more and trap heat at night; concrete stores heat and needs foundations; green roofs need water and structure. The model says the second skin buys under 1 K at the seat in FS-01 geometry, so it is kept as a removable experiment, not a core cost.</dd><dt>What would change our mind</dt><dd>Underside probe more than the declared margin away from the predicted value on three clear days; or a cheaper single sheet matches the double roof&#x27;s globe temperature.</dd></dl></div></details>
+<details><summary><span class="topic">Controller</span><span class="choice">ESP32 (classic WROOM) running local control</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Arduino Uno/Nano; Raspberry Pi; STM32; a commercial PLC</dd><dt>Why this won</dt><dd>About ₹425, enough RAM for JSON telemetry, hardware PWM (LEDC), interrupt-capable tach input, non-volatile storage for the help latch and a hardware watchdog. A Uno lacks memory and connectivity; a Pi boots an OS from an SD card that corrupts on power loss and draws far more power; a PLC is over-specified for a rest shelter. Control stays on the microcontroller so a network or laptop failure never stops the fan or clears a help request.</dd><dt>What would change our mind</dt><dd>If outdoor qualification needs industrial temperature range or isolated I/O, move to an industrial module with the same control logic (the logic is a pure header file with native tests).</dd></dl></div></details>
+<details><summary><span class="topic">Air sensors</span><span class="choice">Two SHT31 (inside / reference), I²C, fixed addresses 0x44 and 0x45</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>DHT22; BME280; analog thermistors</dd><dt>Why this won</dt><dd>SHT31 is digital, fast and specified at typically ±0.3 °C and ±2 % RH; DHT22 has slower timing-critical single-wire reads and weaker humidity stability; BME280 self-heats more and is tuned for pressure. Two identical sensors make the paired comparison fair: swap them between rigs to measure their bias.</dd><dt>What would change our mind</dt><dd>Co-location test shows offsets drifting beyond the margin; then add a reference instrument or replace.</dd></dl></div></details>
+<details><summary><span class="topic">Roof and fan feedback</span><span class="choice">DS18B20 contact probe on the roof underside; fan tachometer read by interrupt</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>IR thermometer; no fan feedback (open loop); current-sense only</dd><dt>Why this won</dt><dd>A tach confirms the fan is actually turning, which is the difference between commanding cooling and delivering it. Current alone cannot tell a stalled rotor from a slow one. DS18B20 is waterproof, cheap and works on long cables. An IR sensor needs emissivity correction on a low-e surface — exactly the surface we chose.</dd><dt>What would change our mind</dt><dd>If tach readings disagree with an optical tachometer, the pulses-per-revolution assumption is wrong and is corrected in firmware.</dd></dl></div></details>
+<details><summary><span class="topic">Energy accounting</span><span class="choice">INA219 on the fan branch, integrated only over valid, gap-free intervals</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Estimate from datasheet watts; smart plug</dd><dt>Why this won</dt><dd>A datasheet maximum (0.48 W for the bench fan) is not consumption. Gaps are reported, never interpolated, so a missing meter cannot look like zero energy.</dd><dt>What would change our mind</dt><dd>Reference meter disagrees with INA219 by more than its stated accuracy.</dd></dl></div></details>
+<details><summary><span class="topic">Fan drive</span><span class="choice">4-wire 12 V PWM fan, PWM via an NPN open-collector stage; fails to full speed</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Switching a 2-wire fan with a MOSFET; mains pedestal fan with a relay</dd><dt>Why this won</dt><dd>The fan has its own motor driver, so the ESP32 only sends a signal. Under the Intel 4-wire fan convention a fan with a floating PWM line runs at full speed, and the stage&#x27;s base pull-down floats the line if the ESP32 dies — the failure mode is more airflow, not less. A relay-switched mains fan brings shock risk into a wet outdoor space.</dd><dt>What would change our mind</dt><dd>Measured behaviour of the chosen fan at 0 % and floating PWM differs; then add an explicit isolation path.</dd></dl></div></details>
+<details><summary><span class="topic">Help button</span><span class="choice">Latching request stored in flash; cleared only by a separate acknowledge button</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Momentary button; app or phone alert only</dd><dt>Why this won</dt><dd>Workers may not carry phones; a request must survive reboots, sensor faults and network loss. It is independent of every threshold — no algorithm can cancel it.</dd><dt>What would change our mind</dt><dd>Field usability testing shows the controls are misunderstood; then redesign wording and pictograms.</dd></dl></div></details>
+<details><summary><span class="topic">Data path</span><span class="choice">USB serial → local bridge → loopback FastAPI → SQLite (WAL)</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>MQTT broker; cloud IoT platform; InfluxDB/Grafana</dd><dt>Why this won</dt><dd>Zero recurring cost, no internet dependency, no credentials on the public site, and no worker data leaving the laptop. SQLite is a single ACID file that runs anywhere; WAL lets the bridge write while the dashboard reads. Pydantic rejects NaN, infinity and out-of-range values at the door. A cloud path is a later stage, not a prerequisite.</dd><dt>What would change our mind</dt><dd>More than one shelter or remote monitoring is required; then add MQTT behind the same schema.</dd></dl></div></details>
+<details><summary><span class="topic">Analysis</span><span class="choice">Deterministic evaluator; optional local AI that can only explain finished records</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>Cloud LLM in the control loop; ML anomaly detection</dd><dt>Why this won</dt><dd>Rules that invalidate a comparison must be auditable and identical every time. An LLM may help a reader understand a record, but it has no actuator, cannot change evidence and runs locally so records never leave the machine.</dd><dt>What would change our mind</dt><dd>Never for control. For explanation, if users find it misleading in testing, remove it.</dd></dl></div></details>
+<details><summary><span class="topic">Interface and hosting</span><span class="choice">Buildless ES modules and three.js; static hosting on Vercel and GitHub Pages</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>React/Next.js app; a server-rendered dashboard</dd><dt>Why this won</dt><dd>Fewer dependencies, works offline, free to host and impossible to attack through a server because there is none. The public site replays tested synthetic records and can neither ingest data nor control a device.</dd><dt>What would change our mind</dt><dd>If many shelters share live dashboards, add an authenticated backend.</dd></dl></div></details>
+<details><summary><span class="topic">CAD</span><span class="choice">Code-CAD (CadQuery and Manifold), checked in CI for invalid solids and interference</span></summary><div class="body"><dl><dt>Alternatives considered</dt><dd>SolidWorks/Fusion files only</dd><dt>Why this won</dt><dd>Every dimension is in version control, reviewable as a diff, rebuilt by CI, and exported to STEP, STL, DXF and drawings. Reviewers can change a parameter and regenerate.</dd><dt>What would change our mind</dt><dd>A fabricator needs native files; export STEP (already produced).</dd></dl></div></details></div></section>
+
+<section id="evidence"><p class="kicker">The evidence engine</p><h2>No claim without a valid comparison.</h2>
+<div class="prose">
+<p>A cooling product usually reports a number. SAAYA reports a number only when it can defend it, and says why when it cannot. The rules are fixed before any data arrive:</p>
+<ul>
+<li><strong>Predeclaration.</strong> The endpoint, which direction counts as better, and the smallest meaningful difference are locked into the record before the first sample. Changing them afterwards is impossible through the API. This is the same idea as preregistering a clinical trial: it stops us choosing the analysis after seeing the result.</li>
+<li><strong>A simultaneous reference.</strong> Every intervention reading is paired with a matched reference reading taken at the same second. Weather changes affect both.</li>
+<li><strong>Invalidation, not silence.</strong> Mixed sources, stale data, a fan that was commanded but did not spin, a mismatched reference or a gap in the record each produce an explicit “invalid” with the reason.</li>
+<li><strong>Three honest outcomes.</strong> A difference in the declared direction, a difference against it, or no clear difference (smaller than the margin). The margin comes from instrument accuracy: two ±0.5 °C probes cannot resolve less than about 0.7 °C, so we declared 1.0 °C.</li>
+<li><strong>No false precision.</strong> Sixty readings one second apart are not sixty experiments. The record reports the lag-1 autocorrelation and the effective sample size to show why no within-run confidence interval is given.</li>
+<li><strong>Replication across days.</strong> Uncertainty comes only from independent runs. With three or more, the system computes a Student-t 95 % interval of the run means and decides like an equivalence test: it claims a direction only if the whole interval clears the margin, and claims “no meaningful difference” only if the whole interval sits inside it. Invalid runs are counted, never dropped.</li>
+</ul></div>
+<div class="chart" id="aggregate-chart"></div>
+<p class="caption" id="aggregate-outcome">Loading…</p>
+<p class="prose">Try it in the <a href="index.html#lab">evidence lab</a>: pick “Fan feedback failure” and watch the comparison get withheld.</p></section>
+
+<section id="cost"><p class="kicker">Cost and how to cut it</p><h2>Spend where the physics pays.</h2>
+<div class="money"><div><b id="cost-tabletop">—</b><span>Tabletop bench BOM, mixed quotes and allowances</span></div><div><b id="cost-fullsize">—</b><span>Full-size FS-01 first article, unquoted allowance</span></div><div><b id="cost-ac">—</b><span>1.5-ton inverter split AC, equipment price only</span></div></div>
+<div class="prose" id="cost-body"><!-- RESEARCH-FILL:cost --></div>
+<div class="wide" id="fullsize-cost-table"></div></section>
+
+<section id="fixed"><p class="kicker">Flaws fixed in this review</p><h2>We audited our own system first.</h2>
+<ol class="fixes prose">
+<li><strong>Database connections leaked on every request.</strong> Python's SQLite context manager commits but never closes; the old API produced 27 unclosed-connection warnings in one test file. Connections now always close, the database runs in WAL mode so the bridge can write while the dashboard reads, and indexes cover the hot queries. A regression test fails on the old code.</li>
+<li><strong>The evaluator could only say “observed” or “invalid”.</strong> The specification required a predeclared beneficial direction and a “no clear difference” outcome. Both now exist, with the margin locked into the record at declaration.</li>
+<li><strong>Uncertainty could never be established.</strong> There was no method to combine runs. Cross-run aggregation with a t-interval and an equivalence-style decision now exists in the API and the offline physical evaluator.</li>
+<li><strong>A device could inject simulated rows.</strong> The authenticated device endpoint accepted <code>SIMULATED</code> records, letting a token holder write into the simulation namespace. It now accepts measured records only.</li>
+<li><strong>Several measured fields were unbounded.</strong> Roof, outdoor and reference temperatures, air speed, power and RPM now carry the physical ranges of the sensors that produce them, so a corrupted serial frame cannot store 9 000 °C.</li>
+<li><strong>The automatic fan threshold had no hysteresis.</strong> A single 32 °C threshold makes a fan chatter on and off around the set point. Firmware, the Python mirror and the browser projection now share an on-at-32 / off-below-31 °C band, with tests in C++, Python and JavaScript.</li>
+<li><strong>Two cost figures contradicted each other.</strong> The research review still quoted a superseded ₹30,500–52,500 full-size range while the costed model gives ₹94,134–170,771. The text is corrected and the old figure is marked superseded.</li>
+<li><strong>Design priorities were asserted, not derived.</strong> The ventilated double roof was presented as core. The new screening model shows shade and overhang dominate the seated radiant load in this geometry, which changed the cost priorities above.</li>
+</ol></section>
+
+<section id="questions"><p class="kicker">Panel questions</p><h2>Questions we expect, answered straight.</h2>
+<div class="qa" id="qa"><!-- RESEARCH-FILL:qa --></div></section>
+
+<section id="limits"><p class="kicker">Limits</p><h2>What this does not prove.</h2>
+<div class="prose"><ul>
+<li>No shelter has been built and no temperature has been measured. The model predicts; it has not been validated.</li>
+<li>Mean radiant temperature is not heat stress. A worker's strain depends on humidity, work rate, clothing, hydration, acclimatisation and health. SAAYA never labels a person safe or recovered.</li>
+<li>The full-size cost is an allowance, not a quote. A dated Vellore fabrication quote and an installed AC quote are both still needed.</li>
+<li>Structural, electrical, foundation and weather design need qualified review before anyone sits under a full-size build.</li>
+<li>Novelty is limited and stated as such: shade, reflective roofs and fans are prior art. The contribution under test is the fault-aware evidence chain integrated with a low-cost shelter.</li>
+</ul></div></section>
+</main>
+<script type="module" src="defense.js"></script>
+</body></html>

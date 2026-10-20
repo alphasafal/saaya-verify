@@ -16,14 +16,15 @@ class Sample(BaseModel):
     emitted_ms:int=Field(ge=0)
     temp:float|None=Field(default=None,ge=-40,le=125)
     rh:float|None=Field(default=None,ge=0,le=100)
-    outdoor_temp:float|None=None
+    # Physical plausibility bounds = sensor operating ranges (SHT31/DS18B20: -40..125 C).
+    outdoor_temp:float|None=Field(default=None,ge=-40,le=125)
     outdoor_rh:float|None=Field(default=None,ge=0,le=100)
-    roof_temp:float|None=None
-    ref_roof:float|None=None
-    air_speed:float|None=Field(default=None,ge=0)
-    ref_air_speed:float|None=Field(default=None,ge=0)
-    watts:float|None=Field(default=None,ge=0)
-    rpm:float|None=Field(default=None,ge=0)
+    roof_temp:float|None=Field(default=None,ge=-40,le=125)
+    ref_roof:float|None=Field(default=None,ge=-40,le=125)
+    air_speed:float|None=Field(default=None,ge=0,le=30)
+    ref_air_speed:float|None=Field(default=None,ge=0,le=30)
+    watts:float|None=Field(default=None,ge=0,le=500)
+    rpm:float|None=Field(default=None,ge=0,le=30000)
     duty:float=Field(default=0,ge=0,le=100)
     water:Literal['available','low','unknown']='unknown'
     help:bool=False
@@ -35,9 +36,12 @@ class Sample(BaseModel):
 def scenario(name,seed=1):
     if name not in SCENARIOS:raise ValueError('Unknown scenario')
     result=[]
+    # Deterministic run-to-run variation (synthetic "different day"), so that the
+    # cross-run statistics in aggregate() have something honest to estimate.
+    day_roof=.8*math.sin(seed*2.3);day_air=.12*math.sin(seed*1.3+.5)
     for i in range(60):
         n=math.sin(i*.37+seed)*.15
-        r=dict(session_id=f'sim-{name}-{seed}',seq=i,source='SIMULATED',acquired_ms=i*1000,emitted_ms=i*1000,temp=33+n,rh=48+n,outdoor_temp=36+n,outdoor_rh=48+n,roof_temp=35+n,ref_roof=41+n,air_speed=1.2+n/10,ref_air_speed=.2,watts=1.4,rpm=3000,duty=70,water='available',quality='valid',clock_aligned=True,reference_valid=True)
+        r=dict(session_id=f'sim-{name}-{seed}',seq=i,source='SIMULATED',acquired_ms=i*1000,emitted_ms=i*1000,temp=33+n,rh=48+n,outdoor_temp=36+n,outdoor_rh=48+n,roof_temp=35+n+day_roof,ref_roof=41+n,air_speed=1.2+n/10+day_air,ref_air_speed=.2,watts=1.4,rpm=3000,duty=70,water='available',quality='valid',clock_aligned=True,reference_valid=True)
         if name=='humid':r.update(rh=82+n,outdoor_rh=82+n,temp=34+n)
         if name=='fan_failure' and i>=20:r.update(rpm=0,air_speed=.2,fan_fault=True)
         if name=='sensor_failure' and i>=20:r.update(temp=None,rh=None,quality='invalid',duty=0,rpm=0)
@@ -46,6 +50,13 @@ def scenario(name,seed=1):
         if name=='reference_mismatch' and i>=20:r['reference_valid']=False
         result.append(Sample(**r).model_dump())
     return result
+
+AUTO_ON_C=32.0;AUTO_OFF_C=31.0  # bench demonstration band, not an occupational threshold
+
+def auto_request(prev_on,temp):
+    """Hysteresis: start at >=32 C, keep running until <31 C. Prevents relay-like chatter."""
+    if temp is None or not math.isfinite(temp):return False
+    return temp>=AUTO_OFF_C if prev_on else temp>=AUTO_ON_C
 
 def control(prev,inputs):
     now=inputs.get('now_ms',0);help_latched=bool((prev.get('help',False) and not inputs.get('ack',False)) or inputs.get('help',False))
@@ -67,7 +78,42 @@ def energy(rows):
             total+=(a['watts']+b['watts'])/2*dt/3600;valid+=dt
     return dict(wh=total if valid else None,coverage=valid/span if span else 0,valid_seconds=valid,total_seconds=span,method='Per-device/session trapezoidal integration; gaps >2 s excluded')
 
-def evaluate(rows,endpoint='roof_temp'):
+# Predeclared, endpoint-specific decision rules. The margin is the smallest difference we
+# are willing to call real given instrument limits: two +/-0.5 C probes (SHT31/DS18B20)
+# combine to ~0.7 C, so 1.0 C; hot-wire anemometers are typically ~+/-(0.05 m/s + 5 %).
+DECLARATIONS={
+    'roof_temp':{'beneficial_direction':'lower','margin':1.0,'unit':'°C','margin_basis':'Two ±0.5 °C probes combine to ≈0.7 °C; 1.0 °C chosen before data collection'},
+    'air_speed':{'beneficial_direction':'higher','margin':0.2,'unit':'m/s','margin_basis':'Typical low-speed anemometer accuracy ≈±(0.05 m/s + 5 %); 0.2 m/s chosen before data collection'},
+}
+
+def declaration_for(endpoint,margin=None):
+    if endpoint not in DECLARATIONS:raise ValueError('Unknown endpoint')
+    d=dict(DECLARATIONS[endpoint],endpoint=endpoint)
+    if margin is not None:
+        if not (isinstance(margin,(int,float)) and math.isfinite(margin) and margin>0):raise ValueError('Margin must be a positive finite number')
+        d['margin']=float(margin);d['margin_basis']='Operator-declared before data collection'
+    return d
+
+def classify(delta,declaration):
+    """Signed effect versus predeclared direction and margin."""
+    sign=-1 if declaration['beneficial_direction']=='lower' else 1
+    if delta*sign>=declaration['margin']:return 'DIFFERENCE_IN_DECLARED_DIRECTION'
+    if delta*sign<=-declaration['margin']:return 'DIFFERENCE_AGAINST_DECLARED_DIRECTION'
+    return 'NO_CLEAR_DIFFERENCE'
+
+def paired_statistics(diffs):
+    """Descriptive statistics of within-run paired differences. Consecutive 1 s samples are
+    autocorrelated, so the effective sample size n_eff=n(1-r1)/(1+r1) is reported to show why a
+    within-run confidence interval would be false precision."""
+    n=len(diffs)
+    if n<2:return {'n':n,'mean':diffs[0] if diffs else None,'sd':None,'lag1_autocorrelation':None,'n_effective':None}
+    m=sum(diffs)/n;var=sum((x-m)**2 for x in diffs)/(n-1);sd=math.sqrt(var)
+    den=sum((x-m)**2 for x in diffs)
+    r1=(sum((a-m)*(b-m) for a,b in zip(diffs,diffs[1:]))/den) if den>0 else 0.0
+    r1=max(min(r1,.999),-.999)
+    return {'n':n,'mean':m,'sd':sd,'min':min(diffs),'max':max(diffs),'lag1_autocorrelation':r1,'n_effective':n*(1-r1)/(1+r1)}
+
+def evaluate(rows,endpoint='roof_temp',declaration=None):
     reasons=[];delta=None
     if endpoint not in ('roof_temp','air_speed'):raise ValueError('Unknown endpoint')
     if len(rows)<48:reasons.append('Insufficient coverage: at least 48 of 60 samples required')
@@ -82,5 +128,44 @@ def evaluate(rows,endpoint='roof_temp'):
     if endpoint=='air_speed' and any(r['fan_fault'] for r in rows):reasons.append('Fan feedback fault: requested intervention not confirmed')
     ordered=sorted(rows,key=lambda r:r['seq'])
     if any(b['seq']<=a['seq'] or b['acquired_ms']<=a['acquired_ms'] or b['acquired_ms']-a['acquired_ms']>2000 for a,b in zip(ordered,ordered[1:])):reasons.append('Duplicate, disordered or gapped observation times')
-    if not reasons:delta=sum(r[endpoint]-r[ref] for r in rows)/len(rows)
-    return dict(status='INVALID' if reasons else 'OBSERVED',endpoint=endpoint,unit='°C' if endpoint=='roof_temp' else 'm/s',delta=delta,sources=sources,reasons=reasons,sample_count=len(rows),energy=energy(rows),uncertainty='Not established: independent repeated runs required',interpretation='Descriptive paired difference only; not a safety or human-recovery assessment',method='Mean intervention minus simultaneous reference; synthetic coefficients are illustrative')
+    declaration=declaration or declaration_for(endpoint)
+    if declaration.get('endpoint',endpoint)!=endpoint:reasons.append('Declaration does not match endpoint')
+    stats=None
+    if not reasons:
+        diffs=[r[endpoint]-r[ref] for r in ordered];delta=sum(diffs)/len(diffs);stats=paired_statistics(diffs)
+    outcome='INVALID' if reasons else classify(delta,declaration)
+    return dict(status='INVALID' if reasons else 'OBSERVED',outcome=outcome,declaration=declaration,endpoint=endpoint,unit='°C' if endpoint=='roof_temp' else 'm/s',delta=delta,paired_statistics=stats,sources=sources,session_ids=sorted(set(r['session_id'] for r in rows)),reasons=reasons,sample_count=len(rows),energy=energy(rows),uncertainty='Not established: independent repeated runs required',interpretation='Descriptive paired difference only; not a safety or human-recovery assessment',method='Mean intervention minus simultaneous reference; synthetic coefficients are illustrative')
+
+# Two-sided 95 % Student-t critical values, df 1..30 (standard table).
+_T95=[12.706,4.303,3.182,2.776,2.571,2.447,2.365,2.306,2.262,2.228,2.201,2.179,2.160,2.145,2.131,2.120,2.110,2.101,2.093,2.086,2.080,2.074,2.069,2.064,2.060,2.056,2.052,2.048,2.045,2.042]
+
+def t95(df):return _T95[df-1] if df<=30 else 1.96+2.4/df
+
+def aggregate(results,min_runs=3):
+    """Combine independent runs (one run = one unit of replication). Uses run means only, never
+    pooled samples. Decision is equivalence-style against the predeclared margin:
+    the whole 95 % CI must clear the margin before a direction is claimed."""
+    if not results:raise ValueError('No runs supplied')
+    endpoints={r['endpoint'] for r in results};sources={tuple(r['sources']) for r in results}
+    decls={(r['declaration']['beneficial_direction'],r['declaration']['margin']) for r in results}
+    if len(endpoints)!=1:raise ValueError('Runs mix endpoints')
+    if len(sources)!=1:raise ValueError('Runs mix SIMULATED and MEASURED sources')
+    if len(decls)!=1:raise ValueError('Runs used different predeclared directions or margins')
+    sessions=[s for r in results for s in r.get('session_ids',[])]
+    if len(sessions)!=len(set(sessions)):raise ValueError('The same acquisition session appears twice; runs are not independent')
+    valid=[r for r in results if r['status']=='OBSERVED'];invalid=len(results)-len(valid)
+    decl=dict(results[0]['declaration']);deltas=[r['delta'] for r in valid];n=len(deltas)
+    out={'endpoint':results[0]['endpoint'],'source':results[0]['sources'][0] if results[0]['sources'] else None,'declaration':decl,'runs_supplied':len(results),'runs_valid':n,'runs_invalid':invalid,'run_deltas':deltas,'method':'Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin'}
+    if invalid:out['note']='Invalid runs are reported, not silently dropped; they count against coverage of the study'
+    if n<min_runs:
+        out.update(mean=sum(deltas)/n if n else None,sd=None,ci95=None,outcome='UNCERTAINTY_NOT_ESTABLISHED',reason=f'At least {min_runs} valid independent runs required; have {n}');return out
+    m=sum(deltas)/n;sd=math.sqrt(sum((x-m)**2 for x in deltas)/(n-1));half=t95(n-1)*sd/math.sqrt(n);lo,hi=m-half,m+half
+    sign=-1 if decl['beneficial_direction']=='lower' else 1;mar=decl['margin']
+    blo,bhi=sorted((lo*sign,hi*sign))
+    if blo>=mar:outcome='DIFFERENCE_IN_DECLARED_DIRECTION'
+    elif bhi<=-mar:outcome='DIFFERENCE_AGAINST_DECLARED_DIRECTION'
+    elif blo>-mar and bhi<mar:outcome='EQUIVALENT_WITHIN_MARGIN'
+    else:outcome='INCONCLUSIVE'
+    out.update(mean=m,sd=sd,ci95=[lo,hi],outcome=outcome)
+    if out['source']=='SIMULATED':out['warning']='Synthetic runs demonstrate the method only; this is not evidence about a physical shelter'
+    return out

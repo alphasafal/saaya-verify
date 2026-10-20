@@ -1,0 +1,72 @@
+{
+ "source": "SIMULATED",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "results": {
+  "roof_temp": {
+   "endpoint": "roof_temp",
+   "source": "SIMULATED",
+   "declaration": {
+    "beneficial_direction": "lower",
+    "margin": 1.0,
+    "unit": "\u00b0C",
+    "margin_basis": "Two \u00b10.5 \u00b0C probes combine to \u22480.7 \u00b0C; 1.0 \u00b0C chosen before data collection",
+    "endpoint": "roof_temp"
+   },
+   "runs_supplied": 5,
+   "runs_valid": 5,
+   "runs_invalid": 0,
+   "run_deltas": [
+    -5.403435830258624,
+    -6.79495280290677,
+    -5.537248188489443,
+    -5.821688068719802,
+    -6.700361739750739
+   ],
+   "method": "Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin",
+   "mean": -6.051537326025075,
+   "sd": 0.6540258477306785,
+   "ci95": [
+    -6.863487486561075,
+    -5.239587165489075
+   ],
+   "outcome": "DIFFERENCE_IN_DECLARED_DIRECTION",
+   "warning": "Synthetic runs demonstrate the method only; this is not evidence about a physical shelter"
+  },
+  "air_speed": {
+   "endpoint": "air_speed",
+   "source": "SIMULATED",
+   "declaration": {
+    "beneficial_direction": "higher",
+    "margin": 0.2,
+    "unit": "m/s",
+    "margin_basis": "Typical low-speed anemometer accuracy \u2248\u00b1(0.05 m/s + 5 %); 0.2 m/s chosen before data collection",
+    "endpoint": "air_speed"
+   },
+   "runs_supplied": 5,
+   "runs_valid": 5,
+   "runs_invalid": 0,
+   "run_deltas": [
+    1.1176812124213589,
+    1.0045279297224248,
+    0.8844892854868172,
+    0.9329547445998936,
+    1.0791162457460042
+   ],
+   "method": "Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin",
+   "mean": 1.0037538835952997,
+   "sd": 0.09733458207935472,
+   "ci95": [
+    0.8829164123863932,
+    1.1245913548042061
+   ],
+   "outcome": "DIFFERENCE_IN_DECLARED_DIRECTION",
+   "warning": "Synthetic runs demonstrate the method only; this is not evidence about a physical shelter"
+  }
+ }
+}

@@ -1,0 +1,342 @@
+{
+ "status": "SCREENING MODEL - assumptions explicit, not validated, not a safety assessment",
+ "conditions": {
+  "ta_c": 38.0,
+  "rh": 45.0,
+  "ghi": 900.0,
+  "diffuse_fraction": 0.2,
+  "sun_elevation_deg": 78.0,
+  "wind": 1.0,
+  "ground_albedo": 0.2,
+  "sunlit_ground_rise": 15.0,
+  "shaded_ground_rise": 2.0
+ },
+ "person": {
+  "px": 1.2,
+  "py": 1.75,
+  "head_height": 1.1,
+  "shortwave_absorptance": 0.7,
+  "emissivity": 0.97,
+  "air_speed": 0.3
+ },
+ "designs": [
+  {
+   "design": "Open sun (no shelter)",
+   "underside_c": null,
+   "upper_c": null,
+   "tmrt_c": 73.87809069253876,
+   "operative_c": 52.3512362770155,
+   "globe_150mm_c": 58.28563091670662,
+   "sun_on_head": true,
+   "view_fractions": {
+    "roof": 0.0,
+    "sky": 0.5,
+    "shaded_ground": 0.0,
+    "sunlit_ground": 0.5
+   },
+   "energy_residual_w_m2": 0.0
+  },
+  {
+   "design": "Weathered GI / cement sheet (typical existing shed)",
+   "underside_c": 58.82309082848951,
+   "upper_c": 58.82309082848951,
+   "tmrt_c": 55.377575662894856,
+   "operative_c": 44.95103026515794,
+   "globe_150mm_c": 47.24939804186715,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 1.1550139618066169e-06
+  },
+  {
+   "design": "Single bare galvanised sheet",
+   "underside_c": 65.38883541198447,
+   "upper_c": 65.38883541198447,
+   "tmrt_c": 53.9271076699161,
+   "operative_c": 44.37084306796644,
+   "globe_150mm_c": 46.43568984476701,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 2.1995305843347523e-07
+  },
+  {
+   "design": "Single sheet, white both faces",
+   "underside_c": 44.34795761434361,
+   "upper_c": 44.34795761434361,
+   "tmrt_c": 53.51968490305893,
+   "operative_c": 44.20787396122357,
+   "globe_150mm_c": 46.20848780494936,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 6.19185282602075e-07
+  },
+  {
+   "design": "Single sheet, white top / bare underside",
+   "underside_c": 45.13676974410191,
+   "upper_c": 45.13676974410191,
+   "tmrt_c": 53.17373069135863,
+   "operative_c": 44.06949227654346,
+   "globe_150mm_c": 46.01603306610991,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 9.959962472549932e-07
+  },
+  {
+   "design": "SAAYA double roof (white top, ventilated gap, bare low-e lining)",
+   "underside_c": 38.642537989187986,
+   "upper_c": 45.47084324946627,
+   "tmrt_c": 52.95970266357483,
+   "operative_c": 43.983881065429934,
+   "globe_150mm_c": 45.89718468892988,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 4.951117773543956e-07
+  },
+  {
+   "design": "Double roof, sealed (unventilated) gap",
+   "underside_c": 40.40326781524345,
+   "upper_c": 47.885303599294275,
+   "tmrt_c": 53.016467853758115,
+   "operative_c": 44.006587141503246,
+   "globe_150mm_c": 45.92868995265292,
+   "sun_on_head": false,
+   "view_fractions": {
+    "roof": 0.14634562446883548,
+    "sky": 0.3536543755311645,
+    "shaded_ground": 0.19375100829620234,
+    "sunlit_ground": 0.30624899170379766
+   },
+   "energy_residual_w_m2": 3.5332152492628666e-07
+  }
+ ],
+ "overhang": [
+  {
+   "extra_overhang_m": 0.0,
+   "roof_area_m2": 6.7200000000000015,
+   "tmrt_c": 52.95970266357483,
+   "roof_view_fraction": 0.14634562446883548
+  },
+  {
+   "extra_overhang_m": 0.3,
+   "roof_area_m2": 10.2,
+   "tmrt_c": 51.558606418996646,
+   "roof_view_fraction": 0.1896666003774955
+  },
+  {
+   "extra_overhang_m": 0.6,
+   "roof_area_m2": 14.400000000000002,
+   "tmrt_c": 50.400386367566625,
+   "roof_view_fraction": 0.2267325907598915
+  },
+  {
+   "extra_overhang_m": 0.9,
+   "roof_area_m2": 19.32,
+   "tmrt_c": 49.45048995736431,
+   "roof_view_fraction": 0.25752012805776964
+  },
+  {
+   "extra_overhang_m": 1.2,
+   "roof_area_m2": 24.96,
+   "tmrt_c": 48.668522095391154,
+   "roof_view_fraction": 0.28290566276860213
+  }
+ ],
+ "sensitivity": [
+  {
+   "parameter": "wind",
+   "value": 0.3,
+   "tmrt_existing_shed_c": 55.78190711685642,
+   "tmrt_saaya_c": 52.96545731187831,
+   "benefit_k": 2.816449804978106
+  },
+  {
+   "parameter": "wind",
+   "value": 1.0,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95970266357483,
+   "benefit_k": 2.417872999320025
+  },
+  {
+   "parameter": "wind",
+   "value": 3.0,
+   "tmrt_existing_shed_c": 54.64453774499384,
+   "tmrt_saaya_c": 52.95120123864808,
+   "benefit_k": 1.6933365063457586
+  },
+  {
+   "parameter": "irradiance",
+   "value": 600.0,
+   "tmrt_existing_shed_c": 50.573786767043146,
+   "tmrt_saaya_c": 49.03774595301405,
+   "benefit_k": 1.5360408140290929
+  },
+  {
+   "parameter": "irradiance",
+   "value": 900.0,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95970266357483,
+   "benefit_k": 2.417872999320025
+  },
+  {
+   "parameter": "irradiance",
+   "value": 1050.0,
+   "tmrt_existing_shed_c": 57.71446776067643,
+   "tmrt_saaya_c": 54.86880825336618,
+   "benefit_k": 2.845659507310245
+  },
+  {
+   "parameter": "air temperature",
+   "value": 32.0,
+   "tmrt_existing_shed_c": 49.31430823322074,
+   "tmrt_saaya_c": 46.880809132561126,
+   "benefit_k": 2.433499100659617
+  },
+  {
+   "parameter": "air temperature",
+   "value": 38.0,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95970266357483,
+   "benefit_k": 2.417872999320025
+  },
+  {
+   "parameter": "air temperature",
+   "value": 42.0,
+   "tmrt_existing_shed_c": 59.47920894414693,
+   "tmrt_saaya_c": 57.06790758273792,
+   "benefit_k": 2.4113013614090164
+  },
+  {
+   "parameter": "sunlit ground rise",
+   "value": 8.0,
+   "tmrt_existing_shed_c": 53.32749683782316,
+   "tmrt_saaya_c": 50.86309045833411,
+   "benefit_k": 2.4644063794890485
+  },
+  {
+   "parameter": "sunlit ground rise",
+   "value": 15.0,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95970266357483,
+   "benefit_k": 2.417872999320025
+  },
+  {
+   "parameter": "sunlit ground rise",
+   "value": 25.0,
+   "tmrt_existing_shed_c": 58.47074591969135,
+   "tmrt_saaya_c": 56.12086748989151,
+   "benefit_k": 2.349878429799844
+  },
+  {
+   "parameter": "gap ventilation fraction",
+   "value": 0.0,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 53.016467853758115,
+   "benefit_k": 2.3611078091367403
+  },
+  {
+   "parameter": "gap ventilation fraction",
+   "value": 0.1,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.961160526904166,
+   "benefit_k": 2.4164151359906896
+  },
+  {
+   "parameter": "gap ventilation fraction",
+   "value": 0.3,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95970266357483,
+   "benefit_k": 2.417872999320025
+  },
+  {
+   "parameter": "gap ventilation fraction",
+   "value": 0.6,
+   "tmrt_existing_shed_c": 55.377575662894856,
+   "tmrt_saaya_c": 52.95779701145426,
+   "benefit_k": 2.419778651440595
+  }
+ ],
+ "second_skin": [
+  {
+   "top_coat": "clean white top",
+   "solar_absorptance": 0.25,
+   "single_underside_c": 45.13676974410191,
+   "double_underside_c": 38.642537989187986,
+   "single_tmrt_c": 53.17373069135863,
+   "double_tmrt_c": 52.95970266357483,
+   "tmrt_saved_by_second_skin_k": 0.21402802778379737
+  },
+  {
+   "top_coat": "soiled top coat",
+   "solar_absorptance": 0.45,
+   "single_underside_c": 52.11587740527466,
+   "double_underside_c": 39.11332848435268,
+   "single_tmrt_c": 53.41829822542877,
+   "double_tmrt_c": 52.97478979967741,
+   "tmrt_saved_by_second_skin_k": 0.44350842575136085
+  },
+  {
+   "top_coat": "badly soiled / chalked",
+   "solar_absorptance": 0.6,
+   "single_underside_c": 57.250744672026485,
+   "double_underside_c": 39.480498427990824,
+   "single_tmrt_c": 53.60820216534404,
+   "double_tmrt_c": 52.98660226938574,
+   "tmrt_saved_by_second_skin_k": 0.6215998959582976
+  }
+ ],
+ "ground": [
+  {
+   "surround": "bare dark soil / asphalt",
+   "sunlit_ground_rise_k": 22.0,
+   "albedo": 0.1,
+   "tmrt_c": 52.32386611727668
+  },
+  {
+   "surround": "typical dry ground",
+   "sunlit_ground_rise_k": 15.0,
+   "albedo": 0.2,
+   "tmrt_c": 52.95970266357483
+  },
+  {
+   "surround": "light paving",
+   "sunlit_ground_rise_k": 12.0,
+   "albedo": 0.4,
+   "tmrt_c": 57.64823615602046
+  },
+  {
+   "surround": "irrigated grass / ground cover",
+   "sunlit_ground_rise_k": 4.0,
+   "albedo": 0.22,
+   "tmrt_c": 50.2935950977062
+  }
+ ],
+ "falsification": [
+  "Roof underside (DS18B20 taped to lower skin, shaded from sun): predicted values in designs[].underside_c.",
+  "Black globe 150 mm at seated head height: predicted designs[].globe_150mm_c at the stated air speed.",
+  "Reject the model if paired measurements across >=3 independent clear days differ by more than the declared margin."
+ ]
+}

@@ -1,11 +1,13 @@
 import csv,io,json,os,secrets,sqlite3,time,uuid
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Literal
 from fastapi import FastAPI,HTTPException,Header,Query
 from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel,Field
-from .core import Sample,scenario,evaluate
+from .core import Sample,scenario,evaluate,aggregate,declaration_for
+from . import thermal
 class ScenarioRequest(BaseModel):
     name:Literal['normal','humid','fan_failure','sensor_failure','low_water','no_power','reference_mismatch']
     seed:int=Field(default=1,ge=0,le=100000)
@@ -15,12 +17,28 @@ class StepRequest(BaseModel):
 class ExperimentRequest(BaseModel):
     run_id:str
     endpoint:Literal['roof_temp','air_speed']
+    # Optional smallest meaningful difference, locked before any sample is collected.
+    margin:float|None=Field(default=None,gt=0,le=100)
+class AggregateRequest(BaseModel):
+    experiment_ids:list[str]=Field(min_length=1,max_length=200)
 def create_app(db_path=None,token=None):
-    app=FastAPI(title='SAAYA VERIFY bench API',version='0.2.0')
+    app=FastAPI(title='SAAYA VERIFY bench API',version='0.3.0')
     path=db_path or os.getenv('SAAYA_DB','saaya.db');token=token if token is not None else os.getenv('SAAYA_DEVICE_TOKEN')
+    @contextmanager
     def db():
-        conn=sqlite3.connect(path);conn.row_factory=sqlite3.Row;return conn
-    with db() as con:con.executescript('CREATE TABLE IF NOT EXISTS samples(device TEXT,session TEXT,seq INTEGER,received REAL,payload TEXT,UNIQUE(device,session,seq)); CREATE TABLE IF NOT EXISTS clocks(device TEXT,session TEXT,origin REAL,PRIMARY KEY(device,session)); CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,name TEXT,seed INTEGER,cursor INTEGER); CREATE TABLE IF NOT EXISTS experiments(id TEXT PRIMARY KEY,run TEXT,endpoint TEXT,result TEXT);')
+        # One connection per request; commit on success, roll back on error, ALWAYS close.
+        # (sqlite3's own context manager commits but never closes -> leaked file handles.)
+        conn=sqlite3.connect(path,timeout=5);conn.row_factory=sqlite3.Row
+        try:
+            yield conn;conn.commit()
+        except BaseException:
+            conn.rollback();raise
+        finally:conn.close()
+    with db() as con:
+        con.execute('PRAGMA journal_mode=WAL')  # bridge writes while the dashboard reads
+        con.executescript('CREATE TABLE IF NOT EXISTS samples(device TEXT,session TEXT,seq INTEGER,received REAL,payload TEXT,UNIQUE(device,session,seq)); CREATE TABLE IF NOT EXISTS clocks(device TEXT,session TEXT,origin REAL,PRIMARY KEY(device,session)); CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY,name TEXT,seed INTEGER,cursor INTEGER); CREATE TABLE IF NOT EXISTS experiments(id TEXT PRIMARY KEY,run TEXT,endpoint TEXT,result TEXT); CREATE INDEX IF NOT EXISTS samples_session ON samples(session,seq); CREATE INDEX IF NOT EXISTS samples_received ON samples(received);')
+        if 'declaration' not in [c['name'] for c in con.execute('PRAGMA table_info(experiments)')]:
+            con.execute('ALTER TABLE experiments ADD COLUMN declaration TEXT')  # migrate v0.2 databases
     def fetch_run(con,rid):
         row=con.execute('SELECT * FROM runs WHERE id=?',(rid,)).fetchone()
         if not row:raise HTTPException(404,'Run not found')
@@ -32,6 +50,7 @@ def create_app(db_path=None,token=None):
     def ingest(s:Sample,x_device_token:str|None=Header(default=None)):
         if not token or not x_device_token or not secrets.compare_digest(token,x_device_token):raise HTTPException(401,'Configured device credential required')
         now=time.time()
+        if s.source!='MEASURED':raise HTTPException(422,'Device ingestion accepts MEASURED records only; simulation is generated server-side')
         if s.emitted_ms<s.acquired_ms:raise HTTPException(422,'Emission precedes acquisition')
         with db() as con:
             result=con.execute('INSERT OR IGNORE INTO samples VALUES(?,?,?,?,?)',(s.device_id,s.session_id,s.seq,now,s.model_dump_json()))
@@ -73,8 +92,9 @@ def create_app(db_path=None,token=None):
         with db() as con:
             con.execute('BEGIN IMMEDIATE');run=fetch_run(con,req.run_id)
             if run['cursor']:raise HTTPException(409,'Declare experiment before collecting samples')
-            con.execute('INSERT INTO experiments VALUES(?,?,?,NULL)',(eid,req.run_id,req.endpoint))
-        return {'id':eid,'run_id':req.run_id,'endpoint':req.endpoint,'expected_samples':60,'cadence_seconds':1,'minimum_samples':48}
+            declaration=declaration_for(req.endpoint,req.margin);declaration['declared_at']=time.time()
+            con.execute('INSERT INTO experiments(id,run,endpoint,result,declaration) VALUES(?,?,?,NULL,?)',(eid,req.run_id,req.endpoint,json.dumps(declaration)))
+        return {'id':eid,'run_id':req.run_id,'endpoint':req.endpoint,'declaration':declaration,'expected_samples':60,'cadence_seconds':1,'minimum_samples':48}
     def get_exp(con,eid):
         row=con.execute('SELECT * FROM experiments WHERE id=?',(eid,)).fetchone()
         if not row:raise HTTPException(404,'Experiment not found')
@@ -84,7 +104,8 @@ def create_app(db_path=None,token=None):
         with db() as con:
             con.execute('BEGIN IMMEDIATE');e=get_exp(con,eid)
             if e['result']:return json.loads(e['result'])
-            samples=stored(con,e['run']);result={'id':eid,'run_id':e['run'],'endpoint':e['endpoint'],'evidence':evaluate(samples,e['endpoint']),'samples':samples,'finished_at':time.time(),'configuration':{'expected_samples':60,'cadence_seconds':1,'minimum_samples':48,'settling_seconds':0,'settling_note':'Demonstration only; physical protocol requires settling and an independent reference'}}
+            samples=stored(con,e['run']);declaration=json.loads(e['declaration']) if e['declaration'] else declaration_for(e['endpoint'])
+            result={'id':eid,'run_id':e['run'],'endpoint':e['endpoint'],'evidence':evaluate(samples,e['endpoint'],declaration),'samples':samples,'finished_at':time.time(),'configuration':{'expected_samples':60,'cadence_seconds':1,'minimum_samples':48,'settling_seconds':0,'settling_note':'Demonstration only; physical protocol requires settling and an independent reference'}}
             con.execute('UPDATE experiments SET result=? WHERE id=?',(json.dumps(result),eid))
         return result
     @app.get('/experiments/{eid}')
@@ -98,6 +119,18 @@ def create_app(db_path=None,token=None):
         if format=='json':return data
         out=io.StringIO();writer=csv.DictWriter(out,fieldnames=list(Sample.model_fields));writer.writeheader();writer.writerows(data['samples'])
         return Response(out.getvalue(),media_type='text/csv',headers={'Content-Disposition':f'attachment; filename="saaya-{eid}.csv"'})
+    @app.post('/evidence/aggregate')
+    def combine(req:AggregateRequest):
+        if len(set(req.experiment_ids))!=len(req.experiment_ids):raise HTTPException(422,'Duplicate experiment ids')
+        results=[]
+        for eid in req.experiment_ids:
+            data=get(eid)
+            if data.get('status')=='collecting':raise HTTPException(409,f'Experiment {eid} is not finished')
+            results.append(data['evidence'])
+        try:return aggregate(results)
+        except ValueError as e:raise HTTPException(422,str(e))
+    @app.get('/model/thermal')
+    def thermal_model():return thermal.report()
     @app.get('/analysis/status')
     def analysis_status():return {'ai_enabled':bool(os.getenv('SAAYA_AI_MODEL')),'reason':'Optional local model; no autonomous control. Availability requires a running local server.'}
     @app.post('/experiments/{eid}/explain')

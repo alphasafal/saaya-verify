@@ -46,6 +46,7 @@ jobs:
           npm run test:teaching
           npm run test:cooling
           npm run test:pavilion
+          npm run test:defense
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
