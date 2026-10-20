@@ -27,7 +27,7 @@ def qa(items):
 
 
 slides = [
-    ('1', 'Title', '0:20', 'Name, register number, guide. “SAAYA is a cool shelter for outdoor workers; passive design cools, the IoT system controls and proves.”'),
+    ('1', 'Title', '0:20', 'Name and register number (23BCT0237). “SAAYA is a cool shelter for outdoor workers; passive design cools, the IoT system controls and proves.”'),
     ('2', 'The problem', '0:50', '39 °C May, 67 °C modelled shed roof underside, ILO 5.8 % hours lost. Three gaps: hot roof, no feedback, no help signal.'),
     ('3', 'Our idea', '0:40', 'Shelter + node + evidence rules. Point at the roofless render: bench, fan, sensors, box.'),
     ('4', 'Six layers', '0:50', 'Shade → white top → ventilated gap → cool lining → overhang + jaali → smart fan. Only the last uses power.'),
@@ -158,7 +158,7 @@ dont = [
 ]
 
 check = [
-    'Fill your register number, guide and course in the report; print two copies.',
+    'Print two copies of the report.',
     'Open every demo page once on the presentation laptop the day before (Vercel can be slow the first time).',
     'Keep the GitHub Pages mirror open in a second tab in case Vercel is blocked on the college network.',
     'Download the report PDF and slide deck to the laptop for offline use; take screenshots of each demo page as a last resort.',

@@ -22,7 +22,7 @@ H = T['headline']
 
 # ----------------------------------------------------------------------------- placeholders
 STUDENT = 'Safal Gupta'
-REGNO = '[Register Number]'
+REGNO = '23BCT0237'
 GUIDE = '[Guide Name]'
 GUIDE_DESIG = '[Designation], School of Computer Science and Engineering'
 COURSE = '[Course Code – Course Title]'
@@ -234,24 +234,22 @@ def front(pages_toc, pages_fig, pages_tab):
 <section class="fm title">
 <div class="t1">{e(TITLE)}</div>
 <div class="t2">A PROJECT REPORT</div>
-<div class="t3"><i>Submitted in partial fulfilment of the requirements for the course</i><br>{e(COURSE)}</div>
+<div class="t3"><i>Submitted to the School of Computer Science and Engineering</i></div>
 <div class="t3"><i>by</i></div>
 <div class="t4">{e(STUDENT.upper())}<br>{e(REGNO)}</div>
-<div class="t3"><i>Under the guidance of</i><br><b>{e(GUIDE)}</b><br>{e(GUIDE_DESIG)}</div>
 <div class="t5">SCHOOL OF COMPUTER SCIENCE AND ENGINEERING<br>VELLORE INSTITUTE OF TECHNOLOGY<br>VELLORE – 632 014, TAMIL NADU, INDIA</div>
 <div class="t6">{MONTH.upper()}</div>
 </section>
 <section class="fm"><h1>DECLARATION</h1>
-<p>I hereby declare that the project report entitled “{e(TITLE_CASE)}”, submitted by me to the School of Computer Science and Engineering, Vellore Institute of Technology, Vellore, in partial fulfilment of the requirements for the course {e(COURSE)}, is a record of original work carried out by me under the guidance of {e(GUIDE)}. I further declare that the work reported in this project has not been submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university.</p>
+<p>I hereby declare that the project report entitled “{e(TITLE_CASE)}”, submitted by me to the School of Computer Science and Engineering, Vellore Institute of Technology, Vellore, is a record of original work carried out by me. I further declare that the work reported in this project has not been submitted, either in part or in full, for the award of any other degree or diploma in this institute or any other institute or university.</p>
 <div class="sig"><div>Place: Vellore<br>Date:</div><div>Signature of the Candidate<br><b>{e(STUDENT)}</b><br>{e(REGNO)}</div></div>
 </section>
 <section class="fm"><h1>CERTIFICATE</h1>
-<p>This is to certify that the project report entitled “{e(TITLE_CASE)}”, submitted by <b>{e(STUDENT)} ({e(REGNO)})</b>, School of Computer Science and Engineering, Vellore Institute of Technology, Vellore, for the course {e(COURSE)}, is a record of bona fide work carried out by the student under my supervision during the period July 2026 to October 2026. The contents of this report have not been submitted elsewhere for the award of any degree or diploma, and the report meets the requirements of the course.</p>
-<div class="sig"><div>Signature of the Guide<br><b>{e(GUIDE)}</b><br>{e(GUIDE_DESIG)}</div><div>Signature of the Head of Department<br><b>{e(HOD)}</b><br>School of Computer Science and Engineering</div></div>
+<p>This is to certify that the project report entitled “{e(TITLE_CASE)}”, submitted by <b>{e(STUDENT)} ({e(REGNO)})</b>, School of Computer Science and Engineering, Vellore Institute of Technology, Vellore, is a record of bona fide work carried out by the student during the period July 2026 to October 2026. The contents of this report have not been submitted elsewhere for the award of any degree or diploma.</p>
+<div class="sig" style="justify-content:flex-end"><div>Signature of the Head of Department<br><b>{e(HOD)}</b><br>School of Computer Science and Engineering</div></div>
 <div class="sig" style="margin-top:22mm"><div>Internal Examiner</div><div>External Examiner</div></div>
 </section>
 <section class="fm"><h1>ACKNOWLEDGEMENT</h1>
-<p>I am grateful to my guide, {e(GUIDE)}, for the time and patient advice given throughout this project, and especially for the questions that pushed me to check each claim against a measurement or a source.</p>
 <p>I thank the Head of the Department and the faculty of the School of Computer Science and Engineering, Vellore Institute of Technology, for the facilities and the encouragement to work on a problem outside the usual software projects. I also thank the management of VIT for providing an environment in which an idea like this can be tried.</p>
 <p>The design depends on published research and on openly available datasheets and tools. I acknowledge the authors of the heat and fan-use studies cited in this report, and the developers of CadQuery, PlatformIO, the ESP32 Arduino core and the Wokwi simulator.</p>
 <p>Finally, I thank my family and friends for their support, and the workers whose working conditions in the Vellore summer were the reason for starting this project.</p>
