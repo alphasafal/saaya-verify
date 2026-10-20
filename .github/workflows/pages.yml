@@ -77,7 +77,7 @@ jobs:
             if pio run -d firmware -e "$env" > "/tmp/pio-$env.log" 2>&1; then echo "$env: OK"; else
               fail=1; echo "::error title=$env failed::see annotations below"
               grep -E "error:|Error |UnknownPackage|HTTPClientError|IncompatiblePlatform|not found" "/tmp/pio-$env.log" | head -6 | while IFS= read -r l; do echo "::error title=$env::$l"; done
-              tail -3 "/tmp/pio-$env.log"; fi
+              tail -4 "/tmp/pio-$env.log" | while IFS= read -r l; do echo "::error title=$env (tail)::$l"; done; fi
           done
           exit $fail
       - uses: actions/upload-artifact@v4
