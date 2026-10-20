@@ -11,3 +11,5 @@ node_modules/
 
 .cadvenv/
 .vercel/
+docs/report/*.html
+docs/report/*-raw.pdf
