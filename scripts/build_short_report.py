@@ -15,7 +15,7 @@ D = {d['design']: d for d in T['designs']}
 costs = json.loads((ROOT / 'research/costs.json').read_text())
 FL = sum(x['estimate_low'] for x in costs['full_size']); FH = sum(x['estimate_high'] for x in costs['full_size'])
 
-STUDENT, REGNO, GUIDE = 'Safal Gupta', '[Register Number]', '[Guide Name]'
+STUDENT, REGNO, GUIDE = 'Safal Gupta', '23BCT0237', ''
 COURSE, MONTH = '[Course Code – Course Title]', 'October 2026'
 
 # references, numbered in order of first use
@@ -73,8 +73,8 @@ gr = {x['surround']: x['tmrt_c'] for x in T['ground']}
 body = f"""
 <div class="title">
 <div class="t1">SAAYA: AN IoT-ENABLED COOL SHELTER FOR OUTDOOR WORKERS</div>
-<div class="t2">Project Report (concise version) · {e(COURSE)}</div>
-<div class="t3">{e(STUDENT)} ({e(REGNO)}) · Guide: {e(GUIDE)}<br>School of Computer Science and Engineering, Vellore Institute of Technology, Vellore · {MONTH}</div>
+<div class="t2">Project Report (concise version)</div>
+<div class="t3">{e(STUDENT)} ({e(REGNO)})<br>School of Computer Science and Engineering, Vellore Institute of Technology, Vellore · {MONTH}</div>
 </div>
 
 <div class="abs"><b>Abstract.</b> Outdoor workers in Vellore rest under bare metal sheets that become radiant heaters in the afternoon. Nobody measures whether these shades help, fans fail unnoticed and there is no reliable way to call for help. SAAYA is a demountable cool shelter for four to six workers: a 2.4 m × 2.0 m steel frame with a reflective upper roof skin, a ventilated 120 mm gap, a painted lining, a 200 mm overhang, a louvred screen and a bench. An ESP32-based node reads seat and outdoor air (two SHT30), roof lining temperature (DS18B20), fan speed (tachometer) and fan power (INA219); it runs a 12 V PWM fan only when moving air helps, stops automatic operation at 39 °C, detects fan faults and latches help requests. A screening heat model predicts that shade reduces mean radiant temperature at the seat by {H['shade_alone_k']:.1f} °C and the cool roof by a further {H['roof_treatment_k']:.1f} °C, with the lining {H['underside_cooler_k']:.0f} °C cooler than a weathered sheet. The node costs ₹{g['total']:,} and draws {g['w_typ']:.1f} W. Firmware compiles and passes automated tests; fabrication and field testing are next.</div>
