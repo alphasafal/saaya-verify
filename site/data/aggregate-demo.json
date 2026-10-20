@@ -15,12 +15,14 @@
     "beneficial_direction": "lower",
     "margin": 1.0,
     "unit": "\u00b0C",
-    "margin_basis": "Two \u00b10.5 \u00b0C probes combine to \u22480.7 \u00b0C; 1.0 \u00b0C chosen before data collection",
+    "margin_basis": "Set above possible disagreement of two \u00b10.5 \u00b0C probes before offset correction; chosen before data collection",
     "endpoint": "roof_temp"
    },
    "runs_supplied": 5,
    "runs_valid": 5,
    "runs_invalid": 0,
+   "valid_fraction": 1.0,
+   "distinct_days": 5,
    "run_deltas": [
     -5.403435830258624,
     -6.79495280290677,
@@ -28,7 +30,7 @@
     -5.821688068719802,
     -6.700361739750739
    ],
-   "method": "Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin",
+   "method": "Mean of independent run-level paired differences (\u22653 distinct days); Student-t two-sided 95 % CI; equivalence-style decision against predeclared margin",
    "mean": -6.051537326025075,
    "sd": 0.6540258477306785,
    "ci95": [
@@ -51,6 +53,8 @@
    "runs_supplied": 5,
    "runs_valid": 5,
    "runs_invalid": 0,
+   "valid_fraction": 1.0,
+   "distinct_days": 5,
    "run_deltas": [
     1.1176812124213589,
     1.0045279297224248,
@@ -58,7 +62,7 @@
     0.9329547445998936,
     1.0791162457460042
    ],
-   "method": "Mean of independent run-level paired differences; Student-t 95 % CI; equivalence-style decision against predeclared margin",
+   "method": "Mean of independent run-level paired differences (\u22653 distinct days); Student-t two-sided 95 % CI; equivalence-style decision against predeclared margin",
    "mean": 1.0037538835952997,
    "sd": 0.09733458207935472,
    "ci95": [

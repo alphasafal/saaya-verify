@@ -62,20 +62,20 @@ async function thermal() {
   const m = await load('data/thermal-model.json');
   const c = m.conditions;
   $('#model-conditions').textContent =
-    `Assumed driving conditions: air ${c.ta_c} °C, ${c.ghi} W/m² sun at ${c.sun_elevation_deg}° elevation, wind ${c.wind} m/s, ` +
+    `Assumed driving conditions: air ${c.ta_c} °C, ${c.ghi} W/m², noon sun ${f1(c.sun_elevation_deg)}° high to the ${c.sun_is_north ? 'north' : 'south'} (day ${c.day_of_year}), wind ${c.wind} m/s, ` +
     `sunlit ground ${c.sunlit_ground_rise} K above air. Seated head ${m.person.head_height} m; local air speed ${m.person.air_speed} m/s.`;
   const d = Object.fromEntries(m.designs.map(x => [x.design, x]));
-  const open = m.designs[0], shed = m.designs[1];
   const saaya = m.designs.find(x => x.design.startsWith('SAAYA'));
   bars($('#mrt-chart'), m.designs.map(x => ({ name: x.design.replace(/\s*\(.*\)$/, ''), value: x.tmrt_c,
     cls: x.design.startsWith('SAAYA') ? 'bar saaya' : x.design.startsWith('Open') ? 'bar sun' : 'bar' })),
     { label: 'Predicted mean radiant temperature at the seated head for each roof option' });
-  table($('#design-table'), ['Option', 'Roof underside', 'Upper skin', 'Mean radiant temp.', '150 mm globe (predicted)', 'Sun on head?'],
+  table($('#design-table'), ['Option', 'Roof underside', 'Upper skin', 'Seated MRT (harder seat)', 'Black globe 150 mm (predicted)', 'Sun on head?'],
     m.designs.map(x => [x.design, x.underside_c == null ? 'no roof' : `${f1(x.underside_c)} °C`, x.upper_c == null ? '—' : `${f1(x.upper_c)} °C`,
       `${f1(x.tmrt_c)} °C`, `${f1(x.globe_150mm_c)} °C`, x.sun_on_head ? 'yes' : 'no']));
-  $('#k-shade').textContent = `${f1(open.tmrt_c - saaya.tmrt_c)} K`;
-  $('#k-roof').textContent = `${f1(shed.tmrt_c - saaya.tmrt_c)} K`;
-  $('#k-underside').textContent = `${f1(shed.underside_c - saaya.underside_c)} K`;
+  const hl = m.headline;
+  $('#k-shade').textContent = `${f1(hl.shade_alone_k)} K`;
+  $('#k-roof').textContent = `${f1(hl.roof_treatment_k)} K`;
+  $('#k-underside').textContent = `${f1(hl.underside_cooler_k)} K`;
   const vf = saaya.view_fractions;
   $('#k-view').textContent = `${Math.round(vf.roof * 100)} %`;
   $('#view-note').textContent = `What the seated head "sees" (share of the full sphere): roof ${Math.round(vf.roof * 100)} %, sky ${Math.round(vf.sky * 100)} %, ` +
@@ -89,6 +89,8 @@ async function thermal() {
     m.ground.map(r => [r.surround, `+${r.sunlit_ground_rise_k} K`, r.albedo.toFixed(2), `${f1(r.tmrt_c)} °C`]));
   table($('#sensitivity-table'), ['Parameter varied', 'Value', 'MRT under existing shed', 'MRT under SAAYA', 'Benefit'],
     m.sensitivity.map(r => [r.parameter, String(r.value), `${f1(r.tmrt_existing_shed_c)} °C`, `${f1(r.tmrt_saaya_c)} °C`, `${f1(r.benefit_k)} K`]));
+  table($('#band-table'), ['Prediction target', 'Roof underside band', 'Black globe band'],
+    m.prediction_bands.map(b => [b.target, `${f1(b.underside_c[0])}–${f1(b.underside_c[1])} °C`, `${f1(b.globe_150mm_c[0])}–${f1(b.globe_150mm_c[1])} °C`]));
   const ul = $('#falsify');
   ul.replaceChildren(...m.falsification.map(t => el('li', {}, t)));
 }

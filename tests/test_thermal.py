@@ -2,8 +2,9 @@ import math
 from dataclasses import replace
 import pytest
 from api.thermal import (Conditions, Roof, Person, GALVANISED, WHITE_BOTH, WEATHERED, rectangle_solid_angle,
-                         roof_temperatures, mean_radiant_temperature, globe_temperature, compare_designs,
-                         overhang_study, second_skin_value, report, sky_temperature_k)
+                         rectangle_view_factor, roof_temperatures, mean_radiant_temperature, globe_temperature,
+                         compare_designs, headline, overhang_study, second_skin_value, prediction_bands, solar_noon,
+                         report, sky_temperature_k, h_conv)
 
 
 def test_solid_angle_limits_and_superposition():
@@ -32,7 +33,7 @@ def test_roof_energy_balance_closes(kind):
 
 def test_no_sun_roof_near_or_below_air():
     # At night the roof radiates to a cold sky; it cannot be hotter than the air.
-    r = roof_temperatures(replace(Conditions(), ghi=0.0), replace(Roof(), kind='single', upper=WHITE_BOTH))
+    r = roof_temperatures(replace(Conditions(), ghi=0.0, sunlit_ground_rise=0.0, shaded_ground_rise=0.0), replace(Roof(), kind='single', upper=WHITE_BOTH))
     assert r['underside_c'] <= Conditions().ta_c + 0.5
 
 
@@ -87,3 +88,43 @@ def test_report_is_labelled_as_screening():
     r = report()
     assert 'SCREENING' in r['status'] and 'not validated' in r['status']
     assert r['falsification']
+
+
+def test_plate_view_factor_limits():
+    assert rectangle_view_factor(0, 0, -1e6, 1e6, -1e6, 1e6, 2.0) == pytest.approx(1.0, abs=1e-5)
+    # Catalogue value: unit square, plate at a corner, distance 1 -> 0.1385
+    assert rectangle_view_factor(0, 0, 0, 1, 0, 1, 1.0) == pytest.approx(0.1385, abs=5e-4)
+
+
+def test_convection_is_convective_only():
+    # Watmuff 2.8 + 3.0 v, not McAdams' combined 5.7 + 3.8 v (radiation is explicit).
+    assert h_conv(0) == 2.8 and h_conv(1) == pytest.approx(5.8)
+
+
+def test_may_noon_sun_is_north_of_zenith_in_vellore():
+    elev, north = solar_noon(Conditions(day_of_year=135))
+    assert north and 83 < elev < 86
+    elev, north = solar_noon(Conditions(day_of_year=355))
+    assert not north and elev < 60
+
+
+def test_globe_uses_black_globe_absorptance():
+    # A black globe absorbs more sunlight than a person; its prediction must sit above
+    # the globe reading implied by the person's MRT.
+    m = mean_radiant_temperature(Conditions(), Roof(kind='none'), Person())
+    assert m['globe_150mm_c'] > globe_temperature(m['tmrt_c'], Conditions().ta_c, Person().air_speed)
+
+
+def test_headline_is_additive_not_double_counted():
+    h = headline(compare_designs())
+    assert h['shade_alone_k'] + h['roof_treatment_k'] == pytest.approx(h['total_k'])
+    assert h['shade_alone_k'] > h['roof_treatment_k'] > 0
+
+
+def test_prediction_bands_bracket_nominal_and_underside_discriminates():
+    bands = {b['target']: b for b in prediction_bands()}
+    rows = {r['design']: r for r in compare_designs()}
+    lo, hi = bands['SAAYA double roof']['underside_c']
+    assert lo <= rows['SAAYA double roof (white top, ventilated gap, bare low-e lining)']['underside_c'] <= hi
+    # Underside bands do not overlap: the cheapest measurement can tell the designs apart.
+    assert hi < bands['Weathered shed sheet']['underside_c'][0]

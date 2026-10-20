@@ -105,7 +105,7 @@ def create_app(db_path=None,token=None):
             con.execute('BEGIN IMMEDIATE');e=get_exp(con,eid)
             if e['result']:return json.loads(e['result'])
             samples=stored(con,e['run']);declaration=json.loads(e['declaration']) if e['declaration'] else declaration_for(e['endpoint'])
-            result={'id':eid,'run_id':e['run'],'endpoint':e['endpoint'],'evidence':evaluate(samples,e['endpoint'],declaration),'samples':samples,'finished_at':time.time(),'configuration':{'expected_samples':60,'cadence_seconds':1,'minimum_samples':48,'settling_seconds':0,'settling_note':'Demonstration only; physical protocol requires settling and an independent reference'}}
+            result={'id':eid,'run_id':e['run'],'endpoint':e['endpoint'],'evidence':evaluate(samples,e['endpoint'],declaration,day=f"synthetic-day-{fetch_run(con,e['run'])['seed']}"),'samples':samples,'finished_at':time.time(),'configuration':{'expected_samples':60,'cadence_seconds':1,'minimum_samples':48,'settling_seconds':0,'settling_note':'Demonstration only; physical protocol requires settling and an independent reference'}}
             con.execute('UPDATE experiments SET result=? WHERE id=?',(json.dumps(result),eid))
         return result
     @app.get('/experiments/{eid}')
