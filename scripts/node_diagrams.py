@@ -330,8 +330,8 @@ d.save('enclosure-drawing.svg', 'SAAYA Node enclosure drawing')
 # ============================ 3. Installation elevation ============================
 z = Svg(1460, 880)
 z.add("<defs><marker id='ar' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto-start-reverse'><path d='M0,1 L7,4 L0,7' fill='none' stroke='#1f2a26'/></marker></defs>")
-z.text(40, 46, 'Installation - retrofit to an existing rest shade (side elevation, mm)', 24, weight='bold')
-z.text(40, 72, 'Works on any shade with a post or wall: worksite rest shed, bus-stop shelter, FS-01 frame. Scale 1:25.', 13, color=C['muted'])
+z.text(40, 46, 'Installation in the SAAYA cool shelter (side elevation, mm)', 24, weight='bold')
+z.text(40, 72, 'Same mounting heights apply when the node is retrofitted to an existing shade. Scale 1:25.', 13, color=C['muted'])
 S25 = 1 / 4.2
 gx, gy = 230, 800
 X = lambda mm: gx + mm * S25
@@ -339,10 +339,11 @@ Y = lambda mm: gy - mm * S25
 z.add(f"<line x1='40' y1='{gy}' x2='1440' y2='{gy}' stroke='#6b5b3e' stroke-width='3'/>")
 z.text(50, gy + 22, 'ground (shaded ground cover preferred - see model)', 12, color='#6b5b3e')
 # existing shade: post at x=0, roof at 2400
-z.rect(X(0), Y(2400), 60 * S25 + 2, 2400 * S25, '#8a949b', C['ink'], 1, 1.2)
-z.rect(X(-300), Y(2460), 3400 * S25, 60 * S25, '#c9cfc5', C['ink'], 2, 1.2)
-z.text(X(1400), Y(2460) - 10, 'existing roof (paint underside / add lining)', 12, 'middle')
-z.rect(X(2700), Y(2400), 60 * S25 + 2, 2400 * S25, '#8a949b', C['ink'], 1, 1.2)
+z.rect(X(0), Y(2370), 60 * S25 + 2, 2370 * S25, '#8a949b', C['ink'], 1, 1.2)
+z.rect(X(-200), Y(2370 + 145), 2800 * S25, 18 * S25 + 2, '#eef0e6', C['ink'], 2, 1.2)
+z.rect(X(-200), Y(2370 + 18), 2800 * S25, 18 * S25 + 2, '#c9cfc5', C['ink'], 2, 1.2)
+z.text(X(1200), Y(2515) - 10, 'cool roof: white upper skin, ~120 mm ventilated gap, painted lower lining', 12, 'middle')
+z.rect(X(2340), Y(2370), 60 * S25 + 2, 2370 * S25, '#8a949b', C['ink'], 1, 1.2)
 # bench + seated person outline
 z.rect(X(1100), Y(450), 1400 * S25, 40 * S25, '#ac805a', C['ink'], 2, 1)
 z.add(f"<circle cx='{X(1500)}' cy='{Y(1150)}' r='{110 * S25}' fill='none' stroke='{C['muted']}' stroke-width='1.6'/>")
@@ -359,23 +360,23 @@ z.add(f"<path d='M{X(830)},{Y(1840)} L{X(1450)},{Y(1200)}' stroke='#5aa0d6' stro
 z.text(X(840), Y(1960), '120 mm PWM fan, aimed at seat (~1 m, 30–45° down)', 12)
 # seat sensor
 z.rect(X(1950), Y(1150), 110 * S25, 70 * S25, '#f4f4ef', C['ink'], 2, 1.2)
-z.text(X(2010), Y(1180), 'SHT31 seat (in shield)', 12, 'middle')
+z.text(X(2010), Y(1180), 'SHT30 seat (in shield)', 12, 'middle')
 z.add(f"<line x1='{X(2110)}' y1='{Y(1100)}' x2='{X(2110)}' y2='{gy}' stroke='{C['ink']}' marker-start='url(#ar)' marker-end='url(#ar)'/>")
 z.text(X(2090), Y(600), '1100 = seated head height', 12, 'end')
 # roof probe
-z.add(f"<circle cx='{X(1350)}' cy='{Y(2400) + 6}' r='6' fill='#6b4fa0'/>")
+z.add(f"<circle cx='{X(1300)}' cy='{Y(2370) + 6}' r='6' fill='#6b4fa0'/>")
 z.text(X(1370), Y(2290), 'DS18B20 bonded to roof underside, centre', 12)
 # reference station outside
 z.rect(X(4800), Y(1150), 110 * S25, 70 * S25, '#f4f4ef', C['ink'], 2, 1.2)
 z.add(f"<line x1='{X(4855)}' y1='{Y(1080)}' x2='{X(4855)}' y2='{gy}' stroke='#8a949b' stroke-width='3'/>")
-z.text(X(4855), Y(1230), 'SHT31 reference (in shield)', 12, 'middle')
-z.add(f"<line x1='{X(2760)}' y1='{Y(300)}' x2='{X(4855)}' y2='{Y(300)}' stroke='{C['ink']}' marker-start='url(#ar)' marker-end='url(#ar)'/>")
-z.text(X(3800), Y(300) - 8, '≥ 2000 from the shade edge, same 1100 height, ≤ 5 m cable', 12, 'middle')
+z.text(X(4855), Y(1230), 'SHT30 reference (in shield)', 12, 'middle')
+z.add(f"<line x1='{X(2600)}' y1='{Y(300)}' x2='{X(4855)}' y2='{Y(300)}' stroke='{C['ink']}' marker-start='url(#ar)' marker-end='url(#ar)'/>")
+z.text(X(3800), Y(300) - 8, '≥ 2000 from the roof edge, same 1100 height, ≤ 5 m cable', 12, 'middle')
 # water
 z.rect(X(300), Y(450), 250 * S25, 450 * S25, '#78aeb0', C['ink'], 3, 1)
 z.text(X(425), Y(480), 'water can + float', 11, 'middle')
 # cable route
-z.add(f"<path d='M{X(95)},{Y(1400)} L{X(95)},{Y(2390)} L{X(2000)},{Y(2390)} L{X(2000)},{Y(1150)}' fill='none' stroke='{C['sig']}' stroke-width='1.6' stroke-dasharray='4 4'/>")
+z.add(f"<path d='M{X(95)},{Y(1400)} L{X(95)},{Y(2350)} L{X(2000)},{Y(2350)} L{X(2000)},{Y(1150)}' fill='none' stroke='{C['sig']}' stroke-width='1.6' stroke-dasharray='4 4'/>")
 z.text(X(150), Y(2150), 'cables in UV conduit along post and roof; drip loop below box', 11, color=C['sig'])
 z.save('installation-elevation.svg', 'SAAYA Node installation elevation')
 
