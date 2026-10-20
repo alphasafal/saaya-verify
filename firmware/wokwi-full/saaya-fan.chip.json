@@ -1,0 +1,10 @@
+{
+  "name": "SAAYA fan branch (2N3904 + P12 Pro + INA219)",
+  "author": "SAAYA (Safal Gupta)",
+  "pins": ["VCC", "GND", "SDA", "SCL", "PWM", "TACH"],
+  "controls": [
+    { "id": "blocked", "label": "Fan blocked (1 = stalled)", "type": "range", "min": 0, "max": 1, "step": 1 },
+    { "id": "tachCut", "label": "Tach wire cut (1 = cut)", "type": "range", "min": 0, "max": 1, "step": 1 },
+    { "id": "inaConnected", "label": "INA219 connected (1 = yes)", "type": "range", "min": 0, "max": 1, "step": 1 }
+  ]
+}

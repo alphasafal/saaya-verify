@@ -14,7 +14,8 @@
     "test:pavilion": "node tests/pavilion-browser.cjs",
     "test:defense": "node tests/defense-browser.cjs",
     "build:node": "esbuild site/node-src.js --bundle --minify --outfile=site/node.bundle.js --format=esm",
-    "test:node": "node tests/node-browser.cjs"
+    "test:node": "node tests/node-browser.cjs",
+    "test:sim": "node --test tests/sim-wasm.test.mjs tests/wokwi-chips.test.mjs && node tests/simulator-browser.cjs"
   },
   "dependencies": {
     "three": "0.180.0"

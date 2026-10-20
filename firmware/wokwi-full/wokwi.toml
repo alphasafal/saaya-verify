@@ -1,0 +1,13 @@
+# Wokwi for VS Code / wokwi-cli. First: `pio run -d firmware -e esp32dev_field` and `make -C firmware/wokwi-full`.
+[wokwi]
+version = 1
+firmware = '../.pio/build/esp32dev_field/firmware.bin'
+elf = '../.pio/build/esp32dev_field/firmware.elf'
+
+[[chip]]
+name = 'sht30'
+binary = 'dist/sht30.chip.wasm'
+
+[[chip]]
+name = 'saaya-fan'
+binary = 'dist/saaya-fan.chip.wasm'

@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAAYA Node · Hardware Simulator</title>
+<meta name="description" content="Interactive simulation of the SAAYA Node hardware: ESP32, two SHT30 sensors, DS18B20, INA219, OLED, 4-wire PWM fan, buttons, LED, buzzer and float switch, running the firmware's own control rules compiled to WebAssembly.">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="simulator.css"></head>
+<body>
+<header class="top"><a class="brand" href="index.html"><span class="mark">स</span><span>SAAYA<span class="verify">VERIFY</span></span></a><nav aria-label="Main"><a href="designs.html">All designs</a><a href="node.html">Node 3D</a><a href="explain.html">IoT architecture</a><a href="index.html#lab">Evidence lab</a></nav><a class="repo" href="https://github.com/alphasafal/saaya-verify">GitHub</a></header>
+<main class="sim">
+<section class="sim-head">
+<div>
+<p class="kicker">SAAYA Node · hardware simulator</p>
+<h1>The whole circuit, running live</h1>
+<p class="standfirst">Every part of the node, wired as built. The fan, help and fault rules are the firmware’s own C++ (<code>controller.h</code>), compiled to WebAssembly, so what you see here is what the ESP32 decides.</p>
+</div>
+<div class="chips" aria-live="polite">
+<span class="chip" id="wasm-chip">Loading firmware rules…</span>
+<span class="chip" id="clock-chip">t = 0 s</span>
+</div>
+</section>
+
+<section class="sim-grid">
+<div class="board-wrap">
+<svg id="board" viewBox="0 84 1200 690" role="img" aria-label="SAAYA Node circuit: ESP32-DevKitC with fan driver, float switch, buttons, LED and buzzer on the left; OLED, two SHT30 sensors, INA219 and DS18B20 on the I2C and 1-Wire buses on the right; 12 V supply, fuse, switch and 5 V buck converter along the bottom"></svg>
+<div class="legend" aria-hidden="true"><span><i class="l12"></i>12 V</span><span><i class="l5"></i>5 V</span><span><i class="lsda"></i>I²C SDA</span><span><i class="lscl"></i>I²C SCL</span><span><i class="lsig"></i>signal</span><span>All modules powered from 3V3 and GND of the ESP32 (not drawn)</span></div>
+</div>
+
+<aside class="panel" aria-label="Simulation controls">
+<fieldset><legend>Firmware build</legend>
+<label class="radio"><input type="radio" name="build" value="field" checked> Field build <small>auto fan on (<code>SAAYA_BENCH_AUTO=1</code>)</small></label>
+<label class="radio"><input type="radio" name="build" value="bench"> Default build <small>manual only</small></label>
+</fieldset>
+
+<fieldset><legend>Scenario</legend>
+<div class="btnrow">
+<button type="button" data-scn="morning">Morning 30 °C</button>
+<button type="button" data-scn="warm">Afternoon 34 °C</button>
+<button type="button" data-scn="extreme">Extreme 40 °C</button>
+<button type="button" data-scn="day" class="wide">Play a full day (06:00–18:00)</button>
+</div>
+</fieldset>
+
+<fieldset><legend>Environment</legend>
+<label class="slider">Seat air <output id="o-seatT">33.0 °C</output><input id="seatT" type="range" min="20" max="45" step="0.1" value="33"></label>
+<label class="slider">Seat RH <output id="o-seatRH">50 %</output><input id="seatRH" type="range" min="10" max="95" step="1" value="50"></label>
+<label class="slider">Outside air (reference) <output id="o-outT">35.5 °C</output><input id="outT" type="range" min="20" max="47" step="0.1" value="35.5"></label>
+<label class="slider">Outside RH <output id="o-outRH">45 %</output><input id="outRH" type="range" min="10" max="95" step="1" value="45"></label>
+<label class="slider">Roof lining (DS18B20) <output id="o-roofT">41.0 °C</output><input id="roofT" type="range" min="20" max="80" step="0.1" value="41"></label>
+<label class="check"><input type="checkbox" id="waterLow"> Drinking water low (float drops)</label>
+</fieldset>
+
+<fieldset><legend>Inject a fault</legend>
+<label class="check"><input type="checkbox" data-fault="fanBlocked"> Fan blocked (rotor stalled)</label>
+<label class="check"><input type="checkbox" data-fault="tachCut"> Tachometer wire cut</label>
+<label class="check"><input type="checkbox" data-fault="seatOff"> Seat SHT30 unplugged</label>
+<label class="check"><input type="checkbox" data-fault="refOff"> Reference SHT30 unplugged</label>
+<label class="check"><input type="checkbox" data-fault="roofOff"> Roof probe unplugged</label>
+<label class="check"><input type="checkbox" data-fault="inaOff"> INA219 unplugged</label>
+<button type="button" id="powerCut" class="wide warn">Power cut (reboot the node)</button>
+</fieldset>
+
+<fieldset><legend>Speed</legend>
+<div class="btnrow speeds">
+<button type="button" data-speed="1" aria-pressed="true">1×</button><button type="button" data-speed="5" aria-pressed="false">5×</button><button type="button" data-speed="20" aria-pressed="false">20×</button><button type="button" id="pause" aria-pressed="false">Pause</button>
+</div>
+<label class="check"><input type="checkbox" id="sound"> Buzzer sound</label>
+</fieldset>
+<p class="hint">Press <b>MODE</b>, <b>HELP</b> and <b>ACK</b> on the circuit (or keys M, H, A).</p>
+</aside>
+</section>
+
+<section class="sim-lower">
+<div class="card-lite">
+<h2>What happened</h2>
+<ol id="events" class="events" aria-live="polite"></ol>
+</div>
+<div class="card-lite">
+<h2>Live trace</h2>
+<canvas id="trace" width="720" height="260" aria-label="Seat temperature, fan duty and fan speed over time"></canvas>
+<p class="trace-key"><span class="k-t"></span>Seat air (20–45 °C, left axis) <span class="k-d"></span>Fan duty (0–100 %) <span class="k-r"></span>Fan speed (0–3,000 rpm)</p>
+</div>
+<div class="card-lite serial-card">
+<h2>Serial monitor <small>115200 baud · one JSON record per second, exactly as the firmware prints</small></h2>
+<pre id="serial" tabindex="0" aria-label="Serial output"></pre>
+</div>
+</section>
+
+<section class="sim-notes prose">
+<h2>What is real and what is modelled</h2>
+<p><b>Real:</b> the control rules (help latch, manual 70 %, automatic 50 % between 32 °C and 39 °C with hysteresis, fan-feedback fault after 3 s, sensor-fault inhibit) are the unmodified <code>controller.h</code> compiled to WebAssembly; a test compares it with the natively compiled C++ on 5,000 random cases. The loop around them follows <code>main.cpp</code>: 35 ms button debounce, 1 s sampling, rpm from 2 tach pulses per revolution, PWM inverted through the 2N3904, the help latch restored from flash after a reboot, and the same JSON keys and OLED lines.</p>
+<p><b>Modelled:</b> the sensors return the slider values with small noise; the fan follows a first-order speed response (0 rpm below 5 % duty, about 3,000 rpm at 100 %) and draws 12 V × (0.03 + 0.30 × (rpm/3000)²) A, read by the INA219. The full firmware can also be run on an emulated ESP32 in Wokwi (see <code>firmware/wokwi-full/</code>).</p>
+</section>
+</main>
+<script src="simulator.js"></script>
+</body></html>

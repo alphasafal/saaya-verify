@@ -1,0 +1,10 @@
+{
+  "name": "SHT30",
+  "author": "SAAYA (Safal Gupta)",
+  "pins": ["VCC", "GND", "SDA", "SCL", "ADDR"],
+  "controls": [
+    { "id": "temperature", "label": "Temperature (°C)", "type": "range", "min": 20, "max": 47, "step": 0.1 },
+    { "id": "humidity", "label": "Humidity (%RH)", "type": "range", "min": 5, "max": 95, "step": 1 },
+    { "id": "connected", "label": "Connected (1 = yes, 0 = unplugged)", "type": "range", "min": 0, "max": 1, "step": 1 }
+  ]
+}

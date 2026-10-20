@@ -45,7 +45,7 @@ slides = [
     ('16', 'Deployment', '0:30', 'Front away from afternoon sun, box 1.4 m, seat 1.1 m, reference ≥ 2 m outside, mains or 20 W solar.'),
     ('17', 'Cost', '0:40', f'Node ₹{g["total"]:,}; shelter ₹94k–₹1.71 lakh estimate; 3.2 W vs ≈ 1,500 W AC; how cost drops.'),
     ('18', 'Evidence rules', '0:50', 'Declare, pair, repeat 3 days, claim only if the 95 % interval clears the margin.'),
-    ('19', 'Live demo', '4:00', 'Switch to the website (script in section 3).'),
+    ('19', 'Live demo', '5:00', 'Switch to the website (script in section 3).'),
     ('20', 'Honest status', '0:40', 'Done and tested / not yet proven / next steps. End calmly.'),
     ('21', 'Thank you', '—', 'Leave it up during questions.'),
 ]
@@ -53,6 +53,7 @@ slides = [
 demo = [
     ('designs.html', 'Open the design gallery. “Everything I will show is live and open: CAD, firmware and data.”'),
     ('fullsize-model.html', 'Click <b>Whole shelter</b>, then untick <b>Roof</b> to show the frame and devices; tick <b>Section</b>; click <b>Worker + airflow</b>. Type <i>ESP32</i> in the search box and press <b>Focus selected component</b>.'),
+    ('simulator.html', 'The whole node circuit running the firmware’s own rules (compiled to WebAssembly). Click <b>Afternoon 34 °C</b>: fan starts at 50 %. Click <b>Extreme 40 °C</b>: automatic stops, OLED says HOT. Press <b>MODE</b> on the circuit: manual 70 % still works. Tick <b>Fan blocked</b>: FAN FEEDBACK FAULT after 3 s. Press <b>HELP</b>, then <b>Power cut</b>: the latch comes back after reboot; <b>ACK</b> clears it. Point at the serial monitor: the same JSON the real node sends.'),
     ('node.html', 'Click <b>Lid off</b>, then <b>Front panel</b>, then <b>Cable entries</b>. Point out glands facing down and ACK on the side.'),
     ('explain.html', 'Click a sensor on the IoT diagram; it opens that part in 3D. Scroll to <b>3 · Wiring & working</b>.'),
     ('index.html#lab', 'Choose <b>Normal operation</b>, endpoint <b>Roof surface temperature</b>, <b>Start replay</b>, then <b>Complete replay</b>: the record shows a single-run estimate and says replication is needed. Press <b>Reset</b>, choose <b>Fan feedback failure</b> with endpoint <b>Seated air speed</b>, run again: the claim is withheld with the reason. This is the key moment of the demo.'),
@@ -162,7 +163,7 @@ check = [
     'Open every demo page once on the presentation laptop the day before (Vercel can be slow the first time).',
     'Keep the GitHub Pages mirror open in a second tab in case Vercel is blocked on the college network.',
     'Download the report PDF and slide deck to the laptop for offline use; take screenshots of each demo page as a last resort.',
-    'Rehearse the 14-minute talk twice with a timer; the demo should be 4 minutes.',
+    'Rehearse the 14-minute talk twice with a timer; the demo should be 5 minutes.',
     'Carry the numbers page printed or memorised.',
 ]
 
@@ -173,7 +174,7 @@ body = f"""
 <h2>1. Your one-minute pitch (learn this by heart)</h2>
 <div class="box">“Outdoor workers in Vellore rest under hot metal sheets in 39 °C heat. Nobody knows if these shades help, fans fail without anyone noticing, and there is no reliable way to call for help. SAAYA is a demountable cool shelter: a reflective, ventilated double roof with a deep overhang and a jaali screen does most of the cooling passively. An ESP32-based system measures the seat and outdoor air, the roof and the fan, runs the fan only when it helps, stops it above 39 °C where research shows fans add heat, detects faults, and gives workers a help button that cannot be lost. It costs about ₹{g["total"]:,} in electronics and every claim it makes must be backed by measurement.”</div>
 
-<h2>2. Presentation plan — follows the slide deck (≈ 14 min talk + 4 min demo)</h2>
+<h2>2. Presentation plan — follows the slide deck (≈ 14 min talk + 5 min demo)</h2>
 {tbl(['Slide', 'Content', 'Time', 'What to say'], [(a, e(bb), c, e(d)) for a, bb, c, d in slides], ['7%', '18%', '8%', '67%'])}
 <p><b>Delivery tips.</b> Stand beside the screen, not in front of it. Point at the diagram while you talk about pins. Say numbers slowly. When you switch to the demo, say what you are about to show before clicking. Finish on the “what is proven / not yet proven” slide: honesty at the end leaves a strong impression.</p>
 
