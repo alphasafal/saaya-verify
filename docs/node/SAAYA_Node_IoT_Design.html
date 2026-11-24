@@ -43,7 +43,7 @@ li{margin:.6mm 0}
 <p><b>Why this design fits.</b> An open shade cannot hold AC-cooled air; shade + air movement + monitoring is the realistic intervention. The node is offline-first (control runs on the ESP32, not the cloud), cheap, weatherproof and retrofittable.</p>
 </div>
 <div>
-<img class="full" src="file:///home/claude/saaya-verify/docs/node/render-assembly.png" alt="SAAYA Node 3D model">
+<img class="full" src="render-assembly.png" alt="SAAYA Node 3D model">
 <div class="cap">3D model (CadQuery → STEP): IP65 controller box on aluminium bracket, 5-plate radiation shield with SHT30, 120 mm PWM fan with guards.</div>
 <div class="kpi"><div><b>₹5,314</b><span>complete node, listed prices + allowances</span></div><div><b>3.2 W</b><span>typical draw (fan 70 %)</span></div><div><b>6</b><span>measured quantities, 1 actuator, 3 controls</span></div></div>
 <div class="box">Status: design, firmware, CAD and simulation package. Firmware compiles in CI and its control logic has native tests; <b>no unit has been assembled or field-tested yet</b>. Prices checked online on 20 Oct 2026.</div>
@@ -79,7 +79,7 @@ li{margin:.6mm 0}
 
 <section class="page">
 <h2>4. Interfacing diagram</h2>
-<img class="fit" src="file:///home/claude/saaya-verify/docs/node/interfacing-diagram.svg" alt="Interfacing diagram" style="max-height:168mm">
+<img class="fit" src="interfacing-diagram.svg" alt="Interfacing diagram" style="max-height:168mm">
 </section>
 
 <section class="page">
@@ -97,23 +97,23 @@ li{margin:.6mm 0}
 <section class="page">
 <h2>5. 3D model design (CadQuery, STEP + STL)</h2>
 <div class="grid2">
-<div><img class="full" src="file:///home/claude/saaya-verify/docs/node/render-internals.png" alt="Internals">
+<div><img class="full" src="render-internals.png" alt="Internals">
 <div class="cap">Lid removed: 90×70 perfboard with ESP32-DevKitC and field terminals (left); INA219, MP1584 and fuse (right); M12 vent on the left wall; ACK button on the right wall; 5 PG7 glands underneath.</div></div>
 <div><table class="small"><thead><tr><th>Feature</th><th>Dimension (mm)</th><th>Reason</th></tr></thead><tbody><tr><td>Enclosure</td><td>175 × 100 × 60, wall 3.0, lid depth 15</td><td>Purchased IP65 box; fits board + modules with ≥ 10 mm wiring space</td></tr><tr><td>OLED window</td><td>25 × 14 at x 15, z 62</td><td>Covers the 21.7 × 10.9 active area with margin; top-left = first thing read</td></tr><tr><td>HELP / MODE / LED</td><td>Ø12 / Ø12 / Ø8 on x = 140, z = 62 / 30 / 86</td><td>One vertical column at the right hand; LED above HELP so the request state is next to the button</td></tr><tr><td>ACK (side)</td><td>Ø12 on right wall, y 38, z 50</td><td>Deliberate staff action; not reachable by accident from the front</td></tr><tr><td>Buzzer grille</td><td>5 × Ø2, pitch 5, at x 27.5, z 32</td><td>Sound path without a large water entry</td></tr><tr><td>Cable glands</td><td>5 × PG7 Ø12.5, x = 25, 55, 85, 115, 145, y 38</td><td>All entries face down → rain drains away; 30 mm pitch leaves spanner room</td></tr><tr><td>Breather vent</td><td>M12 Ø12.5 left wall, y 38, z 18</td><td>Equalises pressure, prevents condensation pumping in day/night cycles</td></tr><tr><td>Back bracket</td><td>215 × 110 × 3 Al; 4 × Ø6.5 on 194 × 90; 4 slots 8 × 16</td><td>M6 anchors to wall, or two hose clamps round a 40–90 mm post</td></tr><tr><td>Radiation shield</td><td>5 plates Ø110, 14 pitch, 3 × M5 rods; SHT30 at centre</td><td>Blocks sun and hot-roof radiation while letting air through</td></tr><tr><td>Fan</td><td>120 × 120 × 25, wire guards both faces</td><td>Aimed at the seated torso from ≈ 1 m, 30–45° down</td></tr></tbody></table>
-<div class="grid2" style="gap:3mm;margin-top:2mm"><div><img class="full" src="file:///home/claude/saaya-verify/docs/node/render-front.png" alt="Front panel"><div class="cap">Front panel</div></div><div><img class="full" src="file:///home/claude/saaya-verify/docs/node/render-bottom.png" alt="Cable entries"><div class="cap">Underside: 5 PG7 glands, vent on the left wall</div></div></div>
+<div class="grid2" style="gap:3mm;margin-top:2mm"><div><img class="full" src="render-front.png" alt="Front panel"><div class="cap">Front panel</div></div><div><img class="full" src="render-bottom.png" alt="Cable entries"><div class="cap">Underside: 5 PG7 glands, vent on the left wall</div></div></div>
 <p class="cap">Interference check over all 23 solids: none above 1 mm³. Interactive model: <b>saaya-verify.vercel.app/node.html</b>; files: <code>cad/node/</code>.</p></div>
 </div>
 </section>
 
 <section class="page">
 <h2>5b. Dimensioned enclosure drawing</h2>
-<img class="fit" src="file:///home/claude/saaya-verify/docs/node/enclosure-drawing.svg" alt="Enclosure drawing" style="max-height:170mm">
+<img class="fit" src="enclosure-drawing.svg" alt="Enclosure drawing" style="max-height:170mm">
 </section>
 
 <section class="page" style="font-size:8.9pt">
 <h2>6. Deployment capability</h2>
 <div class="grid3">
-<div><img class="full" src="file:///home/claude/saaya-verify/docs/node/installation-elevation.svg" alt="Installation elevation">
+<div><img class="full" src="installation-elevation.svg" alt="Installation elevation">
 <div class="cap">Retrofit to an existing shade. Box centre 1400 mm (reachable seated or standing, above splash); seat sensor 1100 mm (seated head height); reference ≥ 2 m outside the shade at the same height; roof probe bonded to the underside centre.</div>
 <table class="small"><thead><tr><th>Item</th><th>Placement</th></tr></thead><tbody><tr><td>Node box</td><td>Shaded side of a post or wall, 1400 mm, glands down, drip loop under the box</td></tr><tr><td>Seat sensor</td><td>In shield beside the bench, 1100 mm, ≈ 0.4 m from the head, ≤ 2 m cable</td></tr><tr><td>Reference sensor</td><td>In shield on its own pole, ≥ 2 m from the shade edge, same height, ≤ 5 m STP cable</td></tr><tr><td>Roof probe</td><td>Bonded with thermal tape to the roof underside centre, shielded from direct sun</td></tr><tr><td>Fan</td><td>On the post or a roof member, ≈ 1 m from the seat, 30–45° down</td></tr><tr><td>Float</td><td>Inside the drinking-water can; wire leaves through the lid</td></tr></tbody></table></div>
 <div>
